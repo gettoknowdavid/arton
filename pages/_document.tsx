@@ -6,16 +6,27 @@ import styletron from "../styletron";
 import { Provider as StyletronProvider } from "styletron-react";
 
 class MyDocument extends Document<{ stylesheets: Sheet[] }> {
-  static getInitialProps(props: any) {
-    // eslint-disable-next-line react/display-name
-    const page = props.renderPage((App: any) => (props: any) => (
-      <StyletronProvider value={styletron}>
-        <App {...props} />
-      </StyletronProvider>
-    ));
+  static getInitialProps = async (ctx: any) => {
+    const renderPage = () =>
+      ctx.renderPage({
+        // eslint-disable-next-line func-names
+        enhanceApp: (App: any) =>
+          function (props: any) {
+            return (
+              <StyletronProvider value={styletron}>
+                <App {...props} />
+              </StyletronProvider>
+            );
+          },
+      });
+
+    const initialProps = await Document.getInitialProps({
+      ...ctx,
+      ...renderPage,
+    });
     const stylesheets = (styletron as Server).getStylesheets() || [];
-    return { ...page, stylesheets };
-  }
+    return { ...initialProps, stylesheets };
+  };
 
   render() {
     return (
