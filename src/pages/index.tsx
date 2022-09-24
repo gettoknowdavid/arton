@@ -1,10 +1,13 @@
 import * as React from "react";
 import { Button } from "baseui/button";
 import { useStyletron } from "baseui";
+import { NextPageWithLayout } from "../types";
+import { ReactElement } from "react";
+import Layout from "../components/layout";
 
 export const sum = (a: number, b: number) => a + b;
 
-const Index: React.FC = () => {
+const Home: NextPageWithLayout = () => {
   const [css, theme] = useStyletron();
   return (
     <div>
@@ -14,4 +17,8 @@ const Index: React.FC = () => {
   );
 };
 
-export default Index;
+Home.getLayout = function getLayout(page: ReactElement) {
+  return <Layout>{page}</Layout>;
+};
+
+export default Home;
