@@ -1,5 +1,5 @@
 @font-face {
-  font-family: 'HelveticaNeue';
+  font-family: 'Helvetica Neue';
   src: local('HelveticaNeue'), local('HelveticaNeue'),
   url('/fonts/HelveticaNeue.woff2') format('woff2');
   font-weight: normal;
@@ -8,7 +8,7 @@
 }
 
 @font-face {
-  font-family: 'HelveticaNeue';
+  font-family: 'Helvetica Neue';
   src: local('HelveticaNeue'), local('HelveticaNeue'),
   url('/fonts/HelveticaNeue-Bold.woff2') format('woff2');
   font-weight: bold;
@@ -17,7 +17,7 @@
 }
 
 @font-face {
-  font-family: 'HelveticaNeue';
+  font-family: 'Helvetica Neue';
   src: local('HelveticaNeue'), local('HelveticaNeue'),
   url('/fonts/HelveticaNeue-Light.woff2') format('woff2');
   font-weight: 200;
@@ -26,7 +26,7 @@
 }
 
 @font-face {
-  font-family: 'HelveticaNeue';
+  font-family: 'Helvetica Neue';
   src: local('HelveticaNeue'), local('HelveticaNeue'),
   url('/fonts/HelveticaNeue-Medium.woff2') format('woff2');
   font-weight: 500;
@@ -38,9 +38,10 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: 'Helvetica Neue', sans-serif;
+  font-size: 12px;
 }
+
 
 a {
   color: inherit;
@@ -51,12 +52,47 @@ a {
   box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: light) {
   html {
-    color-scheme: dark;
+    color-scheme: light;
   }
   body {
-    color: white;
-    background: black;
+    color: black;
+    background: white;
   }
+}
+
+@media (min-width: 280px) {
+  html {
+    font-size: calc(0.75rem + ((1vw - 3px) * 0.122));
+    min-height: 0;
+  }
+}
+
+@media (min-width: 1920px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+::-webkit-scrollbar-track {
+  background: #020204;
+}
+
+::-webkit-scrollbar-track-piece {
+  background: #020204;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.216);
+  border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #fff;
 }
