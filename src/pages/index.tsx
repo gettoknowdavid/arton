@@ -1,18 +1,15 @@
 import * as React from "react";
-import { Button } from "baseui/button";
 import { useStyletron } from "baseui";
 import { NextPageWithLayout } from "../types";
 import { ReactElement } from "react";
 import Layout from "../components/layout";
-
-export const sum = (a: number, b: number) => a + b;
+import { DisplaySmall } from "baseui/typography";
 
 const Home: NextPageWithLayout = () => {
   const [css, theme] = useStyletron();
   return (
     <div>
-      <Button onClick={() => console.log("hey")}>Hello</Button>
-      <p className={css({ color: theme.colors.accent600 })}>Styled by hook</p>
+      <DisplaySmall>Home</DisplaySmall>
     </div>
   );
 };
