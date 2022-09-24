@@ -1,5 +1,6 @@
 import React, { ReactNode } from "react";
 import Head from "next/head";
+import Header from "../organisms/header";
 
 function Layout({ children }: { children: ReactNode }) {
   return (
@@ -7,7 +8,10 @@ function Layout({ children }: { children: ReactNode }) {
       <Head>
         <title>Arton</title>
       </Head>
-      <main>{children}</main>
+      <main>
+        <Header />
+        <div>{children}</div>
+      </main>
     </>
   );
 }
