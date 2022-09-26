@@ -5,16 +5,21 @@ import styletron from "../styletron";
 import { ArtonTheme } from "../theme";
 import "../styles/globals.css";
 import { AppPropsWithLayout } from "../types";
+import { useApollo } from "../lib/apollo";
+import { ApolloProvider } from "@apollo/client";
 
 function ArtonApp({ Component, pageProps }: AppPropsWithLayout) {
   const getLayout = Component.getLayout ?? ((page) => page);
+  const apolloClient = useApollo(pageProps);
 
   return (
-    <StyletronProvider value={styletron}>
-      <BaseProvider theme={ArtonTheme}>
-        {getLayout(<Component {...pageProps} />)}
-      </BaseProvider>
-    </StyletronProvider>
+    <ApolloProvider client={apolloClient}>
+      <StyletronProvider value={styletron}>
+        <BaseProvider theme={ArtonTheme}>
+          {getLayout(<Component {...pageProps} />)}
+        </BaseProvider>
+      </StyletronProvider>
+    </ApolloProvider>
   );
 }
 
