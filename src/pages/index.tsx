@@ -9,56 +9,7 @@ import { gql, useQuery } from "@apollo/client";
 import { GetStaticPropsContext } from "next";
 import { initializeApollo } from "../lib/apollo";
 import { fetchAPI } from "../lib/api";
-
-const ImageFragment = gql`
-  fragment ImageFragment on UploadFileEntity {
-    id
-    attributes {
-      alternativeText
-      url
-    }
-  }
-`;
-
-const CategoryFragment = gql`
-  fragment CategoryFragment on CategoryEntity {
-    id
-    attributes {
-      name
-      slug
-      variant
-      image {
-        data {
-          ...ImageFragment
-        }
-      }
-    }
-  }
-`;
-
-const CategoriesQuery = gql`
-  query CategoriesQuery {
-    categories {
-      data {
-        id
-        attributes {
-          name
-          slug
-          variant
-          image {
-            data {
-              id
-              attributes {
-                alternativeText
-                url
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-`;
+import { CategoriesQuery } from "../graphql";
 
 const Home: NextPageWithLayout = ({ result }) => {
   const [css, theme] = useStyletron();
