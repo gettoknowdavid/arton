@@ -9,3 +9,25 @@ export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
 export type AppPropsWithLayout = AppProps & {
   Component: NextPageWithLayout;
 };
+
+export type ImageType = {
+  data: {
+    id: string;
+    attributes: {
+      alternativeText: string;
+      url: string;
+    };
+  };
+};
+
+export type CategoryType = {
+  data: {
+    id: number;
+    attributes: {
+      name: string;
+      slug: string;
+      variant: string;
+      image: ImageType;
+    };
+  };
+};
