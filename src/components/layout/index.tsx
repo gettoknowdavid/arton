@@ -1,15 +1,18 @@
-import React, { ReactNode } from "react";
-import Head from "next/head";
+import React, { ReactComponentElement, ReactNode } from "react";
 import Header from "../organisms/header";
 import { StyledLayout, StyledMain } from "./layout.styles";
 
-function Layout({ children }: { children: ReactNode }) {
+function Layout({
+  children,
+  seo,
+}: {
+  children: ReactNode;
+  seo: ReactComponentElement<any>;
+}) {
   return (
     <>
       <StyledLayout>
-        <Head>
-          <title>Arton</title>
-        </Head>
+        {seo}
         <StyledMain>
           <Header />
           <div>{children}</div>
