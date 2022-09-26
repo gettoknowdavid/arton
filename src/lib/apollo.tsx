@@ -7,7 +7,7 @@ import {
   NormalizedCacheObject,
 } from "@apollo/client";
 import { concatPagination } from "@apollo/client/utilities";
-import isEqual from "lodash/isEqual";
+import isequal from "lodash.isequal";
 import merge from "deepmerge";
 import { onError } from "@apollo/client/link/error";
 import { setContext } from "@apollo/client/link/context";
@@ -104,7 +104,7 @@ export function initializeApollo(initialState: any, ctx: any) {
       arrayMerge: (destinationArray, sourceArray) => [
         ...sourceArray,
         ...destinationArray.filter((d) =>
-          sourceArray.every((s) => !isEqual(d, s))
+          sourceArray.every((s) => !isequal(d, s))
         ),
       ],
     });

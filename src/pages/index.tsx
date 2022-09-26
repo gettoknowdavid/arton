@@ -72,7 +72,12 @@ const Home: NextPageWithLayout = ({ result }) => {
 };
 
 Home.getLayout = function getLayout(page: ReactElement) {
-  return <Layout seo={<SEO title={"Home"} description={""} />}>{page}</Layout>;
+  return (
+    <>
+      <SEO title={"Home"} description={""} />
+      <Layout>{page}</Layout>
+    </>
+  );
 };
 
 export async function getStaticProps() {
