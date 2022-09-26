@@ -1,4 +1,4 @@
-import React, { ReactComponentElement, ReactNode } from "react";
+import React, { ReactNode } from "react";
 import Header from "../organisms/header";
 import { StyledLayout, StyledMain } from "./layout.styles";
 
