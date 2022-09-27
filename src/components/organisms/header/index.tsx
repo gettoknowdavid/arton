@@ -1,5 +1,4 @@
 import React from "react";
-import { useStyletron } from "baseui";
 import Image from "next/image";
 import logo from "../../../public/logo.svg";
 import {
@@ -13,8 +12,6 @@ import { MagnifyingGlass, User } from "phosphor-react";
 import NavList from "../../molecules/nav-list";
 
 function Header() {
-  const [css, theme] = useStyletron();
-
   return (
     <StyledHeader>
       <div>
