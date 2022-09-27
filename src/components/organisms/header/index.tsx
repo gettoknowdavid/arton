@@ -3,6 +3,7 @@ import { useStyletron } from "baseui";
 import Image from "next/image";
 import logo from "../../../public/logo.svg";
 import { StyledHeader, StyledHeaderLogo, StyledNavItem } from "./header.styles";
+import Link from "next/link";
 
 function Header() {
   const [css, theme] = useStyletron();
@@ -21,13 +22,13 @@ function Header() {
               })}
             >
               <StyledNavItem>
-                <a>New Arrivals</a>
+                <Link href={"/new-arrivals"}>New Arrivals</Link>
               </StyledNavItem>
               <StyledNavItem>
-                <a>Women</a>
+                <Link href={"/women"}>Women</Link>
               </StyledNavItem>
               <StyledNavItem>
-                <a>Men</a>
+                <Link href={"/men"}>Men</Link>
               </StyledNavItem>
             </ul>
           </nav>
