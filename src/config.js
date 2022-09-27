@@ -9,4 +9,9 @@ export default {
     facebook: "artonhq",
     twitter: "artonhq",
   },
+  nav: [
+    { id: 0, title: "New Arrivals", slug: "new-arrivals" },
+    { id: 1, title: "Women", slug: "women" },
+    { id: 2, title: "Men", slug: "men" },
+  ],
 };
