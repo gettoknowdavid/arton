@@ -1,6 +1,7 @@
 import { NextPage } from "next";
 import { ReactElement, ReactNode } from "react";
 import { AppProps } from "next/app";
+import { Theme } from "baseui";
 
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
   getLayout?: (page: ReactElement) => ReactNode;
@@ -37,3 +38,5 @@ export type NavItemType = {
   title: string;
   slug: string;
 };
+
+export type CustomStyledComponent = Theme & { extraProp: string };

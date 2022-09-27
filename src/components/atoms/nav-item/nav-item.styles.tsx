@@ -1,11 +1,10 @@
 import { styled, Theme } from "baseui";
-
-type CustomTheme = Theme & { extraProp: string };
+import { CustomStyledComponent } from "../../../types";
 
 export const StyledNavItem: any = styled<
   "li",
   { $isActive: boolean },
-  CustomTheme
+  CustomStyledComponent
 >("li", ({ $theme, $isActive }) => ({
   display: "list-item",
   marginRight: "2.6rem",
