@@ -1,12 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { StyledNavItem } from "./nav-item.styles";
-
-export type NavItemType = {
-  id: number;
-  title: string;
-  slug: string;
-};
+import { NavItemType } from "../../../types";
 
 function NavItem({ item }: { item: NavItemType }) {
   return (
