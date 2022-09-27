@@ -6,11 +6,11 @@ import {
   StyledActionItem,
   StyledHeader,
   StyledHeaderLogo,
-  StyledNavItem,
   StyledNavList,
 } from "./header.styles";
 import Link from "next/link";
 import { MagnifyingGlass, User } from "phosphor-react";
+import NavList from "../../molecules/nav-list";
 
 function Header() {
   const [css, theme] = useStyletron();
@@ -19,18 +19,8 @@ function Header() {
     <StyledHeader>
       <div>
         <div>
-          <nav className={css({})}>
-            <StyledNavList>
-              <StyledNavItem>
-                <Link href={"/new-arrivals"}>New Arrivals</Link>
-              </StyledNavItem>
-              <StyledNavItem>
-                <Link href={"/women"}>Women</Link>
-              </StyledNavItem>
-              <StyledNavItem>
-                <Link href={"/men"}>Men</Link>
-              </StyledNavItem>
-            </StyledNavList>
+          <nav>
+            <NavList />
           </nav>
         </div>
       </div>
