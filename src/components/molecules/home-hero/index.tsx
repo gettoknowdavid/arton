@@ -3,6 +3,10 @@ import { useStyletron } from "baseui";
 import { useQuery } from "@apollo/client";
 import { Skeleton } from "baseui/skeleton";
 import { HomeHeroQuery } from "../../../graphql/queries/home.query";
+import {
+  StyledHomeHeroContainer,
+  StyledHomeHeroImageDiv,
+} from "./home-hero.styles";
 
 function HomeHero() {
   const [css, theme] = useStyletron();
@@ -10,23 +14,8 @@ function HomeHero() {
   const { data, loading } = useQuery(HomeHeroQuery);
 
   return (
-    <div
-      className={css({
-        height: "100vh",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-      })}
-    >
-      <div
-        className={css({
-          height: "61.714rem",
-          width: "109.714rem",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        })}
-      >
+    <StyledHomeHeroContainer>
+      <StyledHomeHeroImageDiv>
         {loading ? (
           <Skeleton height="100%" width="100%" animation />
         ) : (
@@ -39,8 +28,8 @@ function HomeHero() {
             className={css({ width: "100%" })}
           />
         )}
-      </div>
-    </div>
+      </StyledHomeHeroImageDiv>
+    </StyledHomeHeroContainer>
   );
 }
 
