@@ -23,6 +23,8 @@ export const StyledHeader = styled("header", () => ({
   WebkitBoxDirection: "normal",
   MsFlexDirection: "row",
   flexDirection: "row",
+  paddingLeft: "2rem",
+  paddingRight: "2rem",
 }));
 
 export const StyledHeaderLogo = styled("div", () => ({
@@ -36,4 +38,18 @@ export const StyledHeaderLogo = styled("div", () => ({
   WebkitTransform: "translateX(-50%)",
   transform: "translateX(-50%)",
   width: "8.5625rem",
+}));
+
+export const StyledNavItem = styled("li", ({ $theme }) => ({
+  display: "list-item",
+  marginRight: "2.6rem",
+  textTransform: "uppercase",
+  letterSpacing: "2px",
+  fontWeight: 400,
+  cursor: "pointer",
+  transitionProperty: "color",
+  transitionDuration: $theme.animation.timing400,
+  ":hover": {
+    color: $theme.colors.mono600,
+  },
 }));
