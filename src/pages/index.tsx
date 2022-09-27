@@ -5,12 +5,12 @@ import { ReactElement } from "react";
 import Layout from "../components/layout";
 import SEO from "../components/seo";
 import { fetchAPI } from "../lib/api";
-import { FlexGrid, FlexGridItem } from "baseui/flex-grid";
 import { HomeQuery } from "../graphql/queries/home.query";
 import HomeHero from "../components/molecules/home-hero";
 import CategoryList from "../components/molecules/category-list";
 
 type HomeProps = {
+  loading: boolean;
   menCategories: {
     data: CategoryType[];
   };
@@ -37,7 +37,10 @@ const Home: NextPageWithLayout | any = (props: HomeProps) => {
       >
         <HomeHero />
         <div>
-          <CategoryList categories={menCategories} />
+          <CategoryList categories={menCategories} loading={props.loading} />
+        </div>
+        <div className={css({ marginTop: "2rem" })}>
+          <CategoryList categories={womenCategories} loading={props.loading} />
         </div>
       </div>
     </div>
@@ -54,10 +57,11 @@ Home.getLayout = function getLayout(page: ReactElement) {
 };
 
 export async function getStaticProps() {
-  const { data } = await fetchAPI({ query: HomeQuery });
+  const { data, loading } = await fetchAPI({ query: HomeQuery });
 
   return {
     props: {
+      loading: loading,
       menCategories: data.home.data.attributes.menCategories,
       womenCategories: data.home.data.attributes.womenCategories,
     },
