@@ -31,3 +31,9 @@ export type CategoryType = {
     };
   };
 };
+
+export type NavItemType = {
+  id: number;
+  title: string;
+  slug: string;
+};
