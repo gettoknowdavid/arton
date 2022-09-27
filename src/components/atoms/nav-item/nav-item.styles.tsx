@@ -1,4 +1,4 @@
-import { styled, Theme } from "baseui";
+import { styled } from "baseui";
 import { CustomStyledComponent } from "../../../types";
 
 export const StyledNavItem: any = styled<
