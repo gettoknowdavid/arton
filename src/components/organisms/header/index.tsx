@@ -14,13 +14,9 @@ import NavList from "../../molecules/nav-list";
 function Header() {
   return (
     <StyledHeader>
-      <div>
-        <div>
-          <nav>
-            <NavList />
-          </nav>
-        </div>
-      </div>
+      <nav>
+        <NavList />
+      </nav>
       <StyledHeaderLogo>
         <Link href={"/"}>
           <Image src={logo} alt={"Arton logo"} layout={"fill"} />
