@@ -1,6 +1,6 @@
 import React, { ReactNode } from "react";
 import Header from "../organisms/header";
-import { StyledLayout, StyledMain } from "./layout.styles";
+import { StyledLayout, StyledMain, StyledMainBody } from "./layout.styles";
 
 function Layout({ children }: { children: ReactNode }) {
   return (
@@ -8,7 +8,7 @@ function Layout({ children }: { children: ReactNode }) {
       <StyledLayout>
         <StyledMain>
           <Header />
-          <div>{children}</div>
+          <StyledMainBody>{children}</StyledMainBody>
         </StyledMain>
       </StyledLayout>
     </>

@@ -19,3 +19,14 @@ export const StyledMain = styled("main", ({ $theme }) => ({
   [$theme.mediaQuery.medium]: {},
   [$theme.mediaQuery.large]: {},
 }));
+
+export const StyledMainBody = styled("div", ({ $theme }) => ({
+  paddingLeft: "2rem",
+  paddingRight: "2rem",
+  maxWidth: "1920px",
+  margin: "0 auto",
+  position: "relative",
+  [$theme.mediaQuery.small]: {},
+  [$theme.mediaQuery.medium]: {},
+  [$theme.mediaQuery.large]: {},
+}));
