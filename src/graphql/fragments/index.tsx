@@ -26,3 +26,33 @@ export const CategoryFragment = gql`
     }
   }
 `;
+
+export const SeoFragment = gql`
+  ${ImageFragment}
+  fragment SeoFragment on ComponentSharedSeo {
+    id
+    metaTitle
+    metaDescription
+    metaRobots
+    structuredData
+    metaViewport
+    canonicalURL
+    keywords
+    metaImage {
+      data {
+        ...ImageFragment
+      }
+    }
+    metaSocial {
+      id
+      socialNetwork
+      title
+      description
+      image {
+        data {
+          ...ImageFragment
+        }
+      }
+    }
+  }
+`;
