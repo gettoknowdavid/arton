@@ -5,8 +5,6 @@ import { ReactElement } from "react";
 import Layout from "../components/layout";
 import SEO from "../components/seo";
 import { fetchAPI } from "../lib/api";
-import Image from "next/image";
-import heroImage from "../public/hero-1.jpg";
 import { FlexGrid, FlexGridItem } from "baseui/flex-grid";
 import { HomeQuery } from "../graphql/queries/home.query";
 
