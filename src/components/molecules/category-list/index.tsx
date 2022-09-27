@@ -8,8 +8,10 @@ import {
   StyledCategoryItemVariant,
 } from "./category-list.styles";
 import Image from "next/image";
+import { Skeleton } from "baseui/skeleton";
 
 type CategoryListProps = {
+  loading?: boolean;
   categories: CategoryType[];
 };
 
@@ -26,19 +28,31 @@ function CategoryList(props: CategoryListProps) {
       {props.categories.map((category: CategoryType) => (
         <FlexGridItem key={category.id}>
           <StyledCategoryItemImageDiv>
-            <Image
-              src={category.attributes.image.data.attributes.url}
-              alt={category.attributes.image.data.attributes.alternativeText}
-              className={css({ objectFit: "cover" })}
-              layout={"fill"}
-            />
+            {!props.loading ? (
+              <Image
+                src={category?.attributes.image.data.attributes.url}
+                alt={category?.attributes.image.data.attributes.alternativeText}
+                className={css({ objectFit: "cover" })}
+                layout={"fill"}
+              />
+            ) : (
+              <Skeleton height="100%" width="100%" animation />
+            )}
           </StyledCategoryItemImageDiv>
           <div>
             <StyledCategoryItemName>
-              {category.attributes.name}
+              {!props.loading ? (
+                category?.attributes.name
+              ) : (
+                <Skeleton height="1.367rem" width="18rem" animation />
+              )}
             </StyledCategoryItemName>
             <StyledCategoryItemVariant>
-              {`for ${category.attributes.variant}`}
+              {!props.loading ? (
+                `for ${category?.attributes.variant}`
+              ) : (
+                <Skeleton height="1rem" width="8rem" animation />
+              )}
             </StyledCategoryItemVariant>
           </div>
         </FlexGridItem>
