@@ -41,6 +41,14 @@ export const StyledHeaderLogo = styled("div", () => ({
   cursor: "pointer",
 }));
 
+export const StyledNavList = styled("ul", () => ({
+  margin: 0,
+  padding: 0,
+  listStyleType: "none",
+  display: "flex",
+  alignItems: "center",
+}));
+
 export const StyledNavItem = styled("li", ({ $theme }) => ({
   display: "list-item",
   marginRight: "2.6rem",
