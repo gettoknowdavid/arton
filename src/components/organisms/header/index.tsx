@@ -7,6 +7,7 @@ import {
   StyledHeader,
   StyledHeaderLogo,
   StyledNavItem,
+  StyledNavList,
 } from "./header.styles";
 import Link from "next/link";
 import { MagnifyingGlass, User } from "phosphor-react";
@@ -19,14 +20,7 @@ function Header() {
       <div>
         <div>
           <nav className={css({})}>
-            <ul
-              className={css({
-                margin: 0,
-                padding: 0,
-                listStyleType: "none",
-                display: "flex",
-              })}
-            >
+            <StyledNavList>
               <StyledNavItem>
                 <Link href={"/new-arrivals"}>New Arrivals</Link>
               </StyledNavItem>
@@ -36,7 +30,7 @@ function Header() {
               <StyledNavItem>
                 <Link href={"/men"}>Men</Link>
               </StyledNavItem>
-            </ul>
+            </StyledNavList>
           </nav>
         </div>
       </div>
@@ -46,22 +40,14 @@ function Header() {
         </Link>
       </StyledHeaderLogo>
       <div>
-        <ul
-          className={css({
-            margin: 0,
-            padding: 0,
-            listStyleType: "none",
-            display: "flex",
-            alignItems: "center",
-          })}
-        >
+        <StyledNavList>
           <StyledActionItem>
             <User size={18} weight="duotone" />
           </StyledActionItem>
           <StyledActionItem>
             <MagnifyingGlass size={18} weight="duotone" />
           </StyledActionItem>
-        </ul>
+        </StyledNavList>
       </div>
     </StyledHeader>
   );
