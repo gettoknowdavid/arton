@@ -2,8 +2,14 @@ import React from "react";
 import { useStyletron } from "baseui";
 import Image from "next/image";
 import logo from "../../../public/logo.svg";
-import { StyledHeader, StyledHeaderLogo, StyledNavItem } from "./header.styles";
+import {
+  StyledActionItem,
+  StyledHeader,
+  StyledHeaderLogo,
+  StyledNavItem,
+} from "./header.styles";
 import Link from "next/link";
+import { MagnifyingGlass, User } from "phosphor-react";
 
 function Header() {
   const [css, theme] = useStyletron();
@@ -35,9 +41,28 @@ function Header() {
         </div>
       </div>
       <StyledHeaderLogo>
-        <Image src={logo} alt={"Arton logo"} layout={"fill"} />
+        <Link href={"/"}>
+          <Image src={logo} alt={"Arton logo"} layout={"fill"} />
+        </Link>
       </StyledHeaderLogo>
-      <div>This is Arton</div>
+      <div>
+        <ul
+          className={css({
+            margin: 0,
+            padding: 0,
+            listStyleType: "none",
+            display: "flex",
+            alignItems: "center",
+          })}
+        >
+          <StyledActionItem>
+            <User size={18} weight="duotone" />
+          </StyledActionItem>
+          <StyledActionItem>
+            <MagnifyingGlass size={18} weight="duotone" />
+          </StyledActionItem>
+        </ul>
+      </div>
     </StyledHeader>
   );
 }
