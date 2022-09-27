@@ -1,6 +1,23 @@
 import { gql } from "@apollo/client";
 import { CategoryFragment, ImageFragment, SeoFragment } from "../fragments";
 
+export const HomeHeroQuery = gql`
+  ${ImageFragment}
+  query HomeHeroQuery {
+    home {
+      data {
+        attributes {
+          heroImage {
+            data {
+              ...ImageFragment
+            }
+          }
+        }
+      }
+    }
+  }
+`;
+
 export const HomeQuery = gql`
   ${ImageFragment}
   ${SeoFragment}
@@ -11,11 +28,6 @@ export const HomeQuery = gql`
         attributes {
           seo {
             ...SeoFragment
-          }
-          heroImage {
-            data {
-              ...ImageFragment
-            }
           }
           menCategories: categories(
             filters: { variant: { eq: "male" } }
