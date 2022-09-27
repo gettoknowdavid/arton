@@ -7,17 +7,9 @@ import SEO from "../components/seo";
 import { fetchAPI } from "../lib/api";
 import { FlexGrid, FlexGridItem } from "baseui/flex-grid";
 import { HomeQuery } from "../graphql/queries/home.query";
+import HomeHero from "../components/molecules/home-hero";
 
 type HomeProps = {
-  heroImage: {
-    data: {
-      id: string;
-      attributes: {
-        alternativeText: string;
-        url: string;
-      };
-    };
-  };
   menCategories: {
     data: CategoryType[];
   };
@@ -28,7 +20,6 @@ type HomeProps = {
 
 const Home: NextPageWithLayout | any = (props: HomeProps) => {
   const [css, theme] = useStyletron();
-  const hero = props.heroImage.data.attributes;
   const menCategories = props.menCategories.data;
   const womenCategories = props.womenCategories.data;
 
@@ -43,27 +34,7 @@ const Home: NextPageWithLayout | any = (props: HomeProps) => {
           position: "relative",
         })}
       >
-        <div
-          className={css({
-            height: "100vh",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-          })}
-        >
-          <div
-            className={css({
-              height: "61.714rem",
-              width: "109.714rem",
-            })}
-          >
-            <img
-              src={hero.url}
-              alt={hero.alternativeText}
-              className={css({ width: "100%" })}
-            />
-          </div>
-        </div>
+        <HomeHero />
         <FlexGrid
           flexGridColumnCount={3}
           flexGridColumnGap={"2px"}
@@ -137,7 +108,6 @@ export async function getStaticProps() {
 
   return {
     props: {
-      heroImage: data.home.data.attributes.heroImage,
       menCategories: data.home.data.attributes.menCategories,
       womenCategories: data.home.data.attributes.womenCategories,
     },
