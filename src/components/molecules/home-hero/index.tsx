@@ -1,5 +1,4 @@
 import React from "react";
-import { useStyletron } from "baseui";
 import { useQuery } from "@apollo/client";
 import { Skeleton } from "baseui/skeleton";
 import { HomeHeroQuery } from "../../../graphql/queries/home.query";
@@ -7,11 +6,11 @@ import {
   StyledHomeHeroContainer,
   StyledHomeHeroImageDiv,
 } from "./home-hero.styles";
+import Image from "next/image";
 
 function HomeHero() {
-  const [css, theme] = useStyletron();
-
   const { data, loading } = useQuery(HomeHeroQuery);
+  const hero = data?.home.data.attributes.heroImage.data.attributes;
 
   return (
     <StyledHomeHeroContainer>
@@ -19,14 +18,7 @@ function HomeHero() {
         {loading ? (
           <Skeleton height="100%" width="100%" animation />
         ) : (
-          <img
-            src={data.home.data.attributes.heroImage.data.attributes.url}
-            alt={
-              data.home.data.attributes.heroImage.data.attributes
-                .alternativeText
-            }
-            className={css({ width: "100%" })}
-          />
+          <Image src={hero.url} alt={hero.alternativeText} layout={"fill"} />
         )}
       </StyledHomeHeroImageDiv>
     </StyledHomeHeroContainer>
