@@ -88,9 +88,9 @@ function createApolloClient(ctx: any) {
   });
 }
 
-export function initializeApollo(initialState: any, ctx: any) {
+export function initializeApollo(initialState: any) {
   // eslint-disable-next-line no-underscore-dangle
-  const _apolloClient = apolloClient ?? createApolloClient(ctx);
+  const _apolloClient = apolloClient ?? createApolloClient(initialState);
 
   // If your page has Next.js data fetching methods that use Apollo Client, the initial state
   // get hydrated here
@@ -120,9 +120,6 @@ export function initializeApollo(initialState: any, ctx: any) {
   return _apolloClient;
 }
 
-export function useApollo(initialState: any, ctx: any) {
-  return React.useMemo(
-    () => initializeApollo(initialState, ctx),
-    [initialState, ctx]
-  );
+export function useApollo(initialState: any) {
+  return React.useMemo(() => initializeApollo(initialState), [initialState]);
 }
