@@ -10,8 +10,6 @@ export const StyledHomeHeroContainer = styled("div", () => ({
 export const StyledHomeHeroImageDiv = styled("div", () => ({
   height: "61.714rem",
   width: "109.714rem",
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
-  position: "absolute",
+  overflow: "hidden",
+  margin: 0,
 }));
