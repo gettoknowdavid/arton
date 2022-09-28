@@ -1,5 +1,4 @@
 import { styled } from "baseui";
-import { FlexGridItem } from "baseui/flex-grid";
 
 export const StyledCategoryItemImageDiv = styled("div", () => ({
   width: "100%",

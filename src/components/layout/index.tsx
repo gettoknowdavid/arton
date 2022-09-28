@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import { useStyletron } from "baseui";
 
 function Layout({ children }: { children: ReactNode }) {
-  const [css, theme] = useStyletron();
+  const [css] = useStyletron();
 
   const variants = {
     hidden: { opacity: 0, x: -200, y: 0 },
