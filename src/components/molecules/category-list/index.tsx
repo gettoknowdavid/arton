@@ -9,6 +9,7 @@ import {
 } from "./category-list.styles";
 import Image from "next/image";
 import { Skeleton } from "baseui/skeleton";
+import { motion } from "framer-motion";
 
 type CategoryListProps = {
   loading?: boolean;
@@ -29,16 +30,29 @@ function CategoryList(props: CategoryListProps) {
         <FlexGridItem key={category.id}>
           <StyledCategoryItemImageDiv>
             {!props.loading ? (
-              <Image
-                src={category?.attributes.image.data.attributes.url}
-                alt={category?.attributes.image.data.attributes.alternativeText}
-                className={css({ objectFit: "cover" })}
-                layout={"fill"}
-              />
+              <motion.div
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.98 }}
+                className={css({
+                  height: "100%",
+                  width: "100%",
+                  position: "relative",
+                })}
+              >
+                <Image
+                  src={category?.attributes.image.data.attributes.url}
+                  alt={
+                    category?.attributes.image.data.attributes.alternativeText
+                  }
+                  className={css({ objectFit: "cover" })}
+                  layout={"fill"}
+                />
+              </motion.div>
             ) : (
               <Skeleton height="100%" width="100%" animation />
             )}
           </StyledCategoryItemImageDiv>
+
           <div>
             <StyledCategoryItemName>
               {!props.loading ? (
