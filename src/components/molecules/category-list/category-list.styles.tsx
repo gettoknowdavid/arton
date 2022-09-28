@@ -4,12 +4,9 @@ import { FlexGridItem } from "baseui/flex-grid";
 export const StyledCategoryItemImageDiv = styled("div", () => ({
   width: "100%",
   height: "61.714rem",
-  flexDirection: "column",
   textAlign: "center",
   cursor: "pointer",
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "space-between",
+  overflow: "hidden",
   position: "relative",
 }));
 
