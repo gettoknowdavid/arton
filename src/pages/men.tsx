@@ -6,7 +6,6 @@ import SEO from "../components/seo";
 import { fetchAPI } from "../lib/api";
 import { MenQuery } from "../graphql/queries/men.query";
 import { FlexGrid, FlexGridItem } from "baseui/flex-grid";
-import { useStyletron } from "baseui";
 import ProductList from "../components/molecules/product-list";
 import CategoryFilter from "../components/molecules/category-filter";
 import SizeFilter from "../components/molecules/size-filter";
@@ -22,23 +21,24 @@ type MenProps = {
 const Men: NextPageWithLayout | any = (props: MenProps) => {
   const products = props.products.data;
 
-  const [css, theme] = useStyletron();
-
   return (
-    <div className={css({ paddingTop: "6rem", paddingBottom: "6rem" })}>
-      <FlexGrid flexGridColumnCount={3} flexGridColumnGap={"2rem"}>
-        <FlexGridItem maxWidth={"20rem"} width={"100%"}>
-          <CategoryFilter gqlQueryVariables={["male", "unisex"]} />
-          <SizeFilter />
-        </FlexGridItem>
-        <FlexGridItem>
-          <ProductList products={products} loading={props.loading} />
-        </FlexGridItem>
-        <FlexGridItem maxWidth={"20rem"} width={"100%"}>
-          <SortFilter />
-        </FlexGridItem>
-      </FlexGrid>
-    </div>
+    <FlexGrid
+      flexGridColumnCount={3}
+      flexGridColumnGap={"2rem"}
+      paddingTop={"6rem"}
+      paddingBottom={"6rem"}
+    >
+      <FlexGridItem maxWidth={"20rem"} width={"100%"}>
+        <CategoryFilter gqlQueryVariables={["male", "unisex"]} />
+        <SizeFilter />
+      </FlexGridItem>
+      <FlexGridItem>
+        <ProductList products={products} loading={props.loading} />
+      </FlexGridItem>
+      <FlexGridItem maxWidth={"20rem"} width={"100%"}>
+        <SortFilter />
+      </FlexGridItem>
+    </FlexGrid>
   );
 };
 
