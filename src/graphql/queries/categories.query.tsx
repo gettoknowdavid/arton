@@ -11,3 +11,16 @@ export const CategoriesQuery: DocumentNode = gql`
     }
   }
 `;
+
+export const SelectCategoryQuery: DocumentNode = gql`
+  query SelectCategoryQuery($list: [String]!) {
+    categories(filters: { variant: { in: $list } }) {
+      data {
+        id
+        attributes {
+          name
+        }
+      }
+    }
+  }
+`;
