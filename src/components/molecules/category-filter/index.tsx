@@ -2,28 +2,13 @@ import React from "react";
 import { useQuery } from "@apollo/client";
 import { SelectCategoryQuery } from "../../../graphql/queries/categories.query";
 import { CategoryType } from "../../../types";
-import { Skeleton } from "baseui/skeleton";
 import {
   StyledCFList,
   StyledCFListItem,
   StyledCFTitle,
   StyledCFWrapper,
 } from "./category-filter.styles";
-
-const FilterSkeleton = () => {
-  return (
-    <Skeleton
-      width={"14rem"}
-      height={"1rem"}
-      animation
-      overrides={{
-        Root: {
-          style: { marginTop: "14px", marginBottom: "14px" },
-        },
-      }}
-    />
-  );
-};
+import FilterSkeleton from "../../atoms/filter-skeleton";
 
 type CategoryFilterProps = {
   gqlQueryVariables: string[];
