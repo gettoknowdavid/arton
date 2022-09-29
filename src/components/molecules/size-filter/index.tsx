@@ -12,6 +12,7 @@ function SizeFilter() {
   let sizeSkeletons = Array(4).fill(0);
 
   const sizes: SizeType[] = data?.sizes.data;
+
   return (
     <div>
       <div className={css({ paddingBottom: "3rem" })}>
@@ -28,7 +29,7 @@ function SizeFilter() {
           Sizes
         </h1>
         {loading ? (
-          sizeSkeletons.map((index: number) => (
+          sizeSkeletons.map((_, index) => (
             <Skeleton
               key={index.toString()}
               width={"14rem"}

@@ -43,7 +43,7 @@ function CategoryFilter(props: CategoryFilterProps) {
       <StyledCFTitle>Categories</StyledCFTitle>
 
       {loading ? (
-        skeletonCategories.map((index: number) => (
+        skeletonCategories.map((_, index) => (
           <FilterSkeleton key={index.toString()} />
         ))
       ) : (
