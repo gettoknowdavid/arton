@@ -18,8 +18,10 @@ function Header() {
         <NavList />
       </nav>
       <StyledHeaderLogo>
-        <Link href={"/"}>
-          <Image src={logo} alt={"Arton logo"} layout={"fill"} />
+        <Link href={"/"} passHref>
+          <a>
+            <Image src={logo} alt={"Arton logo"} layout={"fill"} />
+          </a>
         </Link>
       </StyledHeaderLogo>
       <div>
