@@ -56,3 +56,66 @@ export const SeoFragment = gql`
     }
   }
 `;
+
+export const ColourFragment = gql`
+  fragment ColourFragment on ColourEntity {
+    id
+    attributes {
+      title
+      code
+    }
+  }
+`;
+
+export const SizeFragment = gql`
+  fragment SizeFragment on SizeEntity {
+    id
+    attributes {
+      title
+      code
+    }
+  }
+`;
+
+export const ProductFragment = gql`
+  ${ColourFragment}
+  ${SizeFragment}
+  ${ImageFragment}
+  fragment ProductFragment on ProductEntity {
+    id
+    attributes {
+      title
+      description
+      slug
+      price
+      available
+      brand
+      details
+      care
+      tags {
+        id
+        title
+      }
+      colour {
+        data {
+          ...ColourFragment
+        }
+      }
+      sizes {
+        data {
+          ...SizeFragment
+        }
+      }
+      image {
+        data {
+          ...ImageFragment
+        }
+      }
+      images {
+        data {
+          ...ImageFragment
+        }
+      }
+    }
+  }
+`;
