@@ -16,7 +16,7 @@ function ArtonApp({ Component, pageProps }: AppPropsWithLayout) {
   return (
     <ApolloProvider client={apolloClient}>
       <AnimatePresence
-        exitBeforeEnter
+        mode={"wait"}
         initial={false}
         onExitComplete={() => window.scrollTo(0, 0)}
       >
