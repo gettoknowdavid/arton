@@ -7,10 +7,11 @@ import {
   NormalizedCacheObject,
 } from "@apollo/client";
 import { concatPagination } from "@apollo/client/utilities";
-import isequal from "lodash.isequal";
 import merge from "deepmerge";
 import { onError } from "@apollo/client/link/error";
-import { setContext } from "@apollo/client/link/context";
+import isEqual from "lodash.isequal";
+
+export const APOLLO_STATE_PROP_NAME = "__APOLLO_STATE__";
 
 let apolloClient: ApolloClient<NormalizedCacheObject>;
 const AUTH_TOKEN = "auth-token";
@@ -28,54 +29,24 @@ const token = () => {
 };
 
 const errorLink = onError(({ graphQLErrors, networkError }) => {
-  if (graphQLErrors) {
-    graphQLErrors.forEach(({ path, extensions }) => {
-      // eslint-disable-next-line no-console
+  if (graphQLErrors)
+    graphQLErrors.forEach(({ message, locations, path }) =>
       console.log(
-        `[GraphQL error]:   Extensions: ${extensions}, Path: ${path}`
-      );
-      // if (graphQLErrors || networkError) {
-      //   cache.writeQuery({
-      //     data: {
-      //       error: {
-      //         __typename: 'error',
-      //         message: graphQLErrors[0].extensions.exception.data,
-      //         // statusCode: networkError.statusCode,
-      //       },
-      //     },
-      //   });
-      // }
-      // const { message } = extensions.exception.data;
-      // console.log(message[0].messages[0].message);
-      // throw new Error(message[0].messages[0]);
-    });
-  }
-
-  // eslint-disable-next-line no-console
+        `[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`
+      )
+    );
   if (networkError) console.log(`[Network error]: ${networkError}`);
 });
 
-function createApolloClient(ctx: any) {
+function createApolloClient() {
   const httpLink = new HttpLink({
     uri: uri,
     credentials: "same-origin",
-    headers: {
-      ...ctx?.headers,
-      authorization: token() ? `Bearer ${token()}` : "",
-    },
   });
 
-  const authLink = setContext((_, { headers }) => {
-    return {
-      headers: {
-        ...headers,
-        authorization: token() ? `Bearer ${token}` : "",
-      },
-    };
-  });
   return new ApolloClient({
     ssrMode: typeof window === "undefined",
-    link: authLink.concat(from([errorLink, httpLink])),
+    link: from([errorLink, httpLink]),
     cache: new InMemoryCache({
       typePolicies: {
         Query: {
@@ -88,23 +59,22 @@ function createApolloClient(ctx: any) {
   });
 }
 
-export function initializeApollo(initialState: any) {
-  // eslint-disable-next-line no-underscore-dangle
-  const _apolloClient = apolloClient ?? createApolloClient(initialState);
+export function initializeApollo(initialState = null) {
+  const _apolloClient = apolloClient ?? createApolloClient();
 
   // If your page has Next.js data fetching methods that use Apollo Client, the initial state
-  // get hydrated here
+  // gets hydrated here
   if (initialState) {
     // Get existing cache, loaded during client side data fetching
     const existingCache = _apolloClient.extract();
 
-    // Merge the existing cache into data passed from getStaticProps/getServerSideProps
-    const data = merge(initialState, existingCache, {
+    // Merge the initialState from getStaticProps/getServerSideProps in the existing cache
+    const data = merge(existingCache, initialState, {
       // combine arrays using object equality (like in sets)
       arrayMerge: (destinationArray, sourceArray) => [
         ...sourceArray,
         ...destinationArray.filter((d) =>
-          sourceArray.every((s) => !isequal(d, s))
+          sourceArray.every((s) => !isEqual(d, s))
         ),
       ],
     });
@@ -120,6 +90,16 @@ export function initializeApollo(initialState: any) {
   return _apolloClient;
 }
 
-export function useApollo(initialState: any) {
-  return React.useMemo(() => initializeApollo(initialState), [initialState]);
+export function addApolloState(client: any, pageProps: any) {
+  if (pageProps?.props) {
+    pageProps.props[APOLLO_STATE_PROP_NAME] = client.cache.extract();
+  }
+
+  return pageProps;
+}
+
+export function useApollo(pageProps: any) {
+  const state = pageProps[APOLLO_STATE_PROP_NAME];
+  const store = React.useMemo(() => initializeApollo(state), [state]);
+  return store;
 }
