@@ -4,6 +4,7 @@ import { useQuery } from "@apollo/client";
 import { SelectCategoryQuery } from "../../../graphql/queries/categories.query";
 import { CategoryType } from "../../../types";
 import { Skeleton } from "baseui/skeleton";
+import { StyledCFTitle } from "./category-filter.styles";
 
 function CategoryFilter() {
   const [css, theme] = useStyletron();
@@ -18,18 +19,7 @@ function CategoryFilter() {
 
   return (
     <div className={css({ paddingBottom: "3rem" })}>
-      <h1
-        className={css({
-          marginTop: 0,
-          marginBottom: "1rem",
-          padding: 0,
-          fontSize: "1.2rem",
-          fontWeight: 600,
-          textTransform: "uppercase",
-        })}
-      >
-        Categories
-      </h1>
+      <StyledCFTitle>Categories</StyledCFTitle>
 
       {loading ? (
         skeletonCategories.map((index: number) => (
