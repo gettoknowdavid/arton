@@ -6,6 +6,21 @@ import { CategoryType } from "../../../types";
 import { Skeleton } from "baseui/skeleton";
 import { StyledCFTitle } from "./category-filter.styles";
 
+const FilterSkeleton = () => {
+  return (
+    <Skeleton
+      width={"14rem"}
+      height={"1rem"}
+      animation
+      overrides={{
+        Root: {
+          style: { marginTop: "14px", marginBottom: "14px" },
+        },
+      }}
+    />
+  );
+};
+
 function CategoryFilter() {
   const [css, theme] = useStyletron();
 
@@ -23,17 +38,7 @@ function CategoryFilter() {
 
       {loading ? (
         skeletonCategories.map((index: number) => (
-          <Skeleton
-            key={index.toString()}
-            width={"14rem"}
-            height={"1rem"}
-            animation
-            overrides={{
-              Root: {
-                style: { marginTop: "14px", marginBottom: "14px" },
-              },
-            }}
-          />
+          <FilterSkeleton key={index.toString()} />
         ))
       ) : (
         <ul className={css({ margin: 0, padding: 0, listStyleType: "none" })}>
