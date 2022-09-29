@@ -15,6 +15,7 @@ import { useStyletron } from "baseui";
 import { ButtonGroup, SIZE, SHAPE } from "baseui/button-group";
 import { Button } from "baseui/button";
 import ProductItem from "../components/atoms/product-item";
+import ProductList from "../components/molecules/product-list";
 
 type MenProps = {
   loading: boolean;
@@ -119,19 +120,7 @@ const Men: NextPageWithLayout | any = (props: MenProps) => {
           </div>
         </FlexGridItem>
         <FlexGridItem>
-          <FlexGrid
-            flexGridColumnCount={[2, 3, 3, 4]}
-            flexGridColumnGap={"2px"}
-            flexGridRowGap={"1rem"}
-            paddingRight={"2px"}
-            paddingLeft={"2px"}
-          >
-            {products.map((product) => (
-              <FlexGridItem key={product.id}>
-                <ProductItem product={product} />
-              </FlexGridItem>
-            ))}
-          </FlexGrid>
+          <ProductList products={products} />
         </FlexGridItem>
         <FlexGridItem
           maxWidth={"20rem"}
