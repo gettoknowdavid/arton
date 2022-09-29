@@ -27,6 +27,7 @@ function ProductItem(props: ProductItemProps) {
           alt={product?.attributes.image.data.attributes.alternativeText}
           className={css({ objectFit: "cover" })}
           layout={"fill"}
+          priority
         />
       </div>
       <div>
