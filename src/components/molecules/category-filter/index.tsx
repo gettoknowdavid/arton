@@ -1,10 +1,14 @@
 import React from "react";
-import { useStyletron } from "baseui";
 import { useQuery } from "@apollo/client";
 import { SelectCategoryQuery } from "../../../graphql/queries/categories.query";
 import { CategoryType } from "../../../types";
 import { Skeleton } from "baseui/skeleton";
-import { StyledCFTitle } from "./category-filter.styles";
+import {
+  StyledCFList,
+  StyledCFListItem,
+  StyledCFTitle,
+  StyledCFWrapper,
+} from "./category-filter.styles";
 
 const FilterSkeleton = () => {
   return (
@@ -21,11 +25,13 @@ const FilterSkeleton = () => {
   );
 };
 
-function CategoryFilter() {
-  const [css, theme] = useStyletron();
+type CategoryFilterProps = {
+  gqlQueryVariables: string[];
+};
 
+function CategoryFilter(props: CategoryFilterProps) {
   const { data, loading } = useQuery(SelectCategoryQuery, {
-    variables: { list: ["male", "unisex"] },
+    variables: { list: [...props.gqlQueryVariables] },
   });
 
   const categories: CategoryType[] = data?.categories.data;
@@ -33,7 +39,7 @@ function CategoryFilter() {
   let skeletonCategories = Array(4).fill(0);
 
   return (
-    <div className={css({ paddingBottom: "3rem" })}>
+    <StyledCFWrapper>
       <StyledCFTitle>Categories</StyledCFTitle>
 
       {loading ? (
@@ -41,27 +47,15 @@ function CategoryFilter() {
           <FilterSkeleton key={index.toString()} />
         ))
       ) : (
-        <ul className={css({ margin: 0, padding: 0, listStyleType: "none" })}>
+        <StyledCFList>
           {categories?.map((category) => (
-            <li
-              key={category.id}
-              className={css({
-                marginBottom: 0,
-                padding: 0,
-                textTransform: "uppercase",
-                fontWeight: 300,
-                fontSize: "1rem",
-                lineHeight: "1.3rem",
-                cursor: "pointer",
-                ":hover": { color: theme.colors.mono600 },
-              })}
-            >
+            <StyledCFListItem key={category.id}>
               <p>{category.attributes.name}</p>
-            </li>
+            </StyledCFListItem>
           ))}
-        </ul>
+        </StyledCFList>
       )}
-    </div>
+    </StyledCFWrapper>
   );
 }
 
