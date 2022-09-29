@@ -14,21 +14,5 @@ export const MenQuery = gql`
         ...ProductFragment
       }
     }
-    categories(filters: { variant: { in: ["male", "unisex"] } }) {
-      data {
-        id
-        attributes {
-          name
-        }
-      }
-    }
-    sizes(sort: ["id"]) {
-      data {
-        id
-        attributes {
-          code
-        }
-      }
-    }
   }
 `;
