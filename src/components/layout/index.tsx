@@ -26,8 +26,8 @@ function Layout({ children }: { children: ReactNode }) {
             exit="exit" // Exit state (used later) to variants.exit
             transition={{ type: "linear" }} // Set the transition to linear
             className={css({
-              paddingLeft: "2rem",
-              paddingRight: "2rem",
+              // paddingLeft: "2rem",
+              // paddingRight: "2rem",
               maxWidth: "1920px",
               margin: "0 auto",
               position: "relative",
