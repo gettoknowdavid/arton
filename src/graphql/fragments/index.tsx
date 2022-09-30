@@ -92,6 +92,7 @@ export const ProductFragment = gql`
       brand
       details
       care
+      variant
       tags {
         id
         title
