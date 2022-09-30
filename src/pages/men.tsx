@@ -50,6 +50,7 @@ Men.getLayout = function getLayout(page: ReactElement) {
     </>
   );
 };
+
 export async function getStaticProps() {
   const { data, loading } = await fetchAPI({ query: MenQuery });
 
