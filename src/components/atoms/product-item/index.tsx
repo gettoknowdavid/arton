@@ -3,6 +3,7 @@ import { ProductType } from "../../../types";
 import Image from "next/image";
 import { currency } from "../../../lib/currency-formatter";
 import { useStyletron } from "baseui";
+import { useRouter } from "next/router";
 
 type ProductItemProps = {
   product: ProductType;
@@ -11,10 +12,12 @@ type ProductItemProps = {
 function ProductItem(props: ProductItemProps) {
   const [css, theme] = useStyletron();
   const product = props.product;
+  const router = useRouter();
 
   return (
     <div>
       <div
+        onClick={() => router.push(`/product/${product.attributes.slug}`)}
         className={css({
           aspectRatio: 12 / 16,
           cursor: "pointer",
