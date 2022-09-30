@@ -13,12 +13,10 @@ export type AppPropsWithLayout = AppProps & {
 };
 
 export type ImageType = {
-  data: {
-    id: string;
-    attributes: {
-      alternativeText: string;
-      url: string;
-    };
+  id: string;
+  attributes: {
+    alternativeText: string;
+    url: string;
   };
 };
 
@@ -28,7 +26,9 @@ export type CategoryType = {
     name: string;
     slug: string;
     variant: string;
-    image: ImageType;
+    image: {
+      data: ImageType;
+    };
   };
 };
 
@@ -66,6 +66,7 @@ export type ProductType = {
     brand: string;
     details: string;
     care: string;
+    variant: string;
     tags: {
       id: string;
       title: string;
@@ -76,8 +77,12 @@ export type ProductType = {
     sizes: {
       data: SizeType[];
     };
-    image: ImageType;
-    images: ImageType[];
+    image: {
+      data: ImageType;
+    };
+    images: {
+      data: ImageType[];
+    };
     category?: {
       data: CategoryType;
     };
