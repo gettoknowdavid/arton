@@ -7,6 +7,15 @@ export const ProductQuery = gql`
     products(filters: { slug: { eq: $slug } }) {
       data {
         ...ProductFragment
+        attributes {
+          category {
+            data {
+              attributes {
+                name
+              }
+            }
+          }
+        }
       }
     }
   }
