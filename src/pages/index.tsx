@@ -25,7 +25,7 @@ const Home: NextPageWithLayout | any = (props: HomeProps) => {
   const womenCategories = props.womenCategories.data;
 
   return (
-    <div>
+    <div className={css({ paddingLeft: "2rem", paddingRight: "2rem" })}>
       <HomeHero />
       <div>
         <CategoryList categories={menCategories} loading={props.loading} />
