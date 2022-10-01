@@ -16,6 +16,7 @@ import {
   StyledTPLTitle,
   StyledTPLWrapper,
 } from "./tagged-product-list.styles";
+import { Skeleton } from "baseui/skeleton";
 
 type TaggedT = {
   products: {
@@ -27,12 +28,40 @@ type TaggedProductListProps = {
   product: ProductType;
 };
 
+const TaggedProductListSkeleton = () => {
+  let productSkeletons = Array(5).fill(0);
+
+  return (
+    <StyledTPLWrapper>
+      <StyledTPLList>
+        {productSkeletons.map((_, index) => (
+          <StyledTPLListItem key={index.toString()}>
+            <StyledTPLListItemInner>
+              <StyledTPLImageWrapper>
+                <Skeleton height={"100%"} width={"100%"} animation />
+              </StyledTPLImageWrapper>
+              <div>
+                <StyledTPLTitle>
+                  <Skeleton height={"1.2rem"} width={"100%"} animation />
+                </StyledTPLTitle>
+                <StyledTPLPrice>
+                  <Skeleton height={"1.2rem"} width={"10rem"} animation />
+                </StyledTPLPrice>
+              </div>
+            </StyledTPLListItemInner>
+          </StyledTPLListItem>
+        ))}
+      </StyledTPLList>
+    </StyledTPLWrapper>
+  );
+};
+
 function TaggedProductList(props: TaggedProductListProps) {
   const [css] = useStyletron();
   const router = useRouter();
   const product = props.product.attributes;
 
-  const { data, loading } = useQuery<TaggedT>(TaggedProductsQuery, {
+  const { data, loading } = useQuery(TaggedProductsQuery, {
     variables: {
       tagList: [...product.tags.map((t) => t.title)],
       variantList: [product.variant, "unisex"],
@@ -42,10 +71,14 @@ function TaggedProductList(props: TaggedProductListProps) {
 
   return (
     <StyledTPLWrapper>
-      <StyledTPLHeader>Products like</StyledTPLHeader>
-      {data ? (
+      {data?.products.data.length !== 0 ? (
+        <StyledTPLHeader>Products like</StyledTPLHeader>
+      ) : null}
+      {loading ? (
+        <TaggedProductListSkeleton />
+      ) : (
         <StyledTPLList>
-          {data.products.data.map((tProduct) => (
+          {data?.products.data.map((tProduct: ProductType) => (
             <StyledTPLListItem key={tProduct.id}>
               <StyledTPLListItemInner>
                 <StyledTPLImageWrapper
@@ -72,7 +105,7 @@ function TaggedProductList(props: TaggedProductListProps) {
             </StyledTPLListItem>
           ))}
         </StyledTPLList>
-      ) : null}
+      )}
     </StyledTPLWrapper>
   );
 }
