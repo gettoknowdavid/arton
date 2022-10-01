@@ -23,12 +23,12 @@ export const StyledTPLList = styled("ul", () => ({
 }));
 
 export const StyledTPLListItem = styled("li", () => ({
-  maxWidth: "calc((100vw - 20px + 1rem) / 5)",
+  maxWidth: "calc((100vw - 20px + 2rem) / 4.9)",
   marginRight: "2rem",
 }));
 
 export const StyledTPLListItemInner = styled(FlexGridItem, () => ({
-  maxWidth: "calc((100vw - 20px + 1rem) / 5)",
+  maxWidth: "calc((100vw - 20px + 2rem) / 4.9)",
 }));
 
 export const StyledTPLImageWrapper = styled("div", ({ $theme }) => ({
@@ -41,7 +41,7 @@ export const StyledTPLImageWrapper = styled("div", ({ $theme }) => ({
   cursor: "pointer",
 }));
 
-export const StyledTPLTitle = styled("h2", ({ $theme }) => ({
+export const StyledTPLTitle = styled("div", () => ({
   marginTop: "1rem",
   marginBottom: 0,
   padding: 0,
@@ -58,7 +58,7 @@ export const StyledTPLTitle = styled("h2", ({ $theme }) => ({
   WebkitBoxOrient: "vertical",
 }));
 
-export const StyledTPLPrice = styled("p", ({ $theme }) => ({
+export const StyledTPLPrice = styled("div", () => ({
   marginTop: "6px",
   padding: 0,
   textTransform: "uppercase",
