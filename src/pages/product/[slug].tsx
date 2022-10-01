@@ -15,15 +15,31 @@ import { currency } from "../../lib/currency-formatter";
 import { Select, SIZE } from "baseui/select";
 import { Button } from "baseui/button";
 import ReactMarkdown from "react-markdown";
+import { useQuery } from "@apollo/client";
+import { TaggedProductsQuery } from "../../graphql/queries/tagged-products.query";
 
 type ProductProps = {
   product: ProductType;
+};
+
+type TaggedT = {
+  products: {
+    data: ProductType[];
+  };
 };
 
 function Product({ product }: ProductProps) {
   const [css, theme] = useStyletron();
   const router = useRouter();
   const [value, setValue] = React.useState([{ label: "S - Small", id: "S" }]);
+
+  const { data, loading } = useQuery<TaggedT>(TaggedProductsQuery, {
+    variables: {
+      tagList: [...product.attributes.tags.map((t) => t.title)],
+      variantList: [product.attributes.variant, "unisex"],
+      notIncludeTitle: product.attributes.title,
+    },
+  });
 
   return (
     <div className={css({})}>
@@ -292,7 +308,7 @@ function Product({ product }: ProductProps) {
                 >
                   Details
                 </h1>
-                <p
+                <div
                   className={css({
                     fontWeight: 300,
                     margin: 0,
@@ -302,17 +318,12 @@ function Product({ product }: ProductProps) {
                   <ReactMarkdown
                     children={product.attributes.details}
                     components={{
-                      p({ node, children, ...props }) {
-                        return (
-                          <p {...props} className={css({ margin: 0 })}>
-                            {children}
-                          </p>
-                        );
+                      p({ children }) {
+                        return <p className={css({ margin: 0 })}>{children}</p>;
                       },
-                      ul({ node, children, ...props }) {
+                      ul({ children }) {
                         return (
                           <ul
-                            {...props}
                             className={css({
                               listStyleType: '"-  "',
                               margin: 0,
@@ -326,7 +337,7 @@ function Product({ product }: ProductProps) {
                       },
                     }}
                   />
-                </p>
+                </div>
               </div>
               <div className={css({ marginBlock: "1rem" })}>
                 <h1
@@ -387,7 +398,7 @@ function Product({ product }: ProductProps) {
               >
                 Care
               </h1>
-              <p
+              <div
                 className={css({
                   fontWeight: 300,
                   margin: 0,
@@ -397,17 +408,12 @@ function Product({ product }: ProductProps) {
                 <ReactMarkdown
                   children={product.attributes.care}
                   components={{
-                    p({ node, children, ...props }) {
-                      return (
-                        <p {...props} className={css({ margin: 0 })}>
-                          {children}
-                        </p>
-                      );
+                    p({ children }) {
+                      return <p className={css({ margin: 0 })}>{children}</p>;
                     },
-                    ul({ node, children, ...props }) {
+                    ul({ children }) {
                       return (
                         <ul
-                          {...props}
                           className={css({
                             listStyleType: '"-  "',
                             margin: 0,
@@ -421,7 +427,7 @@ function Product({ product }: ProductProps) {
                     },
                   }}
                 />
-              </p>
+              </div>
             </div>
             <div className={css({ marginBlock: "1rem" })}>
               <h1
@@ -469,6 +475,117 @@ function Product({ product }: ProductProps) {
             </div>
           </FlexGridItem>
         </FlexGrid>
+      </div>
+      <div
+        className={css({
+          marginTop: "2rem",
+        })}
+      >
+        <h1
+          className={css({
+            fontSize: "1.5rem",
+            fontWeight: 500,
+            textTransform: "uppercase",
+            paddingRight: "2rem",
+            paddingLeft: "2rem",
+          })}
+        >
+          Products like
+        </h1>
+        {data ? (
+          <ul
+            className={css({
+              display: "flex",
+              overflowX: "auto",
+              whiteSpace: "nowrap",
+              listStyleType: "none",
+              paddingRight: "2rem",
+              paddingLeft: "2rem",
+            })}
+          >
+            {data.products.data.map((tProduct) => (
+              <li
+                key={tProduct.id}
+                className={css({
+                  maxWidth: "calc((100vw - 20px + 1rem) / 5)",
+                  marginRight: "2rem",
+                })}
+              >
+                <FlexGridItem
+                  className={css({
+                    maxWidth: "calc((100vw - 20px + 1rem) / 5)",
+                  })}
+                >
+                  <div
+                    onClick={() =>
+                      router.push(`/product/${tProduct.attributes.slug}`)
+                    }
+                    className={css({
+                      height: "50rem",
+                      width: "100%",
+                      display: "block",
+                      aspectRatio: 9 / 14,
+                    })}
+                  >
+                    <div
+                      className={css({
+                        position: "relative",
+                        height: "100%",
+                        width: "100%",
+                        backgroundColor: theme.colors.mono200,
+                        cursor: "pointer",
+                      })}
+                    >
+                      <Image
+                        src={tProduct.attributes.image.data.attributes.url}
+                        alt={
+                          tProduct.attributes.image.data.attributes
+                            .alternativeText
+                        }
+                        className={css({ objectFit: "cover" })}
+                        layout={"fill"}
+                      />
+                    </div>
+                  </div>
+                  <div className={css({ position: "relative" })}>
+                    <p
+                      className={css({
+                        marginTop: "1rem",
+                        marginBottom: 0,
+                        padding: 0,
+                        textTransform: "uppercase",
+                        fontWeight: 300,
+                        fontSize: "1.2rem",
+                        lineHeight: "1.3rem",
+                        height: "1.4rem",
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                        display: "-webkit-box",
+                        lineClamp: 1,
+                        WebkitLineClamp: 1,
+                        WebkitBoxOrient: "vertical",
+                      })}
+                    >
+                      {tProduct.attributes.title}
+                    </p>
+
+                    <p
+                      className={css({
+                        marginTop: "6px",
+                        padding: 0,
+                        textTransform: "uppercase",
+                        fontSize: "1rem",
+                        lineHeight: "1.3rem",
+                      })}
+                    >
+                      {currency.format(tProduct.attributes.price)}
+                    </p>
+                  </div>
+                </FlexGridItem>
+              </li>
+            ))}
+          </ul>
+        ) : null}
       </div>
     </div>
   );
