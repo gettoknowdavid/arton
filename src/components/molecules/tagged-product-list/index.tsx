@@ -18,12 +18,6 @@ import {
 } from "./tagged-product-list.styles";
 import { Skeleton } from "baseui/skeleton";
 
-type TaggedT = {
-  products: {
-    data: ProductType[];
-  };
-};
-
 type TaggedProductListProps = {
   product: ProductType;
 };
