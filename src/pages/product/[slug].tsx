@@ -16,6 +16,7 @@ import { Select, SIZE } from "baseui/select";
 import { Button } from "baseui/button";
 import ReactMarkdown from "react-markdown";
 import TaggedProductList from "../../components/molecules/tagged-product-list";
+import BackButton from "../../components/atoms/back-button";
 
 type ProductProps = {
   product: ProductType;
@@ -27,20 +28,16 @@ function Product({ product }: ProductProps) {
   const [value, setValue] = React.useState([{ label: "S - Small", id: "S" }]);
 
   return (
-    <div className={css({})}>
+    <div>
       <div
-        onClick={router.back}
         className={css({
           position: "absolute",
-          height: "2.4rem",
-          width: "2.4rem",
-          cursor: "pointer",
           left: "2rem",
           top: "4rem",
           zIndex: 200,
         })}
       >
-        <Image src={leftArrow} alt={"left arrow"} layout={"fill"} />
+        <BackButton />
       </div>
       <div
         className={css({
