@@ -6,7 +6,7 @@ import { ProductsQuery } from "../../graphql/queries/products.query";
 import { ProductType } from "../../types";
 import SEO from "../../components/seo";
 import Layout from "../../components/layout";
-import { useStyletron } from "baseui";
+import { styled, useStyletron } from "baseui";
 import leftArrow from "../../public/left-arrow.png";
 import Image from "next/image";
 import { useRouter } from "next/router";
@@ -22,6 +22,47 @@ type ProductProps = {
   product: ProductType;
 };
 
+export const StyledPBackButtonWrapper = styled("div", () => ({
+  position: "absolute",
+  left: "2rem",
+  top: "4rem",
+  zIndex: 200,
+}));
+
+export const StyledPMainBodyWrapper = styled("div", () => ({
+  height: "100vh",
+  width: "100%",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+}));
+
+export const StyledPImageList = styled("ul", () => ({
+  margin: 0,
+  display: "flex",
+  flexDirection: "row-reverse",
+  listStyleType: "none",
+  height: "80vh",
+  width: "calc(((100% - 0px) / 1) - 0.5px)",
+  float: "right",
+  overflow: "auto",
+  whiteSpace: "nowrap",
+  position: "absolute",
+  left: 0,
+  top: 0,
+  bottom: 0,
+  right: 0,
+  paddingLeft: "10rem",
+}));
+
+export const StyledPImageListItem = styled("li", () => ({
+  aspectRatio: 12 / 16,
+  height: "80vh",
+  marginLeft: "2rem",
+  position: "relative",
+  width: "100%",
+}));
+
 function Product({ product }: ProductProps) {
   const [css, theme] = useStyletron();
   const router = useRouter();
@@ -29,76 +70,27 @@ function Product({ product }: ProductProps) {
 
   return (
     <div>
-      <div
-        className={css({
-          position: "absolute",
-          left: "2rem",
-          top: "4rem",
-          zIndex: 200,
-        })}
-      >
+      <StyledPBackButtonWrapper>
         <BackButton />
-      </div>
-      <div
-        className={css({
-          height: "100vh",
-          width: "100%",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-        })}
-      >
+      </StyledPBackButtonWrapper>
+      <StyledPMainBodyWrapper>
         <FlexGrid flexGridColumnCount={2} height={"80vh"} width={"100%"}>
           <FlexGridItem position={"relative"}>
-            <ul
-              className={css({
-                margin: 0,
-                display: "flex",
-                flexDirection: "row-reverse",
-                listStyleType: "none",
-                height: "80vh",
-                width: "calc(((100% - 0px) / 1) - 0.5px)",
-                float: "right",
-                overflow: "auto",
-                whiteSpace: "nowrap",
-                position: "absolute",
-                left: 0,
-                top: 0,
-                bottom: 0,
-                right: 0,
-                paddingLeft: "10rem",
-              })}
-            >
+            <StyledPImageList>
               {product.attributes.images.data.map((image) => {
                 return (
-                  <li
-                    key={image.id}
-                    className={css({
-                      aspectRatio: 12 / 16,
-                      height: "80vh",
-                      marginLeft: "2rem",
-                    })}
-                  >
-                    <div
-                      onClick={router.back}
-                      className={css({
-                        position: "relative",
-                        height: "100%",
-                        width: "100%",
-                      })}
-                    >
-                      <Image
-                        src={image.attributes.url}
-                        alt={image.attributes.alternativeText}
-                        className={css({ objectFit: "cover" })}
-                        layout={"fill"}
-                        priority
-                      />
-                    </div>
-                  </li>
+                  <StyledPImageListItem key={image.id}>
+                    <Image
+                      src={image.attributes.url}
+                      alt={image.attributes.alternativeText}
+                      className={css({ objectFit: "cover" })}
+                      layout={"fill"}
+                      priority
+                    />
+                  </StyledPImageListItem>
                 );
               })}
-            </ul>
+            </StyledPImageList>
           </FlexGridItem>
           <FlexGridItem
             display={"flex"}
@@ -259,7 +251,7 @@ function Product({ product }: ProductProps) {
             </div>
           </FlexGridItem>
         </FlexGrid>
-      </div>
+      </StyledPMainBodyWrapper>
       <div
         className={css({
           marginTop: "2rem",
