@@ -55,6 +55,11 @@ export type NavItemType = {
 
 export type CustomStyledComponent = Theme & { extraProp: string };
 
+export type TagType = {
+  id: string;
+  title: string;
+};
+
 export type ProductType = {
   id: number;
   attributes: {
@@ -67,10 +72,7 @@ export type ProductType = {
     details: string;
     care: string;
     variant: string;
-    tags: {
-      id: string;
-      title: string;
-    };
+    tags: TagType[];
     colour: {
       data: ColourType;
     };
