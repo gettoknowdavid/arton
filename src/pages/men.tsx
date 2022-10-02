@@ -4,12 +4,12 @@ import { ReactElement } from "react";
 import Layout from "../components/layout";
 import SEO from "../components/seo";
 import { fetchAPI } from "../lib/api";
-import { MenQuery } from "../graphql/queries/men.query";
 import { FlexGrid, FlexGridItem } from "baseui/flex-grid";
 import ProductList from "../components/molecules/product-list";
 import CategoryFilter from "../components/molecules/category-filter";
 import SizeFilter from "../components/molecules/size-filter";
 import SortFilter from "../components/molecules/sort-filter";
+import { GenderQuery } from "../graphql/queries/gender.query";
 
 type MenProps = {
   loading: boolean;
@@ -54,7 +54,10 @@ Men.getLayout = function getLayout(page: ReactElement) {
 };
 
 export async function getStaticProps() {
-  const { data, loading } = await fetchAPI({ query: MenQuery });
+  const { data, loading } = await fetchAPI({
+    query: GenderQuery,
+    variables: { gender: "male" },
+  });
 
   return {
     props: {
