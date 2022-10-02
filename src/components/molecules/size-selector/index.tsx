@@ -1,10 +1,11 @@
 import React from "react";
 import { Select, SIZE } from "baseui/select";
 import { useStyletron } from "baseui";
+import { SIZES } from "../../../lib/sizes";
 
 function SizeSelector() {
   const [css, theme] = useStyletron();
-  const [value, setValue] = React.useState([{ label: "S - Small", id: "S" }]);
+  const [value, setValue] = React.useState([SIZES[0]]);
 
   return (
     <div className={css({ marginTop: "3rem" })}>
@@ -13,14 +14,7 @@ function SizeSelector() {
         clearable={false}
         deleteRemoves={false}
         size={SIZE.compact}
-        options={[
-          { label: "XS - Extra Small", id: "XS" },
-          { label: "S - Small", id: "S" },
-          { label: "M - Medium", id: "M" },
-          { label: "L - Large", id: "L" },
-          { label: "XL - Extra Large", id: "XL" },
-          { label: "XXL - Extra Extra Large", id: "XXL" },
-        ]}
+        options={SIZES}
         value={value}
         searchable={false}
         placeholder="Select size"
