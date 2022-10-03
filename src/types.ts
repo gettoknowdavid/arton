@@ -94,6 +94,9 @@ export type ProductType = {
 export interface BagItem {
   id: number;
   name: string;
+  slug: string;
+  // size: string;
+  colour: string;
   image: string;
   price: number;
   quantity: number;
