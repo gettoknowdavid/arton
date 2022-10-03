@@ -91,7 +91,7 @@ export type ProductType = {
   };
 };
 
-export interface BagItem {
+export interface BagItemInterface {
   id: number;
   name: string;
   slug: string;

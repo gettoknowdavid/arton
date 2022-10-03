@@ -1,9 +1,9 @@
-import { BagItem } from "../../types";
+import { BagItemInterface } from "../../types";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../index";
 
 export type BagSlice = {
-  items: BagItem[];
+  items: BagItemInterface[];
   totalQuantity: number;
   bagDrawerOpen: boolean;
 };
@@ -18,7 +18,7 @@ export const bagSlice = createSlice({
   name: "bag",
   initialState,
   reducers: {
-    addToBag: (state, action: PayloadAction<BagItem>) => {
+    addToBag: (state, action: PayloadAction<BagItemInterface>) => {
       const { id, quantity } = action.payload;
 
       const existingItem = state.items.find((item) => item.id === id);
