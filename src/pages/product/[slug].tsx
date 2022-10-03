@@ -66,7 +66,7 @@ function Product({ product }: ProductProps) {
                 <SizeSelector />
 
                 <div className={css({ marginTop: "3rem" })}>
-                  <AddToBagButton />
+                  <AddToBagButton product={product} />
                 </div>
               </div>
             </StyledPDetailsWrapper>
