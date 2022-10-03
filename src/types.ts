@@ -2,7 +2,7 @@ import { NextPage } from "next";
 import { ReactElement, ReactNode } from "react";
 import { AppProps } from "next/app";
 import { Theme } from "baseui";
-import { Image } from "phosphor-react";
+import store from "./store";
 
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
   getLayout?: (page: ReactElement) => ReactNode;
@@ -90,3 +90,11 @@ export type ProductType = {
     };
   };
 };
+
+export interface CartItem {
+  id: number;
+  name: string;
+  image: string;
+  price: number;
+  quantity: number;
+}
