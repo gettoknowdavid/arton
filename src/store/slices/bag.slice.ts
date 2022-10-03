@@ -5,11 +5,13 @@ import { RootState } from "../index";
 export type BagSlice = {
   items: BagItem[];
   totalQuantity: number;
+  bagDrawerOpen: boolean;
 };
 
 const initialState: BagSlice = {
   items: [],
   totalQuantity: 0,
+  bagDrawerOpen: false,
 };
 
 export const bagSlice = createSlice({
@@ -30,10 +32,15 @@ export const bagSlice = createSlice({
       }
     },
     clearBag: () => initialState,
+    toggleBagDrawer: (state) => ({
+      // Open and close the bag drawer
+      ...state,
+      bagDrawerOpen: !state.bagDrawerOpen,
+    }),
   },
 });
 
-export const { addToBag } = bagSlice.actions;
+export const { addToBag, toggleBagDrawer } = bagSlice.actions;
 
 export const selectBag = (state: RootState) => state.bag;
 
