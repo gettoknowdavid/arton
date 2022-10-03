@@ -21,8 +21,10 @@ function AddToBagButton(props: Props) {
   const bagItem: BagItem = {
     id: id,
     name: attributes.title,
+    slug: attributes.slug,
     image: attributes.image.data.attributes.url,
     price: attributes.price,
+    colour: attributes.colour.data.attributes.title,
     quantity: 1,
   };
 
