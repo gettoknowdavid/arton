@@ -4,6 +4,7 @@ import { StyledLayout, StyledMain } from "./layout.styles";
 import Footer from "../organisms/footer";
 import { motion } from "framer-motion";
 import { useStyletron } from "baseui";
+import BagDrawer from "../organisms/bag-drawer";
 
 function Layout({ children }: { children: ReactNode }) {
   const [css] = useStyletron();
@@ -18,6 +19,7 @@ function Layout({ children }: { children: ReactNode }) {
     <>
       <StyledLayout>
         <StyledMain>
+          <BagDrawer />
           <Header />
           <motion.div
             variants={variants} // Pass the variant object into Framer Motion
