@@ -91,7 +91,7 @@ export type ProductType = {
   };
 };
 
-export interface CartItem {
+export interface BagItem {
   id: number;
   name: string;
   image: string;

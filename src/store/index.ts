@@ -2,7 +2,6 @@ import {
   Action,
   combineReducers,
   configureStore,
-  createStore,
   ThunkAction,
 } from "@reduxjs/toolkit";
 import {
@@ -15,13 +14,13 @@ import {
   persistReducer,
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
-import { cartSlice } from "./slices";
+import { bagSlice } from "./slices";
 
-const cartConfig = { key: "cart", version: 1, storage };
+const bagConfig = { key: "bag", version: 1, storage };
 
 const store = configureStore({
   reducer: combineReducers({
-    cart: persistReducer(cartConfig, cartSlice.reducer),
+    bag: persistReducer(bagConfig, bagSlice.reducer),
   }),
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

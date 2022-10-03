@@ -1,3 +1,3 @@
-import { cartSlice } from "./cart.slice";
+import { bagSlice } from "./bag.slice";
 
-export { cartSlice };
+export { bagSlice };
