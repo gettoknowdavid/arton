@@ -7,7 +7,7 @@ import {
   StyledHeaderLogo,
   StyledNavList,
 } from "./header.styles";
-import { MagnifyingGlass, User } from "phosphor-react";
+import { MagnifyingGlass, ShoppingBag, User } from "phosphor-react";
 import NavList from "../../molecules/nav-list";
 import { useRouter } from "next/router";
 
@@ -30,6 +30,9 @@ function Header() {
           </StyledActionItem>
           <StyledActionItem>
             <MagnifyingGlass size={18} />
+          </StyledActionItem>
+          <StyledActionItem>
+            <ShoppingBag size={18} />
           </StyledActionItem>
         </StyledNavList>
       </div>
