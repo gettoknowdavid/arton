@@ -2,7 +2,7 @@ import React from "react";
 import { SIZE } from "baseui/select";
 import { Button } from "baseui/button";
 import { useRootDispatch } from "../../../hooks";
-import { BagItem, ProductType } from "../../../types";
+import { BagItemInterface, ProductType } from "../../../types";
 import { addToBag, toggleBagDrawer } from "../../../store/slices/bag.slice";
 import loadingIcon from "react-useanimations/lib/infinity";
 import UseAnimations from "react-useanimations";
@@ -18,7 +18,7 @@ function AddToBagButton(props: Props) {
 
   const { id, attributes } = props.product;
 
-  const bagItem: BagItem = {
+  const bagItem: BagItemInterface = {
     id: id,
     name: attributes.title,
     slug: attributes.slug,
