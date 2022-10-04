@@ -95,7 +95,10 @@ export interface BagItemInterface {
   id: number;
   name: string;
   slug: string;
-  // size: string;
+  size: {
+    id: string;
+    label: string;
+  };
   colour: string;
   image: string;
   price: number;
