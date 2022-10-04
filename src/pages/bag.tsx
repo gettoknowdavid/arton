@@ -12,7 +12,7 @@ import { currency } from "../lib/currency-formatter";
 
 function Bag() {
   const [css, theme] = useStyletron();
-  const { bagDrawerOpen, items, totalQuantity } = useRootSelector(selectBag);
+  const { items } = useRootSelector(selectBag);
   const amount = useRootSelector(totalAmount);
 
   return (

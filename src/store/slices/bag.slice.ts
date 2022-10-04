@@ -92,5 +92,3 @@ export const totalAmount = (state: RootState): number =>
     bagTotal += price * quantity;
     return bagTotal;
   }, 0);
-
-export const bagItems = (state: RootState) => state.bag.items;
