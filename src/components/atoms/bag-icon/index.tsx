@@ -1,14 +1,15 @@
 import React from "react";
 import { ShoppingBag } from "phosphor-react";
-import { useRootDispatch, useRootSelector } from "../../../hooks";
-import { selectBag, toggleBagDrawer } from "../../../store/slices/bag.slice";
+import { useRootSelector } from "../../../hooks";
+import { selectBag } from "../../../store/slices/bag.slice";
 import { useStyletron } from "baseui";
+import { useRouter } from "next/router";
 
 function BagIcon() {
   const [css, theme] = useStyletron();
-  const dispatch = useRootDispatch();
+  const router = useRouter();
   const { totalQuantity } = useRootSelector(selectBag);
-  const openBag = () => dispatch(toggleBagDrawer());
+  const openBag = () => router.push("/bag");
 
   return (
     <div
