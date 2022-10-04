@@ -8,6 +8,8 @@ import trash from "react-useanimations/lib/trash2";
 import { useStyletron } from "baseui";
 import { useRootDispatch, useRootSelector } from "../../../hooks";
 import { removeFromBag, selectBag } from "../../../store/slices/bag.slice";
+import { Delete } from "baseui/icon";
+import { FlexGrid, FlexGridItem } from "baseui/flex-grid";
 
 type Props = {
   item: BagItemInterface;
@@ -27,8 +29,9 @@ function BagItem(props: Props) {
         paddingTop: "1rem",
         paddingRight: "1rem",
         paddingBottom: "1rem",
-        paddingLeft: "1rem",
+        paddingLeft: 0,
         display: "flex",
+        width: "100%",
         alignItems: "center",
         height: "10rem",
         position: "relative",
@@ -63,7 +66,7 @@ function BagItem(props: Props) {
           className={css({ objectFit: "contain" })}
         />
       </div>
-      <div>
+      <div className={css({ width: "100%" })}>
         <Link href={`/product/${item.slug}`} passHref>
           <a>
             <h2
@@ -75,12 +78,12 @@ function BagItem(props: Props) {
                 fontWeight: 400,
                 textTransform: "uppercase",
                 lineHeight: "1.5rem",
-                maxHeight: "3rem",
+                maxHeight: "1.5rem",
                 overflow: "hidden",
                 textOverflow: "ellipsis",
                 display: "-webkit-box",
-                lineClamp: 2,
-                WebkitLineClamp: 2,
+                lineClamp: 1,
+                WebkitLineClamp: 1,
                 WebkitBoxOrient: "vertical",
               })}
             >
@@ -100,61 +103,56 @@ function BagItem(props: Props) {
         >
           {currency.format(item.price)}
         </h3>
-        <div
-          className={css({
-            display: "flex",
-            justifyContent: "space-between",
-            paddingRight: "5rem",
-          })}
-        >
-          <p
-            className={css({
-              fontSize: "1.1rem",
-              lineHeight: "1.4rem",
-              margin: 0,
-              fontWeight: 300,
-            })}
-          >
-            M - Medium
-          </p>
-          <p
-            className={css({
-              fontSize: "1.1rem",
-              lineHeight: "1.4rem",
-              margin: 0,
-              fontWeight: 300,
-            })}
-          >
-            {item.colour}
-          </p>
-          <p
-            className={css({
-              fontSize: "1.1rem",
-              lineHeight: "1.4rem",
-              margin: 0,
-              fontWeight: 300,
-            })}
-          >
-            {`Qty: ${item.quantity}`}
-          </p>
-        </div>
+        <FlexGrid flexGridColumnCount={3}>
+          <FlexGridItem>
+            <p
+              className={css({
+                fontSize: "1.1rem",
+                lineHeight: "1.4rem",
+                margin: 0,
+                fontWeight: 300,
+              })}
+            >
+              M - Medium
+            </p>
+          </FlexGridItem>
+          <FlexGridItem>
+            <p
+              className={css({
+                fontSize: "1.1rem",
+                lineHeight: "1.4rem",
+                margin: 0,
+                fontWeight: 300,
+              })}
+            >
+              {item.colour}
+            </p>
+          </FlexGridItem>
+          <FlexGridItem>
+            <p
+              className={css({
+                fontSize: "1.1rem",
+                lineHeight: "1.4rem",
+                margin: 0,
+                fontWeight: 300,
+              })}
+            >
+              {`Qty: ${item.quantity}`}
+            </p>
+          </FlexGridItem>
+        </FlexGrid>
       </div>
       <div
+        onClick={() => dispatch(removeFromBag(item))}
         className={css({
           position: "absolute",
-          bottom: "1.2rem",
-          right: "1.2rem",
+          top: 0,
+          right: 0,
           cursor: "pointer",
           zIndex: 200,
         })}
       >
-        <UseAnimations
-          animation={trash}
-          loop
-          size={20}
-          reverse={trashed}
-          onClick={() => dispatch(removeFromBag(item))}
-        />
+        <Delete size={20} />
       </div>
     </li>
   );
