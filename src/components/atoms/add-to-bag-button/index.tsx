@@ -8,25 +8,14 @@ import UseAnimations from "react-useanimations";
 import loadingIcon from "react-useanimations/lib/infinity";
 
 type Props = {
-  product: ProductType;
+  item: BagItemInterface;
 };
 
 function AddToBagButton(props: Props) {
   const [loading, setLoading] = React.useState(false);
 
   const dispatch = useRootDispatch();
-
-  const { id, attributes } = props.product;
-
-  const bagItem: BagItemInterface = {
-    id: id,
-    name: attributes.title,
-    slug: attributes.slug,
-    image: attributes.image.data.attributes.url,
-    price: attributes.price,
-    colour: attributes.colour.data.attributes.title,
-    quantity: 1,
-  };
+  const bagItem = props.item;
 
   function handleClick() {
     setLoading(true);

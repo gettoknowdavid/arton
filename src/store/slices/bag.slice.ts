@@ -19,9 +19,11 @@ export const bagSlice = createSlice({
   initialState,
   reducers: {
     addToBag: (state, action: PayloadAction<BagItemInterface>) => {
-      const { id, quantity } = action.payload;
+      const { id, quantity, size } = action.payload;
 
-      const existingItem = state.items.find((item) => item.id === id);
+      const existingItem = state.items.find(
+        (item) => item.id === id && item.size.label === size.label
+      );
 
       state.totalQuantity += quantity;
 
