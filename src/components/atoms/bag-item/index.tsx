@@ -7,9 +7,15 @@ import UseAnimations from "react-useanimations";
 import trash from "react-useanimations/lib/trash2";
 import { useStyletron } from "baseui";
 import { useRootDispatch, useRootSelector } from "../../../hooks";
-import { removeFromBag, selectBag } from "../../../store/slices/bag.slice";
+import {
+  decreaseQuantity,
+  increaseQuantity,
+  removeFromBag,
+  selectBag,
+} from "../../../store/slices/bag.slice";
 import { Delete } from "baseui/icon";
 import { FlexGrid, FlexGridItem } from "baseui/flex-grid";
+import { Minus, Plus } from "phosphor-react";
 
 type Props = {
   item: BagItemInterface;
@@ -129,16 +135,44 @@ function BagItem(props: Props) {
             </p>
           </FlexGridItem>
           <FlexGridItem>
-            <p
-              className={css({
-                fontSize: "1.1rem",
-                lineHeight: "1.4rem",
-                margin: 0,
-                fontWeight: 300,
-              })}
-            >
-              {`Qty: ${item.quantity}`}
-            </p>
+            <FlexGrid flexGridColumnCount={3}>
+              <FlexGridItem
+                display={"flex"}
+                justifyContent={"center"}
+                alignItems={"center"}
+              >
+                <Plus
+                  weight={"bold"}
+                  onClick={() => dispatch(increaseQuantity(item))}
+                />
+              </FlexGridItem>
+              <FlexGridItem
+                display={"flex"}
+                justifyContent={"center"}
+                alignItems={"center"}
+              >
+                <p
+                  className={css({
+                    fontSize: "1.1rem",
+                    lineHeight: "1.4rem",
+                    margin: 0,
+                    fontWeight: 300,
+                  })}
+                >
+                  {`Qty: ${item.quantity}`}
+                </p>{" "}
+              </FlexGridItem>
+              <FlexGridItem
+                display={"flex"}
+                justifyContent={"center"}
+                alignItems={"center"}
+              >
+                <Minus
+                  weight={"bold"}
+                  onClick={() => dispatch(decreaseQuantity(item))}
+                />
+              </FlexGridItem>
+            </FlexGrid>
           </FlexGridItem>
         </FlexGrid>
       </div>
