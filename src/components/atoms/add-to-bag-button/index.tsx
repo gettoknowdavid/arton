@@ -4,8 +4,8 @@ import { Button } from "baseui/button";
 import { useRootDispatch } from "../../../hooks";
 import { BagItemInterface, ProductType } from "../../../types";
 import { addToBag, toggleBagDrawer } from "../../../store/slices/bag.slice";
-import loadingIcon from "react-useanimations/lib/infinity";
 import UseAnimations from "react-useanimations";
+import loadingIcon from "react-useanimations/lib/infinity";
 
 type Props = {
   product: ProductType;
@@ -39,8 +39,8 @@ function AddToBagButton(props: Props) {
   return (
     <Button
       onClick={handleClick}
-      size={SIZE.compact}
       isLoading={loading}
+      size={SIZE.compact}
       overrides={{
         LoadingSpinner: {
           component: () => (
@@ -53,10 +53,6 @@ function AddToBagButton(props: Props) {
         },
         BaseButton: {
           style: () => ({
-            borderTopRightRadius: 0,
-            borderTopLeftRadius: 0,
-            borderBottomRightRadius: 0,
-            borderBottomLeftRadius: 0,
             width: "100%",
             fontSize: "1.1rem",
             fontWeight: 400,
