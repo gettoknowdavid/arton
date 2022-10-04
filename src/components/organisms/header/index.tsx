@@ -10,14 +10,11 @@ import {
 import { MagnifyingGlass, ShoppingBag, User } from "phosphor-react";
 import NavList from "../../molecules/nav-list";
 import { useRouter } from "next/router";
-import { useRootDispatch } from "../../../hooks";
-import { toggleBagDrawer } from "../../../store/slices/bag.slice";
+import BagIcon from "../../atoms/bag-icon";
 
 function Header() {
   const router = useRouter();
   const goHome = () => router.push("/");
-  const dispatch = useRootDispatch();
-  const openBag = () => dispatch(toggleBagDrawer());
 
   return (
     <StyledHeader>
@@ -36,7 +33,7 @@ function Header() {
             <MagnifyingGlass size={18} />
           </StyledActionItem>
           <StyledActionItem>
-            <ShoppingBag size={18} onClick={openBag} />
+            <BagIcon />
           </StyledActionItem>
         </StyledNavList>
       </div>
