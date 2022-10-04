@@ -65,6 +65,7 @@ export const bagSlice = createSlice({
           .reduce((p, c) => p + c, 0),
       };
     },
+
     toggleBagDrawer: (state) => ({
       ...state,
       bagDrawerOpen: !state.bagDrawerOpen,
