@@ -4,12 +4,15 @@ import { FlexGrid, FlexGridItem } from "baseui/flex-grid";
 import SEO from "../components/seo";
 import Layout from "../components/layout";
 import { useRootSelector } from "../hooks";
-import { totalAmount } from "../store/slices/bag.slice";
+import { selectBag, totalAmount } from "../store/slices/bag.slice";
+import BagTotalSection from "../components/molecules/bag-total-section";
+import { BagItemInterface } from "../types";
+import BagItem from "../components/atoms/bag-item";
 import { currency } from "../lib/currency-formatter";
-import Button from "../components/atoms/button";
 
 function Bag() {
   const [css, theme] = useStyletron();
+  const { bagDrawerOpen, items, totalQuantity } = useRootSelector(selectBag);
   const amount = useRootSelector(totalAmount);
 
   return (
@@ -48,98 +51,66 @@ function Bag() {
             paddingRight: "2rem",
             paddingBottom: "1rem",
             paddingLeft: "2rem",
+            marginBottom: "1rem",
             backgroundColor: theme.colors.mono200,
           })}
         >
-          list
+          <ul className={css({ padding: 0 })}>
+            {items.map((item: BagItemInterface) => (
+              <BagItem key={item.id} item={item} />
+            ))}
+          </ul>
+        </div>
+        <div
+          className={css({
+            paddingTop: "1rem",
+            paddingRight: "2rem",
+            paddingBottom: "1rem",
+            paddingLeft: "2rem",
+            backgroundColor: theme.colors.mono200,
+          })}
+        >
+          <div
+            className={css({
+              display: "flex",
+              justifyContent: "space-between",
+            })}
+          >
+            <p
+              className={css({
+                fontSize: "1.1rem",
+                fontWeight: 400,
+                letterSpacing: "1px",
+                textTransform: "uppercase",
+              })}
+            >
+              Sub-total
+            </p>
+            <p
+              className={css({
+                fontSize: "1.3rem",
+                fontWeight: 400,
+                letterSpacing: "1px",
+                textTransform: "uppercase",
+              })}
+            >
+              {currency.format(amount)}
+            </p>
+          </div>
         </div>
       </FlexGridItem>
       <FlexGridItem
         maxWidth={"36rem"}
         width={"100%"}
+        display={"block"}
+        height={"100%"}
         backgroundColor={"mono200"}
         paddingTop={"1rem"}
         paddingRight={"2rem"}
         paddingBottom={"2rem"}
         paddingLeft={"2rem"}
       >
-        <div>
-          <h1
-            className={css({
-              fontSize: "1.4rem",
-              fontWeight: 400,
-              letterSpacing: "1px",
-              textTransform: "uppercase",
-              paddingBottom: "2rem",
-              borderBottom: `1px solid ${theme.colors.mono400}`,
-            })}
-          >
-            Total
-          </h1>
-          <div
-            className={css({
-              paddingBottom: "1rem",
-              marginBottom: "2rem",
-              borderBottom: `1px solid ${theme.colors.mono400}`,
-            })}
-          >
-            <div
-              className={css({
-                display: "flex",
-                justifyContent: "space-between",
-              })}
-            >
-              <p
-                className={css({
-                  fontSize: "1.1rem",
-                  fontWeight: 400,
-                  letterSpacing: "1px",
-                  textTransform: "uppercase",
-                })}
-              >
-                Sub-total
-              </p>
-              <p
-                className={css({
-                  fontSize: "1.3rem",
-                  fontWeight: 400,
-                  letterSpacing: "1px",
-                  textTransform: "uppercase",
-                })}
-              >
-                {currency.format(amount)}
-              </p>
-            </div>
-            <div
-              className={css({
-                display: "flex",
-                justifyContent: "space-between",
-              })}
-            >
-              <p
-                className={css({
-                  fontSize: "1.1rem",
-                  fontWeight: 400,
-                  letterSpacing: "1px",
-                  textTransform: "uppercase",
-                })}
-              >
-                Delivery
-              </p>
-              <p
-                className={css({
-                  fontSize: "1.1rem",
-                  fontWeight: 400,
-                  letterSpacing: "1px",
-                  textTransform: "uppercase",
-                })}
-              >
-                {currency.format(amount)}
-              </p>
-            </div>
-          </div>
-          <Button>Checkout</Button>
-        </div>
+        <BagTotalSection />
       </FlexGridItem>
     </FlexGrid>
   );
