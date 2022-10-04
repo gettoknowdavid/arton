@@ -2,6 +2,7 @@ import React from "react";
 import { useRootDispatch, useRootSelector } from "../../../hooks";
 import { ANCHOR, Drawer } from "baseui/drawer";
 import {
+  clearBag,
   selectBag,
   toggleBagDrawer,
   totalAmount,
@@ -82,12 +83,17 @@ function BagDrawer() {
               <Button kind={KIND.secondary}>View Bag</Button>
             </FlexGridItem>
             <FlexGridItem>
-              <Button size={SIZE.compact}>Checkout</Button>
+              <Button size={SIZE.compact} disabled={!totalQuantity}>
+                Checkout
+              </Button>
             </FlexGridItem>
           </FlexGrid>
 
           <StyledBDFreeShippingText>
-            Free shipping worldwide
+            <Button kind={KIND.tertiary} onClick={() => dispatch(clearBag())}>
+              Clear Bag
+            </Button>
+            Free Shipping Worldwide
           </StyledBDFreeShippingText>
         </StyledBDFooter>
       </StyledBDBody>
