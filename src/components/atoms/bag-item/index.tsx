@@ -7,7 +7,7 @@ import UseAnimations from "react-useanimations";
 import trash from "react-useanimations/lib/trash2";
 import { useStyletron } from "baseui";
 import { useRootDispatch, useRootSelector } from "../../../hooks";
-import { selectBag } from "../../../store/slices/bag.slice";
+import { removeFromBag, selectBag } from "../../../store/slices/bag.slice";
 
 type Props = {
   item: BagItemInterface;
@@ -153,10 +153,7 @@ function BagItem(props: Props) {
           loop
           size={20}
           reverse={trashed}
-          onClick={() => {
-            setTrashed(!trashed);
-            // setTimeout(() => setTrashed(false), 2000);
-          }}
+          onClick={() => dispatch(removeFromBag(item))}
         />
       </div>
     </li>
