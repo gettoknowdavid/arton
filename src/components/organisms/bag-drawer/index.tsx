@@ -24,11 +24,14 @@ import {
 import Button from "../../atoms/button";
 import { KIND } from "baseui/button";
 import { FlexGrid, FlexGridItem } from "baseui/flex-grid";
+import { useRouter } from "next/router";
 
 function BagDrawer() {
   const dispatch = useRootDispatch();
   const { bagDrawerOpen, items, totalQuantity } = useRootSelector(selectBag);
   const amount = useRootSelector(totalAmount);
+  const router = useRouter();
+  const openBag = () => router.push("/bag");
 
   const totalQty =
     totalQuantity > 1 ? `${totalQuantity} items` : `${totalQuantity} item`;
@@ -80,7 +83,9 @@ function BagDrawer() {
 
           <FlexGrid flexGridColumnCount={2} flexGridColumnGap={"0.5rem"}>
             <FlexGridItem>
-              <Button kind={KIND.secondary}>View Bag</Button>
+              <Button kind={KIND.secondary} onClick={openBag}>
+                View Bag
+              </Button>
             </FlexGridItem>
             <FlexGridItem>
               <Button size={SIZE.compact} disabled={!totalQuantity}>
