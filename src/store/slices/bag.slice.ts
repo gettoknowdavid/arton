@@ -6,14 +6,12 @@ export type BagSlice = {
   items: BagItemInterface[];
   totalQuantity: number;
   bagDrawerOpen: boolean;
-  // totalAmount: number;
 };
 
 const initialState: BagSlice = {
   items: [],
   totalQuantity: 0,
   bagDrawerOpen: false,
-  // totalAmount: 0.0,
 };
 
 export const bagSlice = createSlice({
@@ -34,15 +32,26 @@ export const bagSlice = createSlice({
       }
     },
     clearBag: () => initialState,
+    removeFromBag: (state, action: PayloadAction<BagItemInterface>) => {
+      const { id } = action.payload;
+      const newItems = state.items.filter((item) => item.id !== id);
+      return {
+        ...state,
+        items: newItems,
+        totalQuantity: newItems
+          .map((i) => i.quantity)
+          .reduce((p, c) => p + c, 0),
+      };
+    },
     toggleBagDrawer: (state) => ({
-      // Open and close the bag drawer
       ...state,
       bagDrawerOpen: !state.bagDrawerOpen,
     }),
   },
 });
 
-export const { addToBag, toggleBagDrawer } = bagSlice.actions;
+export const { addToBag, clearBag, removeFromBag, toggleBagDrawer } =
+  bagSlice.actions;
 
 export const selectBag = (state: RootState) => state.bag;
 
