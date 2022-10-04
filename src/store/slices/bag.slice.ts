@@ -32,6 +32,28 @@ export const bagSlice = createSlice({
       }
     },
     clearBag: () => initialState,
+    decreaseQuantity: (state, action: PayloadAction<BagItemInterface>) => {
+      const { id } = action.payload;
+      state.totalQuantity--;
+      state.items = state.items
+        .map((item) => {
+          if (item.id === id) {
+            return { ...item, quantity: item.quantity - 1 };
+          }
+          return item;
+        })
+        .filter((item) => item.quantity > 0);
+    },
+    increaseQuantity: (state, action: PayloadAction<BagItemInterface>) => {
+      const { id } = action.payload;
+      state.totalQuantity++;
+      state.items = state.items.map((item) => {
+        if (item.id === id) {
+          return { ...item, quantity: item.quantity + 1 };
+        }
+        return item;
+      });
+    },
     removeFromBag: (state, action: PayloadAction<BagItemInterface>) => {
       const { id } = action.payload;
       const newItems = state.items.filter((item) => item.id !== id);
@@ -50,8 +72,14 @@ export const bagSlice = createSlice({
   },
 });
 
-export const { addToBag, clearBag, removeFromBag, toggleBagDrawer } =
-  bagSlice.actions;
+export const {
+  addToBag,
+  clearBag,
+  decreaseQuantity,
+  increaseQuantity,
+  removeFromBag,
+  toggleBagDrawer,
+} = bagSlice.actions;
 
 export const selectBag = (state: RootState) => state.bag;
 
