@@ -3,9 +3,13 @@ import { Select, SIZE } from "baseui/select";
 import { useStyletron } from "baseui";
 import { SIZES } from "../../../lib/sizes";
 
-function SizeSelector() {
+type Props = {
+  value: any;
+  onChange: (params: any) => any;
+};
+
+function SizeSelector(props: Props) {
   const [css, theme] = useStyletron();
-  const [value, setValue] = React.useState([SIZES[0]]);
 
   return (
     <div className={css({ marginTop: "3rem" })}>
@@ -15,10 +19,10 @@ function SizeSelector() {
         deleteRemoves={false}
         size={SIZE.compact}
         options={SIZES}
-        value={value}
+        value={props.value}
         searchable={false}
         placeholder="Select size"
-        onChange={(params: any) => setValue(params.value)}
+        onChange={props.onChange}
         overrides={{
           Dropdown: {
             style: () => ({

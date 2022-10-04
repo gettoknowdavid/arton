@@ -3,7 +3,7 @@ import { GetStaticPaths, GetStaticProps } from "next";
 import { fetchAPI } from "../../lib/api";
 import { ProductQuery } from "../../graphql/queries/product.query";
 import { ProductsQuery } from "../../graphql/queries/products.query";
-import { ProductType } from "../../types";
+import { BagItemInterface, ProductType } from "../../types";
 import SEO from "../../components/seo";
 import Layout from "../../components/layout";
 import { useStyletron } from "baseui";
@@ -24,6 +24,7 @@ import {
   StyledPDetailSubHeading,
 } from "../../components/styled-components";
 import ProductPageImageList from "../../components/molecules/product-page-image-list";
+import { SIZES } from "../../lib/sizes";
 
 type ProductProps = {
   product: ProductType;
@@ -31,6 +32,20 @@ type ProductProps = {
 
 function Product({ product }: ProductProps) {
   const [css] = useStyletron();
+  const { id, attributes } = product;
+
+  const [size, setSize] = React.useState([SIZES[0]]);
+
+  const bagItem: BagItemInterface = {
+    id: id,
+    name: attributes.title,
+    slug: attributes.slug,
+    image: attributes.image.data.attributes.url,
+    size: size[0],
+    price: attributes.price,
+    colour: attributes.colour.data.attributes.title,
+    quantity: 1,
+  };
 
   return (
     <div>
@@ -63,10 +78,13 @@ function Product({ product }: ProductProps) {
                   {currency.format(product.attributes.price)}
                 </StyledPParagraph>
 
-                <SizeSelector />
+                <SizeSelector
+                  value={size}
+                  onChange={(params: any) => setSize(params.value)}
+                />
 
                 <div className={css({ marginTop: "3rem" })}>
-                  <AddToBagButton product={product} />
+                  <AddToBagButton item={bagItem} />
                 </div>
               </div>
             </StyledPDetailsWrapper>

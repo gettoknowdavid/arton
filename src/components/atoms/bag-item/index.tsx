@@ -119,7 +119,7 @@ function BagItem(props: Props) {
                 fontWeight: 300,
               })}
             >
-              M - Medium
+              {item?.size?.label}
             </p>
           </FlexGridItem>
           <FlexGridItem>
