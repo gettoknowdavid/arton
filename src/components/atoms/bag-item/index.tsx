@@ -23,7 +23,6 @@ function BagItem(props: Props) {
 
   return (
     <li
-      key={item.id}
       className={css({
         paddingTop: "1rem",
         paddingRight: "1rem",
