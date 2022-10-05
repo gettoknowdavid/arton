@@ -2,7 +2,7 @@ import React from "react";
 import { SIZE } from "baseui/select";
 import { Button } from "baseui/button";
 import { useRootDispatch } from "../../../hooks";
-import { BagItemInterface, ProductType } from "../../../types";
+import { BagItemInterface } from "../../../types";
 import {
   addToBag,
   closeBagDrawer,

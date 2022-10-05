@@ -3,15 +3,12 @@ import { BagItemInterface } from "../../../types";
 import Image from "next/image";
 import Link from "next/link";
 import { currency } from "../../../lib/currency-formatter";
-import UseAnimations from "react-useanimations";
-import trash from "react-useanimations/lib/trash2";
 import { useStyletron } from "baseui";
-import { useRootDispatch, useRootSelector } from "../../../hooks";
+import { useRootDispatch } from "../../../hooks";
 import {
   decreaseQuantity,
   increaseQuantity,
   removeFromBag,
-  selectBag,
   selectSize,
 } from "../../../store/slices/bag.slice";
 import { Delete } from "baseui/icon";
@@ -27,10 +24,8 @@ type Props = {
 function BagItem(props: Props) {
   const { item } = props;
   const [css, theme] = useStyletron();
-  const [trashed, setTrashed] = React.useState(false);
 
   const dispatch = useRootDispatch();
-  const { bagDrawerOpen, items, totalQuantity } = useRootSelector(selectBag);
 
   return (
     <li
