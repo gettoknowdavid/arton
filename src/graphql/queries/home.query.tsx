@@ -20,15 +20,11 @@ export const HomeHeroQuery = gql`
 
 export const HomeQuery = gql`
   ${ImageFragment}
-  ${SeoFragment}
   ${CategoryFragment}
   query HomeQuery {
     home {
       data {
         attributes {
-          seo {
-            ...SeoFragment
-          }
           menCategories: categories(
             filters: { variant: { eq: "male" } }
             pagination: { limit: 3 }
