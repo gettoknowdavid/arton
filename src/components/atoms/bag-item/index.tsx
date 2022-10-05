@@ -71,7 +71,7 @@ function BagItem(props: Props) {
         />
       </div>
       <div className={css({ width: "100%" })}>
-        <Link href={`/product/${item.slug}`} passHref>
+        <Link href={`/${item.slug}`} passHref>
           <a>
             <h2
               className={css({

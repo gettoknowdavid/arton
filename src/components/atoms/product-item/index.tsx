@@ -17,7 +17,7 @@ function ProductItem(props: ProductItemProps) {
   return (
     <div>
       <div
-        onClick={() => router.push(`/product/${product.attributes.slug}`)}
+        onClick={() => router.push(`/${product.attributes.slug}`)}
         className={css({
           aspectRatio: 12 / 16,
           cursor: "pointer",
