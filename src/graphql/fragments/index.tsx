@@ -62,7 +62,6 @@ export const ColourFragment = gql`
     id
     attributes {
       title
-      code
     }
   }
 `;
@@ -72,7 +71,7 @@ export const SizeFragment = gql`
     id
     attributes {
       title
-      code
+      sizeCode
     }
   }
 `;
