@@ -1,19 +1,19 @@
 import React, { ReactElement } from "react";
 import { GetStaticPaths, GetStaticProps } from "next";
-import { fetchAPI } from "../lib/api";
-import { ProductQuery } from "../graphql/queries/product.query";
-import { ProductsQuery } from "../graphql/queries/products.query";
-import { BagItemInterface, ProductType } from "../types";
-import SEO from "../components/seo";
-import Layout from "../components/layout";
+import { fetchAPI } from "../../lib/api";
+import { ProductQuery } from "../../graphql/queries/product.query";
+import { ProductsQuery } from "../../graphql/queries/products.query";
+import { BagItemInterface, ProductType } from "../../types";
+import SEO from "../../components/seo";
+import Layout from "../../components/layout";
 import { useStyletron } from "baseui";
 import { FlexGrid, FlexGridItem } from "baseui/flex-grid";
-import { currency } from "../lib/currency-formatter";
-import TaggedProductList from "../components/molecules/tagged-product-list";
-import BackButton from "../components/atoms/back-button";
-import SizeSelector from "../components/molecules/size-selector";
-import AddToBagButton from "../components/atoms/add-to-bag-button";
-import RichText from "../components/atoms/rich-text";
+import { currency } from "../../lib/currency-formatter";
+import TaggedProductList from "../../components/molecules/tagged-product-list";
+import BackButton from "../../components/atoms/back-button";
+import SizeSelector from "../../components/molecules/size-selector";
+import AddToBagButton from "../../components/atoms/add-to-bag-button";
+import RichText from "../../components/atoms/rich-text";
 import {
   StyledPBackButtonWrapper,
   StyledPMainBodyWrapper,
@@ -22,9 +22,9 @@ import {
   StyledPParagraph,
   StyledPDetailHeading,
   StyledPDetailSubHeading,
-} from "../components/styled-components";
-import ProductPageImageList from "../components/molecules/product-page-image-list";
-import { SIZES } from "../lib/sizes";
+} from "../../components/styled-components";
+import ProductPageImageList from "../../components/molecules/product-page-image-list";
+import { SIZES } from "../../lib/sizes";
 
 type ProductProps = {
   product: ProductType;
@@ -169,6 +169,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
     paths: products.map((product) => ({
       params: { slug: product.attributes.slug },
     })),
-    fallback: true,
+    fallback: false,
   };
 };
