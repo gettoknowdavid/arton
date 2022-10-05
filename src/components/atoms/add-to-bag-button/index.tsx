@@ -3,7 +3,11 @@ import { SIZE } from "baseui/select";
 import { Button } from "baseui/button";
 import { useRootDispatch } from "../../../hooks";
 import { BagItemInterface, ProductType } from "../../../types";
-import { addToBag, toggleBagDrawer } from "../../../store/slices/bag.slice";
+import {
+  addToBag,
+  closeBagDrawer,
+  toggleBagDrawer,
+} from "../../../store/slices/bag.slice";
 import UseAnimations from "react-useanimations";
 import loadingIcon from "react-useanimations/lib/infinity";
 
@@ -19,10 +23,11 @@ function AddToBagButton(props: Props) {
 
   function handleClick() {
     setLoading(true);
-    setTimeout(() => setLoading(false), 2000);
+    // setTimeout(() => setLoading(false), 2000);
     dispatch(addToBag(bagItem));
     dispatch(toggleBagDrawer());
-    setTimeout(() => dispatch(toggleBagDrawer()), 5000);
+    setTimeout(() => dispatch(closeBagDrawer()), 5000);
+    setLoading(false);
   }
 
   return (

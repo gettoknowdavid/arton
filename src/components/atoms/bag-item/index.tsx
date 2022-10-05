@@ -12,10 +12,13 @@ import {
   increaseQuantity,
   removeFromBag,
   selectBag,
+  selectSize,
 } from "../../../store/slices/bag.slice";
 import { Delete } from "baseui/icon";
 import { FlexGrid, FlexGridItem } from "baseui/flex-grid";
 import { Minus, Plus } from "phosphor-react";
+import { Select, SIZE } from "baseui/select";
+import { SIZES } from "../../../lib/sizes";
 
 type Props = {
   item: BagItemInterface;
@@ -109,18 +112,79 @@ function BagItem(props: Props) {
         >
           {currency.format(item.price)}
         </h3>
-        <FlexGrid flexGridColumnCount={3}>
+        <FlexGrid
+          flexGridColumnCount={3}
+          display={"flex"}
+          alignItems={"center"}
+        >
           <FlexGridItem>
-            <p
-              className={css({
-                fontSize: "1.1rem",
-                lineHeight: "1.4rem",
-                margin: 0,
-                fontWeight: 300,
-              })}
-            >
-              {item?.size?.label}
-            </p>
+            <Select
+              backspaceRemoves={false}
+              clearable={false}
+              deleteRemoves={false}
+              size={SIZE.compact}
+              options={SIZES}
+              value={[item.size]}
+              searchable={false}
+              placeholder="Select size"
+              onChange={(params: any) => {
+                dispatch(
+                  selectSize({ item: props.item, size: params.value[0] })
+                );
+              }}
+              overrides={{
+                Dropdown: {
+                  style: () => ({
+                    boxShadow: "none",
+                    borderTopRightRadius: 0,
+                    borderTopLeftRadius: 0,
+                    borderBottomRightRadius: 0,
+                    borderBottomLeftRadius: 0,
+                  }),
+                },
+                DropdownListItem: {
+                  style: () => ({
+                    fontSize: "1.1rem",
+                    fontWeight: 300,
+                    textTransform: "uppercase",
+                  }),
+                },
+
+                Root: {
+                  style: () => ({
+                    fontSize: "1.1rem",
+                    fontWeight: 300,
+                    textTransform: "uppercase",
+                  }),
+                },
+                ControlContainer: {
+                  style: () => ({
+                    paddingLeft: 0,
+                    marginLeft: 0,
+
+                    backgroundColor: "transparent",
+
+                    borderTopStyle: "solid",
+                    borderRightStyle: "solid",
+                    borderBottomStyle: "solid",
+                    borderLeftStyle: "solid",
+                    borderTopWidth: "0px",
+                    borderRightWidth: "0px",
+                    borderBottomWidth: "0px",
+                    borderLeftWidth: "0px",
+                    borderTopColor: theme.colors.mono600,
+                    borderRightColor: theme.colors.mono600,
+                    borderBottomColor: theme.colors.mono600,
+                    borderLeftColor: theme.colors.mono600,
+
+                    borderTopRightRadius: 0,
+                    borderTopLeftRadius: 0,
+                    borderBottomRightRadius: 0,
+                    borderBottomLeftRadius: 0,
+                  }),
+                },
+              }}
+            />
           </FlexGridItem>
           <FlexGridItem>
             <p
@@ -129,6 +193,7 @@ function BagItem(props: Props) {
                 lineHeight: "1.4rem",
                 margin: 0,
                 fontWeight: 300,
+                textAlign: "center",
               })}
             >
               {item.colour}

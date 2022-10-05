@@ -3,6 +3,7 @@ import { useRootDispatch, useRootSelector } from "../../../hooks";
 import { ANCHOR, Drawer } from "baseui/drawer";
 import {
   clearBag,
+  closeBagDrawer,
   selectBag,
   toggleBagDrawer,
   totalAmount,
@@ -31,7 +32,10 @@ function BagDrawer() {
   const { bagDrawerOpen, items, totalQuantity } = useRootSelector(selectBag);
   const amount = useRootSelector(totalAmount);
   const router = useRouter();
-  const openBag = () => router.push("/bag");
+  const openBag = () => {
+    dispatch(closeBagDrawer());
+    router.push("/bag");
+  };
 
   const totalQty =
     totalQuantity > 1 ? `${totalQuantity} items` : `${totalQuantity} item`;
