@@ -59,7 +59,6 @@ export const SeoFragment = gql`
 
 export const ColourFragment = gql`
   fragment ColourFragment on ColourEntity {
-    id
     attributes {
       title
     }
