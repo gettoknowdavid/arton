@@ -7,7 +7,7 @@ import {
   StyledHeaderLogo,
   StyledNavList,
 } from "./header.styles";
-import { MagnifyingGlass, ShoppingBag, User } from "phosphor-react";
+import { MagnifyingGlass, User } from "phosphor-react";
 import NavList from "../../molecules/nav-list";
 import { useRouter } from "next/router";
 import BagIcon from "../../atoms/bag-icon";

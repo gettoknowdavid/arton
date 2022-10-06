@@ -28,17 +28,17 @@ export const StyledHeader = styled("header", () => ({
 }));
 
 export const StyledHeaderLogo = styled("div", () => ({
-  zIndex: "1022",
+  zIndex: 1000,
   display: "block",
   alignItems: "center",
   justifyContent: "center",
-  height: "2.5rem",
+  height: "100%",
   position: "relative",
   left: 0,
   right: 0,
   WebkitTransform: "translateX(-50%)",
   transform: "translateX(-50%)",
-  width: "17rem",
+  width: "10rem",
   cursor: "pointer",
 }));
 
