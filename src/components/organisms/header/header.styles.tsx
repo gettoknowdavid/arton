@@ -32,7 +32,7 @@ export const StyledHeaderLogo = styled("div", () => ({
   display: "block",
   alignItems: "center",
   justifyContent: "center",
-  height: "100%",
+  height: "2rem",
   position: "relative",
   left: 0,
   right: 0,
