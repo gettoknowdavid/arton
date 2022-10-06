@@ -4,7 +4,7 @@ import { createLightTheme, lightThemePrimitives } from "baseui";
 export const ArtonTheme: any = createLightTheme(
   {
     ...lightThemePrimitives,
-    primaryFontFamily: '"Poppins", sans-serif',
+    primaryFontFamily: '"Inter Tight", sans-serif',
   },
   {
     borders: {
