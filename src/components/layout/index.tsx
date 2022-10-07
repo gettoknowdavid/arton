@@ -18,7 +18,7 @@ function Layout({ children }: { children: ReactNode }) {
 
   return (
     <>
-      <body>
+      <div>
         <Drawer />
         <BagDrawer />
         <Header />
@@ -32,7 +32,7 @@ function Layout({ children }: { children: ReactNode }) {
           {children}
         </motion.div>
         {/*<Footer />*/}
-      </body>
+      </div>
     </>
   );
 }
