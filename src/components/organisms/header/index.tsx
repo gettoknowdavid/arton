@@ -25,10 +25,10 @@ function Header() {
           <div>
             <StyledActionsList>
               <StyledActionItem display={["none", "none", "none", "flex"]}>
-                <User />
+                Login
               </StyledActionItem>
               <StyledActionItem display={["none", "none", "none", "flex"]}>
-                <MagnifyingGlass />
+                Search
               </StyledActionItem>
               <StyledActionItem>
                 <BagIcon />

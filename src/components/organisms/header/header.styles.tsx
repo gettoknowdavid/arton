@@ -43,12 +43,12 @@ export const StyledActionsList = styled("ul", () => ({
 }));
 
 export const StyledActionItem = styled(Block, ({ $theme }) => ({
+  marginLeft: "1rem",
   ...$theme.typography.font100,
   letterSpacing: ".05rem",
   textTransform: "uppercase",
   height: "1.75rem",
-  display: "flex",
-  alignContent: "center",
+  display: "-webkit-inline-box",
   cursor: "pointer",
   WebkitBoxPack: "center",
   MsFlexPack: "center",
@@ -56,12 +56,11 @@ export const StyledActionItem = styled(Block, ({ $theme }) => ({
   WebkitBoxAlign: "center",
   MsFlexAlign: "center",
   alignItems: "center",
-  marginLeft: "1rem",
   whiteSpace: "nowrap",
   borderRadius: ".25rem",
   border: "1px solid #fff",
   textDecoration: "none",
-  color: $theme.colors.black,
+  color: $theme.colors.mono1000,
   transitionProperty: "color",
   transitionDuration: $theme.animation.timing500,
   ":hover": {

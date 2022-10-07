@@ -1,9 +1,10 @@
 import React from "react";
-import { ShoppingBag } from "phosphor-react";
+import { ShoppingCart } from "phosphor-react";
 import { useRootSelector } from "../../../hooks";
 import { selectBag } from "../../../store/slices/bag.slice";
 import { useStyletron } from "baseui";
 import { useRouter } from "next/router";
+import { Block } from "baseui/block";
 
 function BagIcon() {
   const [css, theme] = useStyletron();
@@ -21,28 +22,29 @@ function BagIcon() {
         position: "relative",
         display: "flex",
         alignItems: "center",
+        height: "100%",
       })}
     >
-      <ShoppingBag />
+      <Block display={["none", "none", "none", "flex"]}>Cart</Block>
+      <Block display={["flex", "flex", "flex", "none"]}>
+        <ShoppingCart />
+      </Block>
       {totalQuantity > 0 ? (
         <p
           className={css({
-            height: "1rem",
-            width: "1rem",
-            backgroundColor: theme.colors.mono1000,
-            color: theme.colors.mono100,
+            height: "0.85rem",
+            width: "0.85rem",
+            backgroundColor: theme.colors.black,
+            color: theme.colors.white,
+            marginLeft: "0.2rem",
             fontSize: "0.563rem",
+            fontWeight: 500,
             letterSpacing: 0,
-            fontWeight: 300,
             lineHeight: "0.625rem",
             display: "flex",
             justifyContent: "center",
             textAlign: "center",
             alignItems: "center",
-            position: "absolute",
-            top: ".1rem",
-            bottom: 0,
-            left: "0.75rem",
           })}
         >
           {totalQuantity}
