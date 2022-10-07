@@ -5,6 +5,7 @@ import Footer from "../organisms/footer";
 import { motion } from "framer-motion";
 import { useStyletron } from "baseui";
 import BagDrawer from "../organisms/bag-drawer";
+import Drawer from "../organisms/drawer";
 
 function Layout({ children }: { children: ReactNode }) {
   const [css] = useStyletron();
@@ -18,6 +19,7 @@ function Layout({ children }: { children: ReactNode }) {
   return (
     <>
       <body>
+        <Drawer />
         <BagDrawer />
         <Header />
         <motion.div
