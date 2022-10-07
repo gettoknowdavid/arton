@@ -17,9 +17,7 @@ function Logo() {
 
   return (
     <StyledLogo onClick={goHome}>
-      <h1>
-        <Image src={logo} alt={"Arton logo"} layout={"fill"} priority />
-      </h1>
+      <Image src={logo} alt={"Arton logo"} layout={"fill"} priority />
     </StyledLogo>
   );
 }
