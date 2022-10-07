@@ -12,7 +12,7 @@ function Logo() {
   const router = useRouter();
   const goHome = () => {
     dispatch(closeDrawer());
-    router.push(`/`);
+    router?.push(`/`);
   };
 
   return (
