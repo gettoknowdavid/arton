@@ -3,14 +3,10 @@ import { RootState } from "../index";
 
 export type GlobalSlice = {
   drawerOpen: boolean;
-  toggleDrawer: () => void;
-  closeDrawer: () => void;
 };
 
 const initialState: GlobalSlice = {
   drawerOpen: false,
-  toggleDrawer: () => {},
-  closeDrawer: () => {},
 };
 
 export const globalSlice = createSlice({
