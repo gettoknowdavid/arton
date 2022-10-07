@@ -10,6 +10,7 @@ import { AnimatePresence } from "framer-motion";
 import { Router } from "next/router";
 import LoadingScreen from "../components/organisms/loading-screen";
 import ArtonProvider from "../store/providers/arton-provider";
+import "normalize.css";
 import "../styles/globals.css";
 
 function ArtonApp({ Component, pageProps }: AppPropsWithLayout) {

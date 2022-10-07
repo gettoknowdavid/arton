@@ -1,20 +1,36 @@
 import { styled } from "baseui";
 import { CustomStyledComponent } from "../../../types";
 
-export const StyledNavItem: any = styled<
-  "li",
+export const StyledNavItem = styled("li", () => ({
+  display: "list-item",
+}));
+
+export const StyledNavA: any = styled<
+  "a",
   { $isActive: boolean },
   CustomStyledComponent
->("li", ({ $theme, $isActive }) => ({
-  display: "list-item",
-  marginRight: "2.6rem",
+>("a", ({ $theme, $isActive }) => ({
+  ...$theme.typography.font100,
+  letterSpacing: ".05rem",
   textTransform: "uppercase",
-  letterSpacing: "2px",
-  fontWeight: 400,
+  height: "1.75rem",
+  display: "-webkit-inline-box",
   cursor: "pointer",
+  WebkitBoxPack: "center",
+  MsFlexPack: "center",
+  justifyContent: "center",
+  WebkitBoxAlign: "center",
+  MsFlexAlign: "center",
+  alignItems: "center",
+  // padding: "0 .5rem",
+  marginRight: ".5rem",
+  whiteSpace: "nowrap",
+  borderRadius: ".25rem",
+  border: "1px solid #fff",
+  textDecoration: "none",
   color: $isActive ? $theme.colors.mono600 : $theme.colors.mono1000,
   transitionProperty: "color",
-  transitionDuration: $theme.animation.timing400,
+  transitionDuration: $theme.animation.timing500,
   ":hover": {
     color: $theme.colors.mono600,
   },

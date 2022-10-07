@@ -10,22 +10,18 @@ export const StyledLayout = styled("div", () => ({
   transitionTimingFunction: "cubic-bezier(0.1, 0.4, 0.2, 1)",
 }));
 
-export const StyledMain = styled("main", ({ $theme }) => ({
+export const StyledBody = styled("body", ({ $theme }) => ({
   maxWidth: "1920px",
   margin: "0 auto",
   position: "relative",
   width: "100%",
-  [$theme.mediaQuery.small]: {},
-  [$theme.mediaQuery.medium]: {},
-  [$theme.mediaQuery.large]: {},
-}));
-
-export const StyledMainBody = styled("div", ({ $theme }) => ({
-  paddingLeft: "2rem",
-  paddingRight: "2rem",
-  maxWidth: "1920px",
-  margin: "0 auto",
-  position: "relative",
+  background: "#fff",
+  color: "#000",
+  fontFamily: "'Inter Tight',Helvetica Neue,Helvetica,Arial,sans-serif",
+  fontSize: ".875rem",
+  fontWeight: 400,
+  lineHeight: "140%",
+  letterSpacing: 0,
   [$theme.mediaQuery.small]: {},
   [$theme.mediaQuery.medium]: {},
   [$theme.mediaQuery.large]: {},
