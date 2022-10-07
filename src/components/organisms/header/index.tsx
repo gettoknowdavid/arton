@@ -12,30 +12,28 @@ import Hamburger from "../../atoms/hamburger";
 function Header() {
   return (
     <header>
-      <div>
-        <StyledHeader>
-          <Logo />
+      <StyledHeader>
+        <Logo />
 
-          <nav>
-            <NavList />
-            <Hamburger />
-          </nav>
+        <nav>
+          <NavList />
+          <Hamburger />
+        </nav>
 
-          <div>
-            <StyledActionsList>
-              <StyledActionItem display={["none", "none", "none", "flex"]}>
-                Login
-              </StyledActionItem>
-              <StyledActionItem display={["none", "none", "none", "flex"]}>
-                Search
-              </StyledActionItem>
-              <StyledActionItem>
-                <BagIcon />
-              </StyledActionItem>
-            </StyledActionsList>
-          </div>
-        </StyledHeader>
-      </div>
+        <div>
+          <StyledActionsList>
+            <StyledActionItem display={["none", "none", "none", "flex"]}>
+              Login
+            </StyledActionItem>
+            <StyledActionItem display={["none", "none", "none", "flex"]}>
+              Search
+            </StyledActionItem>
+            <StyledActionItem>
+              <BagIcon />
+            </StyledActionItem>
+          </StyledActionsList>
+        </div>
+      </StyledHeader>
     </header>
   );
 }

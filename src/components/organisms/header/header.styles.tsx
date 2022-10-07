@@ -12,6 +12,7 @@ export const StyledHeader = styled("div", ({ $theme }) => ({
   justifyContent: "space-between",
   position: "fixed",
   top: 0,
+  maxWidth: "1920px",
   width: "100%",
   zIndex: 99,
 
