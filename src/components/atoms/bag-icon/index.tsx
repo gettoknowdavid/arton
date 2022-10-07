@@ -7,8 +7,11 @@ import { useRouter } from "next/router";
 
 function BagIcon() {
   const [css, theme] = useStyletron();
+
   const router = useRouter();
+
   const { totalQuantity } = useRootSelector(selectBag);
+
   const openBag = () => router.push("/bag");
 
   return (
@@ -16,31 +19,30 @@ function BagIcon() {
       onClick={openBag}
       className={css({
         position: "relative",
-        height: "3rem",
         display: "flex",
         alignItems: "center",
       })}
     >
-      <ShoppingBag size={18} />
+      <ShoppingBag size={"1.125rem"} />
       {totalQuantity > 0 ? (
         <p
           className={css({
-            height: "1.6rem",
-            width: "1.6rem",
+            height: "1rem",
+            width: "1rem",
             backgroundColor: theme.colors.mono1000,
             color: theme.colors.mono100,
-            fontSize: "9px",
+            fontSize: "0.563rem",
             letterSpacing: 0,
             fontWeight: 300,
-            lineHeight: "10px",
+            lineHeight: "0.625rem",
             display: "flex",
             justifyContent: "center",
             textAlign: "center",
             alignItems: "center",
             position: "absolute",
-            top: "6px",
+            top: ".1rem",
             bottom: 0,
-            left: "12px",
+            left: "0.75rem",
           })}
         >
           {totalQuantity}

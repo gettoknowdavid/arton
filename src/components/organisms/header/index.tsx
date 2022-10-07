@@ -50,7 +50,7 @@ function Header() {
             {/* Hamburger */}
             <Block display={["flex", "flex", "flex", "none"]}>
               <StyledHamburger>
-                <List size={32} />
+                <List size={"1.125rem"} />
               </StyledHamburger>
             </Block>
           </nav>
@@ -58,10 +58,10 @@ function Header() {
           <Block>
             <StyledActionsList>
               <StyledActionItem>
-                <User size={18} />
+                <User size={"1.125rem"} />
               </StyledActionItem>
               <StyledActionItem>
-                <MagnifyingGlass size={18} />
+                <MagnifyingGlass size={"1.125rem"} />
               </StyledActionItem>
               <StyledActionItem>
                 <BagIcon />
