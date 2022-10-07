@@ -66,3 +66,37 @@ export const StyledDrawerLink = styled("a", ({ $theme }) => ({
   textDecoration: "none",
   display: "flex",
 }));
+
+export const StyledDrawerExtraList = styled("ul", ({ $theme }) => ({
+  WebkitBoxOrient: "vertical",
+  WebkitBoxDirection: "normal",
+  MsFlexDirection: "column",
+  flexDirection: "column",
+  MsFlexWrap: "nowrap",
+  flexWrap: "nowrap",
+  padding: "0",
+  listStyle: "none",
+  backgroundColor: $theme.colors.white,
+  marginTop: "1.75rem",
+  marginBottom: "1.75rem",
+  height: "auto",
+  overflowY: "hidden",
+  textTransform: "uppercase",
+}));
+
+export const StyledDrawerExtraListItem = styled("li", () => ({
+  marginTop: ".75rem",
+  marginRight: ".75rem",
+  marginLeft: ".75rem",
+}));
+
+export const StyledDrawerExtraLink = styled("a", ({ $theme }) => ({
+  ...$theme.typography.font100,
+  letterSpacing: ".05rem",
+  textTransform: "uppercase",
+  height: "auto",
+  display: "inline-block",
+  width: "auto",
+  padding: "0",
+  margin: "0",
+}));

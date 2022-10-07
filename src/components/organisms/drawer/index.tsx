@@ -8,12 +8,14 @@ import { NavItemType } from "../../../types";
 import {
   DrawerOverrides,
   StyledDrawerBody,
+  StyledDrawerExtraLink,
+  StyledDrawerExtraList,
+  StyledDrawerExtraListItem,
   StyledDrawerLink,
   StyledDrawerList,
   StyledDrawerListItem,
 } from "./drawer.styles";
 import SearchBox from "../../atoms/search-box";
-import Link from "next/link";
 import { useRouter } from "next/router";
 
 function Drawer() {
@@ -35,7 +37,7 @@ function Drawer() {
       isOpen={drawerOpen}
       onClose={() => dispatch(closeDrawer())}
       autoFocus
-      anchor={ANCHOR.right}
+      anchor={ANCHOR.top}
       size={SIZE.full}
       overrides={DrawerOverrides}
     >
@@ -50,92 +52,26 @@ function Drawer() {
               <StyledDrawerLink>{item.title}</StyledDrawerLink>
             </StyledDrawerListItem>
           ))}
+
+          {/*Extra List*/}
           <li>
-            <ul
-              className={css({
-                WebkitBoxOrient: "vertical",
-                WebkitBoxDirection: "normal",
-                MsFlexDirection: "column",
-                flexDirection: "column",
-                MsFlexWrap: "nowrap",
-                flexWrap: "nowrap",
-                padding: "0",
-                listStyle: "none",
-                backgroundColor: "#fff",
-                marginTop: "1.75rem",
-                marginBottom: "1.75rem",
-                height: "auto",
-                overflowY: "hidden",
-                textTransform: "uppercase",
-              })}
-            >
-              <li
-                className={css({
-                  marginTop: ".75rem",
-                  marginRight: ".75rem",
-                  marginLeft: ".75rem",
-                })}
-              >
-                <a
-                  className={css({
-                    ...theme.typography.font100,
-                    letterSpacing: ".05em",
-                    textTransform: "uppercase",
-                    height: "auto",
-                    display: "inline-block",
-                    width: "auto",
-                    padding: "0",
-                    margin: "0",
-                  })}
-                >
+            <StyledDrawerExtraList>
+              <StyledDrawerExtraListItem>
+                <StyledDrawerExtraLink>
                   <span>LOGIN</span>
-                </a>
-              </li>
-              <li
-                className={css({
-                  marginTop: ".75rem",
-                  marginRight: ".75rem",
-                  marginLeft: ".75rem",
-                })}
-              >
-                <a
-                  className={css({
-                    ...theme.typography.font100,
-                    letterSpacing: ".05em",
-                    textTransform: "uppercase",
-                    height: "auto",
-                    display: "inline-block",
-                    width: "auto",
-                    padding: "0",
-                    margin: "0",
-                  })}
-                >
+                </StyledDrawerExtraLink>
+              </StyledDrawerExtraListItem>
+              <StyledDrawerExtraListItem>
+                <StyledDrawerExtraLink>
                   <span>Country/Region: International</span>
-                </a>
-              </li>
-              <li
-                className={css({
-                  marginTop: ".75rem",
-                  marginRight: ".75rem",
-                  marginLeft: ".75rem",
-                })}
-              >
-                <a
-                  className={css({
-                    ...theme.typography.font100,
-                    letterSpacing: ".05em",
-                    textTransform: "uppercase",
-                    height: "auto",
-                    display: "inline-block",
-                    width: "auto",
-                    padding: "0",
-                    margin: "0",
-                  })}
-                >
+                </StyledDrawerExtraLink>
+              </StyledDrawerExtraListItem>
+              <StyledDrawerExtraListItem>
+                <StyledDrawerExtraLink>
                   <span>Language: English</span>
-                </a>
-              </li>
-            </ul>
+                </StyledDrawerExtraLink>
+              </StyledDrawerExtraListItem>
+            </StyledDrawerExtraList>
           </li>
         </StyledDrawerList>
       </StyledDrawerBody>
