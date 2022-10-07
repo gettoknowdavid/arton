@@ -66,7 +66,7 @@ export const StyledActionItem = styled("li", ({ $theme }) => ({
   WebkitBoxAlign: "center",
   MsFlexAlign: "center",
   alignItems: "center",
-  marginLeft: ".75rem",
+  marginLeft: "1rem",
   whiteSpace: "nowrap",
   borderRadius: ".25rem",
   border: "1px solid #fff",
