@@ -14,7 +14,6 @@ export const StyledHamburger = styled("button", () => ({
   left: ".5rem",
   width: "1.75rem",
   height: "1.75rem",
-  // lineHeight: "2.8125rem",
   backgroundColor: "transparent",
   border: 0,
   cursor: "pointer",
