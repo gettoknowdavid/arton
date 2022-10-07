@@ -13,6 +13,6 @@ export default {
     { id: 0, title: "New Arrivals", slug: "new-arrivals" },
     { id: 1, title: "Women", slug: "women" },
     { id: 2, title: "Men", slug: "men" },
-    { id: 2, title: "Objects", slug: "objects" },
+    { id: 3, title: "Objects", slug: "objects" },
   ],
 };
