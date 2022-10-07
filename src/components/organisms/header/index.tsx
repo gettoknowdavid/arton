@@ -4,7 +4,6 @@ import {
   StyledActionsList,
   StyledHeader,
 } from "./header.styles";
-import { MagnifyingGlass, User } from "phosphor-react";
 import NavList from "../../molecules/nav-list";
 import BagIcon from "../../atoms/cart-icon";
 import Logo from "../../atoms/logo";

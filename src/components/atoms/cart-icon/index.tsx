@@ -32,8 +32,8 @@ function CartIcon() {
       {totalQuantity > 0 ? (
         <p
           className={css({
-            height: "0.85rem",
-            width: "0.85rem",
+            height: "0.75rem",
+            width: "0.75rem",
             backgroundColor: theme.colors.black,
             color: theme.colors.white,
             marginLeft: "0.2rem",
