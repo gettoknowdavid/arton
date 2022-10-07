@@ -1,6 +1,7 @@
 import { styled } from "baseui";
 
-export const StyledLayout = styled("div", () => ({
+export const StyledLayout = styled("div", ({ $theme }) => ({
+  ...$theme.typography.font100,
   maxWidth: "1920px",
   margin: "0 auto",
   width: "100%",
@@ -8,21 +9,9 @@ export const StyledLayout = styled("div", () => ({
   transitionProperty: "all",
   transitionDuration: ".9s",
   transitionTimingFunction: "cubic-bezier(0.1, 0.4, 0.2, 1)",
-}));
-
-export const StyledBody = styled("body", ({ $theme }) => ({
-  maxWidth: "1920px",
-  margin: "0 auto",
   position: "relative",
-  width: "100%",
   backgroundColor: $theme.colors.white,
   color: $theme.colors.black,
-  fontFamily: "'Inter Tight',Helvetica Neue,Helvetica,Arial,sans-serif",
-  fontSize: ".875rem",
-  fontWeight: 400,
   lineHeight: "140%",
   letterSpacing: 0,
-  [$theme.mediaQuery.small]: {},
-  [$theme.mediaQuery.medium]: {},
-  [$theme.mediaQuery.large]: {},
 }));

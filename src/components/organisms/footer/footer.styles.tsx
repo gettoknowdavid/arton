@@ -1,48 +1,16 @@
 import { styled } from "baseui";
 
-export const StyledFooter = styled("footer", () => ({
-  marginTop: "10rem",
-  paddingTop: "4rem",
-  paddingRight: "2rem",
-  paddingLeft: "2rem",
+export const StyledFooter = styled("footer", ({ $theme }) => ({
+  ...$theme.typography.font100,
   display: "flex",
   justifyContent: "center",
-  borderTop: "1px solid #000",
-}));
-
-export const StyledMainFooterList = styled("ul", () => ({
-  maxWidth: "1920px",
-  width: "100%",
-  display: "flex",
-  justifyContent: "flex-start",
-  margin: "0 auto",
-  padding: 0,
-  listStyleType: "none",
-  textTransform: "uppercase",
-}));
-
-export const StyledMainFooterListItem = styled("li", () => ({
-  marginRight: "1rem",
-  width: "17rem",
-}));
-
-export const StyledFooterItemTitle = styled("p", () => ({
-  fontSize: "1.167rem",
-  fontWeight: 500,
-}));
-
-export const StyledSubFooterList = styled("ul", () => ({
-  margin: 0,
-  padding: 0,
-  listStyleType: "none",
-  fontWeight: 300,
-}));
-
-export const StyledFooterBottomBar = styled("div", () => ({
-  textTransform: "uppercase",
+  alignItems: "center",
+  borderTopWidth: "1px",
+  borderTopStyle: "solid",
+  borderTopColor: $theme.colors.black,
   letterSpacing: "1px",
-  marginTop: "4rem",
-  display: "flex",
-  justifyContent: "center",
-  fontWeight: 300,
+  textTransform: "uppercase",
+  [$theme.mediaQuery.small]: { height: "100vh", marginTop: "2.8125rem" },
+  [$theme.mediaQuery.medium]: { height: "100%", marginTop: "2.8125rem" },
+  [$theme.mediaQuery.large]: { height: "100%", marginTop: 0 },
 }));
