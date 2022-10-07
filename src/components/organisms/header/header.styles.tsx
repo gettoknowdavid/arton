@@ -30,17 +30,6 @@ export const StyledHeader = styled("div", ({ $theme }) => ({
   padding: "0 1rem",
 }));
 
-export const StyledHeaderLogo = styled("div", () => ({
-  display: "block",
-  height: "2.8125rem",
-  left: "50%",
-  position: "absolute",
-  transform: "translateX(-50%)",
-  WebkitTransform: "translateX(-50%)",
-  width: "8.5625rem",
-  zIndex: 1022,
-}));
-
 export const StyledActionsList = styled("ul", () => ({
   margin: 0,
   padding: 0,
@@ -78,29 +67,4 @@ export const StyledActionItem = styled(Block, ({ $theme }) => ({
   ":hover": {
     color: $theme.colors.mono600,
   },
-}));
-
-export const StyledHamburger = styled("button", () => ({
-  background: "transparent",
-  whiteSpace: "normal",
-  textAlign: "center",
-  WebkitUserSelect: "none",
-  MozUserSelect: "none",
-  userSelect: "none",
-  textDecoration: "none",
-  margin: "0",
-  padding: "0",
-  position: "absolute",
-  top: ".5rem",
-  left: ".5rem",
-  width: "1.75rem",
-  height: "1.75rem",
-  // lineHeight: "2.8125rem",
-  backgroundColor: "transparent",
-  border: 0,
-  cursor: "pointer",
-  zIndex: 109,
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
 }));
