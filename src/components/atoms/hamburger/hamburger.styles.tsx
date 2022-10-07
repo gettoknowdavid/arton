@@ -1,7 +1,6 @@
 import { styled } from "baseui";
 
 export const StyledHamburger = styled("button", () => ({
-  background: "transparent",
   whiteSpace: "normal",
   textAlign: "center",
   WebkitUserSelect: "none",

@@ -62,7 +62,6 @@ export const StyledDrawerLink = styled("a", ({ $theme }) => ({
   color: $theme.colors.black,
   textAlign: "left",
   border: "none",
-  background: "none",
   textDecoration: "none",
   display: "flex",
 }));
