@@ -27,7 +27,7 @@ export const StyledHeader = styled("div", ({ $theme }) => ({
   WebkitBoxAlign: "center",
   WebkitBoxDirection: "normal",
 
-  padding: "0 1rem",
+  padding: "0 .75rem",
 }));
 
 export const StyledActionsList = styled("ul", () => ({

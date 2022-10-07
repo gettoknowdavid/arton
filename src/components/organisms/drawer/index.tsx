@@ -27,6 +27,7 @@ function Drawer() {
       overrides={{
         DrawerBody: {
           style: () => ({
+            overflow: "hidden",
             marginTop: "2.8125rem",
             marginRight: 0,
             marginBottom: 0,
@@ -212,7 +213,7 @@ function Drawer() {
                     margin: "0",
                   })}
                 >
-                  <span>Country/Region: International Version</span>
+                  <span>Country/Region: International</span>
                 </a>
               </li>
               <li
