@@ -15,10 +15,15 @@ import BagIcon from "../../atoms/bag-icon";
 import { Block } from "baseui/block";
 import { useStyletron } from "styletron-react";
 import Link from "next/link";
+import { useRootDispatch } from "../../../hooks";
+import { toggleDrawer } from "../../../store/slices/global.slice";
 
 function Header() {
   const router = useRouter();
   const [css] = useStyletron();
+
+  const dispatch = useRootDispatch();
+  const openDrawer = () => dispatch(toggleDrawer());
 
   return (
     <header>
@@ -49,7 +54,7 @@ function Header() {
 
             {/* Hamburger */}
             <Block display={["flex", "flex", "flex", "none"]}>
-              <StyledHamburger>
+              <StyledHamburger onClick={openDrawer}>
                 <List size={"1.125rem"} />
               </StyledHamburger>
             </Block>
