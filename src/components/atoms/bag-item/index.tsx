@@ -10,7 +10,7 @@ import {
   increaseQuantity,
   removeFromBag,
   selectSize,
-} from "../../../store/slices/bag.slice";
+} from "../../../store/slices/cart.slice";
 import { Delete } from "baseui/icon";
 import { FlexGrid, FlexGridItem } from "baseui/flex-grid";
 import { Minus, Plus } from "phosphor-react";

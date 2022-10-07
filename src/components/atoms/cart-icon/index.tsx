@@ -1,17 +1,17 @@
 import React from "react";
 import { ShoppingCart } from "phosphor-react";
 import { useRootSelector } from "../../../hooks";
-import { selectBag } from "../../../store/slices/bag.slice";
+import { selectCart } from "../../../store/slices/cart.slice";
 import { useStyletron } from "baseui";
 import { useRouter } from "next/router";
 import { Block } from "baseui/block";
 
-function BagIcon() {
+function CartIcon() {
   const [css, theme] = useStyletron();
 
   const router = useRouter();
 
-  const { totalQuantity } = useRootSelector(selectBag);
+  const { totalQuantity } = useRootSelector(selectCart);
 
   const openBag = () => router.push("/bag");
 
@@ -54,4 +54,4 @@ function BagIcon() {
   );
 }
 
-export default BagIcon;
+export default CartIcon;

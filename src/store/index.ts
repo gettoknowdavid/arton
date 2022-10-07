@@ -14,13 +14,13 @@ import {
   persistReducer,
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
-import { bagSlice, globalSlice } from "./slices";
+import { cartSlice, globalSlice } from "./slices";
 
-const bagConfig = { key: "bag", version: 1, storage };
+const cartConfig = { key: "bag", version: 1, storage };
 
 const store = configureStore({
   reducer: combineReducers({
-    bag: persistReducer(bagConfig, bagSlice.reducer),
+    cart: persistReducer(cartConfig, cartSlice.reducer),
     global: globalSlice.reducer,
   }),
   middleware: (getDefaultMiddleware) =>

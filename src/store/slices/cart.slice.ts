@@ -1,24 +1,24 @@
-import { BagItemInterface } from "../../types";
+import { CartItemInterface } from "../../types";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../index";
 
-export type BagSlice = {
-  items: BagItemInterface[];
+export type CartSlice = {
+  items: CartItemInterface[];
   totalQuantity: number;
-  bagDrawerOpen: boolean;
+  cartDrawerOpen: boolean;
 };
 
-const initialState: BagSlice = {
+const initialState: CartSlice = {
   items: [],
   totalQuantity: 0,
-  bagDrawerOpen: false,
+  cartDrawerOpen: false,
 };
 
-export const bagSlice = createSlice({
-  name: "bag",
+export const cartSlice = createSlice({
+  name: "cart",
   initialState,
   reducers: {
-    addToBag: (state, action: PayloadAction<BagItemInterface>) => {
+    addToCart: (state, action: PayloadAction<CartItemInterface>) => {
       const { id, quantity, size } = action.payload;
 
       const existingItem = state.items.find(
@@ -33,9 +33,9 @@ export const bagSlice = createSlice({
         existingItem.quantity += quantity;
       }
     },
-    clearBag: () => initialState,
-    closeBagDrawer: (state) => ({ ...state, bagDrawerOpen: false }),
-    decreaseQuantity: (state, action: PayloadAction<BagItemInterface>) => {
+    clearCart: () => initialState,
+    closeCartDrawer: (state) => ({ ...state, cartDrawerOpen: false }),
+    decreaseQuantity: (state, action: PayloadAction<CartItemInterface>) => {
       const { id } = action.payload;
       state.totalQuantity--;
       state.items = state.items
@@ -47,7 +47,7 @@ export const bagSlice = createSlice({
         })
         .filter((item) => item.quantity > 0);
     },
-    increaseQuantity: (state, action: PayloadAction<BagItemInterface>) => {
+    increaseQuantity: (state, action: PayloadAction<CartItemInterface>) => {
       const { id } = action.payload;
       state.totalQuantity++;
       state.items = state.items.map((item) => {
@@ -57,7 +57,7 @@ export const bagSlice = createSlice({
         return item;
       });
     },
-    removeFromBag: (state, action: PayloadAction<BagItemInterface>) => {
+    removeFromCart: (state, action: PayloadAction<CartItemInterface>) => {
       const { id } = action.payload;
       const newItems = state.items.filter((item) => item.id !== id);
       return {
@@ -78,31 +78,34 @@ export const bagSlice = createSlice({
         return i;
       });
     },
-    toggleBagDrawer: (state) => ({
+    toggleCartDrawer: (state) => ({
       ...state,
-      bagDrawerOpen: !state.bagDrawerOpen,
+      cartDrawerOpen: !state.cartDrawerOpen,
     }),
   },
 });
 
 export const {
-  addToBag,
-  clearBag,
-  closeBagDrawer,
+  addToCart,
+  clearCart,
+  closeCartDrawer,
   decreaseQuantity,
   increaseQuantity,
-  removeFromBag,
+  removeFromCart,
   selectSize,
-  toggleBagDrawer,
-} = bagSlice.actions;
+  toggleCartDrawer,
+} = cartSlice.actions;
 
-export const selectBag = (state: RootState) => state.bag;
+export const selectCart = (state: RootState) => state.cart;
 
 export const totalAmount = (state: RootState): number =>
-  state.bag.items.reduce((bagTotal: number, currentItem: BagItemInterface) => {
-    const { price, quantity } = currentItem;
-    bagTotal += price * quantity;
-    return bagTotal;
-  }, 0);
+  state.cart.items.reduce(
+    (cartTotal: number, currentItem: CartItemInterface) => {
+      const { price, quantity } = currentItem;
+      cartTotal += price * quantity;
+      return cartTotal;
+    },
+    0
+  );
 
-export const bagItems = (state: RootState) => state.bag.items;
+export const cartItems = (state: RootState) => state.cart.items;

@@ -6,7 +6,7 @@ import {
 } from "./header.styles";
 import { MagnifyingGlass, User } from "phosphor-react";
 import NavList from "../../molecules/nav-list";
-import BagIcon from "../../atoms/bag-icon";
+import BagIcon from "../../atoms/cart-icon";
 import Logo from "../../atoms/logo";
 import Hamburger from "../../atoms/hamburger";
 

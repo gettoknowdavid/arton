@@ -4,15 +4,15 @@ import { FlexGrid, FlexGridItem } from "baseui/flex-grid";
 import SEO from "../components/seo";
 import Layout from "../components/layout";
 import { useRootSelector } from "../hooks";
-import { selectBag, totalAmount } from "../store/slices/bag.slice";
+import { selectCart, totalAmount } from "../store/slices/cart.slice";
 import BagTotalSection from "../components/molecules/bag-total-section";
 import { BagItemInterface } from "../types";
 import BagItem from "../components/atoms/bag-item";
 import { currency } from "../lib/currency-formatter";
 
-function Bag() {
+function Cart() {
   const [css, theme] = useStyletron();
-  const { items } = useRootSelector(selectBag);
+  const { items } = useRootSelector(selectCart);
   const amount = useRootSelector(totalAmount);
 
   return (
@@ -42,7 +42,7 @@ function Bag() {
               textTransform: "uppercase",
             })}
           >
-            My Bag
+            My Cart
           </h1>
         </div>
         <div
@@ -116,13 +116,13 @@ function Bag() {
   );
 }
 
-Bag.getLayout = function getLayout(page: ReactElement) {
+Cart.getLayout = function getLayout(page: ReactElement) {
   return (
     <>
-      <SEO title={"Shopping Bag"} description={""} />
+      <SEO title={"Shopping Cart"} description={""} />
       <Layout>{page}</Layout>
     </>
   );
 };
 
-export default Bag;
+export default Cart;

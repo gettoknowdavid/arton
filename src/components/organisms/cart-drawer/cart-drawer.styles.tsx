@@ -33,7 +33,7 @@ export const StyledBDBody = styled("div", () => ({
   position: "relative",
 }));
 
-export const StyledBagList = styled("ul", () => ({
+export const StyledCartList = styled("ul", () => ({
   paddingLeft: 0,
   paddingBottom: "16rem",
 }));

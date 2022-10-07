@@ -1,4 +1,4 @@
-import { bagSlice } from "./bag.slice";
+import { cartSlice } from "./cart.slice";
 import { globalSlice } from "./global.slice";
 
-export { bagSlice, globalSlice };
+export { cartSlice, globalSlice };

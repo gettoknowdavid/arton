@@ -4,7 +4,7 @@ import { StyledLayout, StyledBody } from "./layout.styles";
 import Footer from "../organisms/footer";
 import { motion } from "framer-motion";
 import { useStyletron } from "baseui";
-import BagDrawer from "../organisms/bag-drawer";
+import BagDrawer from "../organisms/cart-drawer";
 import Drawer from "../organisms/drawer";
 
 function Layout({ children }: { children: ReactNode }) {

@@ -2,18 +2,18 @@ import React from "react";
 import { useRootDispatch, useRootSelector } from "../../../hooks";
 import { ANCHOR, Drawer } from "baseui/drawer";
 import {
-  clearBag,
-  closeBagDrawer,
-  selectBag,
-  toggleBagDrawer,
+  clearCart,
+  closeCartDrawer,
+  selectCart,
+  toggleCartDrawer,
   totalAmount,
-} from "../../../store/slices/bag.slice";
-import { BagItemInterface } from "../../../types";
-import BagItem from "../../atoms/bag-item";
+} from "../../../store/slices/cart.slice";
+import { CartItemInterface } from "../../../types";
+import CartItem from "../../atoms/bag-item";
 import { currency } from "../../../lib/currency-formatter";
 import { SIZE } from "baseui/select";
 import {
-  StyledBagList,
+  StyledCartList,
   StyledBDBody,
   StyledBDFooter,
   StyledBDFreeShippingText,
@@ -21,19 +21,19 @@ import {
   StyledBDHeading,
   StyledBDSubtotalValue,
   StyledBDSubtotalWrapper,
-} from "./bag-drawer.styles";
+} from "./cart-drawer.styles";
 import Button from "../../atoms/button";
 import { KIND } from "baseui/button";
 import { FlexGrid, FlexGridItem } from "baseui/flex-grid";
 import { useRouter } from "next/router";
 
-function BagDrawer() {
+function CartDrawer() {
   const dispatch = useRootDispatch();
-  const { bagDrawerOpen, items, totalQuantity } = useRootSelector(selectBag);
+  const { cartDrawerOpen, items, totalQuantity } = useRootSelector(selectCart);
   const amount = useRootSelector(totalAmount);
   const router = useRouter();
-  const openBag = () => {
-    dispatch(closeBagDrawer());
+  const openCart = () => {
+    dispatch(closeCartDrawer());
     router.push("/bag");
   };
 
@@ -42,8 +42,8 @@ function BagDrawer() {
 
   return (
     <Drawer
-      isOpen={bagDrawerOpen}
-      onClose={() => dispatch(toggleBagDrawer())}
+      isOpen={cartDrawerOpen}
+      onClose={() => dispatch(toggleCartDrawer())}
       autoFocus
       anchor={ANCHOR.right}
       overrides={{
@@ -67,15 +67,15 @@ function BagDrawer() {
       }}
     >
       <StyledBDHeader>
-        <StyledBDHeading>Your Bag, {totalQty}</StyledBDHeading>
+        <StyledBDHeading>My Cart, {totalQty}</StyledBDHeading>
       </StyledBDHeader>
 
       <StyledBDBody>
-        <StyledBagList>
-          {items.map((item: BagItemInterface) => (
-            <BagItem key={item.id} item={item} />
+        <StyledCartList>
+          {items.map((item: CartItemInterface) => (
+            <CartItem key={item.id} item={item} />
           ))}
-        </StyledBagList>
+        </StyledCartList>
 
         <StyledBDFooter>
           <StyledBDSubtotalWrapper>
@@ -87,8 +87,8 @@ function BagDrawer() {
 
           <FlexGrid flexGridColumnCount={2} flexGridColumnGap={"0.5rem"}>
             <FlexGridItem>
-              <Button kind={KIND.secondary} onClick={openBag}>
-                View Bag
+              <Button kind={KIND.secondary} onClick={openCart}>
+                View Cart
               </Button>
             </FlexGridItem>
             <FlexGridItem>
@@ -99,8 +99,8 @@ function BagDrawer() {
           </FlexGrid>
 
           <StyledBDFreeShippingText>
-            <Button kind={KIND.tertiary} onClick={() => dispatch(clearBag())}>
-              Clear Bag
+            <Button kind={KIND.tertiary} onClick={() => dispatch(clearCart())}>
+              Clear Cart
             </Button>
             Free Shipping Worldwide
           </StyledBDFreeShippingText>
@@ -110,4 +110,4 @@ function BagDrawer() {
   );
 }
 
-export default BagDrawer;
+export default CartDrawer;

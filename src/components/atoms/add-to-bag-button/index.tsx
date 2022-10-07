@@ -7,7 +7,7 @@ import {
   addToBag,
   closeBagDrawer,
   toggleBagDrawer,
-} from "../../../store/slices/bag.slice";
+} from "../../../store/slices/cart.slice";
 import UseAnimations from "react-useanimations";
 import loadingIcon from "react-useanimations/lib/infinity";
 
