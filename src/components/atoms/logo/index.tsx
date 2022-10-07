@@ -1,19 +1,25 @@
 import React from "react";
-import Link from "next/link";
 import Image from "next/image";
 import logo from "../../../public/logo.svg";
 import { StyledLogo } from "./logo.styles";
+import { useRootDispatch } from "../../../hooks";
+import { closeDrawer } from "../../../store/slices/global.slice";
+import { useRouter } from "next/router";
 
 function Logo() {
+  const dispatch = useRootDispatch();
+
+  const router = useRouter();
+  const goHome = () => {
+    dispatch(closeDrawer());
+    router.push(`/`);
+  };
+
   return (
-    <StyledLogo>
-      <Link href={"/"}>
-        <a>
-          <h1>
-            <Image src={logo} alt={"Arton logo"} layout={"fill"} priority />
-          </h1>
-        </a>
-      </Link>
+    <StyledLogo onClick={goHome}>
+      <h1>
+        <Image src={logo} alt={"Arton logo"} layout={"fill"} priority />
+      </h1>
     </StyledLogo>
   );
 }
