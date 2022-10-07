@@ -5,12 +5,11 @@ import { closeDrawer, selectGlobal } from "../../../store/slices/global.slice";
 import { useStyletron } from "baseui";
 import config from "../../../config";
 import { NavItemType } from "../../../types";
-import { Input } from "baseui/input";
-import { MagnifyingGlass } from "phosphor-react";
+import { DrawerOverrides } from "./drawer.styles";
+import SearchBox from "../../atoms/search-box";
 
 function Drawer() {
   const [css, theme] = useStyletron();
-  const [value, setValue] = React.useState("");
 
   const navList = config.nav;
 
@@ -24,66 +23,9 @@ function Drawer() {
       autoFocus
       anchor={ANCHOR.right}
       size={SIZE.full}
-      overrides={{
-        DrawerBody: {
-          style: () => ({
-            overflow: "hidden",
-            marginTop: "2.8125rem",
-            marginRight: 0,
-            marginBottom: 0,
-            marginLeft: 0,
-          }),
-        },
-      }}
+      overrides={DrawerOverrides}
     >
-      <Input
-        value={value}
-        onChange={(e) => setValue(e.target.value)}
-        placeholder="WHAT ARE YOU LOOKING FOR?"
-        startEnhancer={() => <MagnifyingGlass />}
-        overrides={{
-          InputContainer: {
-            style: () => ({
-              outline: `transparent solid`,
-              backgroundColor: "transparent",
-            }),
-          },
-          Input: {
-            style: ({ $theme }) => ({
-              ...$theme.typography.font200,
-              outline: `transparent solid`,
-              backgroundColor: "transparent",
-            }),
-          },
-          Root: {
-            style: () => ({
-              // height: "3rem",
-              paddingRight: ".75rem",
-              paddingLeft: ".75rem",
-              paddingTop: "0 1rem 0 2.8125rem",
-              borderTopLeftRadius: 0,
-              borderTopRightRadius: 0,
-              borderBottomLeftRadius: 0,
-              borderBottomRightRadius: 0,
-              borderTopWidth: 0,
-              borderRightWidth: 0,
-              borderBottomWidth: "1px",
-              borderBottomStyle: "solid",
-              borderBottomColor: "black",
-              borderLeftWidth: 0,
-              backgroundColor: "transparent",
-              outline: `transparent solid`,
-            }),
-          },
-          StartEnhancer: {
-            style: () => ({
-              paddingRight: 0,
-              paddingLeft: 0,
-              backgroundColor: "transparent",
-            }),
-          },
-        }}
-      />
+      <SearchBox />
       <div
         className={css({
           position: "relative",
