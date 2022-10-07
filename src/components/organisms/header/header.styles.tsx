@@ -1,4 +1,5 @@
 import { styled } from "baseui";
+import { Block } from "baseui/block";
 
 export const StyledHeader = styled("div", ({ $theme }) => ({
   alignContent: "center",
@@ -52,7 +53,7 @@ export const StyledActionsList = styled("ul", () => ({
   flexDirection: "row",
 }));
 
-export const StyledActionItem = styled("li", ({ $theme }) => ({
+export const StyledActionItem = styled(Block, ({ $theme }) => ({
   ...$theme.typography.font100,
   letterSpacing: ".05rem",
   textTransform: "uppercase",
