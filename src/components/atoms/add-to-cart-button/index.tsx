@@ -2,20 +2,20 @@ import React from "react";
 import { SIZE } from "baseui/select";
 import { Button } from "baseui/button";
 import { useRootDispatch } from "../../../hooks";
-import { BagItemInterface } from "../../../types";
+import { CartItemInterface } from "../../../types";
 import {
-  addToBag,
-  closeBagDrawer,
-  toggleBagDrawer,
+  addToCart,
+  closeCartDrawer,
+  toggleCartDrawer,
 } from "../../../store/slices/cart.slice";
 import UseAnimations from "react-useanimations";
 import loadingIcon from "react-useanimations/lib/infinity";
 
 type Props = {
-  item: BagItemInterface;
+  item: CartItemInterface;
 };
 
-function AddToBagButton(props: Props) {
+function AddToCartButton(props: Props) {
   const [loading, setLoading] = React.useState(false);
 
   const dispatch = useRootDispatch();
@@ -24,9 +24,9 @@ function AddToBagButton(props: Props) {
   function handleClick() {
     setLoading(true);
     // setTimeout(() => setLoading(false), 2000);
-    dispatch(addToBag(bagItem));
-    dispatch(toggleBagDrawer());
-    setTimeout(() => dispatch(closeBagDrawer()), 5000);
+    dispatch(addToCart(bagItem));
+    dispatch(toggleCartDrawer());
+    setTimeout(() => dispatch(closeCartDrawer()), 5000);
     setLoading(false);
   }
 
@@ -55,9 +55,9 @@ function AddToBagButton(props: Props) {
         },
       }}
     >
-      Add to Bag
+      Add to Cart
     </Button>
   );
 }
 
-export default AddToBagButton;
+export default AddToCartButton;

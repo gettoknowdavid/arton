@@ -7,7 +7,7 @@ import { useRootSelector } from "../hooks";
 import { selectCart, totalAmount } from "../store/slices/cart.slice";
 import BagTotalSection from "../components/molecules/bag-total-section";
 import { BagItemInterface } from "../types";
-import BagItem from "../components/atoms/bag-item";
+import BagItem from "../components/atoms/cart-item";
 import { currency } from "../lib/currency-formatter";
 
 function Cart() {

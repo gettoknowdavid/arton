@@ -12,7 +12,7 @@ import { currency } from "../../lib/currency-formatter";
 import TaggedProductList from "../../components/molecules/tagged-product-list";
 import BackButton from "../../components/atoms/back-button";
 import SizeSelector from "../../components/molecules/size-selector";
-import AddToBagButton from "../../components/atoms/add-to-bag-button";
+import AddToBagButton from "../../components/atoms/add-to-cart-button";
 import RichText from "../../components/atoms/rich-text";
 import {
   StyledPBackButtonWrapper,

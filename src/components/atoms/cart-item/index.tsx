@@ -1,5 +1,5 @@
 import React from "react";
-import { BagItemInterface } from "../../../types";
+import { CartItemInterface } from "../../../types";
 import Image from "next/image";
 import Link from "next/link";
 import { currency } from "../../../lib/currency-formatter";
@@ -8,7 +8,7 @@ import { useRootDispatch } from "../../../hooks";
 import {
   decreaseQuantity,
   increaseQuantity,
-  removeFromBag,
+  removeFromCart,
   selectSize,
 } from "../../../store/slices/cart.slice";
 import { Delete } from "baseui/icon";
@@ -18,10 +18,10 @@ import { Select, SIZE } from "baseui/select";
 import { SIZES } from "../../../lib/sizes";
 
 type Props = {
-  item: BagItemInterface;
+  item: CartItemInterface;
 };
 
-function BagItem(props: Props) {
+function CartItem(props: Props) {
   const { item } = props;
   const [css, theme] = useStyletron();
 
@@ -237,7 +237,7 @@ function BagItem(props: Props) {
         </FlexGrid>
       </div>
       <div
-        onClick={() => dispatch(removeFromBag(item))}
+        onClick={() => dispatch(removeFromCart(item))}
         className={css({
           position: "absolute",
           top: 0,
@@ -252,4 +252,4 @@ function BagItem(props: Props) {
   );
 }
 
-export default BagItem;
+export default CartItem;

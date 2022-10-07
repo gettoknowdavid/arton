@@ -9,7 +9,7 @@ import {
   totalAmount,
 } from "../../../store/slices/cart.slice";
 import { CartItemInterface } from "../../../types";
-import CartItem from "../../atoms/bag-item";
+import CartItem from "../../atoms/cart-item";
 import { currency } from "../../../lib/currency-formatter";
 import { SIZE } from "baseui/select";
 import {
