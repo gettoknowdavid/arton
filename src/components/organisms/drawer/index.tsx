@@ -2,7 +2,6 @@ import React from "react";
 import { ANCHOR, Drawer as BaseDrawer, SIZE } from "baseui/drawer";
 import { useRootDispatch, useRootSelector } from "../../../hooks";
 import { closeDrawer, selectGlobal } from "../../../store/slices/global.slice";
-import { useStyletron } from "baseui";
 import config from "../../../config";
 import { NavItemType } from "../../../types";
 import {
@@ -19,23 +18,20 @@ import SearchBox from "../../atoms/search-box";
 import { useRouter } from "next/router";
 
 function Drawer() {
-  const [css, theme] = useStyletron();
-
-  const dispatch = useRootDispatch();
   const { drawerOpen } = useRootSelector(selectGlobal);
+  const dispatch = useRootDispatch();
 
   const router = useRouter();
+  const close = () => dispatch(closeDrawer());
   const goToLink = (slug: string) => {
-    dispatch(closeDrawer());
+    close();
     router?.push(`/${slug}`);
   };
-
-  const navList = config.nav;
 
   return (
     <BaseDrawer
       isOpen={drawerOpen}
-      onClose={() => dispatch(closeDrawer())}
+      onClose={close}
       autoFocus
       anchor={ANCHOR.top}
       size={SIZE.full}
@@ -44,7 +40,7 @@ function Drawer() {
       <SearchBox />
       <StyledDrawerBody>
         <StyledDrawerList>
-          {navList.map((item: NavItemType) => (
+          {config.nav.map((item: NavItemType) => (
             <StyledDrawerListItem
               key={item.id}
               onClick={() => goToLink(item.slug)}
