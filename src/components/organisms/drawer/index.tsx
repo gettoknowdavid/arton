@@ -5,10 +5,12 @@ import { closeDrawer, selectGlobal } from "../../../store/slices/global.slice";
 import { useStyletron } from "baseui";
 import config from "../../../config";
 import { NavItemType } from "../../../types";
-import NavItem from "../../atoms/nav-item";
+import { Input } from "baseui/input";
+import { MagnifyingGlass } from "phosphor-react";
 
 function Drawer() {
   const [css, theme] = useStyletron();
+  const [value, setValue] = React.useState("");
 
   const navList = config.nav;
 
@@ -33,6 +35,54 @@ function Drawer() {
         },
       }}
     >
+      <Input
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+        placeholder="WHAT ARE YOU LOOKING FOR?"
+        startEnhancer={() => <MagnifyingGlass />}
+        overrides={{
+          InputContainer: {
+            style: () => ({
+              outline: `transparent solid`,
+              backgroundColor: "transparent",
+            }),
+          },
+          Input: {
+            style: ({ $theme }) => ({
+              ...$theme.typography.font200,
+              outline: `transparent solid`,
+              backgroundColor: "transparent",
+            }),
+          },
+          Root: {
+            style: () => ({
+              // height: "3rem",
+              paddingRight: ".75rem",
+              paddingLeft: ".75rem",
+              paddingTop: "0 1rem 0 2.8125rem",
+              borderTopLeftRadius: 0,
+              borderTopRightRadius: 0,
+              borderBottomLeftRadius: 0,
+              borderBottomRightRadius: 0,
+              borderTopWidth: 0,
+              borderRightWidth: 0,
+              borderBottomWidth: "1px",
+              borderBottomStyle: "solid",
+              borderBottomColor: "black",
+              borderLeftWidth: 0,
+              backgroundColor: "transparent",
+              outline: `transparent solid`,
+            }),
+          },
+          StartEnhancer: {
+            style: () => ({
+              paddingRight: 0,
+              paddingLeft: 0,
+              backgroundColor: "transparent",
+            }),
+          },
+        }}
+      />
       <div
         className={css({
           position: "relative",
@@ -57,7 +107,6 @@ function Drawer() {
             padding: "0",
             listStyle: "none",
             backgroundColor: "#fff",
-            height: "100%",
           })}
         >
           {navList.map((item: NavItemType) => (
@@ -69,6 +118,7 @@ function Drawer() {
                 borderBottomColor: theme.colors.black,
                 display: "list-item",
                 textAlign: "left",
+                height: "100%",
               })}
             >
               <a
@@ -95,12 +145,100 @@ function Drawer() {
                   border: "none",
                   background: "none",
                   textDecoration: "none",
+                  display: "flex",
                 })}
               >
                 {item.title}
               </a>
             </li>
           ))}
+          <li>
+            <ul
+              className={css({
+                WebkitBoxOrient: "vertical",
+                WebkitBoxDirection: "normal",
+                MsFlexDirection: "column",
+                flexDirection: "column",
+                MsFlexWrap: "nowrap",
+                flexWrap: "nowrap",
+                padding: "0",
+                listStyle: "none",
+                backgroundColor: "#fff",
+                marginTop: "1.75rem",
+                marginBottom: "1.75rem",
+                height: "auto",
+                overflowY: "hidden",
+                textTransform: "uppercase",
+              })}
+            >
+              <li
+                className={css({
+                  marginTop: ".75rem",
+                  marginRight: ".75rem",
+                  marginLeft: ".75rem",
+                })}
+              >
+                <a
+                  className={css({
+                    ...theme.typography.font100,
+                    letterSpacing: ".05em",
+                    textTransform: "uppercase",
+                    height: "auto",
+                    display: "inline-block",
+                    width: "auto",
+                    padding: "0",
+                    margin: "0",
+                  })}
+                >
+                  <span>LOGIN</span>
+                </a>
+              </li>
+              <li
+                className={css({
+                  marginTop: ".75rem",
+                  marginRight: ".75rem",
+                  marginLeft: ".75rem",
+                })}
+              >
+                <a
+                  className={css({
+                    ...theme.typography.font100,
+                    letterSpacing: ".05em",
+                    textTransform: "uppercase",
+                    height: "auto",
+                    display: "inline-block",
+                    width: "auto",
+                    padding: "0",
+                    margin: "0",
+                  })}
+                >
+                  <span>Country/Region: International Version</span>
+                </a>
+              </li>
+              <li
+                className={css({
+                  marginTop: ".75rem",
+                  marginRight: ".75rem",
+                  marginLeft: ".75rem",
+                })}
+              >
+                <a
+                  className={css({
+                    ...theme.typography.font100,
+                    letterSpacing: ".05em",
+                    textTransform: "uppercase",
+                    height: "auto",
+                    display: "inline-block",
+                    width: "auto",
+                    padding: "0",
+                    margin: "0",
+                  })}
+                >
+                  <span>Language: English</span>
+                </a>
+              </li>
+            </ul>
+          </li>
         </ul>
       </div>
     </BaseDrawer>
