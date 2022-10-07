@@ -25,7 +25,7 @@ function Drawer() {
   const router = useRouter();
   const goToLink = (slug: string) => {
     dispatch(closeDrawer());
-    router.push(`/${slug}`);
+    router?.push(`/${slug}`);
   };
 
   const navList = config.nav;
