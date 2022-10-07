@@ -28,15 +28,10 @@ function Layout({ children }: { children: ReactNode }) {
           animate="enter" // Animated state to variants.enter
           exit="exit" // Exit state (used later) to variants.exit
           transition={{ type: "linear" }} // Set the transition to linear
-          className={css({
-            maxWidth: "1920px",
-            margin: "0 auto",
-            position: "relative",
-          })}
         >
           {children}
         </motion.div>
-        <Footer />
+        {/*<Footer />*/}
       </body>
     </>
   );

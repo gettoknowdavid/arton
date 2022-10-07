@@ -7,6 +7,7 @@ import { AppPropsWithLayout } from "../types";
 import { useApollo } from "../lib/apollo";
 import { ApolloProvider } from "@apollo/client";
 import { AnimatePresence } from "framer-motion";
+import { IconContext } from "phosphor-react";
 import { Router } from "next/router";
 import LoadingScreen from "../components/organisms/loading-screen";
 import ArtonProvider from "../store/providers/arton-provider";
@@ -44,11 +45,13 @@ function ArtonApp({ Component, pageProps }: AppPropsWithLayout) {
         >
           <StyletronProvider value={styletron}>
             <BaseProvider theme={ArtonTheme}>
-              {loading ? (
-                <LoadingScreen loading={true} />
-              ) : (
-                getLayout(<Component {...pageProps} />)
-              )}
+              <IconContext.Provider value={{ size: "1.125rem" }}>
+                {loading ? (
+                  <LoadingScreen loading={true} />
+                ) : (
+                  getLayout(<Component {...pageProps} />)
+                )}
+              </IconContext.Provider>
             </BaseProvider>
           </StyletronProvider>
         </AnimatePresence>

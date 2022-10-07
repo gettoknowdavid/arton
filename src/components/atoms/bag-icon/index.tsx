@@ -23,7 +23,7 @@ function BagIcon() {
         alignItems: "center",
       })}
     >
-      <ShoppingBag size={"1.125rem"} />
+      <ShoppingBag />
       {totalQuantity > 0 ? (
         <p
           className={css({

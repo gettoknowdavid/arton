@@ -7,11 +7,10 @@ function SEO({ title, description }: { title: string; description: string }) {
 
   return (
     <Head>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta charSet="UTF-8" />
       <title>{`${title} | ${siteTitle}`}</title>
-      <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1, shrink-to-fit=no"
-      />
+      <meta httpEquiv="x-ua-compatible" content="ie=edge" />
       <meta name="description" content={description} />
       <meta property="og:type" content="website" />
       <meta property="og:title" content={title} />

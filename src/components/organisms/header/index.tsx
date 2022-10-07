@@ -8,21 +8,22 @@ import {
   StyledHeader,
   StyledHeaderLogo,
 } from "./header.styles";
-import { List, MagnifyingGlass, User } from "phosphor-react";
+import { List, MagnifyingGlass, User, X } from "phosphor-react";
 import NavList from "../../molecules/nav-list";
 import { useRouter } from "next/router";
 import BagIcon from "../../atoms/bag-icon";
 import { Block } from "baseui/block";
 import { useStyletron } from "styletron-react";
 import Link from "next/link";
-import { useRootDispatch } from "../../../hooks";
-import { toggleDrawer } from "../../../store/slices/global.slice";
+import { useRootDispatch, useRootSelector } from "../../../hooks";
+import { selectGlobal, toggleDrawer } from "../../../store/slices/global.slice";
 
 function Header() {
   const router = useRouter();
   const [css] = useStyletron();
 
   const dispatch = useRootDispatch();
+  const { drawerOpen } = useRootSelector(selectGlobal);
   const openDrawer = () => dispatch(toggleDrawer());
 
   return (
@@ -55,7 +56,7 @@ function Header() {
             {/* Hamburger */}
             <Block display={["flex", "flex", "flex", "none"]}>
               <StyledHamburger onClick={openDrawer}>
-                <List size={"1.125rem"} />
+                {drawerOpen ? <X /> : <List />}
               </StyledHamburger>
             </Block>
           </nav>
@@ -63,10 +64,10 @@ function Header() {
           <Block>
             <StyledActionsList>
               <StyledActionItem>
-                <User size={"1.125rem"} />
+                <User />
               </StyledActionItem>
               <StyledActionItem>
-                <MagnifyingGlass size={"1.125rem"} />
+                <MagnifyingGlass />
               </StyledActionItem>
               <StyledActionItem>
                 <BagIcon />
