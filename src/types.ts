@@ -104,3 +104,9 @@ export interface CartItemInterface {
   price: number;
   quantity: number;
 }
+
+export type GlobalType = {
+  drawerOpen: boolean;
+  toggleDrawer: () => void;
+  closeDrawer: () => void;
+};

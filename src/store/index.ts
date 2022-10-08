@@ -1,9 +1,4 @@
-import {
-  Action,
-  combineReducers,
-  configureStore,
-  ThunkAction,
-} from "@reduxjs/toolkit";
+import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import {
   FLUSH,
   PAUSE,
@@ -14,13 +9,12 @@ import {
   persistReducer,
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
-import { cartSlice, globalSlice } from "./slices";
+import { cartSlice } from "./slices";
 
 const cartConfig = { key: "cart", version: 1, storage };
 
 const store = configureStore({
   reducer: combineReducers({
-    global: globalSlice.reducer,
     cart: persistReducer(cartConfig, cartSlice.reducer),
   }),
   middleware: (getDefaultMiddleware) =>
@@ -34,12 +28,5 @@ const store = configureStore({
 export type RootState = ReturnType<typeof store.getState>;
 
 export type RootDispatch = typeof store.dispatch;
-
-export type RootThunk<ReturnType = void> = ThunkAction<
-  ReturnType,
-  RootState,
-  unknown,
-  Action<string>
->;
 
 export default store;
