@@ -1,7 +1,5 @@
 import React from "react";
 import { ANCHOR, Drawer as BaseDrawer, SIZE } from "baseui/drawer";
-import { useRootDispatch, useRootSelector } from "../../../hooks";
-import { closeDrawer, selectGlobal } from "../../../store/slices/global.slice";
 import config from "../../../config";
 import { NavItemType } from "../../../types";
 import {
@@ -16,22 +14,21 @@ import {
 } from "./drawer.styles";
 import SearchBox from "../../atoms/search-box";
 import { useRouter } from "next/router";
+import { GlobalContext } from "../../../contexts/global.context";
 
 function Drawer() {
-  const { drawerOpen } = useRootSelector(selectGlobal);
-  const dispatch = useRootDispatch();
+  const { drawerOpen, closeDrawer } = React.useContext(GlobalContext);
 
   const router = useRouter();
-  const close = () => dispatch(closeDrawer());
   const goToLink = (slug: string) => {
-    close();
+    closeDrawer();
     router?.push(`/${slug}`);
   };
 
   return (
     <BaseDrawer
       isOpen={drawerOpen}
-      onClose={close}
+      onClose={closeDrawer}
       autoFocus
       anchor={ANCHOR.top}
       size={SIZE.full}
