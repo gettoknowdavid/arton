@@ -4,12 +4,14 @@ import { RootState } from "../index";
 
 export type CartSlice = {
   items: CartItemInterface[];
+  isEmpty: boolean;
   totalQuantity: number;
   cartDrawerOpen: boolean;
 };
 
 const initialState: CartSlice = {
   items: [],
+  isEmpty: true,
   totalQuantity: 0,
   cartDrawerOpen: false,
 };
@@ -26,6 +28,7 @@ export const cartSlice = createSlice({
       );
 
       state.totalQuantity += quantity;
+      state.isEmpty = !!state.totalQuantity;
 
       if (!existingItem) {
         state.items.push(action.payload);
@@ -38,6 +41,7 @@ export const cartSlice = createSlice({
     decreaseQuantity: (state, action: PayloadAction<CartItemInterface>) => {
       const { id } = action.payload;
       state.totalQuantity--;
+      state.isEmpty = !!state.totalQuantity;
       state.items = state.items
         .map((item) => {
           if (item.id === id) {
@@ -50,6 +54,7 @@ export const cartSlice = createSlice({
     increaseQuantity: (state, action: PayloadAction<CartItemInterface>) => {
       const { id } = action.payload;
       state.totalQuantity++;
+      state.isEmpty = !!state.totalQuantity;
       state.items = state.items.map((item) => {
         if (item.id === id) {
           return { ...item, quantity: item.quantity + 1 };
@@ -66,6 +71,7 @@ export const cartSlice = createSlice({
         totalQuantity: newItems
           .map((i) => i.quantity)
           .reduce((p, c) => p + c, 0),
+        isEmpty: !!state.totalQuantity,
       };
     },
     selectSize: (state, action: PayloadAction<any>) => {
@@ -107,5 +113,3 @@ export const totalAmount = (state: RootState): number =>
     },
     0
   );
-
-export const cartItems = (state: RootState) => state.cart.items;
