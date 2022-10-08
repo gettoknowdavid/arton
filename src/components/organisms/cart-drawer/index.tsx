@@ -1,49 +1,12 @@
 import React from "react";
-import { useRootDispatch, useRootSelector } from "../../../hooks";
 import { ANCHOR, Drawer } from "baseui/drawer";
-import {
-  clearCart,
-  closeCartDrawer,
-  selectCart,
-  toggleCartDrawer,
-  totalAmount,
-} from "../../../store/slices/cart.slice";
-import { CartItemInterface } from "../../../types";
-import CartItem from "../../atoms/cart-item";
-import { currency } from "../../../lib/currency-formatter";
-import { SIZE } from "baseui/select";
-import {
-  StyledCartList,
-  StyledBDBody,
-  StyledBDFooter,
-  StyledBDFreeShippingText,
-  StyledBDHeader,
-  StyledBDHeading,
-  StyledBDSubtotalValue,
-  StyledBDSubtotalWrapper,
-} from "./cart-drawer.styles";
-import Button from "../../atoms/button";
-import { KIND } from "baseui/button";
-import { FlexGrid, FlexGridItem } from "baseui/flex-grid";
-import { useRouter } from "next/router";
+import { StyledBDHeader, StyledBDHeading } from "./cart-drawer.styles";
 
 function CartDrawer() {
-  const dispatch = useRootDispatch();
-  const { cartDrawerOpen, items, totalQuantity } = useRootSelector(selectCart);
-  const amount = useRootSelector(totalAmount);
-  const router = useRouter();
-  const openCart = () => {
-    dispatch(closeCartDrawer());
-    router.push("/bag");
-  };
-
-  const totalQty =
-    totalQuantity > 1 ? `${totalQuantity} items` : `${totalQuantity} item`;
-
   return (
     <Drawer
-      isOpen={cartDrawerOpen}
-      onClose={() => dispatch(toggleCartDrawer())}
+      isOpen={false}
+      onClose={() => null}
       autoFocus
       anchor={ANCHOR.right}
       overrides={{
@@ -53,7 +16,7 @@ function CartDrawer() {
           style: ({ $theme }) => ({
             borderLeftWidth: "1px",
             borderLeftStyle: "solid",
-            borderLeftColor: $theme.colors.mono1000,
+            borderLeftColor: $theme.colors.black,
           }),
         },
         DrawerBody: {
@@ -67,45 +30,45 @@ function CartDrawer() {
       }}
     >
       <StyledBDHeader>
-        <StyledBDHeading>My Cart, {totalQty}</StyledBDHeading>
+        <StyledBDHeading>My Cart</StyledBDHeading>
       </StyledBDHeader>
 
-      <StyledBDBody>
-        <StyledCartList>
-          {items.map((item: CartItemInterface) => (
-            <CartItem key={item.id} item={item} />
-          ))}
-        </StyledCartList>
+      {/*<StyledBDBody>*/}
+      {/*  <StyledCartList>*/}
+      {/*    {items.map((item: CartItemInterface) => (*/}
+      {/*      <CartItem key={item.id} item={item} />*/}
+      {/*    ))}*/}
+      {/*  </StyledCartList>*/}
 
-        <StyledBDFooter>
-          <StyledBDSubtotalWrapper>
-            <p>Sub-total</p>
-            <StyledBDSubtotalValue>
-              {currency.format(amount)}
-            </StyledBDSubtotalValue>
-          </StyledBDSubtotalWrapper>
+      {/*  <StyledBDFooter>*/}
+      {/*    <StyledBDSubtotalWrapper>*/}
+      {/*      <p>Sub-total</p>*/}
+      {/*      <StyledBDSubtotalValue>*/}
+      {/*        {currency.format(amount)}*/}
+      {/*      </StyledBDSubtotalValue>*/}
+      {/*    </StyledBDSubtotalWrapper>*/}
 
-          <FlexGrid flexGridColumnCount={2} flexGridColumnGap={"0.5rem"}>
-            <FlexGridItem>
-              <Button kind={KIND.secondary} onClick={openCart}>
-                View Cart
-              </Button>
-            </FlexGridItem>
-            <FlexGridItem>
-              <Button size={SIZE.compact} disabled={!totalQuantity}>
-                Checkout
-              </Button>
-            </FlexGridItem>
-          </FlexGrid>
+      {/*    <FlexGrid flexGridColumnCount={2} flexGridColumnGap={"0.5rem"}>*/}
+      {/*      <FlexGridItem>*/}
+      {/*        <Button kind={KIND.secondary} onClick={openCart}>*/}
+      {/*          View Cart*/}
+      {/*        </Button>*/}
+      {/*      </FlexGridItem>*/}
+      {/*      <FlexGridItem>*/}
+      {/*        <Button size={SIZE.compact} disabled={!totalQuantity}>*/}
+      {/*          Checkout*/}
+      {/*        </Button>*/}
+      {/*      </FlexGridItem>*/}
+      {/*    </FlexGrid>*/}
 
-          <StyledBDFreeShippingText>
-            <Button kind={KIND.tertiary} onClick={() => dispatch(clearCart())}>
-              Clear Cart
-            </Button>
-            Free Shipping Worldwide
-          </StyledBDFreeShippingText>
-        </StyledBDFooter>
-      </StyledBDBody>
+      {/*    <StyledBDFreeShippingText>*/}
+      {/*      <Button kind={KIND.tertiary} onClick={() => dispatch(clearCart())}>*/}
+      {/*        Clear Cart*/}
+      {/*      </Button>*/}
+      {/*      Free Shipping Worldwide*/}
+      {/*    </StyledBDFreeShippingText>*/}
+      {/*  </StyledBDFooter>*/}
+      {/*</StyledBDBody>*/}
     </Drawer>
   );
 }
