@@ -8,16 +8,21 @@ import { Block } from "baseui/block";
 
 function CartIcon() {
   const [css, theme] = useStyletron();
+  const [quantity, setQuantity] = React.useState(0);
 
   const router = useRouter();
 
-  const { totalQuantity } = useRootSelector(selectCart);
+  const cart = useRootSelector(selectCart);
 
-  const openBag = () => router.push("/bag");
+  React.useEffect(() => {
+    if (cart?.totalQuantity) {
+      setQuantity(cart.totalQuantity);
+    }
+  }, [cart]);
 
   return (
     <div
-      onClick={openBag}
+      onClick={() => router.push("/bag")}
       className={css({
         position: "relative",
         display: "flex",
@@ -29,7 +34,7 @@ function CartIcon() {
       <Block display={["flex", "flex", "flex", "none"]}>
         <ShoppingCart />
       </Block>
-      {totalQuantity > 0 ? (
+      {quantity > 0 ? (
         <p
           className={css({
             height: "0.75rem",
@@ -47,7 +52,7 @@ function CartIcon() {
             alignItems: "center",
           })}
         >
-          {totalQuantity}
+          {quantity}
         </p>
       ) : null}
     </div>
