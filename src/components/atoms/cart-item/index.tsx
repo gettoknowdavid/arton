@@ -44,14 +44,6 @@ function CartItem(props: Props) {
         borderBottomWidth: "1px",
         borderBottomStyle: "solid",
         borderBottomColor: theme.colors.mono400,
-        ":last-child": {
-          borderBottomWidth: 0,
-          marginBottom: 0,
-        },
-        ":last-first": {
-          borderBottomWidth: 0,
-          marginTop: 0,
-        },
       })}
     >
       <div
