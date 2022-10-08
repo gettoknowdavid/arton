@@ -3,13 +3,10 @@ import Header from "../organisms/header";
 import { StyledLayout } from "./layout.styles";
 import Footer from "../organisms/footer";
 import { motion } from "framer-motion";
-import { useStyletron } from "baseui";
 import BagDrawer from "../organisms/cart-drawer";
 import Drawer from "../organisms/drawer";
 
 function Layout({ children }: { children: ReactNode }) {
-  const [css] = useStyletron();
-
   const variants = {
     hidden: { opacity: 0, x: -200, y: 0 },
     enter: { opacity: 1, x: 0, y: 0 },
