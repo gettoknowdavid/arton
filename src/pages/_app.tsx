@@ -10,12 +10,9 @@ import { AnimatePresence } from "framer-motion";
 import { IconContext } from "phosphor-react";
 import { Router } from "next/router";
 import LoadingScreen from "../components/organisms/loading-screen";
-import { Provider as ReduxProvider } from "react-redux";
 import "normalize.css";
 import "../styles/globals.css";
-import store from "../store";
-import { PersistGate } from "redux-persist/integration/react";
-import { persistStore } from "redux-persist";
+import ArtonProvider from "../contexts/arton-provider";
 
 function ArtonApp({ Component, pageProps }: AppPropsWithLayout) {
   const getLayout = Component.getLayout ?? ((page) => page);
@@ -40,27 +37,25 @@ function ArtonApp({ Component, pageProps }: AppPropsWithLayout) {
 
   return (
     <ApolloProvider client={apolloClient}>
-      <ReduxProvider store={store}>
-        <PersistGate persistor={persistStore(store)}>
-          <AnimatePresence
-            mode={"wait"}
-            initial={false}
-            onExitComplete={() => window.scrollTo(0, 0)}
-          >
-            <StyletronProvider value={styletron}>
-              <BaseProvider theme={ArtonTheme}>
-                <IconContext.Provider value={{ size: "1.125rem" }}>
-                  {loading ? (
-                    <LoadingScreen loading={true} />
-                  ) : (
-                    getLayout(<Component {...pageProps} />)
-                  )}
-                </IconContext.Provider>
-              </BaseProvider>
-            </StyletronProvider>
-          </AnimatePresence>
-        </PersistGate>
-      </ReduxProvider>
+      <ArtonProvider>
+        <AnimatePresence
+          mode={"wait"}
+          initial={false}
+          onExitComplete={() => window.scrollTo(0, 0)}
+        >
+          <StyletronProvider value={styletron}>
+            <BaseProvider theme={ArtonTheme}>
+              <IconContext.Provider value={{ size: "1.125rem" }}>
+                {loading ? (
+                  <LoadingScreen loading={true} />
+                ) : (
+                  getLayout(<Component {...pageProps} />)
+                )}
+              </IconContext.Provider>
+            </BaseProvider>
+          </StyletronProvider>
+        </AnimatePresence>
+      </ArtonProvider>
     </ApolloProvider>
   );
 }
