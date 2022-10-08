@@ -9,7 +9,7 @@ export const StyledBDHeader = styled("div", ({ $theme }) => ({
   height: "3rem",
   borderBottomWidth: "1px",
   borderBottomStyle: "solid",
-  borderBottomColor: $theme.colors.mono1000,
+  borderBottomColor: $theme.colors.black,
   backgroundColor: $theme.colors.mono100,
   display: "flex",
   alignItems: "center",
@@ -48,8 +48,8 @@ export const StyledBDFooter = styled("div", ({ $theme }) => ({
   paddingLeft: "2rem",
   borderTopWidth: "1px",
   borderTopStyle: "solid",
-  borderTopColor: $theme.colors.mono1000,
-  backgroundColor: $theme.colors.mono100,
+  borderTopColor: $theme.colors.black,
+  backgroundColor: $theme.colors.white,
 }));
 
 export const StyledBDSubtotalWrapper = styled("div", () => ({
