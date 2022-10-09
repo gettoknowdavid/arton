@@ -23,13 +23,12 @@ const Men: NextPageWithLayout | any = (props: MenProps) => {
 
   return (
     <FlexGrid
-      flexGridColumnCount={3}
+      flexGridColumnCount={[1, 1, 1, 3]}
       flexGridColumnGap={"1rem"}
       paddingTop={"6rem"}
       paddingRight={"1rem"}
       paddingBottom={"4rem"}
       paddingLeft={"1rem"}
-      position={"relative"}
     >
       <FlexGridItem maxWidth={"16rem"} width={"100%"}>
         <CategoryFilter gqlQueryVariables={["male", "unisex"]} />

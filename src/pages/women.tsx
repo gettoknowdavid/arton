@@ -23,21 +23,21 @@ const Women: NextPageWithLayout | any = (props: WomenProps) => {
 
   return (
     <FlexGrid
-      flexGridColumnCount={3}
-      flexGridColumnGap={"2rem"}
+      flexGridColumnCount={[1, 1, 1, 3]}
+      flexGridColumnGap={"1rem"}
       paddingTop={"6rem"}
-      paddingRight={"2rem"}
-      paddingBottom={"6rem"}
-      paddingLeft={"2rem"}
+      paddingRight={"1rem"}
+      paddingBottom={"4rem"}
+      paddingLeft={"1rem"}
     >
-      <FlexGridItem maxWidth={"20rem"} width={"100%"}>
+      <FlexGridItem maxWidth={"16rem"} width={"100%"}>
         <CategoryFilter gqlQueryVariables={["female", "unisex"]} />
         <SizeFilter />
       </FlexGridItem>
       <FlexGridItem>
         <ProductList products={products} loading={props.loading} />
       </FlexGridItem>
-      <FlexGridItem maxWidth={"20rem"} width={"100%"}>
+      <FlexGridItem maxWidth={"16rem"} width={"100%"}>
         <SortFilter />
       </FlexGridItem>
     </FlexGrid>
