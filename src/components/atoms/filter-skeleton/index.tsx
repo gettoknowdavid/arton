@@ -4,12 +4,12 @@ import { Skeleton } from "baseui/skeleton";
 function FilterSkeleton() {
   return (
     <Skeleton
-      width={"14rem"}
+      width={"12rem"}
       height={"1rem"}
       animation
       overrides={{
         Root: {
-          style: { marginTop: "14px", marginBottom: "14px" },
+          style: { marginTop: "0.5rem", marginBottom: "0.5rem" },
         },
       }}
     />
