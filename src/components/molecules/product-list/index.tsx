@@ -40,11 +40,9 @@ const ProductSkeleton = () => {
 function ProductList(props: ProductListProps) {
   return (
     <FlexGrid
-      flexGridColumnCount={[2, 3, 3, 4]}
-      flexGridColumnGap={"2px"}
+      flexGridColumnCount={[2, 2, 3, 3]}
+      flexGridColumnGap={"0.125rem"}
       flexGridRowGap={"1rem"}
-      paddingRight={"2px"}
-      paddingLeft={"2px"}
     >
       {props.loading
         ? productSkeletons.map((index) => (
