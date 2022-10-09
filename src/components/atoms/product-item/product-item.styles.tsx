@@ -21,6 +21,9 @@ export const StyledPITitle = styled("p", ({ $theme }) => ({
   marginTop: "4px",
   marginBottom: 0,
   padding: 0,
+  [$theme.mediaQuery.small]: { fontSize: "0.563rem" },
+  [$theme.mediaQuery.medium]: { fontSize: "0.625rem" },
+  [$theme.mediaQuery.large]: { fontSize: "0.75rem" },
 }));
 
 export const StyledPIPrice = styled("p", ({ $theme }) => ({
@@ -30,5 +33,7 @@ export const StyledPIPrice = styled("p", ({ $theme }) => ({
   marginBottom: 0,
   height: "1rem",
   textTransform: "uppercase",
-  textAlign: "right",
+  [$theme.mediaQuery.small]: { fontSize: "0.563rem", textAlign: "left" },
+  [$theme.mediaQuery.medium]: { fontSize: "0.625rem", textAlign: "right" },
+  [$theme.mediaQuery.large]: { fontSize: "0.75rem", textAlign: "right" },
 }));

@@ -41,7 +41,7 @@ function ProductList(props: ProductListProps) {
   return (
     <FlexGrid
       flexGridColumnCount={[2, 2, 3, 3]}
-      flexGridColumnGap={"1.25rem"}
+      flexGridColumnGap={["0.75rem", "0.75rem", "1rem", "1.25rem"]}
       flexGridRowGap={"4rem"}
     >
       {props.loading
