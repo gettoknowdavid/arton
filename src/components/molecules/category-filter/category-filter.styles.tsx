@@ -11,7 +11,6 @@ export const StyledCFTitle = styled("h1", ({ $theme }) => ({
   marginTop: 0,
   marginBottom: "1rem",
   padding: 0,
-  fontWeight: 600,
   textTransform: "uppercase",
 }));
 

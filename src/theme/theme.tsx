@@ -31,56 +31,60 @@ const CustomTheme: any = createLightTheme(
         fontSize: "0.75rem", // 12px
         fontWeight: 400,
         letterSpacing: "normal",
-        lineHeight: "1.225rem",
+        textSizeAdjust: "100%",
+      },
+      font150: {
+        fontSize: "0.75rem", // 12.5px
+        fontWeight: 600,
+        letterSpacing: "normal",
         textSizeAdjust: "100%",
       },
       font200: {
         fontSize: "0.875rem", // 14px
         fontWeight: 400,
         letterSpacing: "normal",
-        lineHeight: "1.225rem",
+        textSizeAdjust: "100%",
+      },
+      font250: {
+        fontSize: "0.875rem", // 14px
+        fontWeight: 600,
+        letterSpacing: "normal",
         textSizeAdjust: "100%",
       },
       font300: {
         fontSize: "1rem", // 16px
         fontWeight: 400,
         letterSpacing: "normal",
-        lineHeight: "1.225rem",
         textSizeAdjust: "100%",
       },
       font400: {
         fontSize: "1.25rem", // 20px
         fontWeight: 400,
         letterSpacing: "normal",
-        lineHeight: "1.225rem",
         textSizeAdjust: "100%",
       },
       font500: {
         fontSize: "1.5rem", // 24px
         fontWeight: 400,
         letterSpacing: "normal",
-        lineHeight: "1.225rem",
         textSizeAdjust: "100%",
       },
       font600: {
         fontSize: "1.75rem", // 28px
         fontWeight: 400,
         letterSpacing: "normal",
-        lineHeight: "1.225rem",
         textSizeAdjust: "100%",
       },
       font700: {
         fontSize: "2rem", // 32px
         fontWeight: 400,
         letterSpacing: "normal",
-        lineHeight: "1.225rem",
         textSizeAdjust: "100%",
       },
       font800: {
         fontSize: "2.25rem", // 36px
         fontWeight: 400,
         letterSpacing: "normal",
-        lineHeight: "1.225rem",
         textSizeAdjust: "100%",
       },
     },
