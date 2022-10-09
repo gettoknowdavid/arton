@@ -1,4 +1,5 @@
+import { useLocalStorage } from "./use-local-storage";
 import { useRootDispatch } from "./use-root-dispatch";
 import { useRootSelector } from "./use-root-selector";
 
-export { useRootDispatch, useRootSelector };
+export { useLocalStorage, useRootDispatch, useRootSelector };
