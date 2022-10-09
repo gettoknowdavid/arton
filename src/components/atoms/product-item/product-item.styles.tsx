@@ -18,7 +18,7 @@ export const StyledPITitle = styled("p", ({ $theme }) => ({
   lineClamp: 1,
   WebkitLineClamp: 1,
   WebkitBoxOrient: "vertical",
-  marginTop: "4px",
+  marginTop: "0.25rem",
   marginBottom: 0,
   padding: 0,
   [$theme.mediaQuery.small]: { fontSize: "0.563rem" },
@@ -29,7 +29,7 @@ export const StyledPITitle = styled("p", ({ $theme }) => ({
 export const StyledPIPrice = styled("p", ({ $theme }) => ({
   ...$theme.typography.font100,
   lineHeight: "1.3rem",
-  marginTop: "4px",
+  marginTop: "0.25rem",
   marginBottom: 0,
   height: "1rem",
   textTransform: "uppercase",
