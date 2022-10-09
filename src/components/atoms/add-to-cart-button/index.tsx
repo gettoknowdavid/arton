@@ -4,7 +4,11 @@ import { CartActionType, CartItemInterface } from "../../../types";
 import { CartContext } from "../../../contexts/cart.context";
 import Button from "../button";
 
-function AddToCartButton(item: CartItemInterface) {
+type Props = {
+  item: CartItemInterface;
+};
+
+function AddToCartButton(props: Props) {
   const [loading, setLoading] = React.useState(false);
 
   const { dispatch } = React.useContext(CartContext);
@@ -13,7 +17,7 @@ function AddToCartButton(item: CartItemInterface) {
     setLoading(true);
     dispatch({
       type: CartActionType.ADD_TO_CART,
-      payload: { item: item },
+      payload: { item: props.item },
     });
     dispatch({ type: CartActionType.TOGGLE_CART_DRAWER });
     setTimeout(

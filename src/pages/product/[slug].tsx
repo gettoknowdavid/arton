@@ -3,7 +3,7 @@ import { GetStaticPaths, GetStaticProps } from "next";
 import { fetchAPI } from "../../lib/api";
 import { ProductQuery } from "../../graphql/queries/product.query";
 import { ProductsQuery } from "../../graphql/queries/products.query";
-import { BagItemInterface, ProductType } from "../../types";
+import { CartItemInterface, ProductType } from "../../types";
 import SEO from "../../components/seo";
 import Layout from "../../components/layout";
 import { useStyletron } from "baseui";
@@ -36,7 +36,7 @@ function Product({ product }: ProductProps) {
 
   const [size, setSize] = React.useState([SIZES[0]]);
 
-  const bagItem: BagItemInterface = {
+  const bagItem: CartItemInterface = {
     id: id,
     name: attributes.title,
     slug: attributes.slug,
