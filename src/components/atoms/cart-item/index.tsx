@@ -21,6 +21,13 @@ function CartItem(props: Props) {
 
   const { dispatch } = React.useContext(CartContext);
 
+  const removeItem = () => {
+    dispatch({
+      type: CartActionType.REMOVE_FROM_CART,
+      payload: { id: item.id },
+    });
+  };
+
   return (
     <li
       className={css({
@@ -219,7 +226,7 @@ function CartItem(props: Props) {
         </FlexGrid>
       </div>
       <div
-        onClick={() => {}}
+        onClick={removeItem}
         className={css({
           position: "absolute",
           top: 0,
