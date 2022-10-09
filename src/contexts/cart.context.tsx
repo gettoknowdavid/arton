@@ -45,10 +45,28 @@ const reducer = (state: CartContextType, action: CartAction) => {
       return { ...state, cartDrawerOpen: false };
 
     case "DECREASE_QUANTITY":
-      break;
+      return {
+        ...state,
+        items: state.items
+          .map((i) => {
+            if (i.id === action.payload.id) {
+              return { ...i, quantity: i.quantity - 1 };
+            }
+            return i;
+          })
+          .filter((i) => i.quantity > 0),
+      };
 
     case "INCREASE_QUANTITY":
-      break;
+      return {
+        ...state,
+        items: state.items.map((i) => {
+          if (i.id === action.payload.id) {
+            return { ...i, quantity: i.quantity + 1 };
+          }
+          return i;
+        }),
+      };
 
     case "REMOVE_FROM_CART":
       return {
@@ -61,6 +79,7 @@ const reducer = (state: CartContextType, action: CartAction) => {
 
     case "TOGGLE_CART_DRAWER":
       return { ...state, cartDrawerOpen: !state.cartDrawerOpen };
+
     default:
       return state;
   }
