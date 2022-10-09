@@ -39,17 +39,26 @@ const reducer = (state: CartContextType, action: CartAction) => {
       };
 
     case "CLEAR_CART":
-      return { ...initialState };
+      return { ...state, ...initialState };
+
     case "CLOSE_CART_DRAWER":
       return { ...state, cartDrawerOpen: false };
+
     case "DECREASE_QUANTITY":
       break;
+
     case "INCREASE_QUANTITY":
       break;
+
     case "REMOVE_FROM_CART":
-      break;
+      return {
+        ...state,
+        items: state.items.filter((i) => i.id !== action.payload.id),
+      };
+
     case "SELECT_SIZE":
       break;
+
     case "TOGGLE_CART_DRAWER":
       return { ...state, cartDrawerOpen: !state.cartDrawerOpen };
     default:
