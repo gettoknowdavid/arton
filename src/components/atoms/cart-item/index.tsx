@@ -28,6 +28,18 @@ function CartItem(props: Props) {
     });
     dispatch({ type: CartActionType.CLOSE_CART_DRAWER });
   };
+  const decrease = () => {
+    dispatch({
+      type: CartActionType.DECREASE_QUANTITY,
+      payload: { id: item.id },
+    });
+  };
+  const increase = () => {
+    dispatch({
+      type: CartActionType.INCREASE_QUANTITY,
+      payload: { id: item.id },
+    });
+  };
 
   return (
     <li
@@ -197,7 +209,7 @@ function CartItem(props: Props) {
                 justifyContent={"center"}
                 alignItems={"center"}
               >
-                <Plus weight={"bold"} onClick={() => {}} />
+                <Plus weight={"bold"} onClick={increase} />
               </FlexGridItem>
               <FlexGridItem
                 display={"flex"}
@@ -220,7 +232,7 @@ function CartItem(props: Props) {
                 justifyContent={"center"}
                 alignItems={"center"}
               >
-                <Minus weight={"bold"} onClick={() => {}} />
+                <Minus weight={"bold"} onClick={decrease} />
               </FlexGridItem>
             </FlexGrid>
           </FlexGridItem>
