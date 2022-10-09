@@ -7,7 +7,7 @@ import { totalAmount } from "../../../store/slices/cart.slice";
 
 function BagTotalSection() {
   const [css, theme] = useStyletron();
-  const amount = useRootSelector(totalAmount);
+  const amount = 50;
 
   return (
     <div>
