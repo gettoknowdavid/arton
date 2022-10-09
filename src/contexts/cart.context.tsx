@@ -24,9 +24,8 @@ const reducer = (state: CartContextType, action: CartAction) => {
 
       if (isOld) {
         const items = state.items.map((i) => {
-          if (i.id === id) {
-            return { ...i, quantity: i.quantity + 1 };
-          }
+          if (i.id === id) return { ...i, quantity: i.quantity + 1 };
+
           return i;
         });
         cartItems = [...items];

@@ -46,6 +46,7 @@ function CategoryList(props: CategoryListProps) {
                   }
                   className={css({ objectFit: "cover" })}
                   layout={"fill"}
+                  priority
                 />
               </motion.div>
             ) : (
