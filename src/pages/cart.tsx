@@ -3,17 +3,22 @@ import { useStyletron } from "baseui";
 import { FlexGrid, FlexGridItem } from "baseui/flex-grid";
 import SEO from "../components/seo";
 import Layout from "../components/layout";
-import { useRootSelector } from "../hooks";
-import { selectCart, totalAmount } from "../store/slices/cart.slice";
 import BagTotalSection from "../components/molecules/bag-total-section";
-import { BagItemInterface } from "../types";
-import BagItem from "../components/atoms/cart-item";
 import { currency } from "../lib/currency-formatter";
+import { CartItemInterface } from "../types";
+import { CartContext } from "../contexts/cart.context";
+import CartItem from "../components/atoms/cart-item";
 
 function Cart() {
   const [css, theme] = useStyletron();
-  const { items } = useRootSelector(selectCart);
-  const amount = useRootSelector(totalAmount);
+  const amount = 50;
+
+  const { state } = React.useContext(CartContext);
+  const [items, setItems] = React.useState<CartItemInterface[]>([]);
+
+  React.useEffect(() => {
+    setItems(state.items);
+  }, [state.items]);
 
   return (
     <FlexGrid
@@ -45,7 +50,7 @@ function Cart() {
             My Cart
           </h1>
         </div>
-        <div
+        <ul
           className={css({
             paddingTop: "1rem",
             paddingRight: "2rem",
@@ -55,12 +60,10 @@ function Cart() {
             backgroundColor: theme.colors.mono200,
           })}
         >
-          <ul className={css({ padding: 0 })}>
-            {items.map((item: BagItemInterface) => (
-              <BagItem key={item.id} item={item} />
-            ))}
-          </ul>
-        </div>
+          {items.map((item: CartItemInterface) => (
+            <CartItem key={item.id} item={item} />
+          ))}
+        </ul>
         <div
           className={css({
             paddingTop: "1rem",
