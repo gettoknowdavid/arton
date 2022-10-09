@@ -17,21 +17,23 @@ function AddToCartButton(props: Props) {
 
   const { dispatch } = React.useContext(CartContext);
 
+  const onClick = () => {
+    setLoading(true);
+    dispatch({
+      type: CartActionType.ADD_TO_CART,
+      payload: { item: bagItem },
+    });
+    dispatch({ type: CartActionType.TOGGLE_CART_DRAWER });
+    setTimeout(
+      () => dispatch({ type: CartActionType.CLOSE_CART_DRAWER }),
+      5000
+    );
+    setLoading(false);
+  };
+
   return (
     <Button
-      onClick={() => {
-        setLoading(true);
-        dispatch({
-          type: CartActionType.ADD_TO_CART,
-          payload: { item: bagItem },
-        });
-        dispatch({ type: CartActionType.TOGGLE_CART_DRAWER });
-        setTimeout(
-          () => dispatch({ type: CartActionType.CLOSE_CART_DRAWER }),
-          5000
-        );
-        setLoading(false);
-      }}
+      onClick={onClick}
       isLoading={loading}
       size={SIZE.compact}
       overrides={{
@@ -40,15 +42,15 @@ function AddToCartButton(props: Props) {
             <UseAnimations
               animation={loadingIcon}
               strokeColor={"white"}
-              size={14}
+              size={15}
             />
           ),
         },
         BaseButton: {
-          style: () => ({
+          style: ({ $theme }) => ({
+            ...$theme.typography.font100,
+            letterSpacing: ".05rem",
             width: "100%",
-            fontSize: "1.1rem",
-            fontWeight: 400,
             textTransform: "uppercase",
           }),
         },
