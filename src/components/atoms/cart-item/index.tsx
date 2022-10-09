@@ -1,21 +1,15 @@
 import React from "react";
-import { CartItemInterface } from "../../../types";
+import { CartActionType, CartItemInterface } from "../../../types";
 import Image from "next/image";
 import Link from "next/link";
 import { currency } from "../../../lib/currency-formatter";
 import { useStyletron } from "baseui";
-import { useRootDispatch } from "../../../hooks";
-import {
-  decreaseQuantity,
-  increaseQuantity,
-  removeFromCart,
-  selectSize,
-} from "../../../store/slices/cart.slice";
 import { Delete } from "baseui/icon";
 import { FlexGrid, FlexGridItem } from "baseui/flex-grid";
 import { Minus, Plus } from "phosphor-react";
 import { Select, SIZE } from "baseui/select";
 import { SIZES } from "../../../lib/sizes";
+import { CartContext } from "../../../contexts/cart.context";
 
 type Props = {
   item: CartItemInterface;
@@ -25,7 +19,7 @@ function CartItem(props: Props) {
   const { item } = props;
   const [css, theme] = useStyletron();
 
-  const dispatch = useRootDispatch();
+  const { dispatch } = React.useContext(CartContext);
 
   return (
     <li
@@ -59,6 +53,7 @@ function CartItem(props: Props) {
           src={item.image}
           alt={item.name}
           layout={"fill"}
+          priority
           className={css({ objectFit: "contain" })}
         />
       </div>
@@ -115,9 +110,10 @@ function CartItem(props: Props) {
               searchable={false}
               placeholder="Select size"
               onChange={(params: any) => {
-                dispatch(
-                  selectSize({ item: props.item, size: params.value[0] })
-                );
+                dispatch({
+                  type: CartActionType.SELECT_SIZE,
+                  payload: { item: props.item, size: params.value[0] },
+                });
               }}
               overrides={{
                 Dropdown: {
@@ -193,10 +189,7 @@ function CartItem(props: Props) {
                 justifyContent={"center"}
                 alignItems={"center"}
               >
-                <Plus
-                  weight={"bold"}
-                  onClick={() => dispatch(increaseQuantity(item))}
-                />
+                <Plus weight={"bold"} onClick={() => {}} />
               </FlexGridItem>
               <FlexGridItem
                 display={"flex"}
@@ -212,24 +205,21 @@ function CartItem(props: Props) {
                   })}
                 >
                   {`Qty: ${item.quantity}`}
-                </p>{" "}
+                </p>
               </FlexGridItem>
               <FlexGridItem
                 display={"flex"}
                 justifyContent={"center"}
                 alignItems={"center"}
               >
-                <Minus
-                  weight={"bold"}
-                  onClick={() => dispatch(decreaseQuantity(item))}
-                />
+                <Minus weight={"bold"} onClick={() => {}} />
               </FlexGridItem>
             </FlexGrid>
           </FlexGridItem>
         </FlexGrid>
       </div>
       <div
-        onClick={() => dispatch(removeFromCart(item))}
+        onClick={() => {}}
         className={css({
           position: "absolute",
           top: 0,
