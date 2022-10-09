@@ -110,3 +110,38 @@ export type GlobalType = {
   toggleDrawer: () => void;
   closeDrawer: () => void;
 };
+
+export type CartContextType = {
+  items: CartItemInterface[];
+  cartDrawerOpen: boolean;
+};
+
+export type ActionMap<M extends { [index: string]: any }> = {
+  [Key in keyof M]: M[Key] extends undefined
+    ? { type: Key }
+    : { type: Key; payload: M[Key] };
+};
+
+export enum CartActionType {
+  ADD_TO_CART = "ADD_TO_CART",
+  CLEAR_CART = "CLEAR_CART",
+  CLOSE_CART_DRAWER = "CLOSE_CART_DRAWER",
+  DECREASE_QUANTITY = "DECREASE_QUANTITY",
+  INCREASE_QUANTITY = "INCREASE_QUANTITY",
+  REMOVE_FROM_CART = "REMOVE_FROM_CART",
+  SELECT_SIZE = "SELECT_SIZE",
+  TOGGLE_CART_DRAWER = "TOGGLE_CART_DRAWER",
+}
+
+type CartPayload = {
+  [CartActionType.ADD_TO_CART]: { item: CartItemInterface };
+  [CartActionType.CLEAR_CART]: any;
+  [CartActionType.CLOSE_CART_DRAWER]: any;
+  [CartActionType.DECREASE_QUANTITY]: { id: string };
+  [CartActionType.INCREASE_QUANTITY]: { id: string };
+  [CartActionType.REMOVE_FROM_CART]: { id: string };
+  [CartActionType.SELECT_SIZE]: { item: CartItemInterface; size: SizeType };
+  [CartActionType.TOGGLE_CART_DRAWER]: any;
+};
+
+export type CartAction = ActionMap<CartPayload>[keyof ActionMap<CartPayload>];
