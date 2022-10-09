@@ -2,15 +2,15 @@ import { styled } from "baseui";
 
 // Styled component Category Filter Title
 export const StyledCFWrapper = styled("div", () => ({
-  paddingBottom: "3rem",
+  paddingBottom: "2rem",
 }));
 
 // Styled component Category Filter Title
-export const StyledCFTitle = styled("h1", () => ({
+export const StyledCFTitle = styled("h1", ({ $theme }) => ({
+  ...$theme.typography.font250,
   marginTop: 0,
   marginBottom: "1rem",
   padding: 0,
-  fontSize: "1.2rem",
   fontWeight: 600,
   textTransform: "uppercase",
 }));
@@ -24,12 +24,9 @@ export const StyledCFList = styled("ul", () => ({
 
 // Styled component Category Filter List Item
 export const StyledCFListItem = styled("li", ({ $theme }) => ({
-  marginBottom: 0,
-  padding: 0,
+  ...$theme.typography.font100,
   textTransform: "uppercase",
-  fontWeight: 300,
-  fontSize: "1rem",
-  lineHeight: "1.3rem",
+  lineHeight: "1rem",
   cursor: "pointer",
   ":hover": { color: $theme.colors.mono600 },
 }));
