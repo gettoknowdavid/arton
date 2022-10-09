@@ -137,9 +137,9 @@ type CartPayload = {
   [CartActionType.ADD_TO_CART]: { item: CartItemInterface };
   [CartActionType.CLEAR_CART]: any;
   [CartActionType.CLOSE_CART_DRAWER]: any;
-  [CartActionType.DECREASE_QUANTITY]: { id: string };
-  [CartActionType.INCREASE_QUANTITY]: { id: string };
-  [CartActionType.REMOVE_FROM_CART]: { id: string };
+  [CartActionType.DECREASE_QUANTITY]: { id: string | number };
+  [CartActionType.INCREASE_QUANTITY]: { id: string | number };
+  [CartActionType.REMOVE_FROM_CART]: { id: string | number };
   [CartActionType.SELECT_SIZE]: { item: CartItemInterface; size: SizeType };
   [CartActionType.TOGGLE_CART_DRAWER]: any;
 };
