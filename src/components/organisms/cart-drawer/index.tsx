@@ -11,19 +11,22 @@ import {
   StyledCartList,
 } from "./cart-drawer.styles";
 import { CartContext } from "../../../contexts/cart.context";
-import { CartItemInterface } from "../../../types";
+import { CartActionType, CartItemInterface } from "../../../types";
 import CartItem from "../../atoms/cart-item";
 import { currency } from "../../../lib/currency-formatter";
 import { FlexGrid, FlexGridItem } from "baseui/flex-grid";
 import { Button, KIND, SIZE } from "baseui/button";
 
 function CartDrawer() {
-  const { state } = React.useContext(CartContext);
+  const { dispatch, state } = React.useContext(CartContext);
+  const closeDrawer = () => {
+    dispatch({ type: CartActionType.CLOSE_CART_DRAWER });
+  };
 
   return (
     <Drawer
       isOpen={state.cartDrawerOpen}
-      onClose={() => null}
+      onClose={closeDrawer}
       autoFocus
       anchor={ANCHOR.right}
       overrides={{
