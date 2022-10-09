@@ -5,7 +5,7 @@ import { useStyletron } from "baseui";
 import { useRootSelector } from "../../../hooks";
 import { totalAmount } from "../../../store/slices/cart.slice";
 
-function BagTotalSection() {
+function CartTotalSection() {
   const [css, theme] = useStyletron();
   const amount = 50;
 
@@ -90,4 +90,4 @@ function BagTotalSection() {
   );
 }
 
-export default BagTotalSection;
+export default CartTotalSection;

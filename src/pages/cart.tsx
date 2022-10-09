@@ -3,7 +3,7 @@ import { useStyletron } from "baseui";
 import { FlexGrid, FlexGridItem } from "baseui/flex-grid";
 import SEO from "../components/seo";
 import Layout from "../components/layout";
-import BagTotalSection from "../components/molecules/bag-total-section";
+import CartTotalSection from "../components/molecules/cart-total-section";
 import { currency } from "../lib/currency-formatter";
 import { CartItemInterface } from "../types";
 import { CartContext } from "../contexts/cart.context";
@@ -113,7 +113,7 @@ function Cart() {
         paddingBottom={"2rem"}
         paddingLeft={"2rem"}
       >
-        <BagTotalSection />
+        <CartTotalSection />
       </FlexGridItem>
     </FlexGrid>
   );
