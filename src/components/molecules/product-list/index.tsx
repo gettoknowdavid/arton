@@ -25,14 +25,14 @@ const ProductSkeleton = () => {
       >
         <Skeleton height={"100%"} width={"100%"} animation />
       </div>
-      <div>
-        <div className={css({ marginTop: "4px" })}>
+      <FlexGrid flexGridColumnCount={[1, 1, 2, 2]} flexGridColumnGap={"1rem"}>
+        <FlexGridItem marginTop={"4px"}>
           <Skeleton height={"1rem"} width={"100%"} animation />
-        </div>
-        <div className={css({ marginTop: "6px" })}>
+        </FlexGridItem>
+        <FlexGridItem maxWidth={"4rem"} width={"100%"} marginTop={"4px"}>
           <Skeleton height={"1rem"} width={"4rem"} animation />
-        </div>
-      </div>
+        </FlexGridItem>
+      </FlexGrid>
     </div>
   );
 };
@@ -41,8 +41,8 @@ function ProductList(props: ProductListProps) {
   return (
     <FlexGrid
       flexGridColumnCount={[2, 2, 3, 3]}
-      flexGridColumnGap={"0.125rem"}
-      flexGridRowGap={"1rem"}
+      flexGridColumnGap={"2rem"}
+      flexGridRowGap={"4rem"}
     >
       {props.loading
         ? productSkeletons.map((index) => (

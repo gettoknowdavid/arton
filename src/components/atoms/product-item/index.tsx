@@ -4,6 +4,7 @@ import Image from "next/image";
 import { currency } from "../../../lib/currency-formatter";
 import { useStyletron } from "baseui";
 import { useRouter } from "next/router";
+import { FlexGrid, FlexGridItem } from "baseui/flex-grid";
 
 type ProductItemProps = {
   product: ProductType;
@@ -34,38 +35,44 @@ function ProductItem(props: ProductItemProps) {
         />
       </div>
       <div>
-        <p
-          className={css({
-            marginTop: "4px",
-            marginBottom: 0,
-            padding: 0,
-            textTransform: "uppercase",
-            fontWeight: 300,
-            fontSize: "1rem",
-            lineHeight: "1.3rem",
-            height: "1rem",
-            overflow: "hidden",
-            textOverflow: "ellipsis",
-            display: "-webkit-box",
-            lineClamp: 1,
-            WebkitLineClamp: 1,
-            WebkitBoxOrient: "vertical",
-          })}
-        >
-          {product.attributes.title}
-        </p>
-
-        <p
-          className={css({
-            marginTop: "6px",
-            padding: 0,
-            textTransform: "uppercase",
-            fontSize: "1rem",
-            lineHeight: "1.3rem",
-          })}
-        >
-          {currency.format(product.attributes.price)}
-        </p>
+        <FlexGrid flexGridColumnCount={[1, 1, 2, 2]} flexGridColumnGap={"1rem"}>
+          <FlexGridItem>
+            <p
+              className={css({
+                ...theme.typography.font100,
+                textTransform: "uppercase",
+                lineHeight: "1.3rem",
+                height: "1rem",
+                overflow: "hidden",
+                textOverflow: "ellipsis",
+                display: "-webkit-box",
+                lineClamp: 1,
+                WebkitLineClamp: 1,
+                WebkitBoxOrient: "vertical",
+                marginTop: "4px",
+                marginBottom: 0,
+                padding: 0,
+              })}
+            >
+              {product.attributes.title}
+            </p>
+          </FlexGridItem>
+          <FlexGridItem maxWidth={"4rem"} width={"100%"}>
+            <p
+              className={css({
+                ...theme.typography.font100,
+                lineHeight: "1.3rem",
+                marginTop: "4px",
+                marginBottom: 0,
+                height: "1rem",
+                textTransform: "uppercase",
+                textAlign: "right",
+              })}
+            >
+              {currency.format(product.attributes.price)}
+            </p>
+          </FlexGridItem>
+        </FlexGrid>
       </div>
     </div>
   );
