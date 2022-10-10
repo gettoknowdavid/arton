@@ -1,8 +1,7 @@
 import React from "react";
-import Image from "next/image";
-import leftArrow from "../../../public/left-arrow.png";
 import { styled } from "baseui";
 import { useRouter } from "next/router";
+import { CaretLeft } from "phosphor-react";
 
 const Wrapper = styled("div", () => ({
   position: "relative",
@@ -12,14 +11,8 @@ const Wrapper = styled("div", () => ({
   display: "flex",
 }));
 
-const ImageWrapper = styled("div", () => ({
-  position: "relative",
-  height: "1.3rem",
-  width: "2rem",
-}));
-
 const Text = styled("div", ({ $theme }) => ({
-  ...$theme.typography.font200,
+  ...$theme.typography.font100,
   position: "relative",
   height: "1.3rem",
   width: "100%",
@@ -27,6 +20,7 @@ const Text = styled("div", ({ $theme }) => ({
   alignItems: "center",
   marginLeft: "0.5rem",
   textTransform: "uppercase",
+  [$theme.mediaQuery.large]: { ...$theme.typography.font200 },
 }));
 
 function BackButton() {
@@ -34,9 +28,7 @@ function BackButton() {
 
   return (
     <Wrapper onClick={router.back}>
-      <ImageWrapper>
-        <Image src={leftArrow} alt={"left arrow"} layout={"fill"} priority />
-      </ImageWrapper>
+      <CaretLeft height={"1.3rem"} />
       <Text>Back</Text>
     </Wrapper>
   );

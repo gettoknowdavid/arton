@@ -25,13 +25,23 @@ import {
 } from "../../components/styled-components";
 import ProductPageImageList from "../../components/molecules/product-page-image-list";
 import { SIZES } from "../../lib/sizes";
+import { Carousel } from "react-responsive-carousel";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import Image from "next/image";
+import {
+  AnimationHandler,
+  AnimationHandlerResponse,
+} from "react-responsive-carousel/lib/ts/components/Carousel/types";
+import { Button } from "baseui/button";
+import { Block } from "baseui/block";
+import { CaretLeft, CaretRight } from "phosphor-react"; // requires a loader
 
 type ProductProps = {
   product: ProductType;
 };
 
 function Product({ product }: ProductProps) {
-  const [css] = useStyletron();
+  const [css, theme] = useStyletron();
   const { id, attributes } = product;
 
   const [size, setSize] = React.useState([SIZES[0]]);
@@ -54,9 +64,88 @@ function Product({ product }: ProductProps) {
       </StyledPBackButtonWrapper>
 
       <StyledPMainBodyWrapper>
-        <FlexGrid flexGridColumnCount={2} height={"80vh"} width={"100%"}>
+        <FlexGrid
+          flexGridColumnCount={[1, 1, 1, 2]}
+          height={["100%", "100%", "100%", "80vh"]}
+          width={"100%"}
+        >
           <FlexGridItem position={"relative"}>
             <ProductPageImageList images={product.attributes.images.data} />
+            <Carousel
+              showThumbs={false}
+              showStatus={false}
+              showIndicators={false}
+              dynamicHeight
+              renderArrowPrev={(clickHandler: () => void, hasPrev: boolean) =>
+                hasPrev && (
+                  <Block
+                    onClick={clickHandler}
+                    className={css({
+                      position: "absolute",
+                      zIndex: 2,
+                      top: "calc(50% - 15px)",
+                      height: "1.75rem",
+                      width: "1.75rem",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "flex-end",
+                      cursor: "pointer",
+                      left: 0,
+                    })}
+                  >
+                    <CaretLeft />
+                  </Block>
+                )
+              }
+              renderArrowNext={(clickHandler: () => void, hasNext: boolean) =>
+                hasNext && (
+                  <Block
+                    onClick={clickHandler}
+                    className={css({
+                      position: "absolute",
+                      zIndex: 2,
+                      top: "calc(50% - 15px)",
+                      height: "1.75rem",
+                      width: "1.75rem",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "flex-start",
+                      cursor: "pointer",
+                      right: 0,
+                    })}
+                  >
+                    <CaretRight />
+                  </Block>
+                )
+              }
+              className={css({
+                [theme.mediaQuery.small]: { display: "initial" },
+                [theme.mediaQuery.medium]: { display: "initial" },
+                [theme.mediaQuery.large]: { display: "none" },
+              })}
+            >
+              {product.attributes.images.data.map((i) => (
+                <div
+                  key={i.id}
+                  className={css({
+                    position: "relative",
+                    width: "100%",
+                    [theme.mediaQuery.small]: { height: "60vh" },
+                    [theme.mediaQuery.medium]: { height: "85vh" },
+                    [theme.mediaQuery.large]: { height: "100%" },
+                  })}
+                >
+                  <Image
+                    src={product.attributes.image.data.attributes.url}
+                    alt={
+                      product.attributes.image.data.attributes.alternativeText
+                    }
+                    layout={"fill"}
+                    className={css({ objectFit: "cover" })}
+                  />
+                </div>
+              ))}
+            </Carousel>
           </FlexGridItem>
 
           <FlexGridItem

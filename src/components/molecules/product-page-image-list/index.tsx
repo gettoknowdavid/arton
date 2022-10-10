@@ -3,9 +3,8 @@ import Image from "next/image";
 import { styled, useStyletron } from "baseui";
 import { ImageType } from "../../../types";
 
-export const StyledPImageList = styled("ul", () => ({
+export const StyledPImageList = styled("ul", ({ $theme }) => ({
   margin: 0,
-  display: "flex",
   flexDirection: "row-reverse",
   listStyleType: "none",
   height: "80vh",
@@ -18,13 +17,15 @@ export const StyledPImageList = styled("ul", () => ({
   top: 0,
   bottom: 0,
   right: 0,
-  paddingLeft: "10rem",
+  [$theme.mediaQuery.small]: { display: "none" },
+  [$theme.mediaQuery.medium]: { display: "none" },
+  [$theme.mediaQuery.large]: { display: "flex" },
 }));
 
 export const StyledPImageListItem = styled("li", () => ({
   aspectRatio: 12 / 16,
   height: "80vh",
-  marginLeft: "2rem",
+  marginLeft: "1rem",
   position: "relative",
   width: "100%",
 }));
