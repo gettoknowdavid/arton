@@ -84,7 +84,6 @@ function Product({ product }: ProductProps) {
                 <StyledPParagraph $fontWeight={400}>
                   {currency.format(product.attributes.price)}
                 </StyledPParagraph>
-
                 <SizeSelector
                   value={size}
                   onChange={(params: any) => setSize(params.value)}
