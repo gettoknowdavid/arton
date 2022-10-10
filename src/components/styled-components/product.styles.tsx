@@ -34,8 +34,12 @@ export const StyledPDetailsWrapper = styled("div", ({ $theme }) => ({
   paddingRight: "1rem",
   paddingBottom: "1rem",
   paddingLeft: "1rem",
+  textAlign: "center",
+  [$theme.mediaQuery.medium]: { paddingRight: "8rem", paddingLeft: "8rem" },
   [$theme.mediaQuery.large]: {
+    textAlign: "left",
     marginTop: 0,
+    paddingRight: 0,
     paddingLeft: "6rem",
     width: "36rem",
     marginRight: "12rem",

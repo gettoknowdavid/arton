@@ -86,7 +86,7 @@ function Product({ product }: ProductProps) {
                 <StyledPParagraph $upperCase>
                   Colour: {product.attributes.colour.data.attributes.title}
                 </StyledPParagraph>
-                <StyledPParagraph $fontWeight={400}>
+                <StyledPParagraph $fontWeight={600}>
                   {currency.format(product.attributes.price)}
                 </StyledPParagraph>
                 <SizeSelector
@@ -100,9 +100,9 @@ function Product({ product }: ProductProps) {
         </FlexGrid>
       </StyledPMainBodyWrapper>
 
-      <div className={css({ paddingInline: "2rem" })}>
+      <div className={css({ paddingInline: "1rem", marginTop: "2rem" })}>
         <StyledPTitle>About this Product</StyledPTitle>
-        <FlexGrid flexGridColumnCount={2}>
+        <FlexGrid flexGridColumnCount={[1, 1, 1, 2]}>
           <FlexGridItem>
             <div className={css({ marginBlock: "1rem" })}>
               <StyledPDetailHeading>Details</StyledPDetailHeading>

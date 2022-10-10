@@ -34,16 +34,16 @@ function SizeSelector(props: Props) {
             }),
           },
           DropdownListItem: {
-            style: () => ({
-              fontSize: "1.1rem",
+            style: ({ $theme }) => ({
+              ...$theme.typography.font100,
               fontWeight: 300,
               textTransform: "uppercase",
             }),
           },
 
           Root: {
-            style: () => ({
-              fontSize: "1.1rem",
+            style: ({ $theme }) => ({
+              ...$theme.typography.font100,
               fontWeight: 300,
               textTransform: "uppercase",
             }),
@@ -76,7 +76,14 @@ function SizeSelector(props: Props) {
           },
         }}
       />
-      <p className={css({ fontWeight: 300, marginTop: "0.74rem" })}>
+      <p
+        className={css({
+          ...theme.typography.font100,
+          fontWeight: 300,
+          textAlign: "left",
+          marginTop: "0.5rem",
+        })}
+      >
         SIZE GUIDE
       </p>
     </div>
