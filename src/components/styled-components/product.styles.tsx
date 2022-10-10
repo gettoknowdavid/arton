@@ -61,15 +61,16 @@ export const StyledPParagraph = styled<
   lineHeight: "1.1rem",
 }));
 
-export const StyledPDetailHeading = styled("h1", () => ({
-  fontSize: "1.2rem",
-  fontWeight: 400,
+export const StyledPDetailHeading = styled("h1", ({ $theme }) => ({
+  ...$theme.typography.font250,
   textTransform: "uppercase",
-  margin: 0,
+  marginTop: 0,
+  marginBottom: "0.25rem",
   padding: 0,
 }));
 
-export const StyledPDetailSubHeading = styled("p", () => ({
+export const StyledPDetailSubHeading = styled("p", ({ $theme }) => ({
+  ...$theme.typography.font100,
   fontWeight: 300,
   margin: 0,
   padding: 0,
