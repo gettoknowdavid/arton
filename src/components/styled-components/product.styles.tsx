@@ -54,9 +54,11 @@ export const StyledPParagraph = styled<
   "p",
   { $upperCase?: boolean; $fontWeight?: number | string },
   CustomStyledComponent
->("p", ({ $upperCase = false, $fontWeight = 300 }) => ({
+>("p", ({ $theme, $upperCase = false, $fontWeight = 300 }) => ({
+  ...$theme.typography.font100,
   fontWeight: $fontWeight,
   textTransform: $upperCase ? "uppercase" : undefined,
+  lineHeight: "1.1rem",
 }));
 
 export const StyledPDetailHeading = styled("h1", () => ({
