@@ -25,16 +25,8 @@ import {
 } from "../../components/styled-components";
 import ProductPageImageList from "../../components/molecules/product-page-image-list";
 import { SIZES } from "../../lib/sizes";
-import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import Image from "next/image";
-import {
-  AnimationHandler,
-  AnimationHandlerResponse,
-} from "react-responsive-carousel/lib/ts/components/Carousel/types";
-import { Button } from "baseui/button";
-import { Block } from "baseui/block";
-import { CaretLeft, CaretRight } from "phosphor-react"; // requires a loader
+import ProductPageCarousel from "../../components/molecules/product-page-carousel"; // requires a loader
 
 type ProductProps = {
   product: ProductType;
@@ -71,81 +63,7 @@ function Product({ product }: ProductProps) {
         >
           <FlexGridItem position={"relative"}>
             <ProductPageImageList images={product.attributes.images.data} />
-            <Carousel
-              showThumbs={false}
-              showStatus={false}
-              showIndicators={false}
-              dynamicHeight
-              renderArrowPrev={(clickHandler: () => void, hasPrev: boolean) =>
-                hasPrev && (
-                  <Block
-                    onClick={clickHandler}
-                    className={css({
-                      position: "absolute",
-                      zIndex: 2,
-                      top: "calc(50% - 15px)",
-                      height: "1.75rem",
-                      width: "1.75rem",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "flex-end",
-                      cursor: "pointer",
-                      left: 0,
-                    })}
-                  >
-                    <CaretLeft />
-                  </Block>
-                )
-              }
-              renderArrowNext={(clickHandler: () => void, hasNext: boolean) =>
-                hasNext && (
-                  <Block
-                    onClick={clickHandler}
-                    className={css({
-                      position: "absolute",
-                      zIndex: 2,
-                      top: "calc(50% - 15px)",
-                      height: "1.75rem",
-                      width: "1.75rem",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "flex-start",
-                      cursor: "pointer",
-                      right: 0,
-                    })}
-                  >
-                    <CaretRight />
-                  </Block>
-                )
-              }
-              className={css({
-                [theme.mediaQuery.small]: { display: "initial" },
-                [theme.mediaQuery.medium]: { display: "initial" },
-                [theme.mediaQuery.large]: { display: "none" },
-              })}
-            >
-              {product.attributes.images.data.map((i) => (
-                <div
-                  key={i.id}
-                  className={css({
-                    position: "relative",
-                    width: "100%",
-                    [theme.mediaQuery.small]: { height: "60vh" },
-                    [theme.mediaQuery.medium]: { height: "85vh" },
-                    [theme.mediaQuery.large]: { height: "100%" },
-                  })}
-                >
-                  <Image
-                    src={product.attributes.image.data.attributes.url}
-                    alt={
-                      product.attributes.image.data.attributes.alternativeText
-                    }
-                    layout={"fill"}
-                    className={css({ objectFit: "cover" })}
-                  />
-                </div>
-              ))}
-            </Carousel>
+            <ProductPageCarousel images={product.attributes.images.data} />
           </FlexGridItem>
 
           <FlexGridItem
@@ -171,10 +89,7 @@ function Product({ product }: ProductProps) {
                   value={size}
                   onChange={(params: any) => setSize(params.value)}
                 />
-
-                <div className={css({ marginTop: "3rem" })}>
-                  <AddToBagButton item={bagItem} />
-                </div>
+                <AddToBagButton item={bagItem} set={{ marginTop: "3rem" }} />
               </div>
             </StyledPDetailsWrapper>
           </FlexGridItem>
