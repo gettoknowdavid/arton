@@ -25,24 +25,29 @@ export const StyledPMainBodyWrapper = styled("div", ({ $theme }) => ({
   [$theme.mediaQuery.large]: { marginTop: 0, height: "100vh" },
 }));
 
-export const StyledPDetailsWrapper = styled("div", () => ({
-  width: "36rem",
+export const StyledPDetailsWrapper = styled("div", ({ $theme }) => ({
+  width: "100%",
   height: "100%",
-  paddingLeft: "6rem",
   paddingBottom: "2rem",
-  marginRight: "10rem",
   display: "flex",
   justifyContent: "stretch",
-  alignItems: "flex-end",
+  paddingTop: "1rem",
+  paddingRight: "1rem",
+  paddingLeft: "1rem",
+  [$theme.mediaQuery.large]: {
+    marginTop: 0,
+    paddingLeft: "6rem",
+    width: "36rem",
+    marginRight: "12rem",
+    alignItems: "flex-end",
+  },
 }));
 
-export const StyledPTitle = styled("h1", () => ({
-  fontWeight: 400,
-  fontSize: "1.5rem",
-  lineHeight: "2rem",
+export const StyledPTitle = styled("h1", ({ $theme }) => ({
+  ...$theme.typography.font300,
+  fontWeight: 600,
   textTransform: "uppercase",
-  marginTop: 0,
-  marginBottom: "1rem",
+  lineHeight: "1.3rem",
 }));
 
 export const StyledPParagraph = styled<

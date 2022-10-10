@@ -69,7 +69,12 @@ function Product({ product }: ProductProps) {
           <FlexGridItem
             display={"flex"}
             alignItems={"flex-end"}
-            maxWidth={"calc(((100% - 0px) / 3) - 0.5px)"}
+            maxWidth={[
+              "100%",
+              "100%",
+              "100%",
+              "calc(((100% - 0px) / 3) - 0.5px)",
+            ]}
             width={"100%"}
           >
             <StyledPDetailsWrapper>
