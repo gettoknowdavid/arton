@@ -28,11 +28,11 @@ export const StyledPMainBodyWrapper = styled("div", ({ $theme }) => ({
 export const StyledPDetailsWrapper = styled("div", ({ $theme }) => ({
   width: "100%",
   height: "100%",
-  paddingBottom: "2rem",
   display: "flex",
   justifyContent: "stretch",
   paddingTop: "1rem",
   paddingRight: "1rem",
+  paddingBottom: "1rem",
   paddingLeft: "1rem",
   [$theme.mediaQuery.large]: {
     marginTop: 0,
