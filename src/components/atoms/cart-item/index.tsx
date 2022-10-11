@@ -8,7 +8,6 @@ import { Delete } from "baseui/icon";
 import { FlexGrid, FlexGridItem } from "baseui/flex-grid";
 import { Minus, Plus } from "phosphor-react";
 import { Select, SIZE } from "baseui/select";
-import { SIZES } from "../../../lib/sizes";
 import { CartContext } from "../../../contexts/cart.context";
 
 type Props = {
@@ -44,17 +43,17 @@ function CartItem(props: Props) {
   return (
     <li
       className={css({
-        paddingTop: "1rem",
-        paddingRight: "1rem",
-        paddingBottom: "1rem",
+        paddingTop: "0.5rem",
+        paddingRight: "0.5rem",
+        paddingBottom: "0.5rem",
         paddingLeft: 0,
         display: "flex",
         width: "100%",
         alignItems: "center",
         height: "10rem",
         position: "relative",
-        marginTop: "1rem",
-        marginBottom: "1rem",
+        marginTop: "0.75rem",
+        marginBottom: "0.75rem",
         borderBottomWidth: "1px",
         borderBottomStyle: "solid",
         borderBottomColor: theme.colors.mono400,
@@ -63,10 +62,11 @@ function CartItem(props: Props) {
       <div
         className={css({
           height: "8rem",
-          width: "8rem",
+          width: "6rem",
+          backgroundColor: theme.colors.mono200,
           position: "relative",
           aspectRatio: 1,
-          marginRight: "1rem",
+          marginRight: "0.5rem",
         })}
       >
         <Image
@@ -82,11 +82,11 @@ function CartItem(props: Props) {
           <a>
             <h2
               className={css({
-                fontSize: "1.3rem",
+                ...theme.typography.font250,
+                fontWeight: 400,
                 marginTop: 0,
                 marginBottom: "4px",
                 padding: 0,
-                fontWeight: 400,
                 textTransform: "uppercase",
                 lineHeight: "1.5rem",
                 maxHeight: "1.5rem",
@@ -104,7 +104,7 @@ function CartItem(props: Props) {
         </Link>
         <h3
           className={css({
-            fontSize: "1.3rem",
+            ...theme.typography.font250,
             marginTop: 0,
             marginBottom: "4px",
             padding: 0,
@@ -115,7 +115,7 @@ function CartItem(props: Props) {
           {currency.format(item.price)}
         </h3>
         <FlexGrid
-          flexGridColumnCount={3}
+          flexGridColumnCount={[1, 1, 3, 3]}
           display={"flex"}
           alignItems={"center"}
         >
@@ -125,10 +125,16 @@ function CartItem(props: Props) {
               clearable={false}
               deleteRemoves={false}
               size={SIZE.compact}
-              options={SIZES}
+              options={item.sizes}
               value={[item.size]}
               searchable={false}
               placeholder="Select size"
+              getOptionLabel={({ option }) =>
+                `${option.attributes.sizeCode} - ${option.attributes.title}`
+              }
+              getValueLabel={({ option }) =>
+                `${option.attributes.sizeCode} - ${option.attributes.title}`
+              }
               onChange={(params: any) => {
                 dispatch({
                   type: CartActionType.SELECT_SIZE,
@@ -136,30 +142,6 @@ function CartItem(props: Props) {
                 });
               }}
               overrides={{
-                Dropdown: {
-                  style: () => ({
-                    boxShadow: "none",
-                    borderTopRightRadius: 0,
-                    borderTopLeftRadius: 0,
-                    borderBottomRightRadius: 0,
-                    borderBottomLeftRadius: 0,
-                  }),
-                },
-                DropdownListItem: {
-                  style: () => ({
-                    fontSize: "1.1rem",
-                    fontWeight: 300,
-                    textTransform: "uppercase",
-                  }),
-                },
-
-                Root: {
-                  style: () => ({
-                    fontSize: "1.1rem",
-                    fontWeight: 300,
-                    textTransform: "uppercase",
-                  }),
-                },
                 ControlContainer: {
                   style: () => ({
                     paddingLeft: 0,
@@ -186,42 +168,74 @@ function CartItem(props: Props) {
                     borderBottomLeftRadius: 0,
                   }),
                 },
+                Dropdown: {
+                  style: () => ({
+                    boxShadow: "none",
+                    borderTopRightRadius: 0,
+                    borderTopLeftRadius: 0,
+                    borderBottomRightRadius: 0,
+                    borderBottomLeftRadius: 0,
+                  }),
+                },
+                DropdownListItem: {
+                  style: ({ $theme }) => ({
+                    ...$theme.typography.font100,
+                    textTransform: "uppercase",
+                  }),
+                },
+
+                IconsContainer: { style: () => ({ paddingRight: "0.5rem" }) },
+                Root: {
+                  style: ({ $theme }) => ({
+                    ...$theme.typography.font100,
+                    textTransform: "uppercase",
+                  }),
+                },
+                ValueContainer: { style: () => ({ paddingLeft: 0 }) },
               }}
             />
           </FlexGridItem>
           <FlexGridItem>
             <p
               className={css({
-                fontSize: "1.1rem",
-                lineHeight: "1.4rem",
+                ...theme.typography.font100,
+                textTransform: "uppercase",
                 margin: 0,
-                fontWeight: 300,
-                textAlign: "center",
+                textAlign: "left",
+                [theme.mediaQuery.medium]: { textAlign: "center" },
+                [theme.mediaQuery.large]: { textAlign: "center" },
               })}
             >
               {item.colour}
             </p>
           </FlexGridItem>
           <FlexGridItem>
-            <FlexGrid flexGridColumnCount={3}>
+            <FlexGrid
+              flexGridColumnCount={3}
+              marginTop={[".25rem", ".25rem", ".25rem", "0"]}
+            >
               <FlexGridItem
                 display={"flex"}
-                justifyContent={"center"}
+                justifyContent={["initial", "initial", "initial", "center"]}
                 alignItems={"center"}
+                className={css({ cursor: "pointer" })}
               >
-                <Plus weight={"bold"} onClick={increase} />
+                <Plus
+                  size={theme.typography.font100.fontSize}
+                  onClick={increase}
+                />
               </FlexGridItem>
               <FlexGridItem
                 display={"flex"}
-                justifyContent={"center"}
+                justifyContent={["initial", "initial", "initial", "center"]}
                 alignItems={"center"}
               >
                 <p
                   className={css({
-                    fontSize: "1.1rem",
-                    lineHeight: "1.4rem",
+                    ...theme.typography.font100,
+                    textTransform: "uppercase",
                     margin: 0,
-                    fontWeight: 300,
+                    textAlign: "center",
                   })}
                 >
                   {`Qty: ${item.quantity}`}
@@ -231,8 +245,12 @@ function CartItem(props: Props) {
                 display={"flex"}
                 justifyContent={"center"}
                 alignItems={"center"}
+                className={css({ cursor: "pointer" })}
               >
-                <Minus weight={"bold"} onClick={decrease} />
+                <Minus
+                  size={theme.typography.font100.fontSize}
+                  onClick={decrease}
+                />
               </FlexGridItem>
             </FlexGrid>
           </FlexGridItem>
