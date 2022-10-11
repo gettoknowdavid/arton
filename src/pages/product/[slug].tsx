@@ -6,37 +6,33 @@ import { ProductsQuery } from "../../graphql/queries/products.query";
 import { CartItemInterface, ProductType } from "../../types";
 import SEO from "../../components/seo";
 import Layout from "../../components/layout";
-import { useStyletron } from "baseui";
 import { FlexGrid, FlexGridItem } from "baseui/flex-grid";
 import { currency } from "../../lib/currency-formatter";
 import TaggedProductList from "../../components/molecules/tagged-product-list";
 import BackButton from "../../components/atoms/back-button";
 import SizeSelector from "../../components/molecules/size-selector";
 import AddToBagButton from "../../components/atoms/add-to-cart-button";
-import RichText from "../../components/atoms/rich-text";
 import {
   StyledPBackButtonWrapper,
   StyledPMainBodyWrapper,
   StyledPDetailsWrapper,
   StyledPTitle,
   StyledPParagraph,
-  StyledPDetailHeading,
-  StyledPDetailSubHeading,
 } from "../../components/styled-components";
 import ProductPageImageList from "../../components/molecules/product-page-image-list";
-import { SIZES } from "../../lib/sizes";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import ProductPageCarousel from "../../components/molecules/product-page-carousel"; // requires a loader
+import ProductPageCarousel from "../../components/molecules/product-page-carousel";
+import { StyledPList } from "../../components/styled-components/product.styles";
+import ProductDetailsAccordion from "../../components/molecules/product-details-accordion"; // requires a loader
 
 type ProductProps = {
   product: ProductType;
 };
 
 function Product({ product }: ProductProps) {
-  const [css] = useStyletron();
   const { id, attributes } = product;
 
-  const [size, setSize] = React.useState([SIZES[0]]);
+  const [size, setSize] = React.useState([product.attributes.sizes.data[0]]);
 
   const bagItem: CartItemInterface = {
     id: id,
@@ -79,69 +75,39 @@ function Product({ product }: ProductProps) {
           >
             <StyledPDetailsWrapper>
               <div>
-                <StyledPTitle>{product.attributes.title}</StyledPTitle>
-                <StyledPParagraph>
-                  {product.attributes.description}
-                </StyledPParagraph>
-                <StyledPParagraph $upperCase>
-                  Colour: {product.attributes.colour.data.attributes.title}
-                </StyledPParagraph>
                 <StyledPParagraph $fontWeight={600}>
                   {currency.format(product.attributes.price)}
                 </StyledPParagraph>
+
+                <StyledPTitle>{product.attributes.title}</StyledPTitle>
+
+                <StyledPParagraph>
+                  {product.attributes.description}
+                </StyledPParagraph>
+
+                <StyledPList>
+                  <StyledPParagraph $upperCase>
+                    Brand: {product.attributes.brand}
+                  </StyledPParagraph>
+                  <StyledPParagraph $upperCase>
+                    Colour: {product.attributes.colour.data.attributes.title}
+                  </StyledPParagraph>
+                </StyledPList>
+
                 <SizeSelector
                   value={size}
                   onChange={(params: any) => setSize(params.value)}
+                  sizes={product.attributes.sizes.data}
                 />
-                <AddToBagButton item={bagItem} set={{ marginTop: "3rem" }} />
+
+                <AddToBagButton item={bagItem} set={{ marginTop: "1.5rem" }} />
+
+                <ProductDetailsAccordion product={product} />
               </div>
             </StyledPDetailsWrapper>
           </FlexGridItem>
         </FlexGrid>
       </StyledPMainBodyWrapper>
-
-      <div className={css({ paddingInline: "1rem", marginTop: "2rem" })}>
-        <StyledPTitle>About this Product</StyledPTitle>
-        <FlexGrid flexGridColumnCount={[1, 1, 1, 2]}>
-          <FlexGridItem>
-            <div className={css({ marginBlock: "1rem" })}>
-              <StyledPDetailHeading>Details</StyledPDetailHeading>
-              <RichText content={product.attributes.details} />
-            </div>
-            <div className={css({ marginBlock: "1rem" })}>
-              <StyledPDetailHeading>Brand</StyledPDetailHeading>
-              <StyledPDetailSubHeading>
-                {product.attributes.brand}
-              </StyledPDetailSubHeading>
-            </div>
-            <div className={css({ marginBlock: "1rem" })}>
-              <StyledPDetailHeading>Available</StyledPDetailHeading>
-              <StyledPDetailSubHeading>
-                {product.attributes.available ? "In stock" : "Out of stock"}
-              </StyledPDetailSubHeading>
-            </div>
-          </FlexGridItem>
-
-          <FlexGridItem>
-            <div className={css({ marginBlock: "1rem" })}>
-              <StyledPDetailHeading>Care</StyledPDetailHeading>
-              <RichText content={product.attributes.care} />
-            </div>
-            <div className={css({ marginBlock: "1rem" })}>
-              <StyledPDetailHeading>Variant</StyledPDetailHeading>
-              <StyledPDetailSubHeading>
-                {product.attributes.variant.toUpperCase()}
-              </StyledPDetailSubHeading>
-            </div>
-            <div className={css({ marginBlock: "1rem" })}>
-              <StyledPDetailHeading>Category</StyledPDetailHeading>
-              <StyledPDetailSubHeading>
-                {product.attributes.category?.data.attributes.name}
-              </StyledPDetailSubHeading>
-            </div>
-          </FlexGridItem>
-        </FlexGrid>
-      </div>
 
       <TaggedProductList product={product} />
     </div>
