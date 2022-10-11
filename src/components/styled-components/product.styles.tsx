@@ -63,6 +63,13 @@ export const StyledPParagraph = styled<
   fontWeight: $fontWeight,
   textTransform: $upperCase ? "uppercase" : undefined,
   lineHeight: "1.1rem",
+  marginTop: "0.75rem",
+}));
+
+export const StyledPList = styled("ul", () => ({
+  display: "flex",
+  justifyContent: "space-between",
+  padding: 0,
 }));
 
 export const StyledPDetailHeading = styled("h1", ({ $theme }) => ({
