@@ -15,10 +15,12 @@ import { CartActionType, CartItemInterface } from "../../../types";
 import CartItem from "../../atoms/cart-item";
 import { currency } from "../../../lib/currency-formatter";
 import { FlexGrid, FlexGridItem } from "baseui/flex-grid";
-import { Button, KIND, SIZE } from "baseui/button";
+import { KIND, SIZE } from "baseui/button";
+import Button from "../../atoms/button";
 
 function CartDrawer() {
   const { dispatch, state } = React.useContext(CartContext);
+
   const closeDrawer = () => {
     dispatch({ type: CartActionType.CLOSE_CART_DRAWER });
   };
@@ -81,7 +83,7 @@ function CartDrawer() {
             <Button kind={KIND.tertiary} onClick={() => {}}>
               Clear Cart
             </Button>
-            Free Shipping Worldwide
+            <p>*Free Shipping Worldwide</p>
           </StyledBDFreeShippingText>
         </StyledBDFooter>
       </StyledBDBody>
