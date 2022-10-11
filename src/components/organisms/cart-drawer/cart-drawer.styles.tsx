@@ -26,8 +26,8 @@ export const StyledBDHeading = styled("h1", () => ({
 
 export const StyledBDBody = styled("div", () => ({
   paddingTop: "3rem",
-  paddingRight: "2rem",
-  paddingLeft: "2rem",
+  paddingRight: "1rem",
+  paddingLeft: "1rem",
   maxHeight: "calc(100vh - 5rem)",
   height: "100%",
   position: "relative",
