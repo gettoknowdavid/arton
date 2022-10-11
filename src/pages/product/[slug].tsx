@@ -40,6 +40,7 @@ function Product({ product }: ProductProps) {
     slug: attributes.slug,
     image: attributes.image.data.attributes.url,
     size: size[0],
+    sizes: product.attributes.sizes.data,
     price: attributes.price,
     colour: attributes.colour.data.attributes.title,
     quantity: 1,

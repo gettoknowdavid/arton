@@ -96,6 +96,7 @@ export interface CartItemInterface {
   name: string;
   slug: string;
   size: SizeType;
+  sizes: SizeType[];
   colour: string;
   image: string;
   price: number;
