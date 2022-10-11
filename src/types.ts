@@ -95,10 +95,7 @@ export interface CartItemInterface {
   id: number;
   name: string;
   slug: string;
-  size: {
-    id: string;
-    label: string;
-  };
+  size: SizeType;
   colour: string;
   image: string;
   price: number;
