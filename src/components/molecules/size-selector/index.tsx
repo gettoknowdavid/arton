@@ -1,53 +1,36 @@
 import React from "react";
 import { Select, SIZE } from "baseui/select";
 import { useStyletron } from "baseui";
-import { SIZES } from "../../../lib/sizes";
+import { SizeType } from "../../../types";
 
 type Props = {
-  value: any;
+  value: SizeType[];
   onChange: (params: any) => any;
+  sizes: SizeType[];
 };
 
 function SizeSelector(props: Props) {
   const [css, theme] = useStyletron();
 
   return (
-    <div className={css({ marginTop: "3rem" })}>
+    <div className={css({ marginTop: "1rem" })}>
       <Select
         backspaceRemoves={false}
         clearable={false}
         deleteRemoves={false}
         size={SIZE.compact}
-        options={SIZES}
+        options={props.sizes}
         value={props.value}
         searchable={false}
         placeholder="Select size"
         onChange={props.onChange}
+        getOptionLabel={({ option }) =>
+          `${option.attributes.sizeCode} - ${option.attributes.title}`
+        }
+        getValueLabel={({ option }) =>
+          `${option.attributes.sizeCode} - ${option.attributes.title}`
+        }
         overrides={{
-          Dropdown: {
-            style: () => ({
-              boxShadow: "none",
-              borderTopRightRadius: 0,
-              borderTopLeftRadius: 0,
-              borderBottomRightRadius: 0,
-              borderBottomLeftRadius: 0,
-            }),
-          },
-          DropdownListItem: {
-            style: ({ $theme }) => ({
-              ...$theme.typography.font100,
-              fontWeight: 300,
-              textTransform: "uppercase",
-            }),
-          },
-
-          Root: {
-            style: ({ $theme }) => ({
-              ...$theme.typography.font100,
-              fontWeight: 300,
-              textTransform: "uppercase",
-            }),
-          },
           ControlContainer: {
             style: () => ({
               paddingLeft: 0,
@@ -74,6 +57,31 @@ function SizeSelector(props: Props) {
               borderBottomLeftRadius: 0,
             }),
           },
+          Dropdown: {
+            style: () => ({
+              boxShadow: "none",
+              borderTopRightRadius: 0,
+              borderTopLeftRadius: 0,
+              borderBottomRightRadius: 0,
+              borderBottomLeftRadius: 0,
+            }),
+          },
+          DropdownListItem: {
+            style: ({ $theme }) => ({
+              ...$theme.typography.font100,
+              fontWeight: 300,
+              textTransform: "uppercase",
+            }),
+          },
+          IconsContainer: { style: () => ({ paddingRight: "0.5rem" }) },
+          Root: {
+            style: ({ $theme }) => ({
+              ...$theme.typography.font100,
+              fontWeight: 300,
+              textTransform: "uppercase",
+            }),
+          },
+          ValueContainer: { style: () => ({ paddingLeft: 0 }) },
         }}
       />
       <p
