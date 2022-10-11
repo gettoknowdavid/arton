@@ -16,16 +16,16 @@ export const StyledBDHeader = styled("div", ({ $theme }) => ({
   justifyContent: "center",
 }));
 
-export const StyledBDHeading = styled("h1", () => ({
-  fontSize: "1.3rem",
+export const StyledBDHeading = styled("h1", ({ $theme }) => ({
+  ...$theme.typography.font250,
   margin: 0,
-  fontWeight: 500,
+  fontWeight: 600,
   textTransform: "uppercase",
   letterSpacing: "1px",
 }));
 
 export const StyledBDBody = styled("div", () => ({
-  paddingTop: "3rem",
+  paddingTop: "2.8125rem",
   paddingRight: "1rem",
   paddingLeft: "1rem",
   maxHeight: "calc(100vh - 5rem)",
@@ -44,28 +44,28 @@ export const StyledBDFooter = styled("div", ({ $theme }) => ({
   bottom: 0,
   right: 0,
   left: 0,
-  paddingRight: "2rem",
-  paddingLeft: "2rem",
+  paddingRight: "1rem",
+  paddingLeft: "1rem",
   borderTopWidth: "1px",
   borderTopStyle: "solid",
   borderTopColor: $theme.colors.black,
   backgroundColor: $theme.colors.white,
 }));
 
-export const StyledBDSubtotalWrapper = styled("div", () => ({
-  fontSize: "1.2rem",
-  fontWeight: 400,
+export const StyledBDSubtotalWrapper = styled("div", ({ $theme }) => ({
+  ...$theme.typography.font200,
   textTransform: "uppercase",
   display: "flex",
   justifyContent: "space-between",
   alignItems: "center",
 }));
 
-export const StyledBDSubtotalValue = styled("p", () => ({
-  fontSize: "1.6rem",
+export const StyledBDSubtotalValue = styled("p", ({ $theme }) => ({
+  ...$theme.typography.font400,
+  fontWeight: 600,
 }));
 
 export const StyledBDFreeShippingText = styled("p", ({ $theme }) => ({
-  textAlign: "center",
   ...$theme.typography.font100,
+  textAlign: "center",
 }));
