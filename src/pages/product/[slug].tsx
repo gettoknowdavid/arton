@@ -33,7 +33,7 @@ type ProductProps = {
 };
 
 function Product({ product }: ProductProps) {
-  const [css, theme] = useStyletron();
+  const [css] = useStyletron();
   const { id, attributes } = product;
 
   const [size, setSize] = React.useState([SIZES[0]]);
