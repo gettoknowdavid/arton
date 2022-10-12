@@ -23,7 +23,7 @@ function CartItem(props: Props) {
   const removeItem = () => {
     dispatch({
       type: CartActionType.REMOVE_FROM_CART,
-      payload: { id: item.id },
+      payload: { item: item },
     });
     dispatch({ type: CartActionType.CLOSE_CART_DRAWER });
   };

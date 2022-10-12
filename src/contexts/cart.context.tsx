@@ -80,7 +80,11 @@ const reducer = (state: CartContextType, action: CartAction) => {
     case "REMOVE_FROM_CART":
       return {
         ...state,
-        items: state.items.filter((i) => i.id !== action.payload.id),
+        items: state.items.filter(
+          (i) =>
+            i.id !== action.payload.item.id ||
+            i.size.id !== action.payload.item.size.id
+        ),
       };
 
     case "SELECT_SIZE":

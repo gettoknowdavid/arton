@@ -136,7 +136,7 @@ type CartPayload = {
   [CartActionType.CLOSE_CART_DRAWER]: any;
   [CartActionType.DECREASE_QUANTITY]: { id: string | number };
   [CartActionType.INCREASE_QUANTITY]: { id: string | number };
-  [CartActionType.REMOVE_FROM_CART]: { id: string | number };
+  [CartActionType.REMOVE_FROM_CART]: { item: CartItemInterface };
   [CartActionType.SELECT_SIZE]: { item: CartItemInterface; size: SizeType };
   [CartActionType.TOGGLE_CART_DRAWER]: any;
 };
