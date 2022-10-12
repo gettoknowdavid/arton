@@ -27,7 +27,7 @@ function CartDrawer() {
 
   return (
     <Drawer
-      isOpen={true}
+      isOpen={state.cartDrawerOpen}
       onClose={closeDrawer}
       autoFocus
       anchor={ANCHOR.right}
