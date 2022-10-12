@@ -1,5 +1,5 @@
 import React from "react";
-import { CartAction, CartContextType } from "../types";
+import { CartAction, CartContextType, CartItemInterface } from "../types";
 import { useLocalStorage } from "../hooks";
 
 type Props = {
@@ -10,6 +10,13 @@ const initialState: CartContextType = {
   items: [],
   cartDrawerOpen: false,
 };
+
+export const totalAmount = (state: CartContextType): number =>
+  state.items.reduce((cartTotal: number, currentItem: CartItemInterface) => {
+    const { price, quantity } = currentItem;
+    cartTotal += price * quantity;
+    return cartTotal;
+  }, 0);
 
 const reducer = (state: CartContextType, action: CartAction) => {
   switch (action.type) {

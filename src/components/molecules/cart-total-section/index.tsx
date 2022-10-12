@@ -2,12 +2,14 @@ import React from "react";
 import { currency } from "../../../lib/currency-formatter";
 import Button from "../../atoms/button";
 import { useStyletron } from "baseui";
-import { useRootSelector } from "../../../hooks";
-import { totalAmount } from "../../../store/slices/cart.slice";
+import { CartContext, totalAmount } from "../../../contexts/cart.context";
 
 function CartTotalSection() {
   const [css, theme] = useStyletron();
-  const amount = 50;
+
+  const { state } = React.useContext(CartContext);
+  const amount = currency.format(totalAmount(state));
+  const discount = currency.format(totalAmount(state) * 0.15);
 
   return (
     <div>
@@ -55,7 +57,7 @@ function CartTotalSection() {
               textTransform: "uppercase",
             })}
           >
-            {currency.format(amount)}
+            {amount}
           </p>
         </div>
         <div
@@ -83,7 +85,7 @@ function CartTotalSection() {
               marginTop: 0,
             })}
           >
-            {currency.format(amount * 0.3)}
+            {discount}
           </p>
         </div>
       </div>

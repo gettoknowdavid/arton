@@ -6,15 +6,15 @@ import Layout from "../components/layout";
 import CartTotalSection from "../components/molecules/cart-total-section";
 import { currency } from "../lib/currency-formatter";
 import { CartItemInterface } from "../types";
-import { CartContext } from "../contexts/cart.context";
+import { CartContext, totalAmount } from "../contexts/cart.context";
 import CartItem from "../components/atoms/cart-item";
 
 function Cart() {
   const [css, theme] = useStyletron();
-  const amount = 50;
 
   const { state } = React.useContext(CartContext);
   const [items, setItems] = React.useState<CartItemInterface[]>([]);
+  const amount = currency.format(totalAmount(state));
 
   React.useEffect(() => {
     setItems(state.items);
@@ -114,7 +114,7 @@ function Cart() {
                 textTransform: "uppercase",
               })}
             >
-              {currency.format(amount)}
+              {amount}
             </p>
           </div>
         </div>
