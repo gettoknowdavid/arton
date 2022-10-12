@@ -17,13 +17,17 @@ import { currency } from "../../../lib/currency-formatter";
 import { FlexGrid, FlexGridItem } from "baseui/flex-grid";
 import { KIND, SIZE } from "baseui/button";
 import Button from "../../atoms/button";
+import { useRouter } from "next/router";
 
 function CartDrawer() {
+  const router = useRouter();
   const { dispatch, state } = React.useContext(CartContext);
 
   const closeDrawer = () => {
     dispatch({ type: CartActionType.CLOSE_CART_DRAWER });
   };
+
+  const goToCart = () => router?.push("/cart");
 
   return (
     <Drawer
@@ -70,7 +74,7 @@ function CartDrawer() {
 
           <FlexGrid flexGridColumnCount={2} flexGridColumnGap={"0.5rem"}>
             <FlexGridItem>
-              <Button kind={KIND.secondary} onClick={() => {}}>
+              <Button kind={KIND.secondary} onClick={goToCart}>
                 View Cart
               </Button>
             </FlexGridItem>
