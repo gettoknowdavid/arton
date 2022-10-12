@@ -19,12 +19,14 @@ const reducer = (state: CartContextType, action: CartAction) => {
       let cartItems = null;
 
       const isOld = state.items.find(
-        (item) => item.id === id && item.size.label === size.label
+        (item) => item.id === id && item.size.id === size.id
       );
 
       if (isOld) {
         const items = state.items.map((i) => {
-          if (i.id === id) return { ...i, quantity: i.quantity + 1 };
+          if (i.id === id && i.size.id === size.id) {
+            return { ...i, quantity: i.quantity + 1 };
+          }
 
           return i;
         });

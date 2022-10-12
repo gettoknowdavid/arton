@@ -43,7 +43,7 @@ export type SizeType = {
   id: number;
   attributes: {
     title: string;
-    code: string;
+    sizeCode: string;
   };
 };
 
