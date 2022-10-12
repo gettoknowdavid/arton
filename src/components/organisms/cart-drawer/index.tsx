@@ -83,7 +83,6 @@ function CartDrawer() {
             <Button kind={KIND.tertiary} onClick={() => {}}>
               Clear Cart
             </Button>
-            <p>*Free Shipping Worldwide</p>
           </StyledBDFreeShippingText>
         </StyledBDFooter>
       </StyledBDBody>

@@ -67,6 +67,7 @@ function CartItem(props: Props) {
           position: "relative",
           aspectRatio: 1,
           marginRight: "0.5rem",
+          [theme.mediaQuery.large]: { marginRight: "1rem" },
         })}
       >
         <Image

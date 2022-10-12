@@ -22,29 +22,39 @@ function Cart() {
 
   return (
     <FlexGrid
-      flexGridColumnCount={2}
+      flexGridColumnCount={[1, 1, 1, 2]}
       flexGridColumnGap={"1rem"}
       paddingTop={"5rem"}
-      paddingRight={"40rem"}
-      paddingLeft={"40rem"}
+      paddingRight={["0", "0", "7rem", "26rem"]}
+      paddingBottom={"5rem"}
+      paddingLeft={["0", "0", "7rem", "26rem"]}
     >
       <FlexGridItem>
         <div
           className={css({
-            paddingTop: "1rem",
-            paddingRight: "2rem",
-            paddingBottom: "1rem",
-            paddingLeft: "2rem",
-            backgroundColor: theme.colors.mono200,
-            marginBottom: "1rem",
+            paddingTop: 0,
+            paddingRight: "1rem",
+            paddingBottom: 0,
+            paddingLeft: "1rem",
+            backgroundColor: "transparent",
+            textAlign: "center",
+            [theme.mediaQuery.large]: {
+              textAlign: "left",
+              backgroundColor: "rgba(225,225,225,0.15)",
+              marginBottom: "1rem",
+              paddingTop: "1rem",
+              paddingBottom: "1rem",
+            },
           })}
         >
           <h1
             className={css({
-              fontSize: "1.4rem",
-              fontWeight: 400,
+              ...theme.typography.font400,
+              fontWeight: 600,
               letterSpacing: "1px",
               textTransform: "uppercase",
+              margin: 0,
+              [theme.mediaQuery.large]: { margin: "initial" },
             })}
           >
             My Cart
@@ -53,11 +63,14 @@ function Cart() {
         <ul
           className={css({
             paddingTop: "1rem",
-            paddingRight: "2rem",
+            paddingRight: "1rem",
             paddingBottom: "1rem",
-            paddingLeft: "2rem",
-            marginBottom: "1rem",
-            backgroundColor: theme.colors.mono200,
+            paddingLeft: "1rem",
+            backgroundColor: "transparent",
+            [theme.mediaQuery.large]: {
+              marginBottom: "1rem",
+              backgroundColor: "rgba(225,225,225,0.15)",
+            },
           })}
         >
           {items.map((item: CartItemInterface) => (
@@ -67,22 +80,26 @@ function Cart() {
         <div
           className={css({
             paddingTop: "1rem",
-            paddingRight: "2rem",
+            paddingRight: "1rem",
             paddingBottom: "1rem",
-            paddingLeft: "2rem",
-            backgroundColor: theme.colors.mono200,
+            paddingLeft: "1rem",
+            backgroundColor: "transparent",
+            [theme.mediaQuery.large]: {
+              backgroundColor: "rgba(225,225,225,0.15)",
+            },
           })}
         >
           <div
             className={css({
-              display: "flex",
+              display: "none",
+              alignItems: "center",
               justifyContent: "space-between",
+              [theme.mediaQuery.large]: { display: "flex" },
             })}
           >
             <p
               className={css({
-                fontSize: "1.1rem",
-                fontWeight: 400,
+                ...theme.typography.font200,
                 letterSpacing: "1px",
                 textTransform: "uppercase",
               })}
@@ -91,8 +108,8 @@ function Cart() {
             </p>
             <p
               className={css({
-                fontSize: "1.3rem",
-                fontWeight: 400,
+                ...theme.typography.font400,
+                fontWeight: 600,
                 letterSpacing: "1px",
                 textTransform: "uppercase",
               })}
@@ -103,15 +120,14 @@ function Cart() {
         </div>
       </FlexGridItem>
       <FlexGridItem
-        maxWidth={"36rem"}
+        maxWidth={["100%", "100%", "100%", "26rem"]}
         width={"100%"}
-        display={"block"}
         height={"100%"}
-        backgroundColor={"mono200"}
+        backgroundColor={"rgba(225,225,225,0.2)"}
         paddingTop={"1rem"}
-        paddingRight={"2rem"}
+        paddingRight={"1rem"}
         paddingBottom={"2rem"}
-        paddingLeft={"2rem"}
+        paddingLeft={"1rem"}
       >
         <CartTotalSection />
       </FlexGridItem>

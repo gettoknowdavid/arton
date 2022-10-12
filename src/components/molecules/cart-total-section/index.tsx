@@ -13,11 +13,12 @@ function CartTotalSection() {
     <div>
       <h1
         className={css({
-          fontSize: "1.4rem",
-          fontWeight: 400,
+          ...theme.typography.font400,
+          fontWeight: 600,
           letterSpacing: "1px",
           textTransform: "uppercase",
-          paddingBottom: "2rem",
+          margin: 0,
+          paddingBottom: "1rem",
           borderBottom: `1px solid ${theme.colors.mono400}`,
         })}
       >
@@ -33,13 +34,13 @@ function CartTotalSection() {
         <div
           className={css({
             display: "flex",
+            alignItems: "center",
             justifyContent: "space-between",
           })}
         >
           <p
             className={css({
-              fontSize: "1.1rem",
-              fontWeight: 400,
+              ...theme.typography.font200,
               letterSpacing: "1px",
               textTransform: "uppercase",
             })}
@@ -48,8 +49,8 @@ function CartTotalSection() {
           </p>
           <p
             className={css({
-              fontSize: "1.3rem",
-              fontWeight: 400,
+              ...theme.typography.font400,
+              fontWeight: 600,
               letterSpacing: "1px",
               textTransform: "uppercase",
             })}
@@ -60,25 +61,26 @@ function CartTotalSection() {
         <div
           className={css({
             display: "flex",
+            alignItems: "center",
             justifyContent: "space-between",
           })}
         >
           <p
             className={css({
-              fontSize: "1.1rem",
-              fontWeight: 400,
+              ...theme.typography.font200,
               letterSpacing: "1px",
               textTransform: "uppercase",
+              marginTop: 0,
             })}
           >
             Delivery
           </p>
           <p
             className={css({
-              fontSize: "1.1rem",
-              fontWeight: 400,
+              ...theme.typography.font200,
               letterSpacing: "1px",
               textTransform: "uppercase",
+              marginTop: 0,
             })}
           >
             {currency.format(amount * 0.3)}
