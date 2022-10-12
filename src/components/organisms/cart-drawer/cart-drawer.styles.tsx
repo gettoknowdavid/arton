@@ -6,7 +6,7 @@ export const StyledBDHeader = styled("div", ({ $theme }) => ({
   left: 0,
   right: 0,
   top: 0,
-  height: "3rem",
+  height: "2.8125rem",
   borderBottomWidth: "1px",
   borderBottomStyle: "solid",
   borderBottomColor: $theme.colors.black,

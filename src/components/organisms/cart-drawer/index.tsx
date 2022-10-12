@@ -27,13 +27,13 @@ function CartDrawer() {
 
   return (
     <Drawer
-      isOpen={state.cartDrawerOpen}
+      isOpen={true}
       onClose={closeDrawer}
       autoFocus
       anchor={ANCHOR.right}
       overrides={{
         Root: { style: () => ({ zIndex: 300, position: "relative" }) },
-        Close: { style: () => ({ top: 0, height: "3rem", zIndex: 400 }) },
+        Close: { style: () => ({ top: 0, height: "2.8125rem", zIndex: 400 }) },
         DrawerContainer: {
           style: ({ $theme }) => ({
             borderLeftWidth: "1px",
