@@ -8,6 +8,7 @@ import { currency } from "../lib/currency-formatter";
 import { CartItemInterface } from "../types";
 import { CartContext, totalAmount } from "../contexts/cart.context";
 import CartItem from "../components/atoms/cart-item";
+import { ShoppingCart } from "phosphor-react";
 
 function Cart() {
   const [css, theme] = useStyletron();
@@ -19,6 +20,38 @@ function Cart() {
   React.useEffect(() => {
     setItems(state.items);
   }, [state.items]);
+
+  if (!items.length) {
+    return (
+      <div
+        className={css({
+          width: "100%",
+          height: "calc(100vh - 2.8125rem)",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          flexDirection: "column",
+        })}
+      >
+        <ShoppingCart size={60} weight={"duotone"} />
+        <h1
+          className={css({
+            ...theme.typography.font400,
+            fontWeight: 300,
+            textTransform: "uppercase",
+            letterSpacing: "1px",
+            marginTop: "2rem",
+            textAlign: "center",
+            lineHeight: "2.4rem",
+          })}
+        >
+          Oops...
+          <br />
+          Your cart is empty
+        </h1>
+      </div>
+    );
+  }
 
   return (
     <FlexGrid
