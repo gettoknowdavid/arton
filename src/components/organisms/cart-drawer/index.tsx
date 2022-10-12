@@ -27,7 +27,10 @@ function CartDrawer() {
     dispatch({ type: CartActionType.CLOSE_CART_DRAWER });
   };
 
-  const goToCart = () => router?.push("/cart");
+  const goToCart = () => {
+    closeDrawer();
+    router?.push("/cart");
+  };
 
   return (
     <Drawer
