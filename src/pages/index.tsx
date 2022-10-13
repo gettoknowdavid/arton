@@ -27,7 +27,7 @@ const Home: NextPageWithLayout | any = (props: HomeProps) => {
   return (
     <div className={css({ paddingLeft: "1rem", paddingRight: "1rem" })}>
       <HomeHero />
-      <div>
+      <div className={css({ marginTop: "2rem" })}>
         <CategoryList categories={menCategories} loading={props.loading} />
       </div>
       <div className={css({ marginTop: "2rem" })}>
