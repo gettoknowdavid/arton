@@ -21,8 +21,9 @@ function CategoryList(props: CategoryListProps) {
 
   return (
     <FlexGrid
-      flexGridColumnCount={3}
+      flexGridColumnCount={[1, 1, 3, 3]}
       flexGridColumnGap={"2px"}
+      flexGridRowGap={"4rem"}
       paddingTop={"2rem"}
       paddingBottom={"2rem"}
     >
