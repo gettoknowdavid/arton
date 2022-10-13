@@ -8,8 +8,8 @@ export const StyledHomeHeroContainer = styled("div", () => ({
 }));
 
 export const StyledHomeHeroImageDiv = styled("div", () => ({
-  height: "61.714rem",
-  width: "109.714rem",
+  height: "70vh",
+  width: "100%",
+  aspectRatio: 16 / 9,
   overflow: "hidden",
-  margin: 0,
 }));
