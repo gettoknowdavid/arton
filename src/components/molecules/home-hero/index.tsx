@@ -35,9 +35,15 @@ function HomeHero() {
               height: "100%",
               width: "100%",
               position: "relative",
+              objectFit: "contain",
             })}
           >
-            <Image src={hero.url} alt={hero.alternativeText} layout={"fill"} />
+            <Image
+              src={hero.url}
+              alt={hero.alternativeText}
+              layout={"fill"}
+              className={css({ objectFit: "contain" })}
+            />
           </motion.div>
         )}
       </StyledHomeHeroImageDiv>
