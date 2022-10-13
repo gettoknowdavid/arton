@@ -4,7 +4,7 @@ import { ProductFragment } from "../fragments";
 export const GenderQuery = gql`
   ${ProductFragment}
   query GenderQuery($gender: String!) {
-    products(filters: { variant: { in: [$gender, "unisex"] } }) {
+    products(filters: { variant: { in: [$gender] } }) {
       meta {
         pagination {
           total
