@@ -1,5 +1,7 @@
-import React from "react";
+import React, { ReactElement } from "react";
 import { FlexGrid, FlexGridItem } from "baseui/flex-grid";
+import SEO from "../../components/seo";
+import Layout from "../../components/layout";
 
 function Checkout() {
   return (
@@ -29,3 +31,12 @@ function Checkout() {
 }
 
 export default Checkout;
+
+Checkout.getLayout = function getLayout(page: ReactElement) {
+  return (
+    <>
+      <SEO title={"Checkout"} description={""} />
+      <Layout>{page}</Layout>
+    </>
+  );
+};

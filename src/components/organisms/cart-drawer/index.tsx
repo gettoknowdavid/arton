@@ -10,7 +10,7 @@ import {
   StyledBDSubtotalWrapper,
   StyledCartList,
 } from "./cart-drawer.styles";
-import { CartContext } from "../../../contexts/cart.context";
+import { CartContext, totalAmount } from "../../../contexts/cart.context";
 import { CartActionType, CartItemInterface } from "../../../types";
 import CartItem from "../../atoms/cart-item";
 import { currency } from "../../../lib/currency-formatter";
@@ -23,13 +23,19 @@ function CartDrawer() {
   const router = useRouter();
   const { dispatch, state } = React.useContext(CartContext);
 
+  const amount = currency.format(totalAmount(state));
+
   const closeDrawer = () => {
     dispatch({ type: CartActionType.CLOSE_CART_DRAWER });
   };
 
-  const goToCart = () => {
+  const clearCart = () => {
+    dispatch({ type: CartActionType.CLEAR_CART });
+  };
+
+  const goTo = (path: string) => {
     closeDrawer();
-    router?.push("/cart");
+    router?.push(`/${path}`);
   };
 
   return (
@@ -72,22 +78,24 @@ function CartDrawer() {
         <StyledBDFooter>
           <StyledBDSubtotalWrapper>
             <p>Sub-total</p>
-            <StyledBDSubtotalValue>{currency.format(50)}</StyledBDSubtotalValue>
+            <StyledBDSubtotalValue>{amount}</StyledBDSubtotalValue>
           </StyledBDSubtotalWrapper>
 
           <FlexGrid flexGridColumnCount={2} flexGridColumnGap={"0.5rem"}>
             <FlexGridItem>
-              <Button kind={KIND.secondary} onClick={goToCart}>
+              <Button kind={KIND.secondary} onClick={() => goTo("cart")}>
                 View Cart
               </Button>
             </FlexGridItem>
             <FlexGridItem>
-              <Button size={SIZE.compact}>Checkout</Button>
+              <Button size={SIZE.compact} onClick={() => goTo("checkout")}>
+                Checkout
+              </Button>
             </FlexGridItem>
           </FlexGrid>
 
           <StyledBDFreeShippingText>
-            <Button kind={KIND.tertiary} onClick={() => {}}>
+            <Button kind={KIND.tertiary} onClick={clearCart}>
               Clear Cart
             </Button>
           </StyledBDFreeShippingText>

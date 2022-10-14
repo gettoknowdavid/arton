@@ -52,9 +52,11 @@ function ProductDetailsAccordion(props: Props) {
       <Panel title="Details">
         <RichText content={product.attributes.details} />
       </Panel>
-      <Panel title="Care">
-        <RichText content={product.attributes.care} />
-      </Panel>
+      {product?.attributes?.care && (
+        <Panel title="Care">
+          <RichText content={product.attributes.care} />
+        </Panel>
+      )}
     </Accordion>
   );
 }

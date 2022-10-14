@@ -4,7 +4,7 @@ import { ProductFragment } from "../fragments";
 export const ProductsQuery = gql`
   ${ProductFragment}
   query ProductsQuery {
-    products {
+    products(pagination: { limit: 100 }) {
       data {
         ...ProductFragment
       }

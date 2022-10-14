@@ -4,12 +4,10 @@ import { ProductFragment } from "../fragments";
 export const ObjectsQuery = gql`
   ${ProductFragment}
   query ObjectsQuery {
-    products(filters: { category: { slug: { in: ["objects"] } } }) {
-      meta {
-        pagination {
-          total
-        }
-      }
+    products(
+      filters: { variant: { eq: "object" } }
+      pagination: { limit: 100 }
+    ) {
       data {
         ...ProductFragment
       }

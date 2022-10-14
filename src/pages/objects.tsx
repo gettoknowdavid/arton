@@ -21,23 +21,19 @@ type ObjectsProps = {
 const Objects: NextPageWithLayout | any = (props: ObjectsProps) => {
   return (
     <FlexGrid
-      flexGridColumnCount={[1, 1, 1, 3]}
+      flexGridColumnCount={[1, 1, 1, 2]}
       flexGridColumnGap={"1rem"}
       paddingTop={"6rem"}
       paddingRight={"1rem"}
       paddingBottom={"4rem"}
       paddingLeft={"1rem"}
     >
-      <FlexGridItem
-        maxWidth={"16rem"}
-        width={"100%"}
-        display={["none", "none", "none", "initial"]}
-      >
-        <CategoryFilter gqlQueryVariables={["male", "unisex"]} />
-        <SizeFilter />
-      </FlexGridItem>
       <FlexGridItem>
-        <ProductList products={props.products.data} loading={props.loading} />
+        <ProductList
+          gridCount={[2, 2, 3, 4]}
+          products={props.products.data}
+          loading={props.loading}
+        />
       </FlexGridItem>
       <FlexGridItem
         maxWidth={"16rem"}

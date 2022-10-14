@@ -8,6 +8,7 @@ import { Skeleton } from "baseui/skeleton";
 type ProductListProps = {
   loading: boolean;
   products: ProductType[];
+  gridCount?: number[] | number;
 };
 
 let productSkeletons = Array(8).fill(0);
@@ -40,7 +41,7 @@ const ProductSkeleton = () => {
 function ProductList(props: ProductListProps) {
   return (
     <FlexGrid
-      flexGridColumnCount={[2, 2, 3, 3]}
+      flexGridColumnCount={props.gridCount ?? [2, 2, 3, 3]}
       flexGridColumnGap={["0.75rem", "0.75rem", "1rem", "1.25rem"]}
       flexGridRowGap={["3rem", "2rem", "3rem", "4rem"]}
     >

@@ -48,7 +48,7 @@ const reducer = (state: CartContextType, action: CartAction) => {
       };
 
     case "CLEAR_CART":
-      return { ...state, ...initialState };
+      return { ...state, items: initialState.items };
 
     case "CLOSE_CART_DRAWER":
       return { ...state, cartDrawerOpen: false };
