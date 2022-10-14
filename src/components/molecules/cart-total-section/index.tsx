@@ -3,9 +3,11 @@ import { currency } from "../../../lib/currency-formatter";
 import Button from "../../atoms/button";
 import { useStyletron } from "baseui";
 import { CartContext, totalAmount } from "../../../contexts/cart.context";
+import { useRouter } from "next/router";
 
 function CartTotalSection() {
   const [css, theme] = useStyletron();
+  const router = useRouter();
 
   const { state } = React.useContext(CartContext);
   const amount = currency.format(totalAmount(state));
@@ -89,7 +91,7 @@ function CartTotalSection() {
           </p>
         </div>
       </div>
-      <Button>Checkout</Button>
+      <Button onClick={() => router.push("/checkout")}>Checkout</Button>
     </div>
   );
 }
