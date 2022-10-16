@@ -11,7 +11,7 @@ function CartTotalSection() {
 
   const { state } = React.useContext(CartContext);
   const amount = currency.format(totalAmount(state));
-  const discount = currency.format(totalAmount(state) * 0.15);
+  const delivery = currency.format(50);
 
   return (
     <div>
@@ -87,7 +87,7 @@ function CartTotalSection() {
               marginTop: 0,
             })}
           >
-            {discount}
+            {delivery}
           </p>
         </div>
       </div>
