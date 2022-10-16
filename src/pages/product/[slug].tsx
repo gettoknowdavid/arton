@@ -70,7 +70,7 @@ function Product({ product }: ProductProps) {
               "100%",
               "100%",
               "100%",
-              "calc(((100% - 0px) / 3) - 0.5px)",
+              "calc(((100% - 0px) / 2.9) - 0.5px)",
             ]}
             width={"100%"}
           >
