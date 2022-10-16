@@ -27,7 +27,7 @@ function RichText(props: RichTextProps) {
                 listStyleType: '"-  "',
                 margin: 0,
                 paddingBlock: 0,
-                paddingLeft: "2rem",
+                paddingLeft: "0.5rem",
               })}
             >
               {children}
