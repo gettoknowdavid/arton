@@ -113,6 +113,10 @@ export type CartContextType = {
   cartDrawerOpen: boolean;
 };
 
+export type CheckoutContextType = {
+  modalOpen: boolean;
+};
+
 export type ActionMap<M extends { [index: string]: any }> = {
   [Key in keyof M]: M[Key] extends undefined
     ? { type: Key }
@@ -130,6 +134,11 @@ export enum CartActionType {
   TOGGLE_CART_DRAWER = "TOGGLE_CART_DRAWER",
 }
 
+export enum CheckoutActionType {
+  CLOSE_CHECKOUT_MODAL = "CLOSE_CHECKOUT_MODAL",
+  TOGGLE_CHECKOUT_MODAL = "TOGGLE_CHECKOUT_MODAL",
+}
+
 type CartPayload = {
   [CartActionType.ADD_TO_CART]: { item: CartItemInterface };
   [CartActionType.CLEAR_CART]: any;
@@ -141,4 +150,12 @@ type CartPayload = {
   [CartActionType.TOGGLE_CART_DRAWER]: any;
 };
 
+type CheckoutPayload = {
+  [CheckoutActionType.CLOSE_CHECKOUT_MODAL]: any;
+  [CheckoutActionType.TOGGLE_CHECKOUT_MODAL]: any;
+};
+
 export type CartAction = ActionMap<CartPayload>[keyof ActionMap<CartPayload>];
+
+export type CheckoutAction =
+  ActionMap<CheckoutPayload>[keyof ActionMap<CheckoutPayload>];
