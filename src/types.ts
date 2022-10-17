@@ -115,6 +115,7 @@ export type CartContextType = {
 
 export type FilterContextType = {
   filteredProducts: ProductType[];
+  sortIndex?: number;
 };
 
 export type CheckoutContextType = {
@@ -139,6 +140,7 @@ export enum CartActionType {
 }
 
 export enum FilterActionType {
+  GET_PRODUCTS = "GET_PRODUCTS",
   SORT_PRICE_ASC = "SORT_PRICE_ASC",
   SORT_PRICE_DESC = "SORT_PRICE_DESC",
 }
@@ -160,8 +162,15 @@ type CartPayload = {
 };
 
 type FilterPayload = {
-  [FilterActionType.SORT_PRICE_ASC]: { products: ProductType[] };
-  [FilterActionType.SORT_PRICE_DESC]: { products: ProductType[] };
+  [FilterActionType.GET_PRODUCTS]: { products: ProductType[] };
+  [FilterActionType.SORT_PRICE_ASC]: {
+    products: ProductType[];
+    sortIndex?: number;
+  };
+  [FilterActionType.SORT_PRICE_DESC]: {
+    products: ProductType[];
+    sortIndex?: number;
+  };
 };
 
 type CheckoutPayload = {
