@@ -79,6 +79,7 @@ export const ProductFragment = gql`
   ${ColourFragment}
   ${SizeFragment}
   ${ImageFragment}
+  ${CategoryFragment}
   fragment ProductFragment on ProductEntity {
     id
     attributes {
@@ -113,6 +114,11 @@ export const ProductFragment = gql`
       images {
         data {
           ...ImageFragment
+        }
+      }
+      category {
+        data {
+          ...CategoryFragment
         }
       }
     }

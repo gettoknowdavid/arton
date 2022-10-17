@@ -6,12 +6,21 @@ type Props = {
 };
 
 const initialState: FilterContextType = {
+  catIndex: undefined,
   filteredProducts: [],
   sortIndex: undefined,
 };
 
 const reducer = (state: FilterContextType, action: FilterAction) => {
   switch (action.type) {
+    case "SORT_BY_CATEGORY":
+      return {
+        ...state,
+        catIndex: action.payload.catIndex,
+        filteredProducts: state.filteredProducts.filter(
+          (p) => p.attributes.category?.data.id === action.payload.catIndex
+        ),
+      };
     case "GET_PRODUCTS":
       return { ...initialState, filteredProducts: action.payload.products };
     case "SORT_PRICE_ASC":

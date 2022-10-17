@@ -16,18 +16,18 @@ const SORT_LIST = [
 function SortFilter() {
   const { dispatch, state } = React.useContext(FilterContext);
 
-  const sortAsc = () => {
-    dispatch({
-      type: FilterActionType.SORT_PRICE_ASC,
-      payload: { products: state.filteredProducts, sortIndex: 0 },
-    });
-  };
-
-  const sortDesc = () => {
-    dispatch({
-      type: FilterActionType.SORT_PRICE_DESC,
-      payload: { products: state.filteredProducts, sortIndex: 1 },
-    });
+  const sort = (ITEM: { id: number; name: string }) => {
+    if (ITEM.id === 0) {
+      dispatch({
+        type: FilterActionType.SORT_PRICE_ASC,
+        payload: { sortIndex: ITEM.id },
+      });
+    } else {
+      dispatch({
+        type: FilterActionType.SORT_PRICE_DESC,
+        payload: { sortIndex: ITEM.id },
+      });
+    }
   };
 
   return (
@@ -38,13 +38,7 @@ function SortFilter() {
           <StyledSortFListItem
             key={ITEM.id}
             $isActive={ITEM.id === state.sortIndex}
-            onClick={() => {
-              if (ITEM.id === 0) {
-                sortAsc();
-              } else {
-                sortDesc();
-              }
-            }}
+            onClick={() => sort(ITEM)}
           >
             <p>{ITEM.name}</p>
           </StyledSortFListItem>
