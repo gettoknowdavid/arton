@@ -114,7 +114,7 @@ export type CartContextType = {
 };
 
 export type FilterContextType = {
-  products: ProductType[];
+  filteredProducts: ProductType[];
 };
 
 export type CheckoutContextType = {
