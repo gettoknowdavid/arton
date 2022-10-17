@@ -7,27 +7,28 @@ type Props = {
 
 const initialState: FilterContextType = {
   filteredProducts: [],
+  sortIndex: undefined,
 };
 
 const reducer = (state: FilterContextType, action: FilterAction) => {
   switch (action.type) {
+    case "GET_PRODUCTS":
+      return { ...initialState, filteredProducts: action.payload.products };
     case "SORT_PRICE_ASC":
       return {
         ...state,
-        filteredProducts: state.filteredProducts
-          .map((i) => i.attributes.price)
-          .sort((p, c) => {
-            return p - c;
-          }),
+        sortIndex: action.payload.sortIndex,
+        filteredProducts: state.filteredProducts.sort((p, c) => {
+          return p.attributes.price - c.attributes.price;
+        }),
       };
     case "SORT_PRICE_DESC":
       return {
         ...state,
-        filteredProducts: state.filteredProducts
-          .map((i) => i.attributes.price)
-          .sort((p, c) => {
-            return c - p;
-          }),
+        sortIndex: action.payload.sortIndex,
+        filteredProducts: state.filteredProducts.sort((p, c) => {
+          return c.attributes.price - p.attributes.price;
+        }),
       };
     default:
       return state;
