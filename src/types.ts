@@ -113,6 +113,10 @@ export type CartContextType = {
   cartDrawerOpen: boolean;
 };
 
+export type FilterContextType = {
+  products: ProductType[];
+};
+
 export type CheckoutContextType = {
   modalOpen: boolean;
 };
@@ -134,6 +138,11 @@ export enum CartActionType {
   TOGGLE_CART_DRAWER = "TOGGLE_CART_DRAWER",
 }
 
+export enum FilterActionType {
+  SORT_PRICE_ASC = "SORT_PRICE_ASC",
+  SORT_PRICE_DESC = "SORT_PRICE_DESC",
+}
+
 export enum CheckoutActionType {
   CLOSE_CHECKOUT_MODAL = "CLOSE_CHECKOUT_MODAL",
   TOGGLE_CHECKOUT_MODAL = "TOGGLE_CHECKOUT_MODAL",
@@ -150,12 +159,20 @@ type CartPayload = {
   [CartActionType.TOGGLE_CART_DRAWER]: any;
 };
 
+type FilterPayload = {
+  [FilterActionType.SORT_PRICE_ASC]: { products: ProductType[] };
+  [FilterActionType.SORT_PRICE_DESC]: { products: ProductType[] };
+};
+
 type CheckoutPayload = {
   [CheckoutActionType.CLOSE_CHECKOUT_MODAL]: any;
   [CheckoutActionType.TOGGLE_CHECKOUT_MODAL]: any;
 };
 
 export type CartAction = ActionMap<CartPayload>[keyof ActionMap<CartPayload>];
+
+export type FilterAction =
+  ActionMap<FilterPayload>[keyof ActionMap<FilterPayload>];
 
 export type CheckoutAction =
   ActionMap<CheckoutPayload>[keyof ActionMap<CheckoutPayload>];
