@@ -1,4 +1,5 @@
 import { styled } from "baseui";
+import { CustomStyledComponent } from "../../../types";
 
 // Styled component Sort Filter Title
 export const StyledSortFWrapper = styled("div", () => ({
@@ -24,10 +25,15 @@ export const StyledSortFList = styled("ul", () => ({
 }));
 
 // Styled component Sort Filter List Item
-export const StyledSortFListItem = styled("li", ({ $theme }) => ({
+export const StyledSortFListItem = styled<
+  "li",
+  { $isActive: boolean },
+  CustomStyledComponent
+>("li", ({ $isActive, $theme }) => ({
   ...$theme.typography.font100,
   textTransform: "uppercase",
   lineHeight: "1rem",
   cursor: "pointer",
+  color: $isActive ? $theme.colors.mono600 : $theme.colors.mono1000,
   ":hover": { color: $theme.colors.mono600 },
 }));
