@@ -1,5 +1,5 @@
 import * as React from "react";
-import { NextPageWithLayout, ProductType } from "../types";
+import { FilterActionType, NextPageWithLayout, ProductType } from "../types";
 import { ReactElement } from "react";
 import Layout from "../components/layout";
 import SEO from "../components/seo";
@@ -10,6 +10,7 @@ import CategoryFilter from "../components/molecules/category-filter";
 import SizeFilter from "../components/molecules/size-filter";
 import SortFilter from "../components/molecules/sort-filter";
 import { GenderQuery } from "../graphql/queries/gender.query";
+import { FilterContext } from "../contexts/filter.context";
 
 type WomenProps = {
   loading: boolean;
@@ -19,7 +20,21 @@ type WomenProps = {
 };
 
 const Women: NextPageWithLayout | any = (props: WomenProps) => {
-  const products = props.products.data;
+  const {
+    dispatch,
+    state: { filteredProducts },
+  } = React.useContext(FilterContext);
+
+  const [loading, setLoading] = React.useState(false);
+
+  React.useEffect(() => {
+    setLoading(true);
+    dispatch({
+      type: FilterActionType.GET_PRODUCTS,
+      payload: { products: props.products.data },
+    });
+    setLoading(false);
+  }, [dispatch, props.products.data, setLoading]);
 
   return (
     <FlexGrid
@@ -39,7 +54,7 @@ const Women: NextPageWithLayout | any = (props: WomenProps) => {
         <SizeFilter />
       </FlexGridItem>
       <FlexGridItem>
-        <ProductList products={products} loading={props.loading} />
+        <ProductList products={filteredProducts} loading={loading} />
       </FlexGridItem>
       <FlexGridItem
         maxWidth={"16rem"}
