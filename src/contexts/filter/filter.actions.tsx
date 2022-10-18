@@ -3,24 +3,24 @@ import { FilterAction, FilterActionType, ProductType } from "../../types";
 import { fetchAPI } from "../../lib/api";
 import { FilterProductsQuery } from "../../graphql/queries/filter-products.query";
 
-export async function sortByCategory(
+const sort = (index?: number) => (index === 0 ? "price:asc" : "price:desc");
+
+export async function categoryFilter(
   dispatch: React.Dispatch<FilterAction>,
-  id?: number,
-  sortIndex?: number,
-  sizeIndex?: number
+  catID?: number,
+  sizeID?: number,
+  sortIndex?: number
 ) {
   dispatch({ type: FilterActionType.LOADING_START });
 
-  const sort = sortIndex === 0 ? "price:asc" : "price:desc";
-
   const { data } = await fetchAPI({
     query: FilterProductsQuery,
-    variables: { catID: id, sort: sort, sizeID: sizeIndex },
+    variables: { catID, sort: sort(sortIndex), sizeID },
   });
 
   dispatch({
     type: FilterActionType.SORT_BY_CATEGORY,
-    payload: { products: data.products.data, catIndex: id },
+    payload: { products: data.products.data, catIndex: catID },
   });
 }
 
