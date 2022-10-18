@@ -10,7 +10,7 @@ import CategoryFilter from "../components/molecules/category-filter";
 import SizeFilter from "../components/molecules/size-filter";
 import SortFilter from "../components/molecules/sort-filter";
 import { GenderQuery } from "../graphql/queries/gender.query";
-import { FilterContext } from "../contexts/filter.context";
+import { FilterContext } from "../contexts/filter";
 
 type WomenProps = {
   loading: boolean;
