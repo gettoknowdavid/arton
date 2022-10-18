@@ -39,10 +39,15 @@ function CategoryFilter(props: CategoryFilterProps) {
           {categories?.map(({ id, attributes }) => (
             <StyledCFListItem
               key={id}
-              $isActive={id === state.catIndex}
-              onClick={async () =>
-                categoryFilter(dispatch, id, state.sizeIndex, state.sortIndex)
-              }
+              $isActive={id === state.catID}
+              onClick={() => {
+                categoryFilter({
+                  dispatch,
+                  catID: id,
+                  sizeID: state.sizeID,
+                  sortIndex: state.sortIndex,
+                });
+              }}
             >
               <p>{attributes.name}</p>
             </StyledCFListItem>
