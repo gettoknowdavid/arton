@@ -40,7 +40,10 @@ const Men: NextPageWithLayout | any = (props: MenProps) => {
         width={"100%"}
         display={["none", "none", "none", "initial"]}
       >
-        <CategoryFilter gqlQueryVariables={["male", "unisex"]} />
+        <CategoryFilter
+          gqlQueryVariables={["male", "unisex"]}
+          variant={"male"}
+        />
         <SizeFilter />
       </FlexGridItem>
       <FlexGridItem>
@@ -54,7 +57,7 @@ const Men: NextPageWithLayout | any = (props: MenProps) => {
         width={"100%"}
         display={["none", "none", "none", "initial"]}
       >
-        <SortFilter />
+        <SortFilter variant={"male"} />
       </FlexGridItem>
     </FlexGrid>
   );
