@@ -1,7 +1,7 @@
 import { FilterProvider } from "./filter.provider";
 import { FilterContext } from "./filter.context";
 import {
-  sortByCategory,
+  categoryFilter,
   sortByPrice,
   sortBySize,
   getAllProducts,
@@ -10,7 +10,7 @@ import {
 export {
   FilterContext,
   FilterProvider,
-  sortByCategory,
+  categoryFilter,
   sortByPrice,
   sortBySize,
   getAllProducts,
