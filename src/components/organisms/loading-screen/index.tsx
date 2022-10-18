@@ -8,7 +8,7 @@ type LoadingScreenProps = {
 };
 
 function LoadingScreen(props: LoadingScreenProps) {
-  const [css, theme] = useStyletron();
+  const [css] = useStyletron();
 
   return (
     <main
@@ -29,7 +29,11 @@ function LoadingScreen(props: LoadingScreenProps) {
         cursor: "default",
       })}
     >
-      <UseAnimations animation={loadingIcon} size={36} />
+      <UseAnimations
+        animation={loadingIcon}
+        size={36}
+        autoplay={props.loading}
+      />
     </main>
   );
 }
