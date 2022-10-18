@@ -12,16 +12,17 @@ type FilterProps = {
   catID?: number;
   sizeID?: number;
   sortIndex?: number;
+  variant?: string;
 };
 
 export async function categoryFilter(props: FilterProps) {
-  const { dispatch, catID, sizeID, sortIndex } = props;
+  const { dispatch, catID, sizeID, sortIndex, variant } = props;
 
   dispatch({ type: FilterActionType.LOADING_START });
 
   const { data } = await fetchAPI({
     query: FilterProductsQuery,
-    variables: { catID, sort: getSort(sortIndex), sizeID },
+    variables: { catID, sort: getSort(sortIndex), sizeID, variant },
   });
 
   dispatch({
@@ -31,7 +32,7 @@ export async function categoryFilter(props: FilterProps) {
 }
 
 export async function priceFilter(props: FilterProps) {
-  const { dispatch, catID, sizeID, sortIndex } = props;
+  const { dispatch, catID, sizeID, sortIndex, variant } = props;
 
   dispatch({ type: FilterActionType.LOADING_START });
 
@@ -39,7 +40,7 @@ export async function priceFilter(props: FilterProps) {
 
   const { data } = await fetchAPI({
     query: FilterProductsQuery,
-    variables: { catID, sort: getSort(sortIndex), sizeID },
+    variables: { catID, sort: getSort(sortIndex), sizeID, variant },
   });
 
   dispatch({
