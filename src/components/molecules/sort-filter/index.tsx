@@ -12,7 +12,11 @@ const SORT_LIST = [
   { id: 1, name: "Price high to low" },
 ];
 
-function SortFilter() {
+type Props = {
+  variant: string;
+};
+
+function SortFilter(props: Props) {
   const { dispatch, state } = React.useContext(FilterContext);
 
   const sort = async (sortID: number) => {
@@ -21,6 +25,7 @@ function SortFilter() {
       sortIndex: sortID,
       catID: state.catID,
       sizeID: state.sizeID,
+      variant: props.variant,
     });
   };
 
