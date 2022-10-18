@@ -6,21 +6,31 @@ import {
   StyledSFWrapper,
 } from "./size-filter.styles";
 import { SIZES } from "../../../lib/sizes";
-import { FilterContext, sortBySize } from "../../../contexts/filter";
+import { FilterContext, sizeFilter } from "../../../contexts/filter";
 
-function SizeFilter() {
+type Props = {
+  variant: string;
+};
+
+function SizeFilter(props: Props) {
   const { dispatch, state } = React.useContext(FilterContext);
 
   return (
     <StyledSFWrapper>
       <StyledSFTitle>Sizes</StyledSFTitle>
       <StyledSFList>
-        {SIZES.map((s, index) => (
+        {SIZES.map((s) => (
           <StyledSFListItem
             key={s.id}
-            $isActive={state.sizeIndex === index}
+            $isActive={state.sizeID === s.id}
             onClick={() =>
-              sortBySize(dispatch, s.id, state.sortIndex, state.catIndex)
+              sizeFilter({
+                dispatch,
+                sizeID: s.id,
+                sortIndex: state.sortIndex,
+                catID: state.catID,
+                variant: props.variant,
+              })
             }
           >
             <p>{s.attributes.title}</p>

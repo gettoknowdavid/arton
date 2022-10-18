@@ -44,7 +44,7 @@ const Women: NextPageWithLayout | any = (props: WomenProps) => {
           gqlQueryVariables={["female", "unisex"]}
           variant={"female"}
         />
-        <SizeFilter />
+        <SizeFilter variant={"female"} />
       </FlexGridItem>
       <FlexGridItem>
         <ProductList

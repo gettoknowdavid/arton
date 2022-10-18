@@ -51,24 +51,19 @@ export async function priceFilter(props: FilterProps) {
   });
 }
 
-export async function sortBySize(
-  dispatch: React.Dispatch<FilterAction>,
-  sizeIndex?: number,
-  sortIndex?: number,
-  catIndex?: number
-) {
-  dispatch({ type: FilterActionType.LOADING_START });
+export async function sizeFilter(props: FilterProps) {
+  const { catID, dispatch, sizeID, sortIndex, variant } = props;
 
-  const sort = sortIndex === 0 ? "price:asc" : "price:desc";
+  dispatch({ type: FilterActionType.LOADING_START });
 
   const { data } = await fetchAPI({
     query: FilterProductsQuery,
-    variables: { catID: catIndex, sort: sort, sizeID: sizeIndex },
+    variables: { catID, sort: getSort(sortIndex), sizeID, variant },
   });
 
   dispatch({
     type: FilterActionType.SORT_BY_SIZE,
-    payload: { products: data.products.data, sizeID: sizeIndex },
+    payload: { products: data.products.data, sizeID },
   });
 }
 

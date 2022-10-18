@@ -3,7 +3,7 @@ import { FilterContext } from "./filter.context";
 import {
   categoryFilter,
   priceFilter,
-  sortBySize,
+  sizeFilter,
   getAllProducts,
 } from "./filter.actions";
 
@@ -12,6 +12,6 @@ export {
   FilterProvider,
   categoryFilter,
   priceFilter,
-  sortBySize,
+  sizeFilter,
   getAllProducts,
 };
