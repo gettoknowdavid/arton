@@ -5,7 +5,7 @@ import {
   StyledSortFTitle,
   StyledSortFWrapper,
 } from "./sort-filter.styles";
-import { FilterContext, sortByPrice } from "../../../contexts/filter";
+import { FilterContext, priceFilter } from "../../../contexts/filter";
 
 const SORT_LIST = [
   { id: 0, name: "Price low to high" },
@@ -15,24 +15,13 @@ const SORT_LIST = [
 function SortFilter() {
   const { dispatch, state } = React.useContext(FilterContext);
 
-  const sort = async (ITEM: { id: number; name: string }) => {
-    if (ITEM.id === 0) {
-      await sortByPrice(
-        dispatch,
-        ITEM.id,
-        "price:asc",
-        state.catIndex,
-        state.sizeIndex
-      );
-    } else {
-      await sortByPrice(
-        dispatch,
-        ITEM.id,
-        "price:desc",
-        state.catIndex,
-        state.sizeIndex
-      );
-    }
+  const sort = async (sortID: number) => {
+    await priceFilter({
+      dispatch,
+      sortIndex: sortID,
+      catID: state.catID,
+      sizeID: state.sizeID,
+    });
   };
 
   return (
@@ -43,7 +32,7 @@ function SortFilter() {
           <StyledSortFListItem
             key={ITEM.id}
             $isActive={ITEM.id === state.sortIndex}
-            onClick={() => sort(ITEM)}
+            onClick={() => sort(ITEM.id)}
           >
             <p>{ITEM.name}</p>
           </StyledSortFListItem>
