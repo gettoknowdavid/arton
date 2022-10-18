@@ -116,6 +116,8 @@ export type CartContextType = {
 export type FilterContextType = {
   catIndex?: number;
   filteredProducts: ProductType[];
+  loading: boolean;
+  sizeIndex?: number;
   sortIndex?: number;
 };
 
@@ -141,10 +143,16 @@ export enum CartActionType {
 }
 
 export enum FilterActionType {
+  CLEAR_CATEGORY_FILTER = "CLEAR_CATEGORY_FILTER",
+  CLEAR_SIZE_FILTER = "CLEAR_SIZE_FILTER",
+  CLEAR_SORT_FILTER = "CLEAR_SORT_FILTER",
   GET_PRODUCTS = "GET_PRODUCTS",
+  LOADING_END = "LOADING_END",
+  LOADING_START = "LOADING_START",
+  SORT_BY_CATEGORY = "SORT_BY_CATEGORY",
+  SORT_BY_SIZE = "SORT_BY_SIZE",
   SORT_PRICE_ASC = "SORT_PRICE_ASC",
   SORT_PRICE_DESC = "SORT_PRICE_DESC",
-  SORT_BY_CATEGORY = "SORT_BY_CATEGORY",
 }
 
 export enum CheckoutActionType {
@@ -164,10 +172,28 @@ type CartPayload = {
 };
 
 type FilterPayload = {
+  [FilterActionType.CLEAR_CATEGORY_FILTER]: any;
+  [FilterActionType.CLEAR_SIZE_FILTER]: any;
+  [FilterActionType.CLEAR_SORT_FILTER]: any;
   [FilterActionType.GET_PRODUCTS]: { products: ProductType[] };
-  [FilterActionType.SORT_PRICE_ASC]: { sortIndex?: number };
-  [FilterActionType.SORT_PRICE_DESC]: { sortIndex?: number };
-  [FilterActionType.SORT_BY_CATEGORY]: { catIndex?: number };
+  [FilterActionType.LOADING_END]: any;
+  [FilterActionType.LOADING_START]: any;
+  [FilterActionType.SORT_BY_CATEGORY]: {
+    catIndex?: number;
+    products: ProductType[];
+  };
+  [FilterActionType.SORT_BY_SIZE]: {
+    sizeIndex?: number;
+    products: ProductType[];
+  };
+  [FilterActionType.SORT_PRICE_ASC]: {
+    sortIndex?: number;
+    products: ProductType[];
+  };
+  [FilterActionType.SORT_PRICE_DESC]: {
+    sortIndex?: number;
+    products: ProductType[];
+  };
 };
 
 type CheckoutPayload = {
