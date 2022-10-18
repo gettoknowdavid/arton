@@ -1,4 +1,5 @@
 import { styled } from "baseui";
+import { CustomStyledComponent } from "../../../types";
 
 // Styled component Category Filter Title
 export const StyledCFWrapper = styled("div", () => ({
@@ -22,10 +23,15 @@ export const StyledCFList = styled("ul", () => ({
 }));
 
 // Styled component Category Filter List Item
-export const StyledCFListItem = styled("li", ({ $theme }) => ({
+export const StyledCFListItem = styled<
+  "li",
+  { $isActive: boolean },
+  CustomStyledComponent
+>("li", ({ $isActive, $theme }) => ({
   ...$theme.typography.font100,
   textTransform: "uppercase",
   lineHeight: "1rem",
   cursor: "pointer",
+  color: $isActive ? $theme.colors.mono600 : $theme.colors.mono1000,
   ":hover": { color: $theme.colors.mono600 },
 }));
