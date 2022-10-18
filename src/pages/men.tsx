@@ -1,5 +1,5 @@
 import * as React from "react";
-import { FilterActionType, NextPageWithLayout, ProductType } from "../types";
+import { NextPageWithLayout, ProductType } from "../types";
 import { ReactElement } from "react";
 import Layout from "../components/layout";
 import SEO from "../components/seo";
@@ -23,7 +23,7 @@ const Men: NextPageWithLayout | any = (props: MenProps) => {
   const { dispatch, state } = React.useContext(FilterContext);
 
   React.useEffect(() => {
-    getAllProducts(props.products.data, dispatch).catch();
+    getAllProducts({ dispatch, products: props.products.data }).catch();
   }, []);
 
   return (

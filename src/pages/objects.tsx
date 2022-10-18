@@ -21,7 +21,7 @@ const Objects: NextPageWithLayout | any = (props: ObjectsProps) => {
   const { dispatch, state } = React.useContext(FilterContext);
 
   React.useEffect(() => {
-    getAllProducts(props.products.data, dispatch).catch();
+    getAllProducts({ dispatch, products: props.products.data }).catch();
   }, []);
 
   return (
