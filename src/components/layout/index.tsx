@@ -24,6 +24,7 @@ function Layout({ children }: { children: ReactNode }) {
         animate="enter" // Animated state to variants.enter
         exit="exit" // Exit state (used later) to variants.exit
         transition={{ type: "linear" }} // Set the transition to linear
+        style={{ minHeight: "calc(100vh - 2.8125rem)" }}
       >
         {children}
       </motion.div>
