@@ -19,6 +19,7 @@ export const StyledTPLList = styled("ul", () => ({
   whiteSpace: "nowrap",
   listStyleType: "none",
   paddingRight: "1rem",
+  paddingBottom: "4rem",
   paddingLeft: "1rem",
 }));
 
