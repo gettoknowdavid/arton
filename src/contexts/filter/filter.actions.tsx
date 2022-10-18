@@ -3,48 +3,50 @@ import { FilterAction, FilterActionType, ProductType } from "../../types";
 import { fetchAPI } from "../../lib/api";
 import { FilterProductsQuery } from "../../graphql/queries/filter-products.query";
 
-const sort = (index?: number) => (index === 0 ? "price:asc" : "price:desc");
+const getSort = (index?: number) => (index === 0 ? "price:asc" : "price:desc");
 
-export async function categoryFilter(
-  dispatch: React.Dispatch<FilterAction>,
-  catID?: number,
-  sizeID?: number,
-  sortIndex?: number
-) {
+type FilterProps = {
+  dispatch: React.Dispatch<FilterAction>;
+  products?: ProductType[];
+  sort?: string;
+  catID?: number;
+  sizeID?: number;
+  sortIndex?: number;
+};
+
+export async function categoryFilter(props: FilterProps) {
+  const { dispatch, catID, sizeID, sortIndex } = props;
+
   dispatch({ type: FilterActionType.LOADING_START });
 
   const { data } = await fetchAPI({
     query: FilterProductsQuery,
-    variables: { catID, sort: sort(sortIndex), sizeID },
+    variables: { catID, sort: getSort(sortIndex), sizeID },
   });
 
   dispatch({
     type: FilterActionType.SORT_BY_CATEGORY,
-    payload: { products: data.products.data, catIndex: catID },
+    payload: { products: data.products.data, catID },
   });
 }
 
-export async function sortByPrice(
-  dispatch: React.Dispatch<FilterAction>,
-  id?: number,
-  sort?: string,
-  sizeIndex?: number,
-  catIndex?: number
-) {
+export async function priceFilter(props: FilterProps) {
+  const { dispatch, catID, sizeID, sortIndex } = props;
+
   dispatch({ type: FilterActionType.LOADING_START });
 
-  const isDesc = sort?.includes("price:desc");
+  const isDesc = getSort(sortIndex)?.includes("price:desc");
 
   const { data } = await fetchAPI({
     query: FilterProductsQuery,
-    variables: { catID: catIndex, sort: sort, sizeID: sizeIndex },
+    variables: { catID, sort: getSort(sortIndex), sizeID },
   });
 
   dispatch({
     type: isDesc
       ? FilterActionType.SORT_PRICE_DESC
       : FilterActionType.SORT_PRICE_ASC,
-    payload: { products: data.products.data, sortIndex: id },
+    payload: { products: data.products.data, sortIndex },
   });
 }
 
@@ -60,23 +62,20 @@ export async function sortBySize(
 
   const { data } = await fetchAPI({
     query: FilterProductsQuery,
-    variables: { catID: catIndex, sort: sort, sizeD: sizeIndex },
+    variables: { catID: catIndex, sort: sort, sizeID: sizeIndex },
   });
 
   dispatch({
     type: FilterActionType.SORT_BY_SIZE,
-    payload: { products: data.products.data, sizeIndex: sizeIndex },
+    payload: { products: data.products.data, sizeID: sizeIndex },
   });
 }
 
-export async function getAllProducts(
-  products: ProductType[],
-  dispatch: React.Dispatch<FilterAction>
-) {
-  dispatch({ type: FilterActionType.LOADING_START });
+export async function getAllProducts(props: FilterProps) {
+  props.dispatch({ type: FilterActionType.LOADING_START });
 
-  dispatch({
+  props.dispatch({
     type: FilterActionType.GET_PRODUCTS,
-    payload: { products: products },
+    payload: { products: props.products! },
   });
 }
