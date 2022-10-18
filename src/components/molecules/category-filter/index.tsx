@@ -9,12 +9,15 @@ import {
   StyledCFWrapper,
 } from "./category-filter.styles";
 import FilterSkeleton from "../../atoms/filter-skeleton";
+import { FilterContext, sortByCategory } from "../../../contexts/filter";
 
 type CategoryFilterProps = {
   gqlQueryVariables: string[];
 };
 
 function CategoryFilter(props: CategoryFilterProps) {
+  const { dispatch, state } = React.useContext(FilterContext);
+
   const { data, loading } = useQuery(SelectCategoryQuery, {
     variables: { list: [...props.gqlQueryVariables] },
   });
@@ -33,9 +36,15 @@ function CategoryFilter(props: CategoryFilterProps) {
         ))
       ) : (
         <StyledCFList>
-          {categories?.map((category) => (
-            <StyledCFListItem key={category.id}>
-              <p>{category.attributes.name}</p>
+          {categories?.map(({ id, attributes }) => (
+            <StyledCFListItem
+              key={id}
+              $isActive={id === state.catIndex}
+              onClick={async () =>
+                sortByCategory(dispatch, id, state.sortIndex, state.sizeIndex)
+              }
+            >
+              <p>{attributes.name}</p>
             </StyledCFListItem>
           ))}
         </StyledCFList>
