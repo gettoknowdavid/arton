@@ -46,7 +46,7 @@ function ProductList(props: ProductListProps) {
       flexGridRowGap={["3rem", "2rem", "3rem", "4rem"]}
     >
       {props.loading
-        ? productSkeletons.map((index) => (
+        ? productSkeletons.map((_, index) => (
             <FlexGridItem key={index}>
               <ProductSkeleton key={index} />
             </FlexGridItem>
