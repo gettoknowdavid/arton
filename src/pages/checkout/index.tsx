@@ -15,10 +15,10 @@ import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import { validateEmail, validatePhone } from "../../lib/validators";
 import BackButton from "../../components/atoms/back-button";
 import { currency } from "../../lib/currency-formatter";
-import { CartItemInterface, CheckoutActionType } from "../../types";
+import { CheckoutActionType } from "../../types";
 import { CheckoutContext } from "../../contexts/checkout.context";
 import CheckoutModal from "../../components/molecules/checkout-modal";
-import { GetServerSideProps } from "next";
+import { ShoppingCart, SmileySad } from "phosphor-react";
 
 type Inputs = {
   name: string;
@@ -89,6 +89,38 @@ function Checkout() {
       setIsDisabled(true);
     }
   }, [code, errors, expiration, isCardValid, setIsDisabled]);
+
+  if (!state.items.length) {
+    return (
+      <div
+        className={css({
+          width: "100%",
+          height: "calc(100vh - 2.8125rem)",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          flexDirection: "column",
+        })}
+      >
+        <SmileySad size={60} weight={"duotone"} />
+        <h1
+          className={css({
+            ...theme.typography.font400,
+            fontWeight: 300,
+            textTransform: "uppercase",
+            letterSpacing: "1px",
+            marginTop: "2rem",
+            textAlign: "center",
+            lineHeight: "2.4rem",
+          })}
+        >
+          Oops...
+          <br />
+          No products in cart to checkout
+        </h1>
+      </div>
+    );
+  }
 
   return (
     <form
@@ -561,24 +593,4 @@ Checkout.getLayout = function getLayout(page: ReactElement) {
       <Layout>{page}</Layout>
     </>
   );
-};
-
-// @ts-ignore
-export const getServerSideProps: GetServerSideProps = async () => {
-  let items: CartItemInterface[] = [];
-
-  if (typeof window !== "undefined") {
-    const jsonItems: any = localStorage.getItem("cart.items");
-    items = JSON.parse(jsonItems);
-  }
-
-  if (!items.length) {
-    return {
-      redirect: {
-        source: "/checkout",
-        destination: "/cart",
-        permanent: false,
-      },
-    };
-  }
 };
