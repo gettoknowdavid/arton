@@ -119,6 +119,7 @@ export type FilterContextType = {
   loading: boolean;
   sizeID?: number;
   sortIndex?: number;
+  variant: string;
 };
 
 export type CheckoutContextType = {
