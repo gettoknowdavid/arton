@@ -221,6 +221,20 @@ type ComponentSharedMetaSocial {
   image: UploadFileEntityResponse
 }
 
+input ComponentSharedSeoFiltersInput {
+  metaTitle: StringFilterInput
+  metaDescription: StringFilterInput
+  metaSocial: ComponentSharedMetaSocialFiltersInput
+  keywords: StringFilterInput
+  metaRobots: StringFilterInput
+  structuredData: JSONFilterInput
+  metaViewport: StringFilterInput
+  canonicalURL: StringFilterInput
+  and: [ComponentSharedSeoFiltersInput]
+  or: [ComponentSharedSeoFiltersInput]
+  not: ComponentSharedSeoFiltersInput
+}
+
 input ComponentSharedSeoInput {
   id: ID
   metaTitle: String
@@ -654,7 +668,7 @@ type CategoryRelationResponseCollection {
 input ColourFiltersInput {
   id: IDFilterInput
   title: StringFilterInput
-  code: StringFilterInput
+  hex: StringFilterInput
   createdAt: DateTimeFilterInput
   updatedAt: DateTimeFilterInput
   and: [ColourFiltersInput]
@@ -664,12 +678,12 @@ input ColourFiltersInput {
 
 input ColourInput {
   title: String
-  code: String
+  hex: String
 }
 
 type Colour {
   title: String!
-  code: String!
+  hex: String!
   createdAt: DateTime
   updatedAt: DateTime
 }
@@ -717,10 +731,42 @@ type HomeEntityResponse {
   data: HomeEntity
 }
 
+input ManInput {
+  seo: [ComponentSharedSeoInput]
+  categories: [ID]
+  publishedAt: DateTime
+}
+
+type Man {
+  seo(
+    filters: ComponentSharedSeoFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+  ): [ComponentSharedSeo]
+  categories(
+    filters: CategoryFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+  ): CategoryRelationResponseCollection
+  createdAt: DateTime
+  updatedAt: DateTime
+  publishedAt: DateTime
+}
+
+type ManEntity {
+  id: ID
+  attributes: Man
+}
+
+type ManEntityResponse {
+  data: ManEntity
+}
+
 enum ENUM_PRODUCT_VARIANT {
   male
   female
   unisex
+  object
 }
 
 input ProductFiltersInput {
@@ -818,7 +864,7 @@ type ProductRelationResponseCollection {
 
 input SizeFiltersInput {
   id: IDFilterInput
-  code: StringFilterInput
+  sizeCode: StringFilterInput
   title: StringFilterInput
   createdAt: DateTimeFilterInput
   updatedAt: DateTimeFilterInput
@@ -828,12 +874,12 @@ input SizeFiltersInput {
 }
 
 input SizeInput {
-  code: String
+  sizeCode: String
   title: String
 }
 
 type Size {
-  code: String!
+  sizeCode: String!
   title: String!
   createdAt: DateTime
   updatedAt: DateTime
@@ -870,6 +916,7 @@ union GenericMorph =
   | Category
   | Colour
   | Home
+  | Man
   | Product
   | Size
 
@@ -983,6 +1030,7 @@ type Query {
     sort: [String] = []
   ): ColourEntityResponseCollection
   home(publicationState: PublicationState = LIVE): HomeEntityResponse
+  man(publicationState: PublicationState = LIVE): ManEntityResponse
   product(id: ID): ProductEntityResponse
   products(
     filters: ProductFiltersInput
@@ -1024,6 +1072,8 @@ type Mutation {
   deleteColour(id: ID!): ColourEntityResponse
   updateHome(data: HomeInput!): HomeEntityResponse
   deleteHome: HomeEntityResponse
+  updateMan(data: ManInput!): ManEntityResponse
+  deleteMan: ManEntityResponse
   createProduct(data: ProductInput!): ProductEntityResponse
   updateProduct(id: ID!, data: ProductInput!): ProductEntityResponse
   deleteProduct(id: ID!): ProductEntityResponse
