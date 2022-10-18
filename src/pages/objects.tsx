@@ -1,5 +1,5 @@
 import * as React from "react";
-import { FilterActionType, NextPageWithLayout, ProductType } from "../types";
+import { NextPageWithLayout, ProductType } from "../types";
 import { ReactElement } from "react";
 import Layout from "../components/layout";
 import SEO from "../components/seo";
@@ -8,7 +8,7 @@ import { FlexGrid, FlexGridItem } from "baseui/flex-grid";
 import ProductList from "../components/molecules/product-list";
 import SortFilter from "../components/molecules/sort-filter";
 import { ObjectsQuery } from "../graphql/queries/objects.query";
-import { FilterContext } from "../contexts/filter.context";
+import { FilterContext, getAllProducts } from "../contexts/filter";
 
 type ObjectsProps = {
   loading: boolean;
@@ -18,17 +18,11 @@ type ObjectsProps = {
 };
 
 const Objects: NextPageWithLayout | any = (props: ObjectsProps) => {
-  const [loading, setLoading] = React.useState(false);
   const { dispatch, state } = React.useContext(FilterContext);
 
   React.useEffect(() => {
-    setLoading(true);
-    dispatch({
-      type: FilterActionType.GET_PRODUCTS,
-      payload: { products: props.products.data },
-    });
-    setLoading(false);
-  }, [dispatch, props.products.data, setLoading]);
+    getAllProducts(props.products.data, dispatch).catch();
+  }, []);
 
   return (
     <FlexGrid
@@ -43,7 +37,7 @@ const Objects: NextPageWithLayout | any = (props: ObjectsProps) => {
         <ProductList
           gridCount={[2, 2, 3, 4]}
           products={state.filteredProducts}
-          loading={loading}
+          loading={props.loading || state.loading}
         />
       </FlexGridItem>
       <FlexGridItem
