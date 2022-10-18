@@ -12,7 +12,7 @@ import { Router } from "next/router";
 import LoadingScreen from "../components/organisms/loading-screen";
 import "normalize.css";
 import "../styles/globals.css";
-import ArtonProvider from "../contexts/arton-provider";
+import ArtonProvider from "../contexts";
 
 function ArtonApp({ Component, pageProps }: AppPropsWithLayout) {
   const getLayout = Component.getLayout ?? ((page) => page);
@@ -47,7 +47,7 @@ function ArtonApp({ Component, pageProps }: AppPropsWithLayout) {
             <BaseProvider theme={ArtonTheme}>
               <IconContext.Provider value={{ size: "1.125rem" }}>
                 {loading ? (
-                  <LoadingScreen loading={true} />
+                  <LoadingScreen loading={loading} />
                 ) : (
                   getLayout(<Component {...pageProps} />)
                 )}
