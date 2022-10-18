@@ -9,7 +9,7 @@ import {
   StyledCFWrapper,
 } from "./category-filter.styles";
 import FilterSkeleton from "../../atoms/filter-skeleton";
-import { FilterContext, sortByCategory } from "../../../contexts/filter";
+import { FilterContext, categoryFilter } from "../../../contexts/filter";
 
 type CategoryFilterProps = {
   gqlQueryVariables: string[];
@@ -41,7 +41,7 @@ function CategoryFilter(props: CategoryFilterProps) {
               key={id}
               $isActive={id === state.catIndex}
               onClick={async () =>
-                sortByCategory(dispatch, id, state.sortIndex, state.sizeIndex)
+                categoryFilter(dispatch, id, state.sizeIndex, state.sortIndex)
               }
             >
               <p>{attributes.name}</p>
