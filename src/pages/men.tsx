@@ -10,7 +10,7 @@ import CategoryFilter from "../components/molecules/category-filter";
 import SizeFilter from "../components/molecules/size-filter";
 import SortFilter from "../components/molecules/sort-filter";
 import { GenderQuery } from "../graphql/queries/gender.query";
-import { FilterContext } from "../contexts/filter.context";
+import { FilterContext, getAllProducts } from "../contexts/filter";
 
 type MenProps = {
   loading: boolean;
@@ -21,16 +21,10 @@ type MenProps = {
 
 const Men: NextPageWithLayout | any = (props: MenProps) => {
   const { dispatch, state } = React.useContext(FilterContext);
-  const [loading, setLoading] = React.useState(false);
 
   React.useEffect(() => {
-    setLoading(true);
-    dispatch({
-      type: FilterActionType.GET_PRODUCTS,
-      payload: { products: props.products.data },
-    });
-    setLoading(false);
-  }, [dispatch, props.products.data, setLoading]);
+    getAllProducts(props.products.data, dispatch).catch();
+  }, []);
 
   return (
     <FlexGrid
@@ -50,7 +44,10 @@ const Men: NextPageWithLayout | any = (props: MenProps) => {
         <SizeFilter />
       </FlexGridItem>
       <FlexGridItem>
-        <ProductList products={state.filteredProducts} loading={loading} />
+        <ProductList
+          products={state.filteredProducts}
+          loading={props.loading || state.loading}
+        />
       </FlexGridItem>
       <FlexGridItem
         maxWidth={"16rem"}
