@@ -13,6 +13,7 @@ import { FilterContext, categoryFilter } from "../../../contexts/filter";
 
 type CategoryFilterProps = {
   gqlQueryVariables: string[];
+  variant: string;
 };
 
 function CategoryFilter(props: CategoryFilterProps) {
@@ -46,6 +47,7 @@ function CategoryFilter(props: CategoryFilterProps) {
                   catID: id,
                   sizeID: state.sizeID,
                   sortIndex: state.sortIndex,
+                  variant: props.variant,
                 });
               }}
             >
