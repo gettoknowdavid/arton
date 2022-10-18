@@ -40,7 +40,10 @@ const Women: NextPageWithLayout | any = (props: WomenProps) => {
         width={"100%"}
         display={["none", "none", "none", "initial"]}
       >
-        <CategoryFilter gqlQueryVariables={["female", "unisex"]} />
+        <CategoryFilter
+          gqlQueryVariables={["female", "unisex"]}
+          variant={"female"}
+        />
         <SizeFilter />
       </FlexGridItem>
       <FlexGridItem>
@@ -54,7 +57,7 @@ const Women: NextPageWithLayout | any = (props: WomenProps) => {
         width={"100%"}
         display={["none", "none", "none", "initial"]}
       >
-        <SortFilter />
+        <SortFilter variant={"female"} />
       </FlexGridItem>
     </FlexGrid>
   );

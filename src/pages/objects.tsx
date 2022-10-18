@@ -45,7 +45,7 @@ const Objects: NextPageWithLayout | any = (props: ObjectsProps) => {
         width={"100%"}
         display={["none", "none", "none", "initial"]}
       >
-        <SortFilter />
+        <SortFilter variant={"object"} />
       </FlexGridItem>
     </FlexGrid>
   );
