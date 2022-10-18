@@ -23,12 +23,10 @@ function CategoryList(props: CategoryListProps) {
     <FlexGrid
       flexGridColumnCount={[1, 1, 3, 3]}
       flexGridColumnGap={"2px"}
-      flexGridRowGap={"4rem"}
-      paddingTop={"2rem"}
-      paddingBottom={"2rem"}
+      paddingBottom={"4rem"}
     >
       {props.categories.map((category: CategoryType) => (
-        <FlexGridItem key={category.id}>
+        <FlexGridItem key={category.id} height={"100%"}>
           <StyledCategoryItemImageDiv>
             {!props.loading ? (
               <motion.div
