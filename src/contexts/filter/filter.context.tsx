@@ -2,10 +2,10 @@ import React from "react";
 import { FilterAction, FilterContextType } from "../../types";
 
 export const filterInitialState: FilterContextType = {
-  catIndex: undefined,
+  catID: undefined,
   filteredProducts: [],
   loading: false,
-  sizeIndex: undefined,
+  sizeID: undefined,
   sortIndex: undefined,
 };
 
@@ -30,14 +30,14 @@ export const filterReducer = (
       return {
         ...state,
         loading: false,
-        catIndex: action.payload.catIndex,
+        catID: action.payload.catID,
         filteredProducts: action.payload.products,
       };
     case "SORT_BY_SIZE":
       return {
         ...state,
         loading: false,
-        sizeIndex: action.payload.sizeIndex,
+        sizeID: action.payload.sizeID,
         filteredProducts: action.payload.products,
       };
     case "SORT_PRICE_ASC":
