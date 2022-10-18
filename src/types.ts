@@ -114,10 +114,10 @@ export type CartContextType = {
 };
 
 export type FilterContextType = {
-  catIndex?: number;
+  catID?: number;
   filteredProducts: ProductType[];
   loading: boolean;
-  sizeIndex?: number;
+  sizeID?: number;
   sortIndex?: number;
 };
 
@@ -179,11 +179,11 @@ type FilterPayload = {
   [FilterActionType.LOADING_END]: any;
   [FilterActionType.LOADING_START]: any;
   [FilterActionType.SORT_BY_CATEGORY]: {
-    catIndex?: number;
+    catID?: number;
     products: ProductType[];
   };
   [FilterActionType.SORT_BY_SIZE]: {
-    sizeIndex?: number;
+    sizeID?: number;
     products: ProductType[];
   };
   [FilterActionType.SORT_PRICE_ASC]: {
