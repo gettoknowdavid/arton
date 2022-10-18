@@ -1,7 +1,7 @@
 import React from "react";
 import { FilterAction, FilterActionType, ProductType } from "../../types";
 import { fetchAPI } from "../../lib/api";
-import { ProductsByCategoryQuery } from "../../graphql/queries/products-by-category.query";
+import { FilterProductsQuery } from "../../graphql/queries/filter-products.query";
 
 export async function sortByCategory(
   dispatch: React.Dispatch<FilterAction>,
@@ -14,7 +14,7 @@ export async function sortByCategory(
   const sort = sortIndex === 0 ? "price:asc" : "price:desc";
 
   const { data } = await fetchAPI({
-    query: ProductsByCategoryQuery,
+    query: FilterProductsQuery,
     variables: { catID: id, sort: sort, sizeID: sizeIndex },
   });
 
@@ -36,7 +36,7 @@ export async function sortByPrice(
   const isDesc = sort?.includes("price:desc");
 
   const { data } = await fetchAPI({
-    query: ProductsByCategoryQuery,
+    query: FilterProductsQuery,
     variables: { catID: catIndex, sort: sort, sizeID: sizeIndex },
   });
 
@@ -59,7 +59,7 @@ export async function sortBySize(
   const sort = sortIndex === 0 ? "price:asc" : "price:desc";
 
   const { data } = await fetchAPI({
-    query: ProductsByCategoryQuery,
+    query: FilterProductsQuery,
     variables: { catID: catIndex, sort: sort, sizeD: sizeIndex },
   });
 

@@ -1,9 +1,9 @@
 import { gql } from "@apollo/client";
 import { ProductFragment } from "../fragments";
 
-export const ProductsByCategoryQuery = gql`
+export const FilterProductsQuery = gql`
   ${ProductFragment}
-  query ProductQuery($catID: ID, $sort: String, $sizeID: ID) {
+  query FilterProductsQuery($catID: ID, $sort: String, $sizeID: ID) {
     products(
       sort: [$sort]
       filters: {
