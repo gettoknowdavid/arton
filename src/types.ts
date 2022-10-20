@@ -121,6 +121,12 @@ export type FilterContextType = {
   sortIndex?: number;
 };
 
+export type SearchContextType = {
+  loading: boolean;
+  searchBoxOpen: boolean;
+  result: ProductType[];
+};
+
 export type CheckoutContextType = {
   modalOpen: boolean;
 };
@@ -153,6 +159,15 @@ export enum FilterActionType {
   SORT_BY_SIZE = "SORT_BY_SIZE",
   SORT_PRICE_ASC = "SORT_PRICE_ASC",
   SORT_PRICE_DESC = "SORT_PRICE_DESC",
+}
+
+export enum SearchActionType {
+  SEARCH_SUBMITTED = "SEARCH_SUBMITTED",
+  OPEN_SEARCH = "OPEN_SEARCH",
+  CLOSE_SEARCH = "CLOSE_SEARCH",
+  LOADING_END = "LOADING_END",
+  LOADING_START = "LOADING_START",
+  TOGGLE_SEARCH_BOX = "TOGGLE_SEARCH_BOX",
 }
 
 export enum CheckoutActionType {
@@ -196,6 +211,15 @@ type FilterPayload = {
   };
 };
 
+type SearchPayload = {
+  [SearchActionType.CLOSE_SEARCH]: any;
+  [SearchActionType.OPEN_SEARCH]: any;
+  [SearchActionType.SEARCH_SUBMITTED]: { result: ProductType[] };
+  [SearchActionType.LOADING_END]: any;
+  [SearchActionType.LOADING_START]: any;
+  [SearchActionType.TOGGLE_SEARCH_BOX]: any;
+};
+
 type CheckoutPayload = {
   [CheckoutActionType.CLOSE_CHECKOUT_MODAL]: any;
   [CheckoutActionType.TOGGLE_CHECKOUT_MODAL]: any;
@@ -208,3 +232,6 @@ export type FilterAction =
 
 export type CheckoutAction =
   ActionMap<CheckoutPayload>[keyof ActionMap<CheckoutPayload>];
+
+export type SearchAction =
+  ActionMap<SearchPayload>[keyof ActionMap<SearchPayload>];
