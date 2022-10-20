@@ -4,6 +4,8 @@ import { styled } from "baseui";
 import { useRouter } from "next/router";
 import { Block } from "baseui/block";
 import { CartContext } from "../../../contexts/cart.context";
+import { closeSearchBox, SearchContext } from "../../../contexts/search";
+import { GlobalContext } from "../../../contexts/global.context";
 
 const Wrapper = styled("div", () => ({
   position: "relative",
@@ -32,6 +34,8 @@ function CartIcon() {
   const router = useRouter();
 
   const { state } = React.useContext(CartContext);
+  const { closeDrawer } = React.useContext(GlobalContext);
+  const { dispatch } = React.useContext(SearchContext);
 
   const [quantity, setQuantity] = React.useState(0);
 
@@ -40,7 +44,13 @@ function CartIcon() {
   }, [state.items]);
 
   return (
-    <Wrapper onClick={() => router.push("/cart")}>
+    <Wrapper
+      onClick={() => {
+        closeSearchBox({ dispatch });
+        closeDrawer();
+        router?.push("/cart");
+      }}
+    >
       <Block display={["none", "none", "none", "flex"]}>Cart</Block>
       <Block display={["flex", "flex", "flex", "none"]}>
         <ShoppingCart />
