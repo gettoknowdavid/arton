@@ -130,7 +130,7 @@ function Checkout() {
       <CheckoutModal />
       <div
         className={css({
-          zIndex: 200,
+          zIndex: 90,
           position: "relative",
           marginTop: "2.8125rem",
           height: "2.8125rem",
