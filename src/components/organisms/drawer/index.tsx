@@ -34,7 +34,6 @@ function Drawer() {
       size={SIZE.full}
       overrides={DrawerOverrides}
     >
-      <SearchBox />
       <StyledDrawerBody>
         <StyledDrawerList>
           {config.nav.map((item: NavItemType) => (
