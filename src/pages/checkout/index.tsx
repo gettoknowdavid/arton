@@ -18,7 +18,7 @@ import { currency } from "../../lib/currency-formatter";
 import { CheckoutActionType } from "../../types";
 import { CheckoutContext } from "../../contexts/checkout.context";
 import CheckoutModal from "../../components/molecules/checkout-modal";
-import { ShoppingCart, SmileySad } from "phosphor-react";
+import { SmileySad } from "phosphor-react";
 
 type Inputs = {
   name: string;
