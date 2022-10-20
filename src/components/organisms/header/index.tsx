@@ -5,11 +5,23 @@ import {
   StyledHeader,
 } from "./header.styles";
 import NavList from "../../molecules/nav-list";
-import BagIcon from "../../atoms/cart-icon";
+import CartIcon from "../../atoms/cart-icon";
 import Logo from "../../atoms/logo";
 import Hamburger from "../../atoms/hamburger";
+import { SearchContext, toggleSearchBox } from "../../../contexts/search";
+import { MagnifyingGlass } from "phosphor-react";
+import { GlobalContext } from "../../../contexts/global.context";
 
 function Header() {
+  const { dispatch } = React.useContext(SearchContext);
+  const { drawerOpen, closeDrawer } = React.useContext(GlobalContext);
+  const handleSearchBox = () => {
+    if (drawerOpen) {
+      closeDrawer();
+    }
+    toggleSearchBox({ dispatch });
+  };
+
   return (
     <header>
       <StyledHeader>
@@ -22,14 +34,20 @@ function Header() {
 
         <div>
           <StyledActionsList>
-            <StyledActionItem display={["none", "none", "none", "flex"]}>
-              Login
-            </StyledActionItem>
-            <StyledActionItem display={["none", "none", "none", "flex"]}>
+            <StyledActionItem
+              display={["none", "none", "none", "flex"]}
+              onClick={handleSearchBox}
+            >
               Search
             </StyledActionItem>
+            <StyledActionItem
+              display={["flex", "flex", "flex", "none"]}
+              onClick={handleSearchBox}
+            >
+              <MagnifyingGlass />
+            </StyledActionItem>
             <StyledActionItem>
-              <BagIcon />
+              <CartIcon />
             </StyledActionItem>
           </StyledActionsList>
         </div>
