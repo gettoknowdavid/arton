@@ -1,58 +1,238 @@
 import React from "react";
+import Image from "next/image";
 import { MagnifyingGlass } from "phosphor-react";
 import { Input } from "baseui/input";
+import { useStyletron } from "baseui";
+import { motion } from "framer-motion";
+import { productSearch, SearchContext } from "../../../contexts/search";
+import loadingIcon from "react-useanimations/lib/infinity";
+import UseAnimations from "react-useanimations";
 
 function SearchBox() {
+  const [css, theme] = useStyletron();
+
+  const { dispatch, state } = React.useContext(SearchContext);
+
   const [value, setValue] = React.useState("");
 
+  const variants = {
+    closed: { opacity: 0, x: 0, top: "-5rem" },
+    open: { opacity: 1, x: 0, top: "2.8125rem" },
+  };
+
   return (
-    <Input
-      value={value}
-      onChange={(e) => setValue(e.target.value)}
-      placeholder="WHAT ARE YOU LOOKING FOR?"
-      startEnhancer={() => <MagnifyingGlass />}
-      overrides={{
-        InputContainer: {
-          style: () => ({
-            outline: `transparent solid`,
-            backgroundColor: "transparent",
-          }),
-        },
-        Input: {
-          style: ({ $theme }) => ({
-            ...$theme.typography.font200,
-            outline: `transparent solid`,
-            backgroundColor: "transparent",
-          }),
-        },
-        Root: {
-          style: () => ({
-            paddingRight: ".75rem",
-            paddingLeft: ".75rem",
-            paddingTop: "0 1rem 0 2.8125rem",
-            borderTopLeftRadius: 0,
-            borderTopRightRadius: 0,
-            borderBottomLeftRadius: 0,
-            borderBottomRightRadius: 0,
-            borderTopWidth: 0,
-            borderRightWidth: 0,
-            borderBottomWidth: "1px",
-            borderBottomStyle: "solid",
-            borderBottomColor: "black",
-            borderLeftWidth: 0,
-            backgroundColor: "transparent",
-            outline: `transparent solid`,
-          }),
-        },
-        StartEnhancer: {
-          style: () => ({
-            paddingRight: 0,
-            paddingLeft: 0,
-            backgroundColor: "transparent",
-          }),
-        },
-      }}
-    />
+    <motion.div
+      animate={state.searchBoxOpen ? "open" : "closed"}
+      variants={variants}
+      className={css({ position: "fixed", width: "100%", zIndex: 190 })}
+    >
+      <Input
+        value={value}
+        clearable
+        onChange={async (e) => {
+          setValue(e.target.value);
+          await productSearch({ dispatch, query: value });
+        }}
+        placeholder="WHAT ARE YOU LOOKING FOR?"
+        startEnhancer={() => <MagnifyingGlass />}
+        onKeyDown={async () => await productSearch({ dispatch, query: value })}
+        overrides={{
+          InputContainer: {
+            style: () => ({
+              outline: `transparent solid`,
+              backgroundColor: "white",
+              width: "100%",
+              maxWidth: "1920px",
+              zIndex: 100,
+            }),
+          },
+          Input: {
+            style: ({ $theme }) => ({
+              ...$theme.typography.font200,
+              outline: `transparent solid`,
+              backgroundColor: "white",
+              zIndex: 100,
+            }),
+          },
+          Root: {
+            style: () => ({
+              zIndex: 190,
+              borderTopLeftRadius: 0,
+              borderTopRightRadius: 0,
+              borderBottomLeftRadius: 0,
+              borderBottomRightRadius: 0,
+              borderTopWidth: 0,
+              borderBottomWidth: "1px",
+              borderBottomStyle: "solid",
+              borderBottomColor: "black",
+              borderRightWidth: "1px",
+              borderRightStyle: "solid",
+              borderRightColor: "black",
+              borderLeftWidth: "1px",
+              borderLeftStyle: "solid",
+              borderLeftColor: "black",
+              outline: `transparent solid`,
+              width: "100%",
+              maxWidth: "1920px",
+              backgroundColor: "white",
+            }),
+          },
+          StartEnhancer: {
+            style: () => ({
+              paddingRight: 0,
+              paddingLeft: 0,
+              backgroundColor: "transparent",
+            }),
+          },
+        }}
+      />
+      {value && !state.result.length && !state.loading ? (
+        <div
+          className={css({
+            height: "10rem",
+            width: "100%",
+            maxWidth: "1920px",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            backgroundColor: theme.colors.white,
+            position: "relative",
+            borderRight: `1px solid ${theme.colors.black}`,
+            borderBottom: `1px solid ${theme.colors.black}`,
+            borderLeft: `1px solid ${theme.colors.black}`,
+            paddingBlock: "1rem",
+            [theme.mediaQuery.large]: { padding: 0 },
+          })}
+        >
+          <h1
+            className={css({
+              ...theme.typography.font350,
+              textTransform: "uppercase",
+              paddingInline: "1rem",
+              textAlign: "center",
+              paddingBlock: "1rem",
+              margin: 0,
+            })}
+          >
+            Nothing to show
+          </h1>
+        </div>
+      ) : null}
+      {state.loading ? (
+        <div
+          className={css({
+            height: "36rem",
+            width: "100%",
+            maxWidth: "1920px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            backgroundColor: theme.colors.white,
+            position: "relative",
+            borderRight: `1px solid ${theme.colors.black}`,
+            borderBottom: `1px solid ${theme.colors.black}`,
+            borderLeft: `1px solid ${theme.colors.black}`,
+            paddingBlock: "1rem",
+            [theme.mediaQuery.large]: { padding: 0 },
+          })}
+        >
+          <UseAnimations animation={loadingIcon} size={36} autoplay={true} />
+        </div>
+      ) : null}
+      {state.result.length && !state.loading ? (
+        <div
+          className={css({
+            height: "36rem",
+            width: "100%",
+            maxWidth: "1920px",
+            backgroundColor: theme.colors.white,
+            position: "relative",
+            borderRight: `1px solid ${theme.colors.black}`,
+            borderBottom: `1px solid ${theme.colors.black}`,
+            borderLeft: `1px solid ${theme.colors.black}`,
+            paddingBlock: "1rem",
+            [theme.mediaQuery.large]: { padding: 0 },
+          })}
+        >
+          <h1
+            className={css({
+              ...theme.typography.font350,
+              textTransform: "uppercase",
+              paddingInline: "1rem",
+              textAlign: "center",
+              paddingBlock: "1rem",
+              margin: 0,
+            })}
+          >
+            Suggestions
+          </h1>
+          <ul
+            className={css({
+              display: "flex",
+              height: "100%",
+              width: "100%",
+              overflowX: "auto",
+              whiteSpace: "nowrap",
+              listStyleType: "none",
+              justifyContent: "flex-start",
+              paddingInline: "1rem",
+            })}
+          >
+            {state.result.map((product) => (
+              <li
+                key={product.id}
+                className={css({
+                  marginRight: "2rem",
+                  display: "block",
+                  backgroundColor: theme.colors.mono200,
+                  height: "24rem",
+                  aspectRatio: 4 / 5,
+                  [theme.mediaQuery.large]: {},
+                })}
+              >
+                <div
+                  className={css({
+                    height: "100%",
+                    width: "100%",
+                    position: "relative",
+                    display: "block",
+                  })}
+                >
+                  <Image
+                    src={product.attributes.image.data.attributes.url}
+                    alt={
+                      product.attributes.image.data.attributes.alternativeText
+                    }
+                    layout={"fill"}
+                    className={css({ objectFit: "cover" })}
+                  />
+                </div>
+                <p
+                  className={css({
+                    ...theme.typography.font100,
+                    textTransform: "uppercase",
+                    lineHeight: "1.1rem",
+                    whiteSpace: "initial",
+                    height: "2.2rem",
+                    overflow: "hidden",
+                    textOverflow: "ellipsis",
+                    display: "-webkit-box",
+                    lineClamp: 2,
+                    WebkitLineClamp: 2,
+                    WebkitBoxOrient: "vertical",
+                    [theme.mediaQuery.small]: { fontSize: "0.563rem" },
+                    [theme.mediaQuery.medium]: { fontSize: "0.625rem" },
+                    [theme.mediaQuery.large]: { fontSize: "0.75rem" },
+                  })}
+                >
+                  {product.attributes.title}
+                </p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ) : null}
+    </motion.div>
   );
 }
 
