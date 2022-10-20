@@ -16,7 +16,7 @@ function SearchBox() {
   const [value, setValue] = React.useState("");
 
   const variants = {
-    closed: { opacity: 0, x: 0, top: "-5rem" },
+    closed: { opacity: 0, x: 0, top: 100 },
     open: { opacity: 1, x: 0, top: "2.8125rem" },
   };
 
@@ -24,7 +24,7 @@ function SearchBox() {
     <motion.div
       animate={state.searchBoxOpen ? "open" : "closed"}
       variants={variants}
-      className={css({ position: "fixed", width: "100%", zIndex: 190 })}
+      className={css({ position: "fixed", width: "100%", zIndex: 100 })}
     >
       <Input
         value={value}
@@ -56,7 +56,7 @@ function SearchBox() {
           },
           Root: {
             style: () => ({
-              zIndex: 190,
+              zIndex: 100,
               borderTopLeftRadius: 0,
               borderTopRightRadius: 0,
               borderBottomLeftRadius: 0,
@@ -121,7 +121,7 @@ function SearchBox() {
       {state.loading ? (
         <div
           className={css({
-            height: "36rem",
+            height: "22rem",
             width: "100%",
             maxWidth: "1920px",
             display: "flex",
@@ -133,7 +133,7 @@ function SearchBox() {
             borderBottom: `1px solid ${theme.colors.black}`,
             borderLeft: `1px solid ${theme.colors.black}`,
             paddingBlock: "1rem",
-            [theme.mediaQuery.large]: { padding: 0 },
+            [theme.mediaQuery.large]: { padding: 0, height: "36rem" },
           })}
         >
           <UseAnimations animation={loadingIcon} size={36} autoplay={true} />
@@ -142,7 +142,7 @@ function SearchBox() {
       {state.result.length && !state.loading ? (
         <div
           className={css({
-            height: "36rem",
+            height: "22rem",
             width: "100%",
             maxWidth: "1920px",
             backgroundColor: theme.colors.white,
@@ -151,7 +151,7 @@ function SearchBox() {
             borderBottom: `1px solid ${theme.colors.black}`,
             borderLeft: `1px solid ${theme.colors.black}`,
             paddingBlock: "1rem",
-            [theme.mediaQuery.large]: { padding: 0 },
+            [theme.mediaQuery.large]: { padding: 0, height: "36rem" },
           })}
         >
           <h1
@@ -182,12 +182,12 @@ function SearchBox() {
               <li
                 key={product.id}
                 className={css({
-                  marginRight: "2rem",
+                  marginRight: "1rem",
                   display: "block",
                   backgroundColor: theme.colors.mono200,
-                  height: "24rem",
+                  height: "12rem",
                   aspectRatio: 4 / 5,
-                  [theme.mediaQuery.large]: {},
+                  [theme.mediaQuery.large]: { height: "24rem" },
                 })}
               >
                 <div
