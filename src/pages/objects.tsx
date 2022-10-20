@@ -22,7 +22,7 @@ const Objects: NextPageWithLayout | any = (props: ObjectsProps) => {
 
   React.useEffect(() => {
     getAllProducts({ dispatch, products: props.products.data }).catch();
-  }, []);
+  }, [dispatch, props.products.data]);
 
   return (
     <FlexGrid

@@ -24,7 +24,7 @@ const Women: NextPageWithLayout | any = (props: WomenProps) => {
 
   React.useEffect(() => {
     getAllProducts({ dispatch, products: props.products.data }).catch();
-  }, []);
+  }, [dispatch, props.products.data]);
 
   return (
     <FlexGrid

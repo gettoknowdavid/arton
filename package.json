@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint 'src/**/*.{js,ts,tsx}'"
+    "lint":  "eslint --fix --ext .jsx,.js,.ts,.tsx ."
   },
   "dependencies": {
     "@apollo/client": "^3.6.9",
