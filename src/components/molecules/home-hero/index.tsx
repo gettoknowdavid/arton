@@ -10,6 +10,7 @@ import {
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { useStyletron } from "baseui";
+import { DisplayLarge } from "baseui/typography";
 
 function HomeHero() {
   const [css] = useStyletron();
