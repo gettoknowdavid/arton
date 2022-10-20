@@ -3,6 +3,7 @@ import GlobalProvider from "./global.context";
 import CartProvider from "./cart.context";
 import CheckoutProvider from "./checkout.context";
 import { FilterProvider } from "./filter";
+import { SearchProvider } from "./search";
 
 type Props = {
   children: ReactNode;
@@ -13,7 +14,9 @@ function ArtonProvider(props: Props) {
     <GlobalProvider>
       <CartProvider>
         <CheckoutProvider>
-          <FilterProvider>{props.children}</FilterProvider>
+          <FilterProvider>
+            <SearchProvider>{props.children}</SearchProvider>
+          </FilterProvider>
         </CheckoutProvider>
       </CartProvider>
     </GlobalProvider>
