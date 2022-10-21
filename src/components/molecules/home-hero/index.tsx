@@ -2,7 +2,7 @@ import React from "react";
 import { useQuery } from "@apollo/client";
 import { Skeleton } from "baseui/skeleton";
 import { HomeHeroQuery } from "../../../graphql/queries/home.query";
-import hero1 from "../../../public/hero-1.jpg";
+import hero1 from "../../../../public/hero-1.jpg";
 import {
   StyledHomeHeroContainer,
   StyledHomeHeroImageDiv,
