@@ -1,10 +1,4 @@
-import { CartAction, CartContextType, CartItemInterface } from "../../types";
-import React from "react";
-
-type CartT = {
-  dispatch: React.Dispatch<CartAction>;
-  query?: string;
-};
+import { CartContextType, CartItemInterface } from "../../types";
 
 export const totalAmount = (state: CartContextType): number =>
   state.items.reduce((cartTotal: number, currentItem: CartItemInterface) => {
