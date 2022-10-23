@@ -2,7 +2,7 @@ import React from "react";
 import { currency } from "../../../lib/currency-formatter";
 import Button from "../../atoms/button";
 import { useStyletron } from "baseui";
-import { CartContext, totalAmount } from "../../../contexts/cart/cart.context";
+import { CartContext, totalAmount } from "../../../contexts/cart";
 import { useRouter } from "next/router";
 
 function CartTotalSection() {

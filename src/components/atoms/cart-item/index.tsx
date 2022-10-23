@@ -8,7 +8,7 @@ import { Delete } from "baseui/icon";
 import { FlexGrid, FlexGridItem } from "baseui/flex-grid";
 import { Minus, Plus } from "phosphor-react";
 import { Select, SIZE } from "baseui/select";
-import { CartContext } from "../../../contexts/cart/cart.context";
+import { CartContext } from "../../../contexts/cart";
 
 type Props = {
   item: CartItemInterface;
@@ -27,12 +27,14 @@ function CartItem(props: Props) {
     });
     dispatch({ type: CartActionType.CLOSE_CART_DRAWER });
   };
+
   const decrease = () => {
     dispatch({
       type: CartActionType.DECREASE_QUANTITY,
       payload: { id: item.id },
     });
   };
+
   const increase = () => {
     dispatch({
       type: CartActionType.INCREASE_QUANTITY,
