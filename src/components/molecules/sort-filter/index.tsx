@@ -14,6 +14,7 @@ const SORT_LIST = [
 
 type Props = {
   variant: string;
+  align?: string;
 };
 
 function SortFilter(props: Props) {
@@ -31,8 +32,8 @@ function SortFilter(props: Props) {
 
   return (
     <StyledSortFWrapper>
-      <StyledSortFTitle>SORT</StyledSortFTitle>
-      <StyledSortFList>
+      <StyledSortFTitle $align={props.align}>SORT</StyledSortFTitle>
+      <StyledSortFList $align={props.align}>
         {SORT_LIST.map((ITEM) => (
           <StyledSortFListItem
             key={ITEM.id}
