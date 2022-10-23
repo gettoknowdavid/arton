@@ -31,9 +31,12 @@ const Home: NextPageWithLayout | any = (props: HomeProps) => {
         className={css({
           ...theme.typography.font450,
           textTransform: "uppercase",
-          marginTop: "8rem",
+          marginTop: "2rem",
           marginBottom: "2rem",
           textAlign: "center",
+          letterSpacing: "1px",
+          [theme.mediaQuery.medium]: { marginTop: "4rem" },
+          [theme.mediaQuery.large]: { marginTop: "8rem" },
         })}
       >
         Categories
