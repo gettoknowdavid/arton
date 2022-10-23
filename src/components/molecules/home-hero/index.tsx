@@ -49,6 +49,17 @@ function HomeHero() {
               position: "relative",
             })}
           >
+            <div
+              className={css({
+                backgroundColor: "rgba(0,0,0,0.6)",
+                width: "100%",
+                height: "100%",
+                position: "absolute",
+                left: 0,
+                right: 0,
+                zIndex: 10,
+              })}
+            />
             <Image
               src={hero.url}
               alt={hero.alternativeText}
