@@ -20,13 +20,24 @@ type HomeProps = {
 };
 
 const Home: NextPageWithLayout | any = (props: HomeProps) => {
-  const [css] = useStyletron();
+  const [css, theme] = useStyletron();
   const menCategories = props.menCategories.data;
   const womenCategories = props.womenCategories.data;
 
   return (
-    <div className={css({ paddingLeft: "1rem", paddingRight: "1rem" })}>
+    <div>
       <HomeHero />
+      <h1
+        className={css({
+          ...theme.typography.font450,
+          textTransform: "uppercase",
+          marginTop: "8rem",
+          marginBottom: "2rem",
+          textAlign: "center",
+        })}
+      >
+        Categories
+      </h1>
       <CategoryList categories={menCategories} loading={props.loading} />
       <CategoryList categories={womenCategories} loading={props.loading} />
     </div>

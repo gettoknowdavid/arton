@@ -2,7 +2,6 @@ import React from "react";
 import { useQuery } from "@apollo/client";
 import { Skeleton } from "baseui/skeleton";
 import { HomeHeroQuery } from "../../../graphql/queries/home.query";
-import hero1 from "../../../../public/hero-1.jpg";
 import {
   StyledHomeHeroContainer,
   StyledHomeHeroImageDiv,
@@ -10,10 +9,9 @@ import {
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { useStyletron } from "baseui";
-import { DisplayLarge } from "baseui/typography";
 
 function HomeHero() {
-  const [css] = useStyletron();
+  const [css, theme] = useStyletron();
   const { data, loading } = useQuery(HomeHeroQuery);
   const hero = data?.home.data.attributes.heroImage.data.attributes;
 
@@ -24,6 +22,19 @@ function HomeHero() {
 
   return (
     <StyledHomeHeroContainer>
+      <h1
+        className={css({
+          textTransform: "uppercase",
+          fontSize: "2rem",
+          position: "absolute",
+          zIndex: 80,
+          fontWeight: 900,
+          color: theme.colors.mono100,
+          [theme.mediaQuery.large]: { fontSize: "10rem" },
+        })}
+      >
+        ThisisArton®
+      </h1>
       <StyledHomeHeroImageDiv>
         {loading ? (
           <Skeleton height="100%" width="100%" animation />
@@ -36,14 +47,16 @@ function HomeHero() {
               height: "100%",
               width: "100%",
               position: "relative",
-              objectFit: "contain",
             })}
           >
             <Image
               src={hero.url}
               alt={hero.alternativeText}
               layout={"fill"}
-              className={css({ objectFit: "contain" })}
+              className={css({
+                maxWidth: "1920px",
+                objectFit: "cover",
+              })}
             />
           </motion.div>
         )}
