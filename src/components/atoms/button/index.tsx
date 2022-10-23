@@ -4,11 +4,15 @@ import { Button as BaseButton, ButtonProps } from "baseui/button";
 import UseAnimations from "react-useanimations";
 import loadingIcon from "react-useanimations/lib/infinity";
 
-function Button(props: ButtonProps) {
+type ExtraProps = {
+  width?: string;
+};
+
+function Button(props: ButtonProps & ExtraProps) {
   return (
     <BaseButton
       {...props}
-      size={SIZE.compact}
+      size={props.size ?? SIZE.compact}
       overrides={{
         ...props.overrides,
         LoadingSpinner: {
@@ -24,7 +28,7 @@ function Button(props: ButtonProps) {
           style: ({ $theme }) => ({
             ...$theme.typography.font100,
             letterSpacing: ".05rem",
-            width: "100%",
+            width: props.width ?? "100%",
             textTransform: "uppercase",
           }),
         },
