@@ -19,6 +19,7 @@ import { CheckoutActionType } from "../../types";
 import { CheckoutContext } from "../../contexts/checkout.context";
 import CheckoutModal from "../../components/molecules/checkout-modal";
 import { SmileySad } from "phosphor-react";
+import EmptyState from "../../components/molecules/empty-state";
 
 type Inputs = {
   name: string;
@@ -92,33 +93,10 @@ function Checkout() {
 
   if (!state.items.length) {
     return (
-      <div
-        className={css({
-          width: "100%",
-          height: "calc(100vh - 2.8125rem)",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          flexDirection: "column",
-        })}
-      >
-        <SmileySad size={60} weight={"duotone"} />
-        <h1
-          className={css({
-            ...theme.typography.font400,
-            fontWeight: 300,
-            textTransform: "uppercase",
-            letterSpacing: "1px",
-            marginTop: "2rem",
-            textAlign: "center",
-            lineHeight: "2.4rem",
-          })}
-        >
-          Oops...
-          <br />
-          No products in cart to checkout
-        </h1>
-      </div>
+      <EmptyState
+        content={"No products in cart to checkout"}
+        icon={<SmileySad size={60} weight={"duotone"} />}
+      />
     );
   }
 

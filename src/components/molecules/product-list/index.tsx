@@ -4,6 +4,9 @@ import ProductItem from "../../atoms/product-item";
 import { ProductType } from "../../../types";
 import { useStyletron } from "baseui";
 import { Skeleton } from "baseui/skeleton";
+import { Block } from "baseui/block";
+import { ShoppingCart, SmileySad } from "phosphor-react";
+import EmptyState from "../empty-state";
 
 type ProductListProps = {
   loading: boolean;
@@ -39,6 +42,16 @@ const ProductSkeleton = () => {
 };
 
 function ProductList(props: ProductListProps) {
+  if (!props.products.length) {
+    return (
+      <EmptyState
+        content={"We don't seem to have those"}
+        icon={<SmileySad size={60} weight={"duotone"} />}
+        height={"calc(100vh - 12.8125rem)"}
+      />
+    );
+  }
+
   return (
     <FlexGrid
       flexGridColumnCount={props.gridCount ?? [2, 2, 3, 3]}
