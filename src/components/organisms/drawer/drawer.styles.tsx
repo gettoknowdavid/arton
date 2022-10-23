@@ -1,6 +1,7 @@
 import { styled } from "baseui";
 
 export const DrawerOverrides = {
+  Root: { style: () => ({ zIndex: 80 }) },
   DrawerBody: {
     style: () => ({
       overflow: "hidden",

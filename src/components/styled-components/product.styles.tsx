@@ -2,7 +2,7 @@ import { styled } from "baseui";
 import { CustomStyledComponent } from "../../types";
 
 export const StyledPBackButtonWrapper = styled("div", ({ $theme }) => ({
-  zIndex: 80,
+  zIndex: 70,
   position: "relative",
   marginTop: "2.8125rem",
   height: "2.8125rem",

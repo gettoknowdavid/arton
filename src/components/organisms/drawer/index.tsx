@@ -12,7 +12,6 @@ import {
   StyledDrawerList,
   StyledDrawerListItem,
 } from "./drawer.styles";
-import SearchBox from "../../atoms/search-box";
 import { useRouter } from "next/router";
 import { GlobalContext } from "../../../contexts/global.context";
 
