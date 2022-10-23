@@ -8,6 +8,69 @@ import loadingIcon from "react-useanimations/lib/infinity";
 import UseAnimations from "react-useanimations";
 import SearchItem from "../search-item";
 
+const LoadingState = () => {
+  const [css, theme] = useStyletron();
+
+  return (
+    <div
+      className={css({
+        height: "22rem",
+        width: "100%",
+        maxWidth: "1920px",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        backgroundColor: theme.colors.white,
+        position: "relative",
+        borderRight: `1px solid ${theme.colors.black}`,
+        borderBottom: `1px solid ${theme.colors.black}`,
+        borderLeft: `1px solid ${theme.colors.black}`,
+        paddingBlock: "1rem",
+        [theme.mediaQuery.large]: { padding: 0, height: "36rem" },
+      })}
+    >
+      <UseAnimations animation={loadingIcon} size={36} autoplay={true} />
+    </div>
+  );
+};
+
+const EmptyState = () => {
+  const [css, theme] = useStyletron();
+
+  return (
+    <div
+      className={css({
+        height: "10rem",
+        width: "100%",
+        maxWidth: "1920px",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        backgroundColor: theme.colors.white,
+        position: "relative",
+        borderRight: `1px solid ${theme.colors.black}`,
+        borderBottom: `1px solid ${theme.colors.black}`,
+        borderLeft: `1px solid ${theme.colors.black}`,
+        paddingBlock: "1rem",
+        [theme.mediaQuery.large]: { padding: 0 },
+      })}
+    >
+      <h1
+        className={css({
+          ...theme.typography.font350,
+          textTransform: "uppercase",
+          paddingInline: "1rem",
+          textAlign: "center",
+          paddingBlock: "1rem",
+          margin: 0,
+        })}
+      >
+        Nothing to show
+      </h1>
+    </div>
+  );
+};
+
 function SearchBox() {
   const [css, theme] = useStyletron();
 
@@ -86,59 +149,8 @@ function SearchBox() {
           },
         }}
       />
-      {value && !state.result.length && !state.loading ? (
-        <div
-          className={css({
-            height: "10rem",
-            width: "100%",
-            maxWidth: "1920px",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            backgroundColor: theme.colors.white,
-            position: "relative",
-            borderRight: `1px solid ${theme.colors.black}`,
-            borderBottom: `1px solid ${theme.colors.black}`,
-            borderLeft: `1px solid ${theme.colors.black}`,
-            paddingBlock: "1rem",
-            [theme.mediaQuery.large]: { padding: 0 },
-          })}
-        >
-          <h1
-            className={css({
-              ...theme.typography.font350,
-              textTransform: "uppercase",
-              paddingInline: "1rem",
-              textAlign: "center",
-              paddingBlock: "1rem",
-              margin: 0,
-            })}
-          >
-            Nothing to show
-          </h1>
-        </div>
-      ) : null}
-      {state.loading ? (
-        <div
-          className={css({
-            height: "22rem",
-            width: "100%",
-            maxWidth: "1920px",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            backgroundColor: theme.colors.white,
-            position: "relative",
-            borderRight: `1px solid ${theme.colors.black}`,
-            borderBottom: `1px solid ${theme.colors.black}`,
-            borderLeft: `1px solid ${theme.colors.black}`,
-            paddingBlock: "1rem",
-            [theme.mediaQuery.large]: { padding: 0, height: "36rem" },
-          })}
-        >
-          <UseAnimations animation={loadingIcon} size={36} autoplay={true} />
-        </div>
-      ) : null}
+      {value && !state.result.length && !state.loading ? <EmptyState /> : null}
+      {state.loading ? <LoadingState /> : null}
       {state.result.length && !state.loading ? (
         <div
           className={css({
