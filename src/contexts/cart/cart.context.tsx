@@ -1,5 +1,5 @@
 import React from "react";
-import { CartAction, CartContextType } from "../../types";
+import { CartAction, CartContextType, CartItemInterface } from "../../types";
 
 const cartInitialState: CartContextType = {
   items: [],
@@ -34,13 +34,10 @@ export const cartReducer = (state: CartContextType, action: CartAction) => {
         ...state,
         items: cartItems,
       };
-
     case "CLEAR_CART":
       return { ...state, items: cartInitialState.items };
-
     case "CLOSE_CART_DRAWER":
       return { ...state, cartDrawerOpen: false };
-
     case "DECREASE_QUANTITY":
       return {
         ...state,
@@ -53,7 +50,6 @@ export const cartReducer = (state: CartContextType, action: CartAction) => {
           })
           .filter((i) => i.quantity > 0),
       };
-
     case "INCREASE_QUANTITY":
       return {
         ...state,
@@ -64,7 +60,6 @@ export const cartReducer = (state: CartContextType, action: CartAction) => {
           return i;
         }),
       };
-
     case "REMOVE_FROM_CART":
       return {
         ...state,
@@ -74,13 +69,34 @@ export const cartReducer = (state: CartContextType, action: CartAction) => {
             i.size.id !== action.payload.item.size.id
         ),
       };
-
     case "SELECT_SIZE":
-      break;
+      const newItem = { ...action.payload.item, size: action.payload.size };
 
+      const filteredItems = state.items.filter(
+        (i) =>
+          !(
+            i.id === action.payload.item.id &&
+            i.size.id === action.payload.item.size.id
+          )
+      );
+      const list = [...filteredItems, newItem];
+      let result: CartItemInterface[] = [];
+      list.forEach((elem) => {
+        let match = result.find(
+          (r) => r.id === elem.id && r.size.id === elem.size.id
+        );
+        if (match) {
+          Object.assign(match, { ...elem, quantity: elem.quantity + 1 });
+        } else {
+          result.push(elem);
+        }
+      });
+      return {
+        ...state,
+        items: [...result],
+      };
     case "TOGGLE_CART_DRAWER":
       return { ...state, cartDrawerOpen: !state.cartDrawerOpen };
-
     default:
       return state;
   }
