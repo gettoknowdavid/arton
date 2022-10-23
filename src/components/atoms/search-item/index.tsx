@@ -2,24 +2,38 @@ import React from "react";
 import Image from "next/image";
 import { useStyletron } from "baseui";
 import { ProductType } from "../../../types";
+import { useRouter } from "next/router";
+import { closeSearchBox, SearchContext } from "../../../contexts/search";
 
 type SearchItemProps = {
   item: ProductType;
 };
 
 function SearchItem(props: SearchItemProps) {
-  const [css, theme] = useStyletron();
   const item = props.item;
+
+  const [css, theme] = useStyletron();
+
+  const router = useRouter();
+
+  const { dispatch } = React.useContext(SearchContext);
 
   return (
     <li
+      onClick={() => {
+        closeSearchBox({ dispatch });
+        router?.push({
+          pathname: "/product/[slug]",
+          query: { slug: item.attributes.slug },
+        });
+      }}
       className={css({
         marginRight: "1rem",
         display: "block",
         backgroundColor: theme.colors.mono200,
         height: "12rem",
         aspectRatio: 4 / 5,
-        [theme.mediaQuery.large]: { height: "24rem" },
+        [theme.mediaQuery.large]: { height: "24rem", cursor: "pointer" },
       })}
     >
       <div
