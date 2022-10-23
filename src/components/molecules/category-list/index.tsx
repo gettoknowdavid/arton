@@ -10,6 +10,7 @@ import {
 import Image from "next/image";
 import { Skeleton } from "baseui/skeleton";
 import { motion } from "framer-motion";
+import { useRouter } from "next/router";
 
 type CategoryListProps = {
   loading?: boolean;
@@ -18,6 +19,7 @@ type CategoryListProps = {
 
 function CategoryList(props: CategoryListProps) {
   const [css] = useStyletron();
+  const router = useRouter();
 
   return (
     <FlexGrid
@@ -29,7 +31,17 @@ function CategoryList(props: CategoryListProps) {
       paddingLeft={"1rem"}
     >
       {props.categories.map((category: CategoryType) => (
-        <FlexGridItem key={category.id} height={"100%"}>
+        <FlexGridItem
+          key={category.id}
+          height={"100%"}
+          onClick={() => {
+            router?.push({
+              pathname:
+                category.attributes.variant === "male" ? "/men" : "/women",
+              query: { category: category.id },
+            });
+          }}
+        >
           <StyledCategoryItemImageDiv>
             {!props.loading ? (
               <motion.div

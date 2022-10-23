@@ -10,7 +10,12 @@ import CategoryFilter from "../components/molecules/category-filter";
 import SizeFilter from "../components/molecules/size-filter";
 import SortFilter from "../components/molecules/sort-filter";
 import { GenderQuery } from "../graphql/queries/gender.query";
-import { FilterContext, getAllProducts } from "../contexts/filter";
+import {
+  categoryFilter,
+  FilterContext,
+  getAllProducts,
+} from "../contexts/filter";
+import { useRouter } from "next/router";
 
 type MenProps = {
   loading: boolean;
@@ -21,10 +26,16 @@ type MenProps = {
 
 const Men: NextPageWithLayout | any = (props: MenProps) => {
   const { dispatch, state } = React.useContext(FilterContext);
+  const router = useRouter();
 
   React.useEffect(() => {
     getAllProducts({ dispatch, products: props.products.data }).catch();
-  }, [dispatch, props.products.data]);
+    const catID: number = parseInt(`${router.query.category}`);
+
+    if (router.query.category) {
+      categoryFilter({ dispatch, catID: catID, variant: "male" }).then();
+    }
+  }, [dispatch, props.products.data, router.query.category]);
 
   return (
     <FlexGrid
