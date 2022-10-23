@@ -16,6 +16,10 @@ import {
   getAllProducts,
 } from "../contexts/filter";
 import { useRouter } from "next/router";
+import { Block } from "baseui/block";
+import Button from "../components/atoms/button";
+import { openFiltersDrawer } from "../contexts/filter/filter.actions";
+import FiltersDrawer from "../components/organisms/filters-drawer";
 
 type MenProps = {
   loading: boolean;
@@ -28,6 +32,8 @@ const Men: NextPageWithLayout | any = (props: MenProps) => {
   const { dispatch, state } = React.useContext(FilterContext);
   const router = useRouter();
 
+  const openFilter = () => openFiltersDrawer({ dispatch });
+
   React.useEffect(() => {
     getAllProducts({ dispatch, products: props.products.data }).catch();
     const catID: number = parseInt(`${router.query.category}`);
@@ -38,39 +44,45 @@ const Men: NextPageWithLayout | any = (props: MenProps) => {
   }, [dispatch, props.products.data, router.query.category]);
 
   return (
-    <FlexGrid
-      flexGridColumnCount={[1, 1, 1, 3]}
-      flexGridColumnGap={"1rem"}
-      paddingTop={"6rem"}
-      paddingRight={"1rem"}
-      paddingBottom={"4rem"}
-      paddingLeft={"1rem"}
-    >
-      <FlexGridItem
-        maxWidth={"16rem"}
-        width={"100%"}
-        display={["none", "none", "none", "initial"]}
+    <div>
+      <FiltersDrawer variant={"male"} />
+      <Block paddingTop={"4rem"} paddingRight={"1rem"} paddingLeft={"1rem"}>
+        <Button onClick={openFilter}>Filters</Button>
+      </Block>
+      <FlexGrid
+        flexGridColumnCount={[1, 1, 1, 3]}
+        flexGridColumnGap={"1rem"}
+        paddingTop={["1rem", "1rem", "1rem", "6rem"]}
+        paddingRight={"1rem"}
+        paddingBottom={"4rem"}
+        paddingLeft={"1rem"}
       >
-        <CategoryFilter
-          gqlQueryVariables={["male", "unisex"]}
-          variant={"male"}
-        />
-        <SizeFilter variant={"male"} />
-      </FlexGridItem>
-      <FlexGridItem>
-        <ProductList
-          products={state.filteredProducts}
-          loading={props.loading || state.loading}
-        />
-      </FlexGridItem>
-      <FlexGridItem
-        maxWidth={"16rem"}
-        width={"100%"}
-        display={["none", "none", "none", "initial"]}
-      >
-        <SortFilter variant={"male"} />
-      </FlexGridItem>
-    </FlexGrid>
+        <FlexGridItem
+          maxWidth={"16rem"}
+          width={"100%"}
+          display={["none", "none", "none", "initial"]}
+        >
+          <CategoryFilter
+            gqlQueryVariables={["male", "unisex"]}
+            variant={"male"}
+          />
+          <SizeFilter variant={"male"} />
+        </FlexGridItem>
+        <FlexGridItem>
+          <ProductList
+            products={state.filteredProducts}
+            loading={props.loading || state.loading}
+          />
+        </FlexGridItem>
+        <FlexGridItem
+          maxWidth={"16rem"}
+          width={"100%"}
+          display={["none", "none", "none", "initial"]}
+        >
+          <SortFilter variant={"male"} />
+        </FlexGridItem>
+      </FlexGrid>
+    </div>
   );
 };
 
