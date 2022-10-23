@@ -7,6 +7,7 @@ export const filterInitialState: FilterContextType = {
   loading: false,
   sizeID: undefined,
   sortIndex: undefined,
+  filterDrawerOpen: false,
 };
 
 export const filterReducer = (
@@ -22,6 +23,10 @@ export const filterReducer = (
         loading: false,
         filteredProducts: action.payload.products,
       };
+    case "CLOSE_FILTERS_DRAWER":
+      return { ...state, filterDrawerOpen: false };
+    case "OPEN_FILTERS_DRAWER":
+      return { ...state, filterDrawerOpen: true };
     case "LOADING_END":
       return { ...state, loading: false };
     case "LOADING_START":
@@ -30,6 +35,7 @@ export const filterReducer = (
       return {
         ...state,
         loading: false,
+        filterDrawerOpen: false,
         catID: action.payload.catID,
         filteredProducts: action.payload.products,
       };
@@ -37,6 +43,7 @@ export const filterReducer = (
       return {
         ...state,
         loading: false,
+        filterDrawerOpen: false,
         sizeID: action.payload.sizeID,
         filteredProducts: action.payload.products,
       };
@@ -44,6 +51,7 @@ export const filterReducer = (
       return {
         ...state,
         loading: false,
+        filterDrawerOpen: false,
         sortIndex: action.payload.sortIndex,
         filteredProducts: action.payload.products,
       };
@@ -51,6 +59,7 @@ export const filterReducer = (
       return {
         ...state,
         loading: false,
+        filterDrawerOpen: false,
         sortIndex: action.payload.sortIndex,
         filteredProducts: action.payload.products,
       };
