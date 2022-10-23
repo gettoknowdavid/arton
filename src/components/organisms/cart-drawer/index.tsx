@@ -70,8 +70,8 @@ function CartDrawer() {
 
       <StyledBDBody>
         <StyledCartList>
-          {state.items.map((item: CartItemInterface) => (
-            <CartItem key={item.id} item={item} />
+          {state.items.map((item: CartItemInterface, index) => (
+            <CartItem key={index.toString()} item={item} />
           ))}
         </StyledCartList>
 

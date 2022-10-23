@@ -106,8 +106,8 @@ function Cart() {
             },
           })}
         >
-          {items.map((item: CartItemInterface) => (
-            <CartItem key={item.id} item={item} />
+          {items.map((item: CartItemInterface, index) => (
+            <CartItem key={index.toString()} item={item} />
           ))}
         </ul>
         <div
