@@ -1,7 +1,7 @@
 import React from "react";
 import { SIZE } from "baseui/select";
 import { CartActionType, CartItemInterface } from "../../../types";
-import { CartContext } from "../../../contexts/cart.context";
+import { CartContext } from "../../../contexts/cart/cart.context";
 import Button from "../button";
 import { Block, BlockProps } from "baseui/block";
 

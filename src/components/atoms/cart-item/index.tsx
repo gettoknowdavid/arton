@@ -8,7 +8,7 @@ import { Delete } from "baseui/icon";
 import { FlexGrid, FlexGridItem } from "baseui/flex-grid";
 import { Minus, Plus } from "phosphor-react";
 import { Select, SIZE } from "baseui/select";
-import { CartContext } from "../../../contexts/cart.context";
+import { CartContext } from "../../../contexts/cart/cart.context";
 
 type Props = {
   item: CartItemInterface;

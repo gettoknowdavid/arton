@@ -11,8 +11,7 @@ import {
   SIZE,
 } from "baseui/modal";
 import { CartActionType, CheckoutActionType } from "../../../types";
-import { SIZE as BUTTON_SIZE } from "baseui/button";
-import { CartContext } from "../../../contexts/cart.context";
+import { CartContext } from "../../../contexts/cart";
 import { useStyletron } from "baseui";
 import { useRouter } from "next/router";
 import Button from "../../atoms/button";

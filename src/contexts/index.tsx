@@ -1,6 +1,6 @@
 import React, { ReactNode } from "react";
 import GlobalProvider from "./global.context";
-import CartProvider from "./cart.context";
+import { CartProvider } from "./cart";
 import CheckoutProvider from "./checkout.context";
 import { FilterProvider } from "./filter";
 import { SearchProvider } from "./search";

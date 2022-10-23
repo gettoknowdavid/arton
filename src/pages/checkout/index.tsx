@@ -7,7 +7,7 @@ import FormControl from "../../components/atoms/form-control";
 import Input from "../../components/atoms/input";
 import { Block } from "baseui/block";
 import Button from "../../components/atoms/button";
-import { CartContext, totalAmount } from "../../contexts/cart.context";
+import { CartContext, totalAmount } from "../../contexts/cart";
 import CartSummaryItem from "../../components/atoms/cart-summary-item";
 import { PaymentCard, valid } from "baseui/payment-card";
 import MaskedInput from "../../components/atoms/input/masked-input";

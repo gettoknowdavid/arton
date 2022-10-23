@@ -10,7 +10,7 @@ import {
   StyledBDSubtotalWrapper,
   StyledCartList,
 } from "./cart-drawer.styles";
-import { CartContext, totalAmount } from "../../../contexts/cart.context";
+import { CartContext, totalAmount } from "../../../contexts/cart";
 import { CartActionType, CartItemInterface } from "../../../types";
 import CartItem from "../../atoms/cart-item";
 import { currency } from "../../../lib/currency-formatter";

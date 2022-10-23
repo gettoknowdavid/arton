@@ -1,24 +1,12 @@
 import React from "react";
-import { CartAction, CartContextType, CartItemInterface } from "../types";
-import { useLocalStorage } from "../hooks";
+import { CartAction, CartContextType } from "../../types";
 
-type Props = {
-  children: React.ReactNode;
-};
-
-const initialState: CartContextType = {
+const cartInitialState: CartContextType = {
   items: [],
   cartDrawerOpen: false,
 };
 
-export const totalAmount = (state: CartContextType): number =>
-  state.items.reduce((cartTotal: number, currentItem: CartItemInterface) => {
-    const { price, quantity } = currentItem;
-    cartTotal += price * quantity;
-    return cartTotal;
-  }, 0);
-
-const reducer = (state: CartContextType, action: CartAction) => {
+export const cartReducer = (state: CartContextType, action: CartAction) => {
   switch (action.type) {
     case "ADD_TO_CART":
       const { id, size } = action.payload.item;
@@ -48,7 +36,7 @@ const reducer = (state: CartContextType, action: CartAction) => {
       };
 
     case "CLEAR_CART":
-      return { ...state, items: initialState.items };
+      return { ...state, items: cartInitialState.items };
 
     case "CLOSE_CART_DRAWER":
       return { ...state, cartDrawerOpen: false };
@@ -101,30 +89,4 @@ const reducer = (state: CartContextType, action: CartAction) => {
 export const CartContext = React.createContext<{
   state: CartContextType;
   dispatch: React.Dispatch<CartAction>;
-}>({ state: initialState, dispatch: () => null });
-
-const CartProvider = (props: Props) => {
-  const [persistedItems, setPersistedItems] = useLocalStorage("cart.items", []);
-
-  const persistedState: CartContextType = {
-    cartDrawerOpen: false,
-    items: persistedItems || [],
-  };
-
-  const [state, dispatch] = React.useReducer<React.Reducer<any, any>>(
-    reducer,
-    persistedState
-  );
-
-  React.useEffect(() => {
-    setPersistedItems(state.items);
-  }, [setPersistedItems, state]);
-
-  return (
-    <CartContext.Provider value={{ state, dispatch }}>
-      {props.children}
-    </CartContext.Provider>
-  );
-};
-
-export default CartProvider;
+}>({ state: cartInitialState, dispatch: () => null });

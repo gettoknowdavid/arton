@@ -6,7 +6,7 @@ import Layout from "../components/layout";
 import CartTotalSection from "../components/molecules/cart-total-section";
 import { currency } from "../lib/currency-formatter";
 import { CartItemInterface } from "../types";
-import { CartContext, totalAmount } from "../contexts/cart.context";
+import { CartContext, totalAmount } from "../contexts/cart";
 import CartItem from "../components/atoms/cart-item";
 import { ShoppingCart } from "phosphor-react";
 

@@ -3,7 +3,7 @@ import { ShoppingCart } from "phosphor-react";
 import { styled } from "baseui";
 import { useRouter } from "next/router";
 import { Block } from "baseui/block";
-import { CartContext } from "../../../contexts/cart.context";
+import { CartContext } from "../../../contexts/cart/cart.context";
 import { closeSearchBox, SearchContext } from "../../../contexts/search";
 import { GlobalContext } from "../../../contexts/global.context";
 
