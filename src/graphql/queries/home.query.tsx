@@ -27,7 +27,7 @@ export const HomeQuery = gql`
         attributes {
           menCategories: categories(
             filters: { variant: { eq: "male" } }
-            pagination: { limit: 3 }
+            pagination: { limit: 4 }
           ) {
             data {
               ...CategoryFragment
@@ -35,7 +35,7 @@ export const HomeQuery = gql`
           }
           womenCategories: categories(
             filters: { variant: { eq: "female" } }
-            pagination: { limit: 3 }
+            pagination: { limit: 4 }
           ) {
             data {
               ...CategoryFragment

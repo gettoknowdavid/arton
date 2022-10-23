@@ -3,7 +3,7 @@ import { styled } from "baseui";
 export const StyledCategoryItemImageDiv = styled("div", () => ({
   width: "100%",
   height: "100%",
-  aspectRatio: 4.5 / 5,
+  aspectRatio: 12 / 15,
   cursor: "pointer",
   overflow: "hidden",
   position: "relative",
