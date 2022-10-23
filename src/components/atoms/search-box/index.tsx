@@ -1,5 +1,4 @@
 import React from "react";
-import Image from "next/image";
 import { MagnifyingGlass } from "phosphor-react";
 import { Input } from "baseui/input";
 import { useStyletron } from "baseui";
@@ -7,6 +6,7 @@ import { motion } from "framer-motion";
 import { productSearch, SearchContext } from "../../../contexts/search";
 import loadingIcon from "react-useanimations/lib/infinity";
 import UseAnimations from "react-useanimations";
+import SearchItem from "../search-item";
 
 function SearchBox() {
   const [css, theme] = useStyletron();
@@ -178,56 +178,8 @@ function SearchBox() {
               paddingInline: "1rem",
             })}
           >
-            {state.result.map((product) => (
-              <li
-                key={product.id}
-                className={css({
-                  marginRight: "1rem",
-                  display: "block",
-                  backgroundColor: theme.colors.mono200,
-                  height: "12rem",
-                  aspectRatio: 4 / 5,
-                  [theme.mediaQuery.large]: { height: "24rem" },
-                })}
-              >
-                <div
-                  className={css({
-                    height: "100%",
-                    width: "100%",
-                    position: "relative",
-                    display: "block",
-                  })}
-                >
-                  <Image
-                    src={product.attributes.image.data.attributes.url}
-                    alt={
-                      product.attributes.image.data.attributes.alternativeText
-                    }
-                    layout={"fill"}
-                    className={css({ objectFit: "cover" })}
-                  />
-                </div>
-                <p
-                  className={css({
-                    ...theme.typography.font100,
-                    textTransform: "uppercase",
-                    lineHeight: "1.1rem",
-                    whiteSpace: "initial",
-                    height: "2.2rem",
-                    overflow: "hidden",
-                    textOverflow: "ellipsis",
-                    display: "-webkit-box",
-                    lineClamp: 2,
-                    WebkitLineClamp: 2,
-                    WebkitBoxOrient: "vertical",
-                    [theme.mediaQuery.small]: { fontSize: "0.563rem" },
-                    [theme.mediaQuery.medium]: { fontSize: "0.625rem" },
-                    [theme.mediaQuery.large]: { fontSize: "0.75rem" },
-                  })}
-                >
-                  {product.attributes.title}
-                </p>
-              </li>
+            {state.result.map((item) => (
+              <SearchItem key={item.id} item={item} />
             ))}
           </ul>
         </div>
