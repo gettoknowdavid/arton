@@ -16,7 +16,7 @@ function SearchBox() {
   const [value, setValue] = React.useState("");
 
   const variants = {
-    closed: { opacity: 0, x: 0, top: 100 },
+    closed: { opacity: 0, x: 0, top: -100 },
     open: { opacity: 1, x: 0, top: "2.8125rem" },
   };
 
@@ -24,7 +24,7 @@ function SearchBox() {
     <motion.div
       animate={state.searchBoxOpen ? "open" : "closed"}
       variants={variants}
-      className={css({ position: "fixed", width: "100%", zIndex: 100 })}
+      className={css({ position: "fixed", width: "100%", zIndex: 95 })}
     >
       <Input
         value={value}
@@ -43,7 +43,7 @@ function SearchBox() {
               backgroundColor: "white",
               width: "100%",
               maxWidth: "1920px",
-              zIndex: 100,
+              zIndex: 95,
             }),
           },
           Input: {
@@ -51,12 +51,12 @@ function SearchBox() {
               ...$theme.typography.font200,
               outline: `transparent solid`,
               backgroundColor: "white",
-              zIndex: 100,
+              zIndex: 95,
             }),
           },
           Root: {
             style: () => ({
-              zIndex: 100,
+              zIndex: 95,
               borderTopLeftRadius: 0,
               borderTopRightRadius: 0,
               borderBottomLeftRadius: 0,
