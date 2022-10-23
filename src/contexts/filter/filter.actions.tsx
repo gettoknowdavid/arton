@@ -31,6 +31,14 @@ export async function categoryFilter(props: FilterProps) {
   });
 }
 
+export function closeFiltersDrawer(props: FilterProps) {
+  props.dispatch({ type: FilterActionType.CLOSE_FILTERS_DRAWER });
+}
+
+export function openFiltersDrawer(props: FilterProps) {
+  props.dispatch({ type: FilterActionType.OPEN_FILTERS_DRAWER });
+}
+
 export async function priceFilter(props: FilterProps) {
   const { dispatch, catID, sizeID, sortIndex, variant } = props;
 
