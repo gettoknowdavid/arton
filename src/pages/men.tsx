@@ -20,6 +20,7 @@ import { Block } from "baseui/block";
 import Button from "../components/atoms/button";
 import { openFiltersDrawer } from "../contexts/filter/filter.actions";
 import FiltersDrawer from "../components/organisms/filters-drawer";
+import { KIND, SIZE } from "baseui/button";
 
 type MenProps = {
   loading: boolean;
@@ -46,8 +47,21 @@ const Men: NextPageWithLayout | any = (props: MenProps) => {
   return (
     <div>
       <FiltersDrawer variant={"male"} />
-      <Block paddingTop={"4rem"} paddingRight={"1rem"} paddingLeft={"1rem"}>
-        <Button onClick={openFilter}>Filters</Button>
+      <Block
+        paddingTop={"4rem"}
+        paddingRight={"1rem"}
+        paddingLeft={"1rem"}
+        display={["flex", "flex", "flex", "none"]}
+        justifyContent={"flex-end"}
+      >
+        <Button
+          size={SIZE.mini}
+          kind={KIND.tertiary}
+          width={"initial"}
+          onClick={openFilter}
+        >
+          Filters
+        </Button>
       </Block>
       <FlexGrid
         flexGridColumnCount={[1, 1, 1, 3]}
