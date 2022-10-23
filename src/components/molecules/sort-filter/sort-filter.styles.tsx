@@ -1,5 +1,6 @@
 import { styled } from "baseui";
 import { CustomStyledComponent } from "../../../types";
+import React from "react";
 
 // Styled component Sort Filter Title
 export const StyledSortFWrapper = styled("div", () => ({
@@ -7,21 +8,29 @@ export const StyledSortFWrapper = styled("div", () => ({
 }));
 
 // Styled component Sort Filter Title
-export const StyledSortFTitle = styled("h1", ({ $theme }) => ({
+export const StyledSortFTitle = styled<
+  "h1",
+  { $align?: any },
+  CustomStyledComponent
+>("h1", ({ $align, $theme }) => ({
   ...$theme.typography.font250,
   marginTop: 0,
   marginBottom: "1rem",
   padding: 0,
   textTransform: "uppercase",
-  textAlign: "right",
+  textAlign: $align ?? "right",
 }));
 
 // Styled component Sort Filter List
-export const StyledSortFList = styled("ul", () => ({
+export const StyledSortFList = styled<
+  "ul",
+  { $align?: any },
+  CustomStyledComponent
+>("ul", ({ $align }) => ({
   margin: 0,
   padding: 0,
   listStyleType: "none",
-  textAlign: "right",
+  textAlign: $align ?? "right",
 }));
 
 // Styled component Sort Filter List Item
