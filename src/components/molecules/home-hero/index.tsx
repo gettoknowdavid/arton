@@ -64,6 +64,7 @@ function HomeHero() {
               src={hero.url}
               alt={hero.alternativeText}
               layout={"fill"}
+              priority
               className={css({
                 maxWidth: "1920px",
                 objectFit: "cover",
