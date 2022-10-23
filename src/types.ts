@@ -119,6 +119,7 @@ export type FilterContextType = {
   loading: boolean;
   sizeID?: number;
   sortIndex?: number;
+  filterDrawerOpen: boolean;
 };
 
 export type SearchContextType = {
@@ -152,9 +153,11 @@ export enum FilterActionType {
   CLEAR_CATEGORY_FILTER = "CLEAR_CATEGORY_FILTER",
   CLEAR_SIZE_FILTER = "CLEAR_SIZE_FILTER",
   CLEAR_SORT_FILTER = "CLEAR_SORT_FILTER",
+  CLOSE_FILTERS_DRAWER = "CLOSE_FILTERS_DRAWER",
   GET_PRODUCTS = "GET_PRODUCTS",
   LOADING_END = "LOADING_END",
   LOADING_START = "LOADING_START",
+  OPEN_FILTERS_DRAWER = "OPEN_FILTERS_DRAWER",
   SORT_BY_CATEGORY = "SORT_BY_CATEGORY",
   SORT_BY_SIZE = "SORT_BY_SIZE",
   SORT_PRICE_ASC = "SORT_PRICE_ASC",
@@ -190,9 +193,11 @@ type FilterPayload = {
   [FilterActionType.CLEAR_CATEGORY_FILTER]: any;
   [FilterActionType.CLEAR_SIZE_FILTER]: any;
   [FilterActionType.CLEAR_SORT_FILTER]: any;
+  [FilterActionType.CLOSE_FILTERS_DRAWER]: any;
   [FilterActionType.GET_PRODUCTS]: { products: ProductType[] };
   [FilterActionType.LOADING_END]: any;
   [FilterActionType.LOADING_START]: any;
+  [FilterActionType.OPEN_FILTERS_DRAWER]: any;
   [FilterActionType.SORT_BY_CATEGORY]: {
     catID?: number;
     products: ProductType[];
