@@ -2,6 +2,7 @@ import { styled } from "baseui";
 
 export const StyledHomeHeroContainer = styled("div", ({ $theme }) => ({
   width: "100vw",
+  maxWidth: "1920px",
   height: "100%",
   display: "flex",
   alignItems: "center",
