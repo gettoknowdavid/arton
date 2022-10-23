@@ -9,6 +9,7 @@ export const StyledLogo = styled("div", ({ $theme }) => ({
   WebkitTransform: "translateX(-50%)",
   width: "7.7rem",
   zIndex: 200,
+  cursor: "pointer",
   [$theme.mediaQuery.medium]: { height: "2.8125rem", width: "8.5625rem" },
   [$theme.mediaQuery.large]: { height: "2.8125rem", width: "8.5625rem" },
 }));
