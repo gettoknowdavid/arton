@@ -7,10 +7,16 @@ import { closeSearchBox, SearchContext } from "../../../contexts/search";
 
 function NavItem({ item }: { item: NavItemType }) {
   const router = useRouter();
-  const { dispatch } = React.useContext(SearchContext);
+  const { dispatch, state } = React.useContext(SearchContext);
 
   return (
-    <StyledNavItem onClick={() => closeSearchBox({ dispatch })}>
+    <StyledNavItem
+      onClick={() => {
+        if (state.searchBoxOpen) {
+          closeSearchBox({ dispatch });
+        }
+      }}
+    >
       <Link href={`/${item.slug}`}>
         <StyledNavA $isActive={router.pathname === `/${item.slug}`}>
           {item.title}
