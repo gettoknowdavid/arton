@@ -23,7 +23,8 @@ import ProductPageImageList from "../../components/molecules/product-page-image-
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import ProductPageCarousel from "../../components/molecules/product-page-carousel";
 import { StyledPList } from "../../components/styled-components/product.styles";
-import ProductDetailsAccordion from "../../components/molecules/product-details-accordion"; // requires a loader
+import ProductDetailsAccordion from "../../components/molecules/product-details-accordion";
+import { ProductJsonLd } from "next-seo";
 
 type ProductProps = {
   product: ProductType;
@@ -120,7 +121,44 @@ Product.getLayout = function getLayout(page: ReactElement) {
 
   return (
     <>
-      <SEO title={product.attributes.title.toUpperCase()} description={""} />
+      <SEO
+        title={product.attributes.title.toUpperCase()}
+        description={product.attributes.description}
+        openGraph={{
+          title: product.attributes.title.toUpperCase(),
+          description: product.attributes.description,
+          url: `https://arton.vercel.app/product/${product.attributes.slug}`,
+          images: [
+            ...product.attributes.images.data.map((i) => {
+              return {
+                url: i.attributes.url,
+                alt: i.attributes.alternativeText,
+              };
+            }),
+          ],
+        }}
+      />
+      <ProductJsonLd
+        productName={product.attributes.title.toUpperCase()}
+        description={product.attributes.description}
+        brand={product.attributes.brand}
+        color={product.attributes.colour.data.attributes.title}
+        offers={[
+          {
+            price: product.attributes.price,
+            priceCurrency: "USD",
+            itemCondition: "https://schema.org/NewCondition",
+            availability: "https://schema.org/InStock",
+            url: `https://arton.vercel.app/product/${product.attributes.slug}`,
+            seller: {
+              name: "THISISARTON®",
+            },
+          },
+        ]}
+        images={[
+          ...product.attributes.images.data.map((i) => i.attributes.url),
+        ]}
+      />
       <Layout>{page}</Layout>
     </>
   );

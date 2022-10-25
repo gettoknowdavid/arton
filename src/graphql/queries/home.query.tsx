@@ -19,12 +19,16 @@ export const HomeHeroQuery = gql`
 `;
 
 export const HomeQuery = gql`
+  ${SeoFragment}
   ${ImageFragment}
   ${CategoryFragment}
   query HomeQuery {
     home {
       data {
         attributes {
+          seo {
+            ...SeoFragment
+          }
           menCategories: categories(
             filters: { variant: { eq: "male" } }
             pagination: { limit: 4 }

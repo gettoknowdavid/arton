@@ -10,9 +10,11 @@ import { AnimatePresence } from "framer-motion";
 import { IconContext } from "phosphor-react";
 import { Router } from "next/router";
 import LoadingScreen from "../components/organisms/loading-screen";
+import ArtonProvider from "../contexts";
+import SEO from "../../next-seo.config";
 import "normalize.css";
 import "../styles/globals.css";
-import ArtonProvider from "../contexts";
+import { DefaultSeo } from "next-seo";
 
 function ArtonApp({ Component, pageProps }: AppPropsWithLayout) {
   const getLayout = Component.getLayout ?? ((page) => page);
@@ -46,6 +48,7 @@ function ArtonApp({ Component, pageProps }: AppPropsWithLayout) {
           <StyletronProvider value={styletron}>
             <BaseProvider theme={ArtonTheme}>
               <IconContext.Provider value={{ size: "1.125rem" }}>
+                <DefaultSeo {...SEO} />
                 {loading ? (
                   <LoadingScreen loading={loading} />
                 ) : (

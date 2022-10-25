@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useStyletron } from "baseui";
-import { CategoryType, NextPageWithLayout } from "../types";
+import { CategoryType, NextPageWithLayout, SeoType } from "../types";
 import { ReactElement } from "react";
 import Layout from "../components/layout";
 import SEO from "../components/seo";
@@ -11,6 +11,7 @@ import CategoryList from "../components/molecules/category-list";
 
 type HomeProps = {
   loading: boolean;
+  seo: SeoType;
   menCategories: {
     data: CategoryType[];
   };
@@ -48,9 +49,10 @@ const Home: NextPageWithLayout | any = (props: HomeProps) => {
 };
 
 Home.getLayout = function getLayout(page: ReactElement) {
+  const seo: SeoType = page.props.seo;
   return (
     <>
-      <SEO title={"Home"} description={""} />
+      <SEO title={seo.metaTitle} description={seo.metaDescription} />
       <Layout>{page}</Layout>
     </>
   );
@@ -62,6 +64,7 @@ export async function getStaticProps() {
   return {
     props: {
       loading: loading,
+      seo: data.home.data.attributes.seo,
       menCategories: data.home.data.attributes.menCategories,
       womenCategories: data.home.data.attributes.womenCategories,
     },

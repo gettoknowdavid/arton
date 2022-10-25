@@ -19,6 +19,29 @@ export type ImageType = {
   };
 };
 
+export type SeoType = {
+  id: string;
+  metaTitle: string;
+  metaDescription: string;
+  metaRobots: string;
+  structuredData: string;
+  metaViewport: string;
+  canonicalURL: string;
+  keywords: string;
+  metaImage: {
+    data: ImageType;
+  };
+  metaSocial: {
+    id: string;
+    socialNetwork: string;
+    title: string;
+    description: string;
+    image: {
+      data: ImageType;
+    };
+  };
+};
+
 export type CategoryType = {
   id: number;
   attributes: {
