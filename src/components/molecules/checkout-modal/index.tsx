@@ -4,7 +4,6 @@ import { CheckoutContext } from "../../../contexts/checkout.context";
 import {
   Modal,
   ModalBody,
-  ModalButton,
   ModalFooter,
   ModalHeader,
   ROLE,
@@ -17,7 +16,7 @@ import { useRouter } from "next/router";
 import Button from "../../atoms/button";
 
 function CheckoutModal() {
-  const [css, theme] = useStyletron();
+  const [css] = useStyletron();
   const { dispatch, state } = React.useContext(CheckoutContext);
   const { dispatch: cartDispatch, state: cartState } =
     React.useContext(CartContext);
@@ -33,8 +32,7 @@ function CheckoutModal() {
     <Modal
       onClose={checkout}
       closeable
-      isOpen={true}
-      // isOpen={state.modalOpen}
+      isOpen={state.modalOpen}
       animate
       autoFocus
       size={SIZE.default}
