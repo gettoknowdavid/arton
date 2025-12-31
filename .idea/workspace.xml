@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="dab65bde-0211-4e44-bc3b-e82863ccae34" name="Changes" comment="refactor(frontend): Relocate application to frontend subdirectory&#10;&#10;This change moves all existing frontend files into a dedicated&#10;directory to prepare the repository for a monorepo structure.&#10;Configuration files like package.json and .idea have been&#10;updated to reflect the new file paths.">
+      <change afterPath="$PROJECT_DIR$/frontend/.idea/modules.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "gettoknowdavid"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/gettoknowdavid/arton.git",
+    "accountId": "8c5df795-9df8-4a8d-ae69-24be7a4ca5ff"
+  }
+}]]></component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 5
+}]]></component>
+  <component name="ProjectId" id="37aPlBrcUsJwcP55gcVhQICB57O" />
+  <component name="ProjectViewState">
+    <option name="autoscrollFromSource" value="true" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "git-widget-placeholder": "mono-repo",
+    "javascript.preferred.runtime.type.id": "node",
+    "last_opened_file_path": "/home/gettoknowdavid/dev/projects/personal/arton",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "nodejs_package_manager_path": "yarn"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/backend" />
+      <recent name="$PROJECT_DIR$/frontend" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Strapi Build &amp; Develop" type="js.build_tools.npm">
+      <package-json value="$PROJECT_DIR$/backend/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="develop" />
+      </scripts>
+      <node-interpreter value="$USER_HOME$/.nvm/versions/node/v22.20.0/bin/node" />
+      <package-manager value="pnpm" />
+      <envs />
+      <EXTENSION ID="com.intellij.javascript.debugger.execution.StartBrowserRunConfigurationExtension">
+        <browser with-js-debugger="true" />
+      </EXTENSION>
+      <method v="2">
+        <option name="NpmBeforeRunTask" enabled="true">
+          <package-json value="$PROJECT_DIR$/backend/package.json" />
+          <command value="run" />
+          <scripts>
+            <script value="build" />
+          </scripts>
+          <node-interpreter value="$USER_HOME$/.nvm/versions/node/v22.20.0/bin/node" />
+          <package-manager value="pnpm" />
+          <envs />
+        </option>
+      </method>
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-9b0f141eb926-JavaScript-WS-253.29346.143" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="dab65bde-0211-4e44-bc3b-e82863ccae34" name="Changes" comment="" />
+      <created>1767138359299</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1767138359299</updated>
+      <workItem from="1767138362988" duration="2178000" />
+    </task>
+    <task id="LOCAL-00001" summary="refactor(frontend): Relocate application to frontend subdirectory&#10;&#10;This change moves all existing frontend files into a dedicated&#10;directory to prepare the repository for a monorepo structure.&#10;Configuration files like package.json and .idea have been&#10;updated to reflect the new file paths.">
+      <option name="closed" value="true" />
+      <created>1767138702692</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1767138702693</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="refactor(frontend): Relocate application to frontend subdirectory&#10;&#10;This change moves all existing frontend files into a dedicated&#10;directory to prepare the repository for a monorepo structure.&#10;Configuration files like package.json and .idea have been&#10;" />
+    <MESSAGE value="refactor(frontend): Relocate application to frontend subdirectory&#10;&#10;This change moves all existing frontend files into a dedicated&#10;directory to prepare the repository for a monorepo structure.&#10;Configuration files like package.json and .idea have been&#10;updated to reflect the new file paths." />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor(frontend): Relocate application to frontend subdirectory&#10;&#10;This change moves all existing frontend files into a dedicated&#10;directory to prepare the repository for a monorepo structure.&#10;Configuration files like package.json and .idea have been&#10;updated to reflect the new file paths." />
+  </component>
+</project>
