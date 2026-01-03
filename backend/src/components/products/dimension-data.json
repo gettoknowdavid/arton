@@ -1,0 +1,27 @@
+{
+  "collectionName": "components_products_dimension_data",
+  "info": {
+    "displayName": "Dimension Data"
+  },
+  "options": {},
+  "attributes": {
+    "unit": {
+      "type": "enumeration",
+      "required": true,
+      "enum": [
+        "inches",
+        "cm"
+      ]
+    },
+    "length": {
+      "type": "decimal"
+    },
+    "height": {
+      "type": "integer"
+    },
+    "width": {
+      "type": "integer"
+    }
+  },
+  "config": {}
+}

@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_products_product_care_panels",
+  "info": {
+    "displayName": "Product Care Panel"
+  },
+  "options": {},
+  "attributes": {
+    "type": {
+      "type": "string",
+      "required": true
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "introduction": {
+      "type": "blocks"
+    },
+    "description": {
+      "type": "blocks",
+      "required": true
+    }
+  },
+  "config": {}
+}

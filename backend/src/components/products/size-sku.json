@@ -1,0 +1,33 @@
+{
+  "collectionName": "components_products_size_skus",
+  "info": {
+    "displayName": "Size SKU"
+  },
+  "options": {},
+  "attributes": {
+    "skuId": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "size": {
+      "type": "string",
+      "required": true
+    },
+    "color": {
+      "type": "string"
+    },
+    "mediaUrl": {
+      "type": "string"
+    },
+    "available": {
+      "type": "boolean",
+      "required": true,
+      "default": true
+    },
+    "stock": {
+      "type": "integer"
+    }
+  },
+  "config": {}
+}
