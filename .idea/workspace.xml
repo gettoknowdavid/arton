@@ -1,147 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="dab65bde-0211-4e44-bc3b-e82863ccae34" name="Changes" comment="feat(backend): initialize and configure Strapi with Supabase (mono-repo)&#10;&#10;This commit sets up the Strapi backend application within the `backend/`&#10;directory. It includes the initial configuration for connecting to Supabase&#10;and generates necessary TypeScript types for content models and components.&#10;New npm run configurations have been added for Strapi development and build.">
-      <change beforePath="$PROJECT_DIR$/frontend/.eslintrc.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/.idea/arton.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/.idea/jsLinters/eslint.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/.idea/jsonSchemas.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/next-seo.config.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/next.config.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/public/android-chrome-192x192.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/public/android-chrome-512x512.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/public/apple-touch-icon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/public/favicon-16x16.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/public/favicon-32x32.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/public/favicon.ico" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/public/favicon.old.ico" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/public/favicon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/public/hero-1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/hero-1.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/public/left-arrow.png" beforeDir="false" afterPath="$PROJECT_DIR$/left-arrow.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/public/logo.svg" beforeDir="false" afterPath="$PROJECT_DIR$/logo.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/public/site.webmanifest" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/atoms/add-to-cart-button/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/atoms/back-button/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/atoms/button/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/atoms/cart-icon/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/atoms/cart-item/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/atoms/cart-summary-item/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/atoms/filter-skeleton/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/atoms/form-control/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/atoms/hamburger/hamburger.styles.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/atoms/hamburger/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/atoms/input/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/atoms/input/masked-input.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/atoms/logo/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/atoms/logo/logo.styles.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/atoms/nav-item/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/atoms/nav-item/nav-item.styles.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/atoms/product-item/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/atoms/product-item/product-item.styles.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/atoms/rich-text/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/atoms/search-box/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/atoms/search-item/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/layout/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/layout/layout.styles.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/molecules/cart-total-section/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/molecules/category-filter/category-filter.styles.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/molecules/category-filter/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/molecules/category-list/category-list.styles.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/molecules/category-list/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/molecules/checkout-modal/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/molecules/empty-state/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/molecules/home-hero/home-hero.styles.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/molecules/home-hero/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/molecules/nav-list/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/molecules/nav-list/nav-list.styles.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/molecules/product-details-accordion/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/molecules/product-list/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/molecules/product-page-carousel/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/molecules/product-page-image-list/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/molecules/size-filter/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/molecules/size-filter/size-filter.styles.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/molecules/size-selector/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/molecules/sort-filter/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/molecules/sort-filter/sort-filter.styles.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/molecules/tagged-product-list/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/molecules/tagged-product-list/tagged-product-list.styles.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/organisms/cart-drawer/cart-drawer.styles.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/organisms/cart-drawer/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/organisms/drawer/drawer.styles.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/organisms/drawer/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/organisms/filters-drawer/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/organisms/footer/footer.styles.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/organisms/footer/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/organisms/header/header.styles.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/organisms/header/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/organisms/loading-screen/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/seo.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/styled-components/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/styled-components/product.styles.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/config.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/contexts/cart/cart.actions.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/contexts/cart/cart.context.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/contexts/cart/cart.provider.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/contexts/cart/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/contexts/checkout.context.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/contexts/filter/filter.actions.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/contexts/filter/filter.context.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/contexts/filter/filter.provider.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/contexts/filter/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/contexts/global.context.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/contexts/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/contexts/search/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/contexts/search/search.actions.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/contexts/search/search.context.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/contexts/search/search.provider.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/graphql/.graphqlconfig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/graphql/fragments/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/graphql/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/graphql/queries/categories.query.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/graphql/queries/filter-products.query.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/graphql/queries/gender.query.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/graphql/queries/home.query.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/graphql/queries/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/graphql/queries/objects.query.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/graphql/queries/product.query.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/graphql/queries/products.query.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/graphql/queries/search.query.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/graphql/queries/tagged-products.query.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/graphql/schema.graphql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/hooks/index.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/hooks/use-local-storage.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/hooks/use-media-query.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/hooks/use-outside-click.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/lib/api.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/lib/apollo.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/lib/currency-formatter.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/lib/sizes.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/lib/validators.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/_app.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/_document.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/api/hello.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/cart.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/checkout/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/men.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/new-arrivals.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/objects.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/product/[slug].tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/women.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/styles/globals.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/styletron.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/theme/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/theme/theme.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/types.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/tsconfig.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/yarn.lock" beforeDir="false" />
+    <list default="true" id="dab65bde-0211-4e44-bc3b-e82863ccae34" name="Changes" comment="feat(frontend): initialize and configure a new Next.JS 16 project with Shadcn">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/next.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/next.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hero-1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/hero-1.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/left-arrow.png" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/left-arrow.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logo.svg" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/logo.svg" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -184,36 +50,52 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;mono-repo&quot;,
-    &quot;javascript.preferred.runtime.type.id&quot;: &quot;node&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/gettoknowdavid/dev/projects/personal/arton&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
-    &quot;npm.Strapi Build &amp; Develop.executor&quot;: &quot;Run&quot;,
-    &quot;npm.Strapi Develop.executor&quot;: &quot;Run&quot;,
-    &quot;npm.build.executor&quot;: &quot;Run&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/home/gettoknowdavid/dev/projects/personal/arton/backend/node_modules/typescript/lib&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "git-widget-placeholder": "mono-repo",
+    "javascript.preferred.runtime.type.id": "node",
+    "last_opened_file_path": "/home/gettoknowdavid/dev/projects/personal/arton",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "nodejs_package_manager_path": "yarn",
+    "npm.Next Develop.executor": "Run",
+    "npm.Strapi Build & Develop.executor": "Run",
+    "npm.Strapi Develop.executor": "Run",
+    "npm.build.executor": "Run",
+    "ts.external.directory.path": "/home/gettoknowdavid/dev/projects/personal/arton/backend/node_modules/typescript/lib"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/frontend/public" />
       <recent name="$PROJECT_DIR$/frontend" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/backend" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.Strapi Develop">
+  <component name="RunManager" selected="npm.Next Develop">
+    <configuration name="Next Develop" type="js.build_tools.npm">
+      <package-json value="$PROJECT_DIR$/frontend/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="dev" />
+      </scripts>
+      <node-interpreter value="$USER_HOME$/.nvm/versions/node/v22.20.0/bin/node" />
+      <package-manager value="pnpm" />
+      <envs />
+      <EXTENSION ID="com.intellij.javascript.debugger.execution.StartBrowserRunConfigurationExtension">
+        <browser with-js-debugger="true" />
+      </EXTENSION>
+      <method v="2" />
+    </configuration>
     <configuration name="Strapi Build &amp; Develop" type="js.build_tools.npm">
       <package-json value="$PROJECT_DIR$/backend/package.json" />
       <command value="run" />
@@ -271,6 +153,7 @@
       <item itemvalue="npm.Strapi Build &amp; Develop" />
       <item itemvalue="npm.Strapi Build" />
       <item itemvalue="npm.Strapi Develop" />
+      <item itemvalue="npm.Next Develop" />
     </list>
   </component>
   <component name="SharedIndexes">
@@ -291,7 +174,7 @@
       <workItem from="1767203199153" duration="3612000" />
       <workItem from="1767258381920" duration="641000" />
       <workItem from="1767393412068" duration="8116000" />
-      <workItem from="1767458811329" duration="1318000" />
+      <workItem from="1767458811329" duration="2683000" />
     </task>
     <task id="LOCAL-00001" summary="refactor(frontend): Relocate application to frontend subdirectory&#10;&#10;This change moves all existing frontend files into a dedicated&#10;directory to prepare the repository for a monorepo structure.&#10;Configuration files like package.json and .idea have been&#10;updated to reflect the new file paths.">
       <option name="closed" value="true" />
@@ -325,11 +208,30 @@
       <option name="project" value="LOCAL" />
       <updated>1767461168129</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="```&#10;feat(backend): initialize and configure Strapi with Supabase (mono-repo)&#10;&#10;This commit sets up the Strapi backend application within the `backend/`&#10;directory. It includes the initial configuration for connecting to Supabase&#10;and generates necessary TypeScript types for content models and components.&#10;New npm run configurations have been added for Strapi development and build.&#10;```">
+      <option name="closed" value="true" />
+      <created>1767461685006</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1767461685006</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="refactor(frontend): Relocate application to frontend subdirectory&#10;&#10;This change moves all existing frontend files into a dedicated&#10;directory to prepare the repository for a monorepo structure.&#10;Configuration files like package.json and .idea have been&#10;" />
@@ -337,9 +239,10 @@
     <MESSAGE value="```&#10;refactor(frontend): Relocate application to frontend subdirectory (mono-repo)&#10;&#10;This change moves all existing frontend files into a dedicated&#10;directory to prepare the repository for a monorepo structure.&#10;Configuration files like package.json and ." />
     <MESSAGE value="```&#10;refactor(frontend): Relocate application to frontend subdirectory (mono-repo)&#10;&#10;This change moves all existing frontend files into a dedicated&#10;directory to prepare the repository for a monorepo structure.&#10;Configuration files like package.json and .idea have been&#10;updated to reflect the new file paths.&#10;```" />
     <MESSAGE value="feat(backend): initialize and configure Strapi with Supabase" />
-    <MESSAGE value="```&#10;feat(backend): initialize and configure Strapi with Supabase (mono-repo)&#10;&#10;This commit sets up the Strapi backend application within the `backend/`&#10;directory. It includes the initial configuration for connecting to Supabase&#10;" />
-    <MESSAGE value="```&#10;feat(backend): initialize and configure Strapi with Supabase (mono-repo)&#10;&#10;This commit sets up the Strapi backend application within the `backend/`&#10;directory. It includes the initial configuration for connecting to Supabase&#10;and generates necessary TypeScript types for content models and components.&#10;New npm run configurations have been added for Strapi development and build.&#10;```" />
     <MESSAGE value="feat(backend): initialize and configure Strapi with Supabase (mono-repo)&#10;&#10;This commit sets up the Strapi backend application within the `backend/`&#10;directory. It includes the initial configuration for connecting to Supabase&#10;and generates necessary TypeScript types for content models and components.&#10;New npm run configurations have been added for Strapi development and build." />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(backend): initialize and configure Strapi with Supabase (mono-repo)&#10;&#10;This commit sets up the Strapi backend application within the `backend/`&#10;directory. It includes the initial configuration for connecting to Supabase&#10;and generates necessary TypeScript types for content models and components.&#10;New npm run configurations have been added for Strapi development and build." />
+    <MESSAGE value="```&#10;feat(backend): initialize and configure Strapi with Supabase (mono-repo)&#10;&#10;This commit sets up the Strapi backend application within the `backend/`&#10;directory. It includes the initial configuration for connecting to Supabase&#10;" />
+    <MESSAGE value="feat(frontend): initialize and configure a new Next.JS 16 project with Shadcn" />
+    <MESSAGE value="feat(frontend): initialize and configure a new Next.JS 16 project with Shadcn" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(frontend): initialize and configure a new Next.JS 16 project with Shadcn" />
   </component>
 </project>
