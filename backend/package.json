@@ -1,5 +1,5 @@
 {
-  "name": "arton",
+  "name": "@arton/backend",
   "version": "0.1.0",
   "private": true,
   "description": "A Strapi application",
@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "@strapi/plugin-cloud": "5.33.1",
+    "@strapi/plugin-graphql": "^5.33.1",
     "@strapi/plugin-users-permissions": "5.33.1",
     "@strapi/strapi": "5.33.1",
     "pg": "8.8.0",

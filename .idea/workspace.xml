@@ -1,25 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="dab65bde-0211-4e44-bc3b-e82863ccae34" name="Changes" comment="feat(frontend): initialize and configure a new Next.JS 16 project with Shadcn">
+    <list default="true" id="dab65bde-0211-4e44-bc3b-e82863ccae34" name="Changes" comment="```&#10;feat(frontend): set up essential layout, navigation, and pages (mono-repo)&#10;&#10;This commit introduces the foundational UI structure for the frontend.&#10;It integrates the 'Inter_Tight' font as the primary sans-serif font.&#10;Core components like 'Header', 'Nav', 'Actions', and 'Logo' are added,&#10;forming the basis of the application's global layout.&#10;&#10;New layouts and placeholder pages are created for 'Women', 'Men', and&#10;'Objects' sections, establishing initial routing. Global site&#10;configuration and TypeScript types are also defined.&#10;&#10;Additionally, the '@radix-ui/react-slot' package is introduced.&#10;```">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/types/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/types/src/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pnpm-workspace.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/next.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/next.config.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hero-1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/hero-1.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/left-arrow.png" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/left-arrow.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logo.svg" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/logo.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/backend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/pnpm-workspace.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/pnpm-workspace.yaml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="ChangesViewManager">
+    <option name="groupingKeys">
+      <option value="directory" />
+      <option value="repository" />
+    </option>
+  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="TypeScript JSX File" />
         <option value="TypeScript File" />
       </list>
     </option>
+  </component>
+  <component name="FormatOnSaveOptions">
+    <option name="myRunOnSave" value="true" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -41,6 +54,9 @@
     &quot;accountId&quot;: &quot;8c5df795-9df8-4a8d-ae69-24be7a4ca5ff&quot;
   }
 }</component>
+  <component name="OptimizeOnSaveOptions">
+    <option name="myRunOnSave" value="true" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 5
 }</component>
@@ -59,19 +75,27 @@
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
     "git-widget-placeholder": "mono-repo",
     "javascript.preferred.runtime.type.id": "node",
-    "last_opened_file_path": "/home/gettoknowdavid/dev/projects/personal/arton",
+    "last_opened_file_path": "/home/gettoknowdavid/dev/projects/personal/arton/package.json",
     "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.standard": "true",
     "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.standard": "",
     "nodejs_package_manager_path": "yarn",
+    "npm.Arton Develop.executor": "Run",
     "npm.Next Develop.executor": "Run",
     "npm.Strapi Build & Develop.executor": "Run",
+    "npm.Strapi Build.executor": "Run",
     "npm.Strapi Develop.executor": "Run",
     "npm.build.executor": "Run",
-    "ts.external.directory.path": "/home/gettoknowdavid/dev/projects/personal/arton/backend/node_modules/typescript/lib"
+    "settings.editor.selected.configurable": "actions.on.save",
+    "ts.external.directory.path": "/home/gettoknowdavid/.local/share/JetBrains/Toolbox/apps/webstorm/plugins/javascript-plugin/jsLanguageServicesImpl/external"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/frontend/app" />
+      <recent name="$PROJECT_DIR$/frontend/app/women" />
+      <recent name="$PROJECT_DIR$/frontend/components" />
       <recent name="$PROJECT_DIR$" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -81,9 +105,9 @@
       <recent name="$PROJECT_DIR$/backend" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.Next Develop">
-    <configuration name="Next Develop" type="js.build_tools.npm">
-      <package-json value="$PROJECT_DIR$/frontend/package.json" />
+  <component name="RunManager" selected="npm.Arton Develop">
+    <configuration name="Arton Develop" type="js.build_tools.npm">
+      <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
       <scripts>
         <script value="dev" />
@@ -96,36 +120,11 @@
       </EXTENSION>
       <method v="2" />
     </configuration>
-    <configuration name="Strapi Build &amp; Develop" type="js.build_tools.npm">
-      <package-json value="$PROJECT_DIR$/backend/package.json" />
+    <configuration name="Next Develop" type="js.build_tools.npm">
+      <package-json value="$PROJECT_DIR$/frontend/package.json" />
       <command value="run" />
       <scripts>
-        <script value="develop" />
-      </scripts>
-      <node-interpreter value="$USER_HOME$/.nvm/versions/node/v22.20.0/bin/node" />
-      <package-manager value="pnpm" />
-      <envs />
-      <EXTENSION ID="com.intellij.javascript.debugger.execution.StartBrowserRunConfigurationExtension">
-        <browser with-js-debugger="true" />
-      </EXTENSION>
-      <method v="2">
-        <option name="NpmBeforeRunTask" enabled="true">
-          <package-json value="$PROJECT_DIR$/backend/package.json" />
-          <command value="run" />
-          <scripts>
-            <script value="build" />
-          </scripts>
-          <node-interpreter value="$USER_HOME$/.nvm/versions/node/v22.20.0/bin/node" />
-          <package-manager value="pnpm" />
-          <envs />
-        </option>
-      </method>
-    </configuration>
-    <configuration name="Strapi Build" type="js.build_tools.npm">
-      <package-json value="$PROJECT_DIR$/backend/package.json" />
-      <command value="run" />
-      <scripts>
-        <script value="build" />
+        <script value="dev" />
       </scripts>
       <node-interpreter value="$USER_HOME$/.nvm/versions/node/v22.20.0/bin/node" />
       <package-manager value="pnpm" />
@@ -150,10 +149,9 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="npm.Strapi Build &amp; Develop" />
-      <item itemvalue="npm.Strapi Build" />
       <item itemvalue="npm.Strapi Develop" />
       <item itemvalue="npm.Next Develop" />
+      <item itemvalue="npm.Arton Develop" />
     </list>
   </component>
   <component name="SharedIndexes">
@@ -174,7 +172,9 @@
       <workItem from="1767203199153" duration="3612000" />
       <workItem from="1767258381920" duration="641000" />
       <workItem from="1767393412068" duration="8116000" />
-      <workItem from="1767458811329" duration="2683000" />
+      <workItem from="1767458811329" duration="11348000" />
+      <workItem from="1767517509264" duration="2520000" />
+      <workItem from="1767545897350" duration="5629000" />
     </task>
     <task id="LOCAL-00001" summary="refactor(frontend): Relocate application to frontend subdirectory&#10;&#10;This change moves all existing frontend files into a dedicated&#10;directory to prepare the repository for a monorepo structure.&#10;Configuration files like package.json and .idea have been&#10;updated to reflect the new file paths.">
       <option name="closed" value="true" />
@@ -216,7 +216,23 @@
       <option name="project" value="LOCAL" />
       <updated>1767461685006</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="feat(frontend): configure Next.js image loading and organize assets (mono-repo)&#10;&#10;This commit configures Next.js to load images from the Strapi backend&#10;by adding a remotePatterns entry in next.config.ts, enabling dynamic&#10;image fetching.&#10;&#10;It also updates the .gitignore file to specifically exclude only .env,&#10;and relocates common public assets (hero-1.jpg, left-arrow.png, logo.svg)&#10;into the frontend/public directory for better project structure.">
+      <option name="closed" value="true" />
+      <created>1767462814655</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1767462814655</updated>
+    </task>
+    <task id="LOCAL-00007" summary="```&#10;feat(frontend): set up essential layout, navigation, and pages (mono-repo)&#10;&#10;This commit introduces the foundational UI structure for the frontend.&#10;It integrates the 'Inter_Tight' font as the primary sans-serif font.&#10;Core components like 'Header', 'Nav', 'Actions', and 'Logo' are added,&#10;forming the basis of the application's global layout.&#10;&#10;New layouts and placeholder pages are created for 'Women', 'Men', and&#10;'Objects' sections, establishing initial routing. Global site&#10;configuration and TypeScript types are also defined.&#10;&#10;Additionally, the '@radix-ui/react-slot' package is introduced.&#10;```">
+      <option name="closed" value="true" />
+      <created>1767548073750</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1767548073750</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -243,6 +259,16 @@
     <MESSAGE value="```&#10;feat(backend): initialize and configure Strapi with Supabase (mono-repo)&#10;&#10;This commit sets up the Strapi backend application within the `backend/`&#10;directory. It includes the initial configuration for connecting to Supabase&#10;" />
     <MESSAGE value="feat(frontend): initialize and configure a new Next.JS 16 project with Shadcn" />
     <MESSAGE value="feat(frontend): initialize and configure a new Next.JS 16 project with Shadcn" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(frontend): initialize and configure a new Next.JS 16 project with Shadcn" />
+    <MESSAGE value="```&#10;feat(frontend): configure Next.js image loading and organize assets (mono-repo)&#10;&#10;This commit configures Next.js to load images from the Strapi backend&#10;by adding a remotePatterns entry in next.config." />
+    <MESSAGE value="```&#10;feat(frontend): configure Next.js image loading and organize assets (mono-repo)&#10;&#10;This commit configures Next.js to load images from the Strapi backend&#10;by adding a remotePatterns entry in next.config.ts, enabling dynamic&#10;image fetching.&#10;&#10;It also updates the .gitignore file to specifically exclude only .env,&#10;and relocates common public assets (hero-1.jpg, left-arrow.png, logo.svg)&#10;" />
+    <MESSAGE value="```&#10;feat(frontend): configure Next.js image loading and organize assets (mono-repo)&#10;&#10;This commit configures Next.js to load images from the Strapi backend&#10;by adding a remotePatterns entry in next.config.ts, enabling dynamic&#10;image fetching.&#10;&#10;It also updates the .gitignore file to specifically exclude only .env,&#10;and relocates common public assets (hero-1.jpg, left-arrow.png, logo.svg)&#10;into the frontend/public directory for better project structure.&#10;```" />
+    <MESSAGE value="feat(frontend): configure Next.js image loading and organize assets (mono-repo)&#10;&#10;This commit configures Next.js to load images from the Strapi backend&#10;by adding a remotePatterns entry in next.config.ts, enabling dynamic&#10;image fetching.&#10;&#10;It also updates the .gitignore file to specifically exclude only .env,&#10;and relocates common public assets (hero-1.jpg, left-arrow.png, logo.svg)&#10;into the frontend/public directory for better project structure." />
+    <MESSAGE value="```&#10;feat(frontend): set up essential layout, navigation, and pages (mono-repo)&#10;&#10;This commit introduces the foundational UI structure for the frontend.&#10;It integrates the 'Inter_Tight' font as the primary sans-serif font" />
+    <MESSAGE value="```&#10;feat(frontend): set up essential layout, navigation, and pages (mono-repo)&#10;&#10;This commit introduces the foundational UI structure for the frontend.&#10;It integrates the 'Inter_Tight' font as the primary sans-serif font.&#10;Core components like 'Header', 'Nav', 'Actions', and 'Logo' are added,&#10;forming the basis of the application's global layout.&#10;&#10;New layouts and placeholder pages are created for 'Women', 'Men'," />
+    <MESSAGE value="```&#10;feat(frontend): set up essential layout, navigation, and pages (mono-repo)&#10;&#10;This commit introduces the foundational UI structure for the frontend.&#10;It integrates the 'Inter_Tight' font as the primary sans-serif font.&#10;Core components like 'Header', 'Nav', 'Actions', and 'Logo' are added,&#10;forming the basis of the application's global layout.&#10;&#10;New layouts and placeholder pages are created for 'Women', 'Men', and&#10;'Objects' sections, establishing initial routing. Global site&#10;configuration and TypeScript types are also defined.&#10;&#10;Additionally, the '@radix-ui/react-slot' package is introduced.&#10;```" />
+    <MESSAGE value="feat(build): set up pnpm monorepo workspace (mono-repo)&#10;&#10;This commit initializes the project as a pnpm monorepo, defining&#10;the workspace structure and adding essential ignore rules.&#10;&#10;The `pnpm-" />
+    <MESSAGE value="feat(build): set up pnpm monorepo workspace (mono-repo)&#10;&#10;This commit initializes the project as a pnpm monorepo, defining&#10;the workspace structure and adding essential ignore rules.&#10;&#10;The `pnpm-workspace.yaml` file is introduced, declaring `backend`,&#10;`frontend`, and `packages/*` as workspace packages. It also configures&#10;specific dependencies to be built only, optimizing the build process.&#10;&#10;Additionally, a comprehensive `." />
+    <MESSAGE value="feat(build): set up pnpm monorepo workspace (mono-repo)&#10;&#10;This commit initializes the project as a pnpm monorepo, defining&#10;the workspace structure and adding essential ignore rules.&#10;&#10;The `pnpm-workspace.yaml` file is introduced, declaring `backend`,&#10;`frontend`, and `packages/*` as workspace packages. It also configures&#10;specific dependencies to be built only, optimizing the build process.&#10;&#10;Additionally, a comprehensive `.gitignore` file is added to prevent&#10;unnecessary files from being tracked. This includes `node_modules`,&#10;build outputs, editor-specific files, and various debug logs." />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(build): set up pnpm monorepo workspace (mono-repo)&#10;&#10;This commit initializes the project as a pnpm monorepo, defining&#10;the workspace structure and adding essential ignore rules.&#10;&#10;The `pnpm-workspace.yaml` file is introduced, declaring `backend`,&#10;`frontend`, and `packages/*` as workspace packages. It also configures&#10;specific dependencies to be built only, optimizing the build process.&#10;&#10;Additionally, a comprehensive `.gitignore` file is added to prevent&#10;unnecessary files from being tracked. This includes `node_modules`,&#10;build outputs, editor-specific files, and various debug logs." />
   </component>
 </project>
