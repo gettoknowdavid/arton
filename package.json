@@ -1,0 +1,10 @@
+{
+  "name": "@arton/packages",
+  "private": "true",
+  "version": "1.0.0",
+  "scripts": {
+    "dev:backend": "pnpm --filter @arton/backend dev",
+    "dev:frontend": "pnpm --filter @arton/frontend dev",
+    "dev": "pnpm --parallel --filter \"!packages/**\" dev"
+  }
+}
