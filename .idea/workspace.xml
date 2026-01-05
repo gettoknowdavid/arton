@@ -1,16 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="dab65bde-0211-4e44-bc3b-e82863ccae34" name="Changes" comment="```&#10;feat(frontend): set up essential layout, navigation, and pages (mono-repo)&#10;&#10;This commit introduces the foundational UI structure for the frontend.&#10;It integrates the 'Inter_Tight' font as the primary sans-serif font.&#10;Core components like 'Header', 'Nav', 'Actions', and 'Logo' are added,&#10;forming the basis of the application's global layout.&#10;&#10;New layouts and placeholder pages are created for 'Women', 'Men', and&#10;'Objects' sections, establishing initial routing. Global site&#10;configuration and TypeScript types are also defined.&#10;&#10;Additionally, the '@radix-ui/react-slot' package is introduced.&#10;```">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/types/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/types/src/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pnpm-workspace.yaml" afterDir="false" />
+    <list default="true" id="dab65bde-0211-4e44-bc3b-e82863ccae34" name="Changes" comment="build(repo): set up pnpm monorepo workspace (mono-repo)&#10;&#10;This commit migrates the project to a pnpm monorepo structure.&#10;Individual pnpm-workspace.yaml files from backend and frontend&#10;are removed, as workspace management is now handled at the root.&#10;&#10;Package names in backend/package.json and frontend/package.json&#10;are updated to @arton/backend and @arton/frontend respectively,&#10;adopting a scoped naming convention. A new internal workspace&#10;dependency, @arton/types, is introduced for shared type definitions.&#10;Additionally, @strapi/plugin-graphql is added to the backend.">
+      <change afterPath="$PROJECT_DIR$/frontend/lib/fetch-api.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/lib/get-categories.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/lib/types.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/backend/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/pnpm-workspace.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/pnpm-workspace.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/app/men/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/men/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/app/women/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/women/page.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,31 +63,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "git-widget-placeholder": "mono-repo",
-    "javascript.preferred.runtime.type.id": "node",
-    "last_opened_file_path": "/home/gettoknowdavid/dev/projects/personal/arton/package.json",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.standard": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.standard": "",
-    "nodejs_package_manager_path": "yarn",
-    "npm.Arton Develop.executor": "Run",
-    "npm.Next Develop.executor": "Run",
-    "npm.Strapi Build & Develop.executor": "Run",
-    "npm.Strapi Build.executor": "Run",
-    "npm.Strapi Develop.executor": "Run",
-    "npm.build.executor": "Run",
-    "settings.editor.selected.configurable": "actions.on.save",
-    "ts.external.directory.path": "/home/gettoknowdavid/.local/share/JetBrains/Toolbox/apps/webstorm/plugins/javascript-plugin/jsLanguageServicesImpl/external"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;mono-repo&quot;,
+    &quot;javascript.preferred.runtime.type.id&quot;: &quot;node&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/gettoknowdavid/dev/projects/personal/arton/package.json&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
+    &quot;npm.Arton Develop.executor&quot;: &quot;Run&quot;,
+    &quot;npm.Next Develop.executor&quot;: &quot;Run&quot;,
+    &quot;npm.Strapi Build &amp; Develop.executor&quot;: &quot;Run&quot;,
+    &quot;npm.Strapi Build.executor&quot;: &quot;Run&quot;,
+    &quot;npm.Strapi Develop.executor&quot;: &quot;Run&quot;,
+    &quot;npm.build.executor&quot;: &quot;Run&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;actions.on.save&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/home/gettoknowdavid/.local/share/JetBrains/Toolbox/apps/webstorm/plugins/javascript-plugin/jsLanguageServicesImpl/external&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/frontend/app" />
@@ -174,7 +171,8 @@
       <workItem from="1767393412068" duration="8116000" />
       <workItem from="1767458811329" duration="11348000" />
       <workItem from="1767517509264" duration="2520000" />
-      <workItem from="1767545897350" duration="5629000" />
+      <workItem from="1767545897350" duration="11021000" />
+      <workItem from="1767606188575" duration="1256000" />
     </task>
     <task id="LOCAL-00001" summary="refactor(frontend): Relocate application to frontend subdirectory&#10;&#10;This change moves all existing frontend files into a dedicated&#10;directory to prepare the repository for a monorepo structure.&#10;Configuration files like package.json and .idea have been&#10;updated to reflect the new file paths.">
       <option name="closed" value="true" />
@@ -232,7 +230,31 @@
       <option name="project" value="LOCAL" />
       <updated>1767548073750</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="feat(build): set up pnpm monorepo workspace (mono-repo)&#10;&#10;This commit initializes the project as a pnpm monorepo, defining&#10;the workspace structure and adding essential ignore rules.&#10;&#10;The `pnpm-workspace.yaml` file is introduced, declaring `backend`,&#10;`frontend`, and `packages/*` as workspace packages. It also configures&#10;specific dependencies to be built only, optimizing the build process.&#10;&#10;Additionally, a comprehensive `.gitignore` file is added to prevent&#10;unnecessary files from being tracked. This includes `node_modules`,&#10;build outputs, editor-specific files, and various debug logs.">
+      <option name="closed" value="true" />
+      <created>1767561126202</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1767561126202</updated>
+    </task>
+    <task id="LOCAL-00009" summary="feat(types): create shared Strapi types package (mono-repo)&#10;&#10;This commit introduces the new `@arton/types` package, designed&#10;to centralize and re-export generated Strapi type definitions&#10;for use across the monorepo.&#10;&#10;The `package.json` file sets up the package metadata, including&#10;its name, version, and entry points.&#10;&#10;The `src/index.ts` file contains the re-export statements,&#10;making content types and components easily accessible&#10;throughout the `arton` project.">
+      <option name="closed" value="true" />
+      <created>1767561146563</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1767561146563</updated>
+    </task>
+    <task id="LOCAL-00010" summary="build(repo): set up pnpm monorepo workspace (mono-repo)&#10;&#10;This commit migrates the project to a pnpm monorepo structure.&#10;Individual pnpm-workspace.yaml files from backend and frontend&#10;are removed, as workspace management is now handled at the root.&#10;&#10;Package names in backend/package.json and frontend/package.json&#10;are updated to @arton/backend and @arton/frontend respectively,&#10;adopting a scoped naming convention. A new internal workspace&#10;dependency, @arton/types, is introduced for shared type definitions.&#10;Additionally, @strapi/plugin-graphql is added to the backend.">
+      <option name="closed" value="true" />
+      <created>1767561239303</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1767561239303</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -250,13 +272,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="refactor(frontend): Relocate application to frontend subdirectory&#10;&#10;This change moves all existing frontend files into a dedicated&#10;directory to prepare the repository for a monorepo structure.&#10;Configuration files like package.json and .idea have been&#10;" />
-    <MESSAGE value="refactor(frontend): Relocate application to frontend subdirectory&#10;&#10;This change moves all existing frontend files into a dedicated&#10;directory to prepare the repository for a monorepo structure.&#10;Configuration files like package.json and .idea have been&#10;updated to reflect the new file paths." />
-    <MESSAGE value="```&#10;refactor(frontend): Relocate application to frontend subdirectory (mono-repo)&#10;&#10;This change moves all existing frontend files into a dedicated&#10;directory to prepare the repository for a monorepo structure.&#10;Configuration files like package.json and ." />
-    <MESSAGE value="```&#10;refactor(frontend): Relocate application to frontend subdirectory (mono-repo)&#10;&#10;This change moves all existing frontend files into a dedicated&#10;directory to prepare the repository for a monorepo structure.&#10;Configuration files like package.json and .idea have been&#10;updated to reflect the new file paths.&#10;```" />
-    <MESSAGE value="feat(backend): initialize and configure Strapi with Supabase" />
-    <MESSAGE value="feat(backend): initialize and configure Strapi with Supabase (mono-repo)&#10;&#10;This commit sets up the Strapi backend application within the `backend/`&#10;directory. It includes the initial configuration for connecting to Supabase&#10;and generates necessary TypeScript types for content models and components.&#10;New npm run configurations have been added for Strapi development and build." />
-    <MESSAGE value="```&#10;feat(backend): initialize and configure Strapi with Supabase (mono-repo)&#10;&#10;This commit sets up the Strapi backend application within the `backend/`&#10;directory. It includes the initial configuration for connecting to Supabase&#10;" />
     <MESSAGE value="feat(frontend): initialize and configure a new Next.JS 16 project with Shadcn" />
     <MESSAGE value="feat(frontend): initialize and configure a new Next.JS 16 project with Shadcn" />
     <MESSAGE value="```&#10;feat(frontend): configure Next.js image loading and organize assets (mono-repo)&#10;&#10;This commit configures Next.js to load images from the Strapi backend&#10;by adding a remotePatterns entry in next.config." />
@@ -269,6 +284,19 @@
     <MESSAGE value="feat(build): set up pnpm monorepo workspace (mono-repo)&#10;&#10;This commit initializes the project as a pnpm monorepo, defining&#10;the workspace structure and adding essential ignore rules.&#10;&#10;The `pnpm-" />
     <MESSAGE value="feat(build): set up pnpm monorepo workspace (mono-repo)&#10;&#10;This commit initializes the project as a pnpm monorepo, defining&#10;the workspace structure and adding essential ignore rules.&#10;&#10;The `pnpm-workspace.yaml` file is introduced, declaring `backend`,&#10;`frontend`, and `packages/*` as workspace packages. It also configures&#10;specific dependencies to be built only, optimizing the build process.&#10;&#10;Additionally, a comprehensive `." />
     <MESSAGE value="feat(build): set up pnpm monorepo workspace (mono-repo)&#10;&#10;This commit initializes the project as a pnpm monorepo, defining&#10;the workspace structure and adding essential ignore rules.&#10;&#10;The `pnpm-workspace.yaml` file is introduced, declaring `backend`,&#10;`frontend`, and `packages/*` as workspace packages. It also configures&#10;specific dependencies to be built only, optimizing the build process.&#10;&#10;Additionally, a comprehensive `.gitignore` file is added to prevent&#10;unnecessary files from being tracked. This includes `node_modules`,&#10;build outputs, editor-specific files, and various debug logs." />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(build): set up pnpm monorepo workspace (mono-repo)&#10;&#10;This commit initializes the project as a pnpm monorepo, defining&#10;the workspace structure and adding essential ignore rules.&#10;&#10;The `pnpm-workspace.yaml` file is introduced, declaring `backend`,&#10;`frontend`, and `packages/*` as workspace packages. It also configures&#10;specific dependencies to be built only, optimizing the build process.&#10;&#10;Additionally, a comprehensive `.gitignore` file is added to prevent&#10;unnecessary files from being tracked. This includes `node_modules`,&#10;build outputs, editor-specific files, and various debug logs." />
+    <MESSAGE value="```&#10;feat(types): create shared Strapi types package (mono-repo)&#10;&#10;This commit introduces the new `@arton/types` package, designed&#10;to centralize and re-export generated Strapi type definitions&#10;for use across the" />
+    <MESSAGE value="```&#10;feat(types): create shared Strapi types package (mono-repo)&#10;&#10;This commit introduces the new `@arton/types` package, designed&#10;to centralize and re-export generated Strapi type definitions&#10;for use across the monorepo.&#10;&#10;The `package.json` file sets up the package metadata, including&#10;its name, version, and entry points.&#10;&#10;The `src/index.ts` file contains the re-export statements,&#10;making" />
+    <MESSAGE value="```&#10;feat(types): create shared Strapi types package (mono-repo)&#10;&#10;This commit introduces the new `@arton/types` package, designed&#10;to centralize and re-export generated Strapi type definitions&#10;for use across the monorepo.&#10;&#10;The `package.json` file sets up the package metadata, including&#10;its name, version, and entry points.&#10;&#10;The `src/index.ts` file contains the re-export statements,&#10;making content types and components easily accessible&#10;throughout the `arton` project.&#10;```" />
+    <MESSAGE value="feat(types): create shared Strapi types package (mono-repo)&#10;&#10;This commit introduces the new `@arton/types` package, designed&#10;to centralize and re-export generated Strapi type definitions&#10;for use across the monorepo.&#10;&#10;The `package.json` file sets up the package metadata, including&#10;its name, version, and entry points.&#10;&#10;The `src/index.ts` file contains the re-export statements,&#10;making content types and components easily accessible&#10;throughout the `arton` project." />
+    <MESSAGE value="feat(types): create shared Strapi types package (mono-repo)&#10;&#10;This commit introduces the new `@arton/types` package, designed&#10;to centralize and re-export generated Strapi type definitions&#10;for use across the monore" />
+    <MESSAGE value="feat(types): create shared Strapi types package (mono-repo)&#10;&#10;This commit introduces the new `@arton/types` package, designed&#10;to centralize and re-export generated Strapi type definitions&#10;for use across the monorepo. This package aims to ensure type&#10;consistency and reusability across all `arton` projects.&#10;&#10;To enable this, the repository has been restructured into a&#10;pnpm monorepo. This includes:&#10;- Introducing a root `p" />
+    <MESSAGE value="feat(types): create shared Strapi types package (mono-repo)&#10;&#10;This commit introduces the new `@arton/types` package, designed&#10;to centralize and re-export generated Strapi type definitions&#10;for use across the monorepo. This package aims to ensure type&#10;consistency and reusability across all `arton` projects.&#10;&#10;To enable this, the repository has been restructured into a&#10;pnpm monorepo. This includes:&#10;- Introducing a root `pnpm-workspace.yaml` to define the&#10;  workspace structure and removing obsolete individual configs.&#10;- Renaming the `backend` and `frontend` packages to&#10;  `@arton/backend` and `@arton/frontend` respectively" />
+    <MESSAGE value="feat(types): create shared Strapi types package (mono-repo)&#10;&#10;This commit introduces the new `@arton/types` package, designed&#10;to centralize and re-export generated Strapi type definitions&#10;for use across the monorepo. This package aims to ensure type&#10;consistency and reusability across all `arton` projects.&#10;&#10;To enable this, the repository has been restructured into a&#10;pnpm monorepo. This includes:&#10;- Introducing a root `pnpm-workspace.yaml` to define the&#10;  workspace structure and removing obsolete individual configs.&#10;- Renaming the `backend` and `frontend` packages to&#10;  `@arton/backend` and `@arton/frontend` respectively,&#10;  adhering to monorepo naming conventions.&#10;- Adding a comprehensive root `.gitignore` file to manage&#10;  version control for the entire workspace.&#10;&#10;Finally, the `@strapi/plugin-graphql` has been" />
+    <MESSAGE value="feat(types): create shared Strapi types package (mono-repo)&#10;&#10;This commit introduces the new `@arton/types` package, designed&#10;to centralize and re-export generated Strapi type definitions&#10;for use across the monorepo. This package aims to ensure type&#10;consistency and reusability across all `arton` projects.&#10;&#10;To enable this, the repository has been restructured into a&#10;pnpm monorepo. This includes:&#10;- Introducing a root `pnpm-workspace.yaml` to define the&#10;  workspace structure and removing obsolete individual configs.&#10;- Renaming the `backend` and `frontend` packages to&#10;  `@arton/backend` and `@arton/frontend` respectively,&#10;  adhering to monorepo naming conventions.&#10;- Adding a comprehensive root `.gitignore` file to manage&#10;  version control for the entire workspace.&#10;&#10;Finally, the `@strapi/plugin-graphql` has been added to the&#10;backend to provide GraphQL API capabilities, further enhancing&#10;data access for the frontend." />
+    <MESSAGE value="```&#10;build(repo): set up pnpm monorepo workspace (mono-repo)&#10;&#10;This commit migrates the project to a pnpm monorepo structure.&#10;Individual pnpm-workspace.yaml files from backend and frontend&#10;are" />
+    <MESSAGE value="```&#10;build(repo): set up pnpm monorepo workspace (mono-repo)&#10;&#10;This commit migrates the project to a pnpm monorepo structure.&#10;Individual pnpm-workspace.yaml files from backend and frontend&#10;are removed, as workspace management is now handled at the root.&#10;&#10;Package names in backend/package.json and frontend/package.json&#10;are updated to @arton/backend and @arton/frontend respectively,&#10;adopting a scoped naming" />
+    <MESSAGE value="```&#10;build(repo): set up pnpm monorepo workspace (mono-repo)&#10;&#10;This commit migrates the project to a pnpm monorepo structure.&#10;Individual pnpm-workspace.yaml files from backend and frontend&#10;are removed, as workspace management is now handled at the root.&#10;&#10;Package names in backend/package.json and frontend/package.json&#10;are updated to @arton/backend and @arton/frontend respectively,&#10;adopting a scoped naming convention. A new internal workspace&#10;dependency, @arton/types, is introduced for shared type definitions.&#10;Additionally, @strapi/plugin-graphql is added to the backend.&#10;```" />
+    <MESSAGE value="build(repo): set up pnpm monorepo workspace (mono-repo)&#10;&#10;This commit migrates the project to a pnpm monorepo structure.&#10;Individual pnpm-workspace.yaml files from backend and frontend&#10;are removed, as workspace management is now handled at the root.&#10;&#10;Package names in backend/package.json and frontend/package.json&#10;are updated to @arton/backend and @arton/frontend respectively,&#10;adopting a scoped naming convention. A new internal workspace&#10;dependency, @arton/types, is introduced for shared type definitions.&#10;Additionally, @strapi/plugin-graphql is added to the backend." />
+    <option name="LAST_COMMIT_MESSAGE" value="build(repo): set up pnpm monorepo workspace (mono-repo)&#10;&#10;This commit migrates the project to a pnpm monorepo structure.&#10;Individual pnpm-workspace.yaml files from backend and frontend&#10;are removed, as workspace management is now handled at the root.&#10;&#10;Package names in backend/package.json and frontend/package.json&#10;are updated to @arton/backend and @arton/frontend respectively,&#10;adopting a scoped naming convention. A new internal workspace&#10;dependency, @arton/types, is introduced for shared type definitions.&#10;Additionally, @strapi/plugin-graphql is added to the backend." />
   </component>
 </project>
