@@ -16,9 +16,9 @@ export const NavItem = (props: NavItemProps) => {
         <Link
             href={`/${item.slug}`}
             className={cn(
-                "font-normal text-sm tracking-wider leading-7 text-foreground uppercase",
+                "font-normal text-xs tracking-wider leading-7 text-foreground uppercase",
                 "flex items-center justify-center transition-all duration-500 ease-in-out",
-                active ? "text-neutral-400 underline" : "hover:opacity-40"
+                active ? "underline" : "hover:opacity-40"
             )}
         >
             {item.title}
