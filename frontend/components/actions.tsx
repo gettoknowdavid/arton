@@ -1,17 +1,9 @@
 "use client";
 
-import {ActionItemT} from "@/config/types";
-import {usePathname} from "next/navigation";
 import {SearchIcon, ShoppingCart} from "lucide-react";
 import {cn} from "@/lib/utils";
 
-export type ActionsProps = {
-    items: ActionItemT[]
-}
-
-export const Actions = (props: ActionsProps) => {
-    const pathname = usePathname();
-
+export const Actions = () => {
     return (
         <div className="flex flex-row items-center gap-4">
             <Search/>
@@ -47,7 +39,6 @@ const CartButton = () => {
                 className={cn(
                     "font-normal text-xs tracking-wider uppercase",
                     "hidden lg:flex gap-1 items-center justify-center transition-colors duration-500 ease-in-out",
-                    // "bg-foreground text-background px-2 py-1"
                 )}
             >
                 <p>CART</p>

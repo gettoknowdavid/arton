@@ -1,16 +1,14 @@
 import React from "react";
 import getCategories from "@/lib/get-categories";
+import getSizes from "@/lib/get-sizes";
+import {ParentCategoryTemplate} from "@/components/ui/parent-category.template";
 
 export default async function MenPage() {
-    const categories = await getCategories('men');
+    const categories = getCategories("men");
+    const sizes = getSizes("clothing");
     return (
-        <div className="flex min-h-screen items-center justify-center">
+        <ParentCategoryTemplate categories={categories} sizes={sizes}>
             Men
-            <div>
-                <ul>{categories.map((category, index) => {
-                    return (<li key={index}>{category.name}</li>);
-                })}</ul>
-            </div>
-        </div>
+        </ParentCategoryTemplate>
     );
 }

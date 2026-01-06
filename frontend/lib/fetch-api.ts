@@ -1,12 +1,14 @@
+import {StrapiResponse} from "@/lib/types/types";
+
 const STRAPI_API_TOKEN = process.env.NEXT_PUBLIC_STRAPI_API_TOKEN;
 const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL;
 const STRAPI_GRAPHQL_URL = `${STRAPI_URL}/graphql`;
 
-export interface FetchApiOptions {
+interface FetchApiOptions {
     variables?: Record<string, any>;
     revalidate?: number;
     tags?: string[];
-};
+}
 
 /**
  * Fetch data from Strapi GraphQL API
@@ -24,14 +26,6 @@ export default async function fetchApi<T>(query: string, options?: FetchApiOptio
             method: "POST",
             next: {revalidate, tags}
         });
-
-        if (!response.ok) {
-            const errorData = await response.json();
-            // Log the error details or send to an error reporting service
-            console.error('API Error:', errorData.error.message, errorData.error.details);
-            // Throw an error to be caught by the caller
-            throw new Error(errorData.error.message || `Failed to fetch ${path}`);
-        }
 
         // The response is ok, return the data with the expected type
         const jsonResponse: StrapiResponse<T> = await response.json();

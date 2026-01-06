@@ -153,17 +153,6 @@
       },
       "required": true
     },
-    "skus": {
-      "type": "component",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "component": "products.size-sku",
-      "repeatable": true,
-      "required": true
-    },
     "images": {
       "type": "media",
       "pluginOptions": {
@@ -197,6 +186,11 @@
       },
       "component": "products.product-care-panel",
       "repeatable": true
+    },
+    "sizes": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::size.size"
     },
     "category": {
       "type": "relation",

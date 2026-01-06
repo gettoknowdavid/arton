@@ -1,5 +1,11 @@
-import {ApiCategoryCategory} from "@arton/types";
 import fetchApi from "@/lib/fetch-api";
+import {components} from "@/lib/types/strapi";
+
+type Category = components['schemas']['Category'];
+
+interface CategoriesResponse {
+    categories: Category[];
+}
 
 const QUERY: string = `
   query GetCategories($filters: CategoryFiltersInput) {
@@ -18,14 +24,10 @@ const QUERY: string = `
   }
 `;
 
-interface CategoriesResponse {
-    categories: ApiCategoryCategory[];
-}
-
-export default async function getCategories(parent: string): Promise<ApiCategoryCategory[]> {
-    const data = await fetchApi<CategoriesResponse>(QUERY, {
-        variables: {filters: {gender: {eq: parent}}},
+export default async function getCategories(parent: string): Promise<Category[]> {
+    const response = await fetchApi<CategoriesResponse>(QUERY, {
+        variables: {filters: {gender: {in: ["unisex", `${parent}`]}}},
         tags: ['categories', `categories-${parent}`],
     });
-    return data.categories;
+    return response.categories ?? [];
 }

@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="dab65bde-0211-4e44-bc3b-e82863ccae34" name="Changes" comment="feat(frontend): implement Strapi GraphQL category fetching (mono-repo)&#10;&#10;This commit introduces core functionalities for fetching and displaying&#10;category data from the Strapi backend using GraphQL.&#10;&#10;A new `fetchApi` utility is added to handle GraphQL requests to Strapi,&#10;including error management and Next.js caching strategies (revalidate,&#10;tags). Building upon this, the `getCategories` utility is created to&#10;specifically retrieve category information.&#10;&#10;The `men/page.tsx` and `women/page.tsx` are updated to utilize this&#10;`getCategories` function, allowing them to dynamically display lists&#10;of categories. Additionally, generic TypeScript types for Strapi API&#10;responses (`StrapiResponse`, `StrapiCollectionResponse`, etc.) are&#10;defined to ensure robust type safety throughout the frontend.&#10;The shared `@arton/types` package is used for category type definitions.">
+    <list default="true" id="dab65bde-0211-4e44-bc3b-e82863ccae34" name="Changes" comment="style(frontend): adjust component text sizes and refine cart styling (mono-repo)&#10;&#10;This commit makes minor visual adjustments to several frontend&#10;components.&#10;&#10;- Navigation item text size in `nav-item.tsx` reduced from `text-sm`&#10;  to `text-xs`. Active link styling simplified by removing specific&#10;  `text-neutral-400` color.&#10;- Search and cart label text sizes in `actions.tsx` reduced from&#10;  `text-sm` to `text-xs`.&#10;- Cart item count display in `actions.tsx` restructured for improved&#10;  layout and visual consistency, including updated styling classes.">
+      <change afterPath="$PROJECT_DIR$/frontend/components/category-filter.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/backend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/app/men/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/men/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/components/actions.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/components/actions.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/components/nav-item.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/components/nav-item.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/lib/fetch-api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/lib/fetch-api.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/lib/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/lib/types/types.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pnpm-lock.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,8 +26,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="TypeScript JSX File" />
         <option value="TypeScript File" />
+        <option value="TypeScript JSX File" />
       </list>
     </option>
   </component>
@@ -69,7 +75,7 @@
     &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;mono-repo&quot;,
     &quot;javascript.preferred.runtime.type.id&quot;: &quot;node&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/gettoknowdavid/dev/projects/personal/arton/package.json&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/gettoknowdavid/dev/projects/personal/arton/frontend&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -93,10 +99,11 @@
       <recent name="$PROJECT_DIR$" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/frontend/lib/types" />
+      <recent name="$PROJECT_DIR$/frontend/components" />
       <recent name="$PROJECT_DIR$/frontend/public" />
       <recent name="$PROJECT_DIR$/frontend" />
       <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/backend" />
     </key>
   </component>
   <component name="RunManager" selected="npm.Arton Develop">
@@ -143,9 +150,9 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="npm.Strapi Develop" />
-      <item itemvalue="npm.Next Develop" />
       <item itemvalue="npm.Arton Develop" />
+      <item itemvalue="npm.Next Develop" />
+      <item itemvalue="npm.Strapi Develop" />
     </list>
   </component>
   <component name="SharedIndexes">
@@ -169,7 +176,9 @@
       <workItem from="1767458811329" duration="11348000" />
       <workItem from="1767517509264" duration="2520000" />
       <workItem from="1767545897350" duration="11021000" />
-      <workItem from="1767606188575" duration="2728000" />
+      <workItem from="1767606188575" duration="4333000" />
+      <workItem from="1767647387550" duration="19000" />
+      <workItem from="1767647524553" duration="481000" />
     </task>
     <task id="LOCAL-00001" summary="refactor(frontend): Relocate application to frontend subdirectory&#10;&#10;This change moves all existing frontend files into a dedicated&#10;directory to prepare the repository for a monorepo structure.&#10;Configuration files like package.json and .idea have been&#10;updated to reflect the new file paths.">
       <option name="closed" value="true" />
@@ -259,7 +268,15 @@
       <option name="project" value="LOCAL" />
       <updated>1767607673364</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="style(frontend): adjust component text sizes and refine cart styling (mono-repo)&#10;&#10;This commit makes minor visual adjustments to several frontend&#10;components.&#10;&#10;- Navigation item text size in `nav-item.tsx` reduced from `text-sm`&#10;  to `text-xs`. Active link styling simplified by removing specific&#10;  `text-neutral-400` color.&#10;- Search and cart label text sizes in `actions.tsx` reduced from&#10;  `text-sm` to `text-xs`.&#10;- Cart item count display in `actions.tsx` restructured for improved&#10;  layout and visual consistency, including updated styling classes.">
+      <option name="closed" value="true" />
+      <created>1767609008416</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1767609008416</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -277,7 +294,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="feat(build): set up pnpm monorepo workspace (mono-repo)&#10;&#10;This commit initializes the project as a pnpm monorepo, defining&#10;the workspace structure and adding essential ignore rules.&#10;&#10;The `pnpm-workspace.yaml` file is introduced, declaring `backend`,&#10;`frontend`, and `packages/*` as workspace packages. It also configures&#10;specific dependencies to be built only, optimizing the build process.&#10;&#10;Additionally, a comprehensive `.gitignore` file is added to prevent&#10;unnecessary files from being tracked. This includes `node_modules`,&#10;build outputs, editor-specific files, and various debug logs." />
     <MESSAGE value="```&#10;feat(types): create shared Strapi types package (mono-repo)&#10;&#10;This commit introduces the new `@arton/types` package, designed&#10;to centralize and re-export generated Strapi type definitions&#10;for use across the" />
     <MESSAGE value="```&#10;feat(types): create shared Strapi types package (mono-repo)&#10;&#10;This commit introduces the new `@arton/types` package, designed&#10;to centralize and re-export generated Strapi type definitions&#10;for use across the monorepo.&#10;&#10;The `package.json` file sets up the package metadata, including&#10;its name, version, and entry points.&#10;&#10;The `src/index.ts` file contains the re-export statements,&#10;making" />
     <MESSAGE value="```&#10;feat(types): create shared Strapi types package (mono-repo)&#10;&#10;This commit introduces the new `@arton/types` package, designed&#10;to centralize and re-export generated Strapi type definitions&#10;for use across the monorepo.&#10;&#10;The `package.json` file sets up the package metadata, including&#10;its name, version, and entry points.&#10;&#10;The `src/index.ts` file contains the re-export statements,&#10;making content types and components easily accessible&#10;throughout the `arton` project.&#10;```" />
@@ -302,6 +318,7 @@
     <MESSAGE value="```&#10;style(frontend): adjust component text sizes and refine cart styling (mono-repo)&#10;&#10;This commit makes minor visual adjustments to several frontend&#10;components.&#10;&#10;- Navigation item text size in `nav-item.tsx` reduced from `" />
     <MESSAGE value="```&#10;style(frontend): adjust component text sizes and refine cart styling (mono-repo)&#10;&#10;This commit makes minor visual adjustments to several frontend&#10;components.&#10;&#10;- Navigation item text size in `nav-item.tsx` reduced from `text-sm`&#10;  to `text-xs`. Active link styling simplified by removing specific&#10;  `text-neutral-400` color.&#10;- Search and cart label text sizes in `actions.tsx` reduced from" />
     <MESSAGE value="```&#10;style(frontend): adjust component text sizes and refine cart styling (mono-repo)&#10;&#10;This commit makes minor visual adjustments to several frontend&#10;components.&#10;&#10;- Navigation item text size in `nav-item.tsx` reduced from `text-sm`&#10;  to `text-xs`. Active link styling simplified by removing specific&#10;  `text-neutral-400` color.&#10;- Search and cart label text sizes in `actions.tsx` reduced from&#10;  `text-sm` to `text-xs`.&#10;- Cart item count display in `actions.tsx` restructured for improved&#10;  layout and visual consistency, including updated styling classes.&#10;```" />
-    <option name="LAST_COMMIT_MESSAGE" value="```&#10;style(frontend): adjust component text sizes and refine cart styling (mono-repo)&#10;&#10;This commit makes minor visual adjustments to several frontend&#10;components.&#10;&#10;- Navigation item text size in `nav-item.tsx` reduced from `text-sm`&#10;  to `text-xs`. Active link styling simplified by removing specific&#10;  `text-neutral-400` color.&#10;- Search and cart label text sizes in `actions.tsx` reduced from&#10;  `text-sm` to `text-xs`.&#10;- Cart item count display in `actions.tsx` restructured for improved&#10;  layout and visual consistency, including updated styling classes.&#10;```" />
+    <MESSAGE value="style(frontend): adjust component text sizes and refine cart styling (mono-repo)&#10;&#10;This commit makes minor visual adjustments to several frontend&#10;components.&#10;&#10;- Navigation item text size in `nav-item.tsx` reduced from `text-sm`&#10;  to `text-xs`. Active link styling simplified by removing specific&#10;  `text-neutral-400` color.&#10;- Search and cart label text sizes in `actions.tsx` reduced from&#10;  `text-sm` to `text-xs`.&#10;- Cart item count display in `actions.tsx` restructured for improved&#10;  layout and visual consistency, including updated styling classes." />
+    <option name="LAST_COMMIT_MESSAGE" value="style(frontend): adjust component text sizes and refine cart styling (mono-repo)&#10;&#10;This commit makes minor visual adjustments to several frontend&#10;components.&#10;&#10;- Navigation item text size in `nav-item.tsx` reduced from `text-sm`&#10;  to `text-xs`. Active link styling simplified by removing specific&#10;  `text-neutral-400` color.&#10;- Search and cart label text sizes in `actions.tsx` reduced from&#10;  `text-sm` to `text-xs`.&#10;- Cart item count display in `actions.tsx` restructured for improved&#10;  layout and visual consistency, including updated styling classes." />
   </component>
 </project>
