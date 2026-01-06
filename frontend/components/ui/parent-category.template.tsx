@@ -1,10 +1,10 @@
 "use client";
 
-import {CategoryFilter} from "@/components/category-filter";
-import {SizeFilter} from "@/components/size-filter";
 import React from "react";
 import {components} from "@/lib/types/strapi";
-import {SortFilter} from "@/components/sort-filter";
+import {CategoryFilter} from "@/components/molecules/category-filter";
+import {SizeFilter} from "@/components/molecules/size-filter";
+import {SortFilter} from "@/components/molecules/sort-filter";
 
 interface Props {
     children: React.ReactNode;

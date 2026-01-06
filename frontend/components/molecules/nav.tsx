@@ -1,7 +1,7 @@
 "use client";
 
 import {NavItemT} from "@/config/types";
-import {NavItem} from "@/components/nav-item";
+import {NavItem} from "@/components/atoms/nav-item";
 import {usePathname} from "next/navigation";
 import {TextAlignJustify} from "lucide-react";
 
