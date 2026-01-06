@@ -4,6 +4,7 @@ import {CategoryFilter} from "@/components/category-filter";
 import {SizeFilter} from "@/components/size-filter";
 import React from "react";
 import {components} from "@/lib/types/strapi";
+import {SortFilter} from "@/components/sort-filter";
 
 interface Props {
     children: React.ReactNode;
@@ -15,7 +16,7 @@ export const ParentCategoryTemplate = (props: Props) => {
     return (
         <div className="h-full w-full px-3 pt-20 pb-8">
             {/* Desktop: Grid Layout */}
-            <div className="hidden lg:grid lg:grid-cols-[16rem_1fr] gap-6 h-full w-full">
+            <div className="hidden lg:grid lg:grid-cols-[16rem_1fr_16rem] gap-6 h-full w-full">
                 {/* Sticky Sidebar */}
                 <aside className="sticky top-20 h-fit flex flex-col gap-10">
                     <CategoryFilter categories={props.categories}/>
@@ -26,6 +27,11 @@ export const ParentCategoryTemplate = (props: Props) => {
                 <main className="min-h-screen">
                     {props.children}
                 </main>
+
+                {/* Sticky Sidebar */}
+                <aside className="sticky top-20 h-fit flex flex-col gap-10">
+                    <SortFilter/>
+                </aside>
             </div>
 
             {/* Mobile: Stack Layout */}
@@ -34,6 +40,7 @@ export const ParentCategoryTemplate = (props: Props) => {
                 <div className="flex flex-col gap-4">
                     <CategoryFilter categories={props.categories}/>
                     <SizeFilter sizes={props.sizes}/>
+                    <SortFilter/>
                 </div>
 
                 {/* Main Content */}
