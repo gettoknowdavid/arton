@@ -1,6 +1,6 @@
 import React from "react";
-import getCategories from "@/lib/get-categories";
-import getSizes from "@/lib/get-sizes";
+import getCategories from "@/lib/queries/get-categories";
+import getSizes from "@/lib/queries/get-sizes";
 import {ParentCategoryTemplate} from "@/components/ui/parent-category.template";
 
 export default async function WomenPage() {
