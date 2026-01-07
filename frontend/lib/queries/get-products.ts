@@ -11,11 +11,12 @@ interface Props {
     gender: string;
     categorySlugs?: string[] | undefined | null;
     sizeNames?: string[] | undefined | null;
+    sort?: string | undefined | null;
 }
 
 const QUERY = `
-  query Products($filters: ProductFiltersInput) {
-    products(filters: $filters) {
+  query Products($filters: ProductFiltersInput, $sort: [String]) {
+    products(filters: $filters, sort: $sort) {
       documentId
       name
       slug
@@ -29,7 +30,7 @@ const QUERY = `
   }
 `;
 
-export default async function getProducts({gender, categorySlugs, sizeNames}: Props): Promise<Product[]> {
+export default async function getProducts({gender, categorySlugs, sizeNames, sort}: Props): Promise<Product[]> {
     const hasCategorySlugs = categorySlugs && categorySlugs.length > 0;
     const hasSizeNames = sizeNames && sizeNames.length > 0;
 
@@ -41,8 +42,8 @@ export default async function getProducts({gender, categorySlugs, sizeNames}: Pr
                 category: hasCategorySlugs && {slug: {in: categorySlugs}},
                 sizes: hasSizeNames && {name: {in: sizeNames}},
             },
+            sort: sort && [sort],
         },
-        revalidate: 0,
     });
     return response.products ?? [];
 }

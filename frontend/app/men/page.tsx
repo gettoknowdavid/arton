@@ -26,8 +26,10 @@ export default async function MenPage({searchParams}: PageProps) {
         sizeNames = Array.isArray(params.size) ? params.size : [params.size];
     }
 
+    const sort = typeof params.sort === 'string' ? params.sort : undefined;
+
     const [products, categories, sizes] = await Promise.all([
-        getProducts({gender: "men", categorySlugs, sizeNames}),
+        getProducts({gender: "men", categorySlugs, sizeNames, sort}),
         getCategories("men"),
         getSizes("clothing"),
     ]);
