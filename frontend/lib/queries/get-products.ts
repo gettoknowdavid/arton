@@ -9,7 +9,7 @@ interface ProductsResponse {
 
 interface Props {
     gender: string;
-    category?: string;
+    categorySlugs?: string[] | undefined | null;
 }
 
 const QUERY = `
@@ -28,13 +28,14 @@ const QUERY = `
   }
 `;
 
-export default async function getProducts({gender, category}: Props): Promise<Product[]> {
+export default async function getProducts({gender, categorySlugs}: Props): Promise<Product[]> {
+    const hasCategorySlugs = categorySlugs && categorySlugs.length > 0;
     const response = await fetchApi<ProductsResponse>(QUERY, {
         tags: ['products', `products-${gender}`],
         variables: {
             filters: {
                 gender: {in: ["unisex", `${gender}`]},
-                category: category && {slug: {eq: category}},
+                category: hasCategorySlugs && {slug: {in: categorySlugs}},
             },
         },
         revalidate: 0,

@@ -8,8 +8,8 @@ import {SortFilter} from "@/components/molecules/sort-filter";
 
 interface Props {
     children: React.ReactNode;
-    categories: Promise<components["schemas"]["Category"][]>;
-    sizes: Promise<components["schemas"]["Size"][]>;
+    categories: components["schemas"]["Category"][];
+    sizes: components["schemas"]["Size"][];
 }
 
 export const ParentCategoryTemplate = (props: Props) => {
