@@ -16,7 +16,7 @@ export const ProductItem = (props: Props) => {
                 {imageUrl && (
                     <Image
                         alt={props.product.image.name || 'Front View'}
-                        className="object-cover"
+                        className="object-contain"
                         fill
                         priority
                         src={imageUrl}

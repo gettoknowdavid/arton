@@ -28,7 +28,6 @@ export default async function getCategories(parent: string): Promise<Category[]>
     const response = await fetchApi<CategoriesResponse>(QUERY, {
         tags: ['categories', `categories-${parent}`],
         variables: {filters: {gender: {in: ["unisex", `${parent}`]}}},
-        revalidate: 0,
     });
     return response.categories ?? [];
 }
