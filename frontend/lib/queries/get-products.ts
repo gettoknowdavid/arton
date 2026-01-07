@@ -10,6 +10,7 @@ interface ProductsResponse {
 interface Props {
     gender: string;
     categorySlugs?: string[] | undefined | null;
+    sizeNames?: string[] | undefined | null;
 }
 
 const QUERY = `
@@ -28,14 +29,17 @@ const QUERY = `
   }
 `;
 
-export default async function getProducts({gender, categorySlugs}: Props): Promise<Product[]> {
+export default async function getProducts({gender, categorySlugs, sizeNames}: Props): Promise<Product[]> {
     const hasCategorySlugs = categorySlugs && categorySlugs.length > 0;
+    const hasSizeNames = sizeNames && sizeNames.length > 0;
+
     const response = await fetchApi<ProductsResponse>(QUERY, {
         tags: ['products', `products-${gender}`],
         variables: {
             filters: {
                 gender: {in: ["unisex", `${gender}`]},
                 category: hasCategorySlugs && {slug: {in: categorySlugs}},
+                sizes: hasSizeNames && {name: {in: sizeNames}},
             },
         },
         revalidate: 0,

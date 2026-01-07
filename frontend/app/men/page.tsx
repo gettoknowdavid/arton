@@ -16,13 +16,18 @@ export default async function MenPage({searchParams}: PageProps) {
     // If param is 'shirts', it becomes ['shirts']
     // If param is ['shirts', 'pants'], it stays ['shirts', 'pants']
     let categorySlugs: string[] | undefined | null;
+    let sizeNames: string[] | undefined | null;
 
     if (params.category) {
         categorySlugs = Array.isArray(params.category) ? params.category : [params.category];
     }
 
+    if (params.size) {
+        sizeNames = Array.isArray(params.size) ? params.size : [params.size];
+    }
+
     const [products, categories, sizes] = await Promise.all([
-        getProducts({gender: "men", categorySlugs}),
+        getProducts({gender: "men", categorySlugs, sizeNames}),
         getCategories("men"),
         getSizes("clothing"),
     ]);
