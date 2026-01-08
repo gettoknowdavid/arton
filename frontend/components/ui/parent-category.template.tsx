@@ -14,7 +14,7 @@ interface Props {
 
 export const ParentCategoryTemplate = (props: Props) => {
     return (
-        <div className="h-full w-full px-3 pt-20 pb-8">
+        <div className="h-full w-full px-3 py-20">
             {/* Desktop: Grid Layout */}
             <div className="hidden lg:grid lg:grid-cols-[16rem_1fr_16rem] gap-6 h-full w-full">
                 {/* Sticky Sidebar */}
