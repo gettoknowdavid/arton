@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2026-01-08T13:03:39.954Z"
+    "x-generation-date": "2026-01-11T00:09:29.597Z"
   },
   "x-strapi-config": {
     "plugins": [
@@ -3986,15 +3986,9 @@
                       "slug": {
                         "type": "string"
                       },
-                      "url": {
-                        "type": "string"
-                      },
                       "description": {},
                       "details": {},
                       "price": {
-                        "type": "string"
-                      },
-                      "priceRaw": {
                         "type": "number",
                         "format": "float"
                       },
@@ -4006,9 +4000,6 @@
                           "GBP",
                           "NGN"
                         ]
-                      },
-                      "filterCategory": {
-                        "type": "string"
                       },
                       "gender": {
                         "type": "string",
@@ -4023,9 +4014,6 @@
                       },
                       "sizeGuide": {
                         "type": "boolean"
-                      },
-                      "size": {
-                        "type": "string"
                       },
                       "image": {
                         "type": "object",
@@ -4288,13 +4276,7 @@
                           }
                         }
                       },
-                      "dimensionsData": {
-                        "type": "array",
-                        "items": {
-                          "$ref": "#/components/schemas/ProductsDimensionDataComponent"
-                        }
-                      },
-                      "panelInformations": {
+                      "panelInformation": {
                         "type": "array",
                         "items": {
                           "$ref": "#/components/schemas/ProductsProductCarePanelComponent"
@@ -4618,31 +4600,6 @@
           }
         }
       },
-      "ProductsDimensionDataComponent": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "number"
-          },
-          "unit": {
-            "type": "string",
-            "enum": [
-              "inches",
-              "cm"
-            ]
-          },
-          "length": {
-            "type": "number",
-            "format": "float"
-          },
-          "height": {
-            "type": "integer"
-          },
-          "width": {
-            "type": "integer"
-          }
-        }
-      },
       "ProductsProductCarePanelComponent": {
         "type": "object",
         "properties": {
@@ -4672,13 +4629,10 @@
               "slug",
               "description",
               "price",
-              "priceRaw",
               "currency",
-              "filterCategory",
               "gender",
               "color",
               "sizeGuide",
-              "size",
               "image",
               "images"
             ],
@@ -4693,15 +4647,9 @@
               "slug": {
                 "type": "string"
               },
-              "url": {
-                "type": "string"
-              },
               "description": {},
               "details": {},
               "price": {
-                "type": "string"
-              },
-              "priceRaw": {
                 "type": "number",
                 "format": "float"
               },
@@ -4713,9 +4661,6 @@
                   "GBP",
                   "NGN"
                 ]
-              },
-              "filterCategory": {
-                "type": "string"
               },
               "gender": {
                 "type": "string",
@@ -4730,9 +4675,6 @@
               },
               "sizeGuide": {
                 "type": "boolean"
-              },
-              "size": {
-                "type": "string"
               },
               "image": {
                 "oneOf": [
@@ -4759,13 +4701,7 @@
                   "example": "string or id"
                 }
               },
-              "dimensionsData": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/ProductsDimensionDataComponent"
-                }
-              },
-              "panelInformations": {
+              "panelInformation": {
                 "type": "array",
                 "items": {
                   "$ref": "#/components/schemas/ProductsProductCarePanelComponent"
@@ -4888,13 +4824,10 @@
           "slug",
           "description",
           "price",
-          "priceRaw",
           "currency",
-          "filterCategory",
           "gender",
           "color",
           "sizeGuide",
-          "size",
           "image",
           "images"
         ],
@@ -4914,15 +4847,9 @@
           "slug": {
             "type": "string"
           },
-          "url": {
-            "type": "string"
-          },
           "description": {},
           "details": {},
           "price": {
-            "type": "string"
-          },
-          "priceRaw": {
             "type": "number",
             "format": "float"
           },
@@ -4934,9 +4861,6 @@
               "GBP",
               "NGN"
             ]
-          },
-          "filterCategory": {
-            "type": "string"
           },
           "gender": {
             "type": "string",
@@ -4951,9 +4875,6 @@
           },
           "sizeGuide": {
             "type": "boolean"
-          },
-          "size": {
-            "type": "string"
           },
           "image": {
             "type": "object",
@@ -5685,13 +5606,7 @@
               }
             }
           },
-          "dimensionsData": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ProductsDimensionDataComponent"
-            }
-          },
-          "panelInformations": {
+          "panelInformation": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/ProductsProductCarePanelComponent"
@@ -5983,15 +5898,9 @@
                     "slug": {
                       "type": "string"
                     },
-                    "url": {
-                      "type": "string"
-                    },
                     "description": {},
                     "details": {},
                     "price": {
-                      "type": "string"
-                    },
-                    "priceRaw": {
                       "type": "number",
                       "format": "float"
                     },
@@ -6003,9 +5912,6 @@
                         "GBP",
                         "NGN"
                       ]
-                    },
-                    "filterCategory": {
-                      "type": "string"
                     },
                     "gender": {
                       "type": "string",
@@ -6020,9 +5926,6 @@
                     },
                     "sizeGuide": {
                       "type": "boolean"
-                    },
-                    "size": {
-                      "type": "string"
                     },
                     "image": {
                       "type": "object",
@@ -6285,13 +6188,7 @@
                         }
                       }
                     },
-                    "dimensionsData": {
-                      "type": "array",
-                      "items": {
-                        "$ref": "#/components/schemas/ProductsDimensionDataComponent"
-                      }
-                    },
-                    "panelInformations": {
+                    "panelInformation": {
                       "type": "array",
                       "items": {
                         "$ref": "#/components/schemas/ProductsProductCarePanelComponent"

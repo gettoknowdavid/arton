@@ -17,8 +17,7 @@ const QUERY = `
       description
       details
       gender
-      filterCategory
-      priceRaw
+      price
       currency
       sizeGuide
       color
@@ -44,7 +43,7 @@ const QUERY = `
         slug
         gender
       }
-      panelInformations {
+      panelInformation {
         id
         type
         title
@@ -58,7 +57,7 @@ const QUERY = `
 export default async function getProduct(slug: string): Promise<Product | undefined | null> {
     const tags = ['product', `product-${slug}`];
     const variables = {filters: {slug: {eq: slug}}};
-    const response = await fetchApi<ProductResponse>(QUERY, {tags, variables});
+    const response = await fetchApi<ProductResponse>(QUERY, {tags, variables, revalidate: 0});
     if (response.products.length === 0) return undefined;
     return response.products[0];
 }

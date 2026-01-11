@@ -19,7 +19,7 @@ const Search = () => {
             <SearchIcon className="flex lg:hidden"/>
             <p
                 className={cn(
-                    "font-normal text-xs tracking-wider leading-7 text-foreground uppercase",
+                    "text-sm text-foreground uppercase",
                     "hidden lg:flex items-center justify-center transition-colors duration-500 ease-in-out",
                 )}
             >

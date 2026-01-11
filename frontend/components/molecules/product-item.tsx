@@ -10,10 +10,10 @@ interface Props {
 
 export const ProductItem = (props: Props) => {
     const imageUrl = getSanitizedStrapiUrl(props.product.image.url);
-    const formattedCurrency = currencyFormatter().format(props.product.priceRaw);
+    const formattedCurrency = currencyFormatter().format(props.product.price);
     return (
         <Link href={`/products/${props.product.slug}`}>
-            <div className="flex flex-col gap-1 cursor-pointer">
+            <div className="flex flex-col gap-2 cursor-pointer">
                 <div className="relative aspect-12/16 bg-[url('/product-image-bg.png')] bg-cover">
                     {imageUrl && (
                         <Image
@@ -25,11 +25,11 @@ export const ProductItem = (props: Props) => {
                         />
                     )}
                 </div>
-                <div className="flex flex-row items-center justify-between gap-4">
-                    <p className="text-xs tracking-wider uppercase overflow-hidden text-ellipsis line-clamp-1">
+                <div className="flex flex-col gap-1">
+                    <p className="text-sm tracking-wider uppercase overflow-hidden text-ellipsis line-clamp-1 leading-none">
                         {props.product.name}
                     </p>
-                    <p className="text-xs uppercase overflow-hidden text-ellipsis line-clamp-1">
+                    <p className="text-sm uppercase overflow-hidden text-ellipsis line-clamp-1 leading-none">
                         {formattedCurrency}
                     </p>
                 </div>

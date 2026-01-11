@@ -36,20 +36,20 @@ export const SizeFilter = (props: SizeFilterProps) => {
 
     return (
         <div className="flex flex-col gap-3">
-            <h1 className="m-0 p-0 uppercase text-sm tracking-wider font-semibold">Sizes</h1>
+            <h1 className="m-0 p-0 uppercase tracking-wider font-semibold">Sizes</h1>
             <ul className="flex flex-col gap-3">
                 {props.sizes.map((size, index) => {
                     const isSelected = selectedSizes.includes(size.name);
                     const url = createFilterUrl(size.name);
 
                     return (
-                        <li key={index} className="text-xs uppercase cursor-pointer hover:opacity-40">
+                        <li key={index} className="text-sm uppercase cursor-pointer hover:opacity-40">
                             <Link
                                 href={url}
                                 scroll={false}
                                 className={cn(
                                     "flex flex-row gap-2 items-center w-full",
-                                    "text-xs uppercase tracking-wider cursor-pointer",
+                                    "text-sm uppercase cursor-pointer",
                                     isSelected ? "opacity-40" : "hover:opacity-40",
                                 )}
                             >

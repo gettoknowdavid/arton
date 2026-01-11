@@ -44,14 +44,6 @@
       "targetField": "name",
       "required": true
     },
-    "url": {
-      "type": "string",
-      "pluginOptions": {
-        "i18n": {
-          "localized": false
-        }
-      }
-    },
     "description": {
       "type": "blocks",
       "pluginOptions": {
@@ -70,15 +62,6 @@
       }
     },
     "price": {
-      "type": "string",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "required": true
-    },
-    "priceRaw": {
       "type": "decimal",
       "pluginOptions": {
         "i18n": {
@@ -101,15 +84,6 @@
         "GBP",
         "NGN"
       ]
-    },
-    "filterCategory": {
-      "type": "string",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "required": true
     },
     "gender": {
       "type": "enumeration",
@@ -144,15 +118,6 @@
       "required": true,
       "default": true
     },
-    "size": {
-      "type": "string",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "required": true
-    },
     "image": {
       "type": "media",
       "pluginOptions": {
@@ -180,17 +145,7 @@
         "files"
       ]
     },
-    "dimensionsData": {
-      "type": "component",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "component": "products.dimension-data",
-      "repeatable": true
-    },
-    "panelInformations": {
+    "panelInformation": {
       "type": "component",
       "pluginOptions": {
         "i18n": {

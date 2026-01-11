@@ -30,7 +30,7 @@ export default async function ProductDetailsPage({params}: PageProps) {
 
     const description: BlocksContent = product.description as BlocksContent;
     const details: BlocksContent = product.details as BlocksContent;
-    const hasPanelInfo = product.panelInformations && product.panelInformations.length > 0;
+    const hasPanelInfo = product.panelInformation && product.panelInformation.length > 0;
 
     return (
         <div className="relative pt-12 flex flex-col justify-center h-full lg:h-screen">
@@ -39,45 +39,44 @@ export default async function ProductDetailsPage({params}: PageProps) {
             </div>
 
             <div className="flex h-full w-full items-center justify-center">
-                <div className="grid w-full grid-cols-1 lg:grid-cols-24 h-full">
-                    <div className="relative h-full w-full col-span-15 border-r border-foreground">
+                <div className="grid w-full grid-cols-1 lg:grid-cols-37 h-full">
+                    <div className="relative h-full w-full col-span-24 border-r border-foreground">
                         <ProductImageList images={product.images}/>
                     </div>
 
-                    <div className="w-full lg:col-span-9 overflow-hidden relative">
+                    <div className="w-full lg:col-span-13 overflow-hidden relative">
                         <div className="h-full w-full overflow-y-auto flex justify-center px-3 py-16 no-scrollbar">
                             <div className="flex w-full flex-col lg:max-w-sm gap-2 mt-auto">
                                 <p className="text-sm font-medium tracking-wider flex">
-                                    {currencyFormatter.format(product.priceRaw)}
+                                    {currencyFormatter.format(product.price)}
                                 </p>
 
                                 <h1 className="font-semibold uppercase leading-tight">
                                     {product.name}
                                 </h1>
 
-                                <div
-                                    className="text-sm leading-relaxed opacity-70 tracking-wide text-justify mt-3">
+                                <div className="text-sm font-normal text-justify leading-snug">
                                     <BlockRendererClient content={description}/>
                                 </div>
 
                                 <div className="mt-4 flex flex-col items-end w-full">
                                     <div
-                                        className="w-full border-y border-foreground py-2.5 text-sm uppercase font-medium">
-                                        Size Selector Component Placeholder
+                                        className="w-full border-y border-foreground/30 py-1.5 text-sm uppercase">
+                                        Size: XS - EXTRA SMALL
                                     </div>
-                                    <Button size="sm" variant="link" className="text-sm font-regular p-0 m-0">
+                                    <Button size="sm" variant="link" className="text-sm font-light p-0 m-0">
                                         Size Guide
                                     </Button>
                                 </div>
 
-                                <Button className="text-sm uppercase font-medium rounded-none w-full py-5 mt-4">
+                                <Button className="text-sm uppercase rounded-none w-full py-5 mt-4">
                                     Add to Cart
                                 </Button>
 
                                 <div className="mt-5">
                                     <Accordion type="multiple" className="">
                                         <AccordionItem value="product-details">
-                                            <AccordionTrigger className="text-sm uppercase tracking-wide">
+                                            <AccordionTrigger className="uppercase">
                                                 Details
                                             </AccordionTrigger>
                                             <AccordionContent className="pt-4">
@@ -89,12 +88,12 @@ export default async function ProductDetailsPage({params}: PageProps) {
                                             </AccordionContent>
                                         </AccordionItem>
                                         {hasPanelInfo && <>
-                                            {product.panelInformations!.map((information, index) => {
+                                            {product.panelInformation!.map((information, index) => {
                                                 const intro: BlocksContent = information.introduction as BlocksContent;
                                                 const desc: BlocksContent = information.description as BlocksContent;
                                                 return (
                                                     <AccordionItem value={information.type!} key={index}>
-                                                        <AccordionTrigger className="text-sm uppercase tracking-wide">
+                                                        <AccordionTrigger className="uppercase">
                                                             {information.title!}
                                                         </AccordionTrigger>
                                                         <AccordionContent className="pt-4 flex flex-col gap-2">

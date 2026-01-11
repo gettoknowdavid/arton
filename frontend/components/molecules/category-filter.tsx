@@ -44,7 +44,7 @@ export const CategoryFilter = (props: CategoryFilterProps) => {
 
     return (
         <div className="flex flex-col gap-3">
-            <h1 className="m-0 p-0 uppercase text-sm tracking-wider font-semibold">Categories</h1>
+            <h1 className="m-0 p-0 uppercase tracking-wider font-semibold">Categories</h1>
             <ul className="flex flex-col gap-2">
                 {props.categories.map((category, index) => {
                     const isSelected = selectedCategories.includes(category.slug);
@@ -57,7 +57,7 @@ export const CategoryFilter = (props: CategoryFilterProps) => {
                                 scroll={false}
                                 className={cn(
                                     "flex flex-row gap-2 items-center w-full",
-                                    "text-xs uppercase tracking-wider cursor-pointer",
+                                    "text-sm uppercase cursor-pointer tracking-wide",
                                     isSelected ? "opacity-40" : "hover:opacity-40",
                                 )}
                             >

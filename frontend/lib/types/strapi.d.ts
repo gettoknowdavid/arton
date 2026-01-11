@@ -1867,20 +1867,16 @@ export interface components {
                     skuId?: string;
                     name?: string;
                     slug?: string;
-                    url?: string;
                     description?: unknown;
                     details?: unknown;
-                    price?: string;
                     /** Format: float */
-                    priceRaw?: number;
+                    price?: number;
                     /** @enum {string} */
                     currency?: "USD" | "EUR" | "GBP" | "NGN";
-                    filterCategory?: string;
                     /** @enum {string} */
                     gender?: "women" | "men" | "unisex";
                     color?: string;
                     sizeGuide?: boolean;
-                    size?: string;
                     image?: {
                         id?: number;
                         documentId?: string;
@@ -1975,8 +1971,7 @@ export interface components {
                             documentId?: string;
                         }[];
                     }[];
-                    dimensionsData?: components["schemas"]["ProductsDimensionDataComponent"][];
-                    panelInformations?: components["schemas"]["ProductsProductCarePanelComponent"][];
+                    panelInformation?: components["schemas"]["ProductsProductCarePanelComponent"][];
                     sizes?: {
                         id?: number;
                         documentId?: string;
@@ -2089,15 +2084,6 @@ export interface components {
             data?: components["schemas"]["Category"];
             meta?: Record<string, never>;
         };
-        ProductsDimensionDataComponent: {
-            id?: number;
-            /** @enum {string} */
-            unit?: "inches" | "cm";
-            /** Format: float */
-            length?: number;
-            height?: number;
-            width?: number;
-        };
         ProductsProductCarePanelComponent: {
             id?: number;
             type?: string;
@@ -2110,25 +2096,20 @@ export interface components {
                 skuId: string;
                 name: string;
                 slug: string;
-                url?: string;
                 description: unknown;
                 details?: unknown;
-                price: string;
                 /** Format: float */
-                priceRaw: number;
+                price: number;
                 /** @enum {string} */
                 currency: "USD" | "EUR" | "GBP" | "NGN";
-                filterCategory: string;
                 /** @enum {string} */
                 gender: "women" | "men" | "unisex";
                 color: string;
                 sizeGuide: boolean;
-                size: string;
                 /** @example string or id */
                 image: number | string;
                 images: (number | string)[];
-                dimensionsData?: components["schemas"]["ProductsDimensionDataComponent"][];
-                panelInformations?: components["schemas"]["ProductsProductCarePanelComponent"][];
+                panelInformation?: components["schemas"]["ProductsProductCarePanelComponent"][];
                 sizes?: (number | string)[];
                 /** @example string or id */
                 category?: number | string;
@@ -2155,20 +2136,16 @@ export interface components {
             skuId: string;
             name: string;
             slug: string;
-            url?: string;
             description: unknown;
             details?: unknown;
-            price: string;
             /** Format: float */
-            priceRaw: number;
+            price: number;
             /** @enum {string} */
             currency: "USD" | "EUR" | "GBP" | "NGN";
-            filterCategory: string;
             /** @enum {string} */
             gender: "women" | "men" | "unisex";
             color: string;
             sizeGuide: boolean;
-            size: string;
             image: {
                 id?: number;
                 documentId?: string;
@@ -2431,8 +2408,7 @@ export interface components {
                     documentId?: string;
                 }[];
             }[];
-            dimensionsData?: components["schemas"]["ProductsDimensionDataComponent"][];
-            panelInformations?: components["schemas"]["ProductsProductCarePanelComponent"][];
+            panelInformation?: components["schemas"]["ProductsProductCarePanelComponent"][];
             sizes?: {
                 id?: number;
                 documentId?: string;
@@ -2531,20 +2507,16 @@ export interface components {
                     skuId?: string;
                     name?: string;
                     slug?: string;
-                    url?: string;
                     description?: unknown;
                     details?: unknown;
-                    price?: string;
                     /** Format: float */
-                    priceRaw?: number;
+                    price?: number;
                     /** @enum {string} */
                     currency?: "USD" | "EUR" | "GBP" | "NGN";
-                    filterCategory?: string;
                     /** @enum {string} */
                     gender?: "women" | "men" | "unisex";
                     color?: string;
                     sizeGuide?: boolean;
-                    size?: string;
                     image?: {
                         id?: number;
                         documentId?: string;
@@ -2639,8 +2611,7 @@ export interface components {
                             documentId?: string;
                         }[];
                     }[];
-                    dimensionsData?: components["schemas"]["ProductsDimensionDataComponent"][];
-                    panelInformations?: components["schemas"]["ProductsProductCarePanelComponent"][];
+                    panelInformation?: components["schemas"]["ProductsProductCarePanelComponent"][];
                     sizes?: {
                         id?: number;
                         documentId?: string;

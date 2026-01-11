@@ -21,7 +21,6 @@ const QUERY = `
       name
       slug
       price
-      priceRaw
       image {
         url
         name
@@ -35,6 +34,7 @@ export default async function getProducts({gender, categorySlugs, sizeNames, sor
     const hasSizeNames = sizeNames && sizeNames.length > 0;
 
     const response = await fetchApi<ProductsResponse>(QUERY, {
+        revalidate: 0,
         tags: ['products', `products-${gender}`],
         variables: {
             filters: {

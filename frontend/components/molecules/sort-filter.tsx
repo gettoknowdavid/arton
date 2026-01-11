@@ -7,8 +7,8 @@ import {cn} from "@/lib/utils";
 import {Check} from "lucide-react";
 
 const SORT_LIST = [
-    {id: 0, name: "Price low to high", code: "priceRaw:asc"},
-    {id: 1, name: "Price high to low", code: "priceRaw:desc"},
+    {id: 0, name: "Price low to high", code: "price:asc"},
+    {id: 1, name: "Price high to low", code: "price:desc"},
     {id: 2, name: "Oldest to Newest", code: "createdAt:asc"},
     {id: 3, name: "Newest to Oldest", code: "createdAt:desc"},
 ];
@@ -33,8 +33,8 @@ export const SortFilter = () => {
 
     return (
         <div className="flex flex-col gap-3">
-            <h1 className="m-0 p-0 uppercase text-sm tracking-wider font-semibold">SORT</h1>
-            <ul className="flex flex-col gap-3">
+            <h1 className="m-0 p-0 uppercase tracking-wider font-semibold">SORT</h1>
+            <ul className="flex flex-col gap-2">
                 {SORT_LIST.map((item, index) => {
                     const isSelected = selectedSortCode === item.code;
                     const url = createSortUrl(item.code);
@@ -45,7 +45,7 @@ export const SortFilter = () => {
                                 scroll={false}
                                 className={cn(
                                     "flex flex-row gap-2 items-center w-full",
-                                    "text-xs uppercase tracking-wider cursor-pointer",
+                                    "text-sm uppercase tracking-wide cursor-pointer",
                                     isSelected ? "opacity-40" : "hover:opacity-40",
                                 )}>
                                 {item.name}
