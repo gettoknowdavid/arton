@@ -124,6 +124,7 @@
     --sidebar-ring: oklch(0.552 0.016 285.938);
 }
 
+/* Updated base styles - Hide all scrollbars globally */
 @layer base {
     * {
         @apply border-border outline-ring/50;
@@ -131,6 +132,22 @@
 
     html {
         font-size: 14px;
+        scrollbar-gutter: stable; /* Prevents layout shift */
+        overflow-y: auto;
+    }
+
+    /* Hide scrollbar for all elements */
+    html, body, * {
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none; /* IE and Edge */
+    }
+
+    html::-webkit-scrollbar,
+    body::-webkit-scrollbar,
+    *::-webkit-scrollbar {
+        display: none; /* Chrome, Safari, Opera */
+        width: 0;
+        height: 0;
     }
 
     body {
@@ -138,15 +155,51 @@
     }
 }
 
-
 @layer utilities {
+    /* Utility to hide scrollbar on specific elements */
     .no-scrollbar::-webkit-scrollbar {
         display: none;
     }
 
-    /* Hide scrollbar for IE, Edge and Firefox */
     .no-scrollbar {
-        -ms-overflow-style: none; /* IE and Edge */
-        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+
+    /* If you ever need to show scrollbar on specific elements */
+    .scrollbar-visible {
+        scrollbar-width: thin;
+        scrollbar-color: oklch(0.141 0.005 285.823 / 0.15) transparent;
+    }
+
+    .scrollbar-visible::-webkit-scrollbar {
+        display: block;
+        width: 6px;
+        height: 6px;
+    }
+
+    .scrollbar-visible::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    .scrollbar-visible::-webkit-scrollbar-thumb {
+        background-color: oklch(0.141 0.005 285.823 / 0.15);
+        border-radius: 3px;
+    }
+
+    .scrollbar-visible::-webkit-scrollbar-thumb:hover {
+        background-color: oklch(0.141 0.005 285.823 / 0.3);
+    }
+
+    .dark .scrollbar-visible {
+        scrollbar-color: oklch(0.985 0 0 / 0.15) transparent;
+    }
+
+    .dark .scrollbar-visible::-webkit-scrollbar-thumb {
+        background-color: oklch(0.985 0 0 / 0.15);
+    }
+
+    .dark .scrollbar-visible::-webkit-scrollbar-thumb:hover {
+        background-color: oklch(0.985 0 0 / 0.3);
     }
 }

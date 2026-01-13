@@ -34,7 +34,7 @@ export default async function ProductDetailsPage({params}: PageProps) {
 
     return (
         <div className="relative pt-12 flex flex-col justify-center h-full lg:h-screen">
-            <div className="absolute top-16 z-50">
+            <div className="absolute top-16 z-30">
                 <BackButton/>
             </div>
 

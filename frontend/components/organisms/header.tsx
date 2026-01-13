@@ -1,3 +1,5 @@
+"use client";
+
 import {siteConfig} from "@/config/site";
 import {cn} from "@/lib/utils";
 import Image from "next/image";
@@ -10,7 +12,7 @@ export const Header = () => {
     return (
         <header
             className={cn(
-                "flex flex-row items-center justify-between w-full h-12 fixed top-0 z-50",
+                "flex flex-row items-center justify-between w-full h-12 fixed top-0 z-999999",
                 "text-foreground bg-background border-b border-foreground",
                 "px-3 py-0"
             )}
